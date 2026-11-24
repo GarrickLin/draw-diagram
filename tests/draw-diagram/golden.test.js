@@ -1,4 +1,5 @@
-// 基准存档：每个规格的版面文档和 .drawio。第二阶段的 JS 引擎必须产出和这里完全相同的结果。
+// 基准存档：每个规格的版面文档和 .drawio。存档由第一阶段的 Python 引擎生成，JS 引擎必须产出完全
+// 相同的结果；JS 和 CPython 的逐字节对照在 tests/port。
 //
 // 重新生成（规格、引擎或转换器有意改动之后）：
 //   DRAW_DIAGRAM_UPDATE_GOLDEN=1 node --test tests/draw-diagram/golden.test.js
@@ -6,11 +7,10 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { createHash } from "node:crypto";
-import { ROOT, SCRIPTS, UPSTREAM, FIXTURES, PYTHON, skipWithoutPython, loadSpec } from "./helpers.js";
+import { ROOT, SCRIPTS, UPSTREAM, FIXTURES, loadSpec } from "./helpers.js";
 import { wrapAsMxFile } from "../../skills/draw-diagram/scripts/lib/convert.js";
 import { publicationToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/publication.js";
 import { behaviorToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/behavior.js";
@@ -18,7 +18,7 @@ import { algorithmToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/
 
 const GOLDEN = join(ROOT, "tests", "draw-diagram", "golden");
 const UPDATE = process.env.DRAW_DIAGRAM_UPDATE_GOLDEN === "1";
-const BRIDGE = join(SCRIPTS, "py", "bridge.py");
+const engine = await import(join(SCRIPTS, "lib", "engine", "js.js"));
 const CONVERT = { publication: publicationToDrawio, legacy: publicationToDrawio, behavior: behaviorToDrawio, algorithm: algorithmToDrawio };
 
 /**
@@ -46,19 +46,11 @@ function specFiles() {
   });
 }
 
-function bridge(req, seed) {
-  const r = spawnSync(PYTHON, ["-I", "-B", BRIDGE], { input: JSON.stringify(req), encoding: "utf8", maxBuffer: 256 << 20, env: { ...process.env, PYTHONHASHSEED: String(seed) } });
-  if (r.status !== 0) throw new Error(r.stderr);
-  const out = JSON.parse(r.stdout);
-  if (out.error) throw new Error(JSON.stringify(out.error));
-  return out;
-}
-
-function layoutFor(path, seed) {
+async function layoutFor(path) {
   const { spec, description } = loadSpec(path);
   const language = /[一-鿿]/.test(JSON.stringify(spec.nodes.map((n) => n.label))) ? "zh" : "en";
-  const prep = bridge({ op: "prepare", description, language }, seed);
-  return bridge({ op: "compile", spec, context: prep.context }, seed).layout;
+  const prep = await engine.call({ op: "prepare", description, language });
+  return (await engine.call({ op: "compile", spec, context: prep.context })).layout;
 }
 
 function name(path) {
@@ -67,7 +59,7 @@ function name(path) {
 
 const sha = (s) => createHash("sha256").update(s).digest("hex").slice(0, 16);
 
-test("golden layouts and drawio files", { skip: skipWithoutPython }, async (t) => {
+test("golden layouts and drawio files", async (t) => {
   const files = specFiles();
   assert.ok(files.length >= 27, `only ${files.length} specs`);
   if (UPDATE) mkdirSync(GOLDEN, { recursive: true });
@@ -75,7 +67,7 @@ test("golden layouts and drawio files", { skip: skipWithoutPython }, async (t) =
   for (const path of files) {
     const id = name(path);
     await t.test(id, async () => {
-      const layout = layoutFor(path, 0);
+      const layout = await layoutFor(path);
       const convert = CONVERT[layout.kind];
       assert.ok(convert, `${id}: ${layout.kind}`);
       const drawio = wrapAsMxFile((await convert(layout)).xml, layout.spec.title || "Page-1");
@@ -94,12 +86,4 @@ test("golden layouts and drawio files", { skip: skipWithoutPython }, async (t) =
     });
   }
   if (UPDATE) writeFileSync(join(GOLDEN, "index.json"), JSON.stringify(index, null, 1) + "\n");
-});
-
-test("layouts don't depend on Python's hash seed", { skip: skipWithoutPython }, () => {
-  // 集合遍历顺序随 PYTHONHASHSEED 变；版面不能受它影响，否则第二阶段没有唯一的标准答案
-  for (const path of [join(UPSTREAM, "examples", "soc.json"), join(UPSTREAM, "tests", "fixtures", "design_coverage", "retry-controller.json"), join(UPSTREAM, "examples", "online-attention-dataflow.json")]) {
-    const base = JSON.stringify(layoutFor(path, 0));
-    for (const seed of [7, 42]) assert.equal(JSON.stringify(layoutFor(path, seed)), base, `${name(path)} seed ${seed}`);
-  }
 });

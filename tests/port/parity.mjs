@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Python vs JS engine parity: every request goes to py/bridge.py (CPython) and to the
+// Python vs JS engine parity: every request goes to tools/port/bridge.py (CPython) and to the
 // transpiled JS engine, and the two answers must be the same bytes.
 //
 // Cases: every spec under docs/refs/silicon-canvas and tests/draw-diagram/fixtures, in English
@@ -8,7 +8,7 @@
 //
 //   node tests/port/parity.mjs [--variants N] [--seed S] [--filter text] [--jobs J] [--json]
 //
-// Needs the phase-1 Python (DRAW_DIAGRAM_PYTHON or ~/.cache/draw-diagram/venv/bin/python).
+// Needs the reference CPython 3.14 with Pillow (DRAW_DIAGRAM_PYTHON or ~/.cache/draw-diagram/venv/bin/python).
 
 import { spawn } from "node:child_process";
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
@@ -19,7 +19,7 @@ import { createInterface } from "node:readline";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const PYTHON = process.env.DRAW_DIAGRAM_PYTHON || join(homedir(), ".cache", "draw-diagram", "venv", "bin", "python");
-export const BRIDGE = process.env.DRAW_DIAGRAM_BRIDGE || join(ROOT, "skills", "draw-diagram", "scripts", "py", "bridge.py");
+export const BRIDGE = join(ROOT, "tools", "port", "bridge.py");
 const BATCH = join(ROOT, "tests", "port", "bridge_batch.py");
 // The JS engine hashes strings as CPython does with PYTHONHASHSEED=0, so the reference runs with
 // that seed. -I would ignore PYTHONHASHSEED (it implies -E): -s -P give the rest of its isolation.

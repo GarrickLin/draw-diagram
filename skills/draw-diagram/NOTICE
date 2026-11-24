@@ -32,20 +32,24 @@ Each keeps its own licence; the full texts are in the files named.
 2. Silicon Canvas
    Copyright (c) 2026 Jiale Wang
    https://github.com/du-du-wang/silicon-canvas, commit 7b590daf2217acc5a95d5c40d289d56d91a9fbfc
-   MIT License: scripts/vendor/silicon/LICENSE
+   MIT License: scripts/lib/engine/silicon/LICENSE
 
-   scripts/vendor/silicon/silicon_canvas/ is src/silicon_canvas/ of that commit, with:
-     Modified (diff in scripts/vendor/silicon/silicon.patch):
+   scripts/lib/engine/silicon/*.js are a translation into JavaScript of 24 modules of
+   src/silicon_canvas/ of that commit, made by a source-to-source translator
+   (tools/port/transpile.py in the draw-diagram repository, not shipped with the skill)
+   from that source with two modifications:
        publication_render.py  font() measures text with scripts/data/widths.json
                               (Helvetica metrics) instead of the bundled Noto font
        structure_scene.py     label placement measures text the same way and needs
                               no font file or image
-     Not copied:
-       mcp_server.py, provider.py, service.py   (MCP server and DeepSeek client)
-       fonts/                                    (Noto Sans CJK SC, OFL-1.1; not needed)
-     Every other file is unmodified. scripts/vendor/silicon/UPSTREAM records the source.
+   scripts/lib/engine/silicon/catalog.json and reference_images/*.json are copied from
+   src/silicon_canvas/ without modification.
+   The repository keeps the Python source, the diff of the two modifications and the
+   upstream record under tools/port/silicon/.
 
-   scripts/py/bridge.py calls this engine; it is not part of Silicon Canvas.
+   Written for this skill to run the translation: scripts/lib/engine/py/ (Python
+   semantics for JavaScript), scripts/lib/engine/fast/ (a faster equivalent of one
+   function) and scripts/lib/engine/js.js; they are not part of Silicon Canvas.
 
 
 3. diagram-render
@@ -77,6 +81,6 @@ Written for this skill (not from the projects above):
   SKILL.md, NOTICE
   scripts/draw-diagram.js, scripts/package.json
   scripts/lib/**  (CLI, converters from layout to draw.io XML, check, render loader,
-                   text widths, state)
-  scripts/py/bridge.py
+                   text widths, state, the engine runtime of 2), except
+                   scripts/lib/engine/silicon/ (translated from Silicon Canvas, see 2)
   scripts/data/widths.json  (measured data, see 4)

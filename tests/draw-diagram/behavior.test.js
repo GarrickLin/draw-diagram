@@ -3,12 +3,11 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join } from "node:path";
 import { behaviorToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/behavior.js";
-import { compileLayout, countCells, FIXTURES, UPSTREAM, skipWithoutPython } from "./helpers.js";
+import { compileLayout, countCells, FIXTURES, UPSTREAM } from "./helpers.js";
 
-const skip = skipWithoutPython;
 const DC = join(UPSTREAM, "tests", "fixtures", "design_coverage");
 
-test("DMA state machine: four states, five transitions including a self-loop", { skip }, () => {
+test("DMA state machine: four states, five transitions including a self-loop", () => {
   const doc = compileLayout(join(FIXTURES, "dma-fsm.json"));
   assert.equal(doc.kind, "behavior");
   assert.equal(doc.structure_layout.grammar, "state-machine");
@@ -20,7 +19,7 @@ test("DMA state machine: four states, five transitions including a self-loop", {
   for (const label of ["start", "desc valid", "beats left", "last beat", "ack"]) assert.match(xml, new RegExp(`value="${label}"`));
 });
 
-test("retry controller: initial marker, state outputs and the reset note", { skip }, () => {
+test("retry controller: initial marker, state outputs and the reset note", () => {
   const { xml, stats } = behaviorToDrawio(compileLayout(join(DC, "retry-controller.json")));
   assert.equal(stats.nodes, 6);
   assert.equal(stats.edges, 12);
@@ -29,7 +28,7 @@ test("retry controller: initial marker, state outputs and the reset note", { ski
   assert.match(xml, /Synchronous reset has highest priority/);
 });
 
-test("directed processes keep the engine's box sizes", { skip }, () => {
+test("directed processes keep the engine's box sizes", () => {
   for (const name of ["elastic-pipeline", "branched-tile-return"]) {
     const doc = compileLayout(join(DC, `${name}.json`));
     assert.equal(doc.structure_layout.grammar, "directed-process");
@@ -42,12 +41,12 @@ test("directed processes keep the engine's box sizes", { skip }, () => {
   }
 });
 
-test("logical topology", { skip }, () => {
+test("logical topology", () => {
   const { stats } = behaviorToDrawio(compileLayout(join(DC, "mesh-memory.json")));
   assert.deepEqual([stats.nodes, stats.edges], [12, 24]);
 });
 
-test("a sampled timing trace becomes a signal × sample table", { skip }, () => {
+test("a sampled timing trace becomes a signal × sample table", () => {
   const doc = compileLayout(join(DC, "ready-valid-trace.json"));
   assert.equal(doc.structure_layout.grammar, "sampled-timing");
   const { xml, stats } = behaviorToDrawio(doc);
@@ -58,7 +57,7 @@ test("a sampled timing trace becomes a signal × sample table", { skip }, () => 
   assert.equal(countCells(xml).edges, 0);
 });
 
-test("the same layout gives the same XML", { skip }, () => {
+test("the same layout gives the same XML", () => {
   const doc = compileLayout(join(FIXTURES, "dma-fsm.json"));
   assert.equal(behaviorToDrawio(doc).xml, behaviorToDrawio(structuredClone(doc)).xml);
 });

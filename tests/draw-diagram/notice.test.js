@@ -24,33 +24,45 @@ test("draw.io files marked unmodified equal the upstream commit", { skip: exists
   for (const r of ["xml-essentials.md", "xml-reference.md", "style-reference.md"]) assert.ok(same(join(SKILL, "references", r), join(DRAWIO_SHARED, r)), r);
 });
 
-test("Silicon Canvas: only the two patched files differ, and the patch says so", { skip: existsSync(SILICON) ? false : "no docs/refs/silicon-canvas" }, () => {
-  const vendor = join(SKILL, "scripts", "vendor", "silicon", "silicon_canvas");
+test("Silicon Canvas: the translator's source differs from upstream in the two patched files only", { skip: existsSync(SILICON) ? false : "no docs/refs/silicon-canvas" }, () => {
+  const vendor = join(ROOT, "tools", "port", "silicon", "silicon_canvas");
   const changed = [];
   for (const f of files(vendor)) {
     const rel = relative(vendor, f);
     if (!same(f, join(SILICON, rel))) changed.push(rel);
   }
   assert.deepEqual(changed.sort(), ["publication_render.py", "structure_scene.py"]);
-  const patch = readFileSync(join(SKILL, "scripts", "vendor", "silicon", "silicon.patch"), "utf8");
+  const patch = readFileSync(join(ROOT, "tools", "port", "silicon", "silicon.patch"), "utf8");
   for (const f of changed) assert.match(patch, new RegExp(`\\+\\+\\+ b/src/silicon_canvas/${f}`));
   for (const gone of ["mcp_server.py", "provider.py", "service.py"]) assert.ok(!existsSync(join(vendor, gone)), gone);
   assert.ok(!existsSync(join(vendor, "fonts")));
 });
 
+test("Silicon Canvas: the skill carries its licence and unmodified data files", () => {
+  const src = join(ROOT, "tools", "port", "silicon");
+  const out = join(SKILL, "scripts", "lib", "engine", "silicon");
+  assert.ok(same(join(src, "LICENSE"), join(out, "LICENSE")));
+  assert.ok(same(join(src, "silicon_canvas", "catalog.json"), join(out, "catalog.json")));
+  for (const f of readdirSync(join(out, "reference_images"))) assert.ok(same(join(src, "silicon_canvas", "reference_images", f), join(out, "reference_images", f)), f);
+  const modules = readFileSync(join(ROOT, "tools", "port", "modules.txt"), "utf8").split(/\s+/).filter(Boolean);
+  const js = readdirSync(out).filter((f) => f.endsWith(".js")).map((f) => f.slice(0, -3));
+  assert.deepEqual(js.sort(), [...modules].sort());
+  assert.match(NOTICE, new RegExp(`translation into JavaScript of ${modules.length} modules`));
+});
+
 test("licence files named in NOTICE exist", () => {
-  for (const p of NOTICE.match(/scripts\/vendor\/[\w/.-]+\/(LICENSE|NOTICE)\b/g)) assert.ok(existsSync(join(SKILL, p)), p);
+  for (const p of NOTICE.match(/scripts\/[\w/.-]+\/(LICENSE|NOTICE)\b/g)) assert.ok(existsSync(join(SKILL, p)), p);
 });
 
 test("every file in the skill belongs to a section of NOTICE", () => {
   const owners = [
     /^SKILL\.md$/, /^NOTICE$/, /^references\//,
-    /^scripts\/(draw-diagram\.js|package\.json)$/, /^scripts\/lib\//, /^scripts\/py\/bridge\.py$/,
+    /^scripts\/(draw-diagram\.js|package\.json)$/, /^scripts\/lib\//,
     /^scripts\/data\/(shape-index|widths)\.json$/,
-    /^scripts\/vendor\/drawio\//, /^scripts\/vendor\/silicon\//, /^scripts\/vendor\/diagram-render\//,
+    /^scripts\/vendor\/drawio\//, /^scripts\/vendor\/diagram-render\//,
   ];
   for (const f of files(SKILL).map((p) => relative(SKILL, p))) {
     assert.ok(owners.some((re) => re.test(f)), f);
-    assert.doesNotMatch(f, /__pycache__|\.pyc$|node_modules/, f);
+    assert.doesNotMatch(f, /__pycache__|\.pyc?$|node_modules/, f);
   }
 });

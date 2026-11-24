@@ -10,8 +10,13 @@ class Rand:
         return self.state % n
 
 
+WORDS = ["top", "bottom", "left", "right", "n_host", "片上存储", "L2", "", "a", "🙂", "data", "control"]
+
+
 def value(r):
-    k = r.next(10)
+    k = r.next(12)
+    if k >= 10:
+        return WORDS[r.next(len(WORDS))] + ("" if r.next(3) else str(r.next(50)))
     if k < 4:
         return r.next(300) - 40
     if k == 4:
@@ -27,7 +32,7 @@ def value(r):
 
 def main():
     out = []
-    for seed in range(60):
+    for seed in range(200):
         r = Rand(seed)
         sets = [set(), set(), set()]
         trace = []
@@ -84,4 +89,9 @@ def main():
     out.append([1 in {1.0}, 1.5 in {3 / 2}, (1, 2) in {(1.0, 2.0)}, None in {None}])
     out.append(list({x * 7 % 64 for x in range(64)}))
     out.append(list(set(range(100, 0, -3))))
+    out.append(list({"top", "bottom", "left", "right", "center", "middle"}))
+    out.append(list({"top", "bottom", "left"}))
+    out.append([list(frozenset(WORDS)), list(set(WORDS) - {"top", "L2", "data"}), list({w + "x" for w in WORDS})])
+    out.append(list({("left", 1), ("right", 2), ("top", 3), ("bottom", 4), ("left", 5)}))
+    out.append([hash(-1), hash(-2), hash(2 ** 52), hash(-(2 ** 50)), hash(True), hash(None), hash(""), hash(7.0)])
     return out

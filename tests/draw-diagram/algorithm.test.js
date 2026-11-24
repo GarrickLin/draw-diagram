@@ -3,16 +3,15 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join } from "node:path";
 import { algorithmToDrawio, fullText } from "../../skills/draw-diagram/scripts/lib/layout/algorithm.js";
-import { compileLayout, EXAMPLES, UPSTREAM, skipWithoutPython } from "./helpers.js";
+import { compileLayout, EXAMPLES, UPSTREAM } from "./helpers.js";
 
-const skip = skipWithoutPython;
 const CASES = [
   join(EXAMPLES, "attention-dataflow.json"),
   join(EXAMPLES, "online-attention-dataflow.json"),
   join(UPSTREAM, "tests", "fixtures", "design_coverage", "residual-projection.json"),
 ];
 
-test("every tensor and operator is on the page and every relation is an edge", { skip }, async () => {
+test("every tensor and operator is on the page and every relation is an edge", async () => {
   for (const path of CASES) {
     const doc = compileLayout(path);
     assert.equal(doc.kind, "algorithm", path);
@@ -28,7 +27,7 @@ test("every tensor and operator is on the page and every relation is an edge", {
   }
 });
 
-test("long formulas go to the tooltip, not the box", { skip }, async () => {
+test("long formulas go to the tooltip, not the box", async () => {
   const doc = compileLayout(CASES[1]);
   const { xml } = await algorithmToDrawio(doc);
   const online = xml.match(/<UserObject id="online"[^>]*>/)[0];
@@ -38,7 +37,7 @@ test("long formulas go to the tooltip, not the box", { skip }, async () => {
   assert.equal(fullText(o).length, 5);
 });
 
-test("the same plan gives the same XML", { skip }, async () => {
+test("the same plan gives the same XML", async () => {
   const doc = compileLayout(CASES[0]);
   assert.equal((await algorithmToDrawio(doc)).xml, (await algorithmToDrawio(structuredClone(doc))).xml);
 });

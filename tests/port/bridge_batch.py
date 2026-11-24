@@ -1,10 +1,10 @@
-"""py/bridge.py over many requests: one JSON request per stdin line, one answer per stdout line.
+"""tools/port/bridge.py over many requests: one JSON request per stdin line, one answer per stdout line.
 
 Each answer is exactly what `python bridge.py` would print for that request. A request that
 crashes the bridge comes back as {"crash": <exception type>, "message": ...} instead of a
 traceback, so the parity runner can compare crashes too.
 
-    python -I -B tests/port/bridge_batch.py <path to bridge.py>
+    PYTHONHASHSEED=0 python -s -P -B tests/port/bridge_batch.py tools/port/bridge.py
 """
 import importlib.util
 import json

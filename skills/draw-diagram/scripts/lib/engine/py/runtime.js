@@ -90,6 +90,7 @@ export class KeyError extends LookupError {
 export class IndexError extends LookupError {}
 export class ArithmeticError extends Exception {}
 export class ZeroDivisionError extends ArithmeticError {}
+export class OverflowError extends ArithmeticError {}
 export class ImportError extends Exception {}
 export class OSError extends Exception {}
 export class RuntimeError extends Exception {}
@@ -674,18 +675,29 @@ function numOp(a, b, sym) {
 }
 const bothInt = (a, b) => isIntLike(a) && isIntLike(b);
 
+// Ints are JS numbers. Beyond 2^53 a result may have lost digits that Python's int keeps: there
+// the exact value is computed with BigInt, and a result JS can't hold exactly raises instead of
+// going on wrong (the silicon modules stay far below 2^53).
+function exactInt(r, exact) {
+  if (r <= Number.MAX_SAFE_INTEGER && r >= -Number.MAX_SAFE_INTEGER) return r;
+  const e = exact();
+  if (Number.isFinite(r) && BigInt(r) === e) return r;
+  throw new OverflowError(`integer result ${e} is beyond what a JS number holds exactly`);
+}
+const big = (v) => BigInt(nv(v));
+
 export function add(a, b) {
-  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return a + b;
+  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return exactInt(a + b, () => big(a) + big(b));
   if (typeof a === "string" && typeof b === "string") return a + b;
   if (Array.isArray(a) && Array.isArray(b)) {
     if ((a instanceof Tuple) !== (b instanceof Tuple)) throw new TypeError_(`can only concatenate ${typeName(a)} (not "${typeName(b)}") to ${typeName(a)}`);
     return a instanceof Tuple ? tuple([...a, ...b]) : [...a, ...b];
   }
   numOp(a, b, "+");
-  return bothInt(a, b) ? nv(a) + nv(b) : fl(nv(a) + nv(b));
+  return bothInt(a, b) ? exactInt(nv(a) + nv(b), () => big(a) + big(b)) : fl(nv(a) + nv(b));
 }
 export function sub(a, b) {
-  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return a - b;
+  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return exactInt(a - b, () => big(a) - big(b));
   if (a instanceof PySet && b instanceof PySet) return a.difference(b);
   if (isSetView(a) || isSetView(b)) {
     const r = viewToSet(a);
@@ -693,11 +705,11 @@ export function sub(a, b) {
     return r;
   }
   numOp(a, b, "-");
-  return bothInt(a, b) ? nv(a) - nv(b) : fl(nv(a) - nv(b));
+  return bothInt(a, b) ? exactInt(nv(a) - nv(b), () => big(a) - big(b)) : fl(nv(a) - nv(b));
 }
 export function mul(a, b) {
   // + 0: Python ints have no -0 (JS gives 0 * -5 === -0)
-  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return a * b + 0;
+  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return exactInt(a * b + 0, () => big(a) * big(b));
   if (typeof a === "string" && isIntLike(b)) return nv(b) > 0 ? a.repeat(nv(b)) : "";
   if (typeof b === "string" && isIntLike(a)) return mul(b, a);
   if (Array.isArray(a) && isIntLike(b)) {
@@ -707,7 +719,7 @@ export function mul(a, b) {
   }
   if (Array.isArray(b) && isIntLike(a)) return mul(b, a);
   numOp(a, b, "*");
-  return bothInt(a, b) ? nv(a) * nv(b) + 0 : fl(nv(a) * nv(b));
+  return bothInt(a, b) ? exactInt(nv(a) * nv(b) + 0, () => big(a) * big(b)) : fl(nv(a) * nv(b));
 }
 export function truediv(a, b) {
   if (a && typeof a.__truediv__ === "function") return a.__truediv__(b);
@@ -759,7 +771,7 @@ export function mod(a, b) {
 }
 export function pow(a, b) {
   numOp(a, b, "**");
-  if (bothInt(a, b) && nv(b) >= 0) return nv(a) ** nv(b);
+  if (bothInt(a, b) && nv(b) >= 0) return exactInt(nv(a) ** nv(b), () => big(a) ** big(b));
   return fl(nv(a) ** nv(b));
 }
 export function neg(a) {
@@ -815,7 +827,7 @@ export function bitxor(a, b) {
   return nv(a) ^ nv(b);
 }
 export function lshift(a, b) {
-  return nv(a) * 2 ** nv(b);
+  return exactInt(nv(a) * 2 ** nv(b), () => big(a) << big(b));
 }
 export function rshift(a, b) {
   return Math.floor(nv(a) / 2 ** nv(b));
@@ -2185,7 +2197,12 @@ export function id(v) {
   return objId(v);
 }
 export function hashOf(v) {
-  return Number(BigInt.asIntN(64, pyhash(v)));
+  // most hashes are 64-bit: give the exact value or nothing (the silicon modules never call hash())
+  const h = pyhash(v);
+  if (h > BigInt(Number.MAX_SAFE_INTEGER) || h < -BigInt(Number.MAX_SAFE_INTEGER)) {
+    throw new NotImplementedError(`hash() of ${repr(v)} is ${h}, beyond what a JS number holds exactly`);
+  }
+  return Number(h);
 }
 export function print(...args) {
   const [pos] = splitKw(args);

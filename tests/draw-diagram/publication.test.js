@@ -3,9 +3,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join } from "node:path";
 import { publicationToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/publication.js";
-import { compileLayout, countCells, EXAMPLES, UPSTREAM, skipWithoutPython } from "./helpers.js";
+import { compileLayout, countCells, EXAMPLES, UPSTREAM } from "./helpers.js";
 
-const skip = skipWithoutPython;
 const FIX = join(UPSTREAM, "tests", "fixtures");
 
 function cell(xml, id) {
@@ -15,7 +14,7 @@ function cell(xml, id) {
   return { parent: attr("parent", m[0]), style: attr("style", m[0]), x: +attr("x", m[1]), y: +attr("y", m[1]), w: +attr("width", m[1]), h: +attr("height", m[1]) };
 }
 
-test("soc: subsystems become containers holding their modules", { skip }, () => {
+test("soc: subsystems become containers holding their modules", () => {
   const doc = compileLayout(join(EXAMPLES, "soc.json"));
   assert.equal(doc.kind, "publication");
   const { xml, stats } = publicationToDrawio(doc);
@@ -31,14 +30,14 @@ test("soc: subsystems become containers holding their modules", { skip }, () => 
   assert.match(cell(xml, "g_compute").style, /^swimlane;/);
 });
 
-test("gpu: a label that didn't fit is a warning, not a cell", { skip }, () => {
+test("gpu: a label that didn't fit is a warning, not a cell", () => {
   const { xml, stats, warnings } = publicationToDrawio(compileLayout(join(EXAMPLES, "gpu.json")));
   assert.equal(stats.edges, 3);
   assert.ok(warnings.some((w) => w.includes("miss / spill / fill")));
   assert.doesNotMatch(xml, /miss \/ spill \/ fill/);
 });
 
-test("boxes keep the engine's proportions", { skip }, () => {
+test("boxes keep the engine's proportions", () => {
   const doc = compileLayout(join(EXAMPLES, "gpu.json"));
   const { xml } = publicationToDrawio(doc);
   const { boxes } = doc.structure_layout;
@@ -52,7 +51,7 @@ test("boxes keep the engine's proportions", { skip }, () => {
   }
 });
 
-test("edges follow the engine's bends and never re-route", { skip }, () => {
+test("edges follow the engine's bends and never re-route", () => {
   const doc = compileLayout(join(EXAMPLES, "gpu.json"));
   const { xml } = publicationToDrawio(doc);
   const route = doc.layout_scene.routes.find((r) => r.points.length > 2);
@@ -62,14 +61,14 @@ test("edges follow the engine's bends and never re-route", { skip }, () => {
   assert.match(edge, /exitX=[\d.]+;exitY=[\d.]+;/);
 });
 
-test("ingress: shared containers, a representative inset and a module with detail lines", { skip }, () => {
+test("ingress: shared containers, a representative inset and a module with detail lines", () => {
   const { xml, stats } = publicationToDrawio(compileLayout(join(FIX, "design_coverage", "repeated-ingress.json")));
   assert.equal(stats.edges, 9);
   assert.match(xml, /Control-plane updates/);
   assert.equal(cell(xml, "rx0").parent, "inset-representative-expansion");
 });
 
-test("legacy core layout: system frame, nested scopes and template slots", { skip }, () => {
+test("legacy core layout: system frame, nested scopes and template slots", () => {
   const doc = compileLayout(join(FIX, "structure_benchmark", "core_source.json"));
   assert.equal(doc.kind, "legacy");
   const { xml, stats } = publicationToDrawio(doc);
@@ -82,14 +81,14 @@ test("legacy core layout: system frame, nested scopes and template slots", { ski
   assert.match(xml, /value="Task entry"/);
 });
 
-test("legacy directed flow", { skip }, () => {
+test("legacy directed flow", () => {
   const { stats } = publicationToDrawio(compileLayout(join(FIX, "strategy_benchmark", "publication_result.json")));
   assert.equal(stats.nodes, 6);
   assert.equal(stats.containers, 2);
   assert.equal(stats.edges, 7);
 });
 
-test("the same layout gives the same XML", { skip }, () => {
+test("the same layout gives the same XML", () => {
   const doc = compileLayout(join(EXAMPLES, "soc.json"));
   assert.equal(publicationToDrawio(doc).xml, publicationToDrawio(structuredClone(doc)).xml);
 });

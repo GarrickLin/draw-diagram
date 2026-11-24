@@ -1,10 +1,10 @@
-// 第二阶段的引擎实现：silicon-canvas 转成 JS 后在本进程内运行，不需要 Python。
+// 引擎实现：silicon-canvas 转成 JS 后在本进程内运行，不需要 Python。
 //
-// 这里逐行对应 py/bridge.py，并且全程用 Python 语义的对象计算（py/runtime.js），保证和桥的
-// 行为一致：同样的 prepare（先判断表达方式，拒绝产品渲染和空间示意），同样的 compile（只取主图，
-// 主图排不出时选覆盖节点最多的视图）。respond() 给出和桥的标准输出逐字节相同的 JSON，
-// tests/port 用它和 Python 对照。
-// silicon/ 下的模块由 tools/port/transpile.py 从 vendor/silicon 生成，不要手改。
+// 这里逐行对应第一阶段的 Python 桥（tools/port/bridge.py），并且全程用 Python 语义的对象计算
+// （py/runtime.js），保证行为一致：同样的 prepare（先判断表达方式，拒绝产品渲染和空间示意），
+// 同样的 compile（只取主图，主图排不出时选覆盖节点最多的视图）。respond() 给出和桥的标准输出
+// 逐字节相同的 JSON，tests/port 用它和 CPython 对照。
+// silicon/ 下的模块由 tools/port/build_engine.sh 从 tools/port/silicon 生成，不要手改。
 
 import * as py from "./py/runtime.js";
 import * as json from "./py/json.js";
@@ -24,11 +24,16 @@ const DROPPED_WARNINGS = ["技术附图", "成图", "Image Gen"];
 const PREFERENCE = ["publication-candidates", "semantic-guide", "algorithm-dependency-plan", "legacy-technical-annex"];
 
 let modules = null;
-async function load() {
+/** Loads the transpiled modules; the sync entry points need it done. */
+export async function ready() {
   if (modules === null) {
     const [engine, scene_profiles] = await Promise.all([import("./silicon/engine.js"), import("./silicon/scene_profiles.js")]);
     modules = { engine, scene_profiles };
   }
+  return modules;
+}
+function loaded() {
+  if (modules === null) throw new Error("js.js: await ready() before the sync calls");
   return modules;
 }
 
@@ -39,8 +44,8 @@ function error(code, message, extra = []) {
   return py.dict(["error", py.dict(["code", code], ["message", message], ...extra)]);
 }
 
-async function prepare(req) {
-  const { engine, scene_profiles } = await load();
+function prepare(req) {
+  const { engine, scene_profiles } = loaded();
   const description = py.bool(get(req, "description")) ? get(req, "description") : "";
   const feedback = py.bool(get(req, "feedback")) ? get(req, "feedback") : "";
   const previous = get(req, "previous");
@@ -142,8 +147,8 @@ function layoutDocument(result) {
   );
 }
 
-async function compile(req) {
-  const { engine } = await load();
+function compile(req) {
+  const { engine } = loaded();
   const spec = get(req, "spec");
   const context = get(req, "context");
   if (!isDict(context)) return error("request_invalid", "compile needs the context prepare returned.");
@@ -159,7 +164,7 @@ async function compile(req) {
 }
 
 /** One bridge request (a JS object), answered as Python objects. */
-async function handle(request) {
+function handle(request) {
   const req = py.fromJS(request);
   const op = get(req, "op");
   if (op === "prepare") return prepare(req);
@@ -167,15 +172,25 @@ async function handle(request) {
   return error("request_invalid", `unknown op ${py.repr(op)}`);
 }
 
-/** The bridge's stdout for a request, byte for byte: tests/port compares it with py/bridge.py. */
+const dump = (out) => json.dumps(out, py.KW({ ensure_ascii: false, sort_keys: true, separators: py.T(",", ":") }));
+
+/** The bridge's stdout for a request, byte for byte: tests/port compares it with tools/port/bridge.py. */
 export async function respond(request) {
-  const out = await handle(request);
-  return json.dumps(out, py.KW({ ensure_ascii: false, sort_keys: true, separators: py.T(",", ":") })) + "\n";
+  await ready();
+  return dump(handle(request)) + "\n";
 }
 
-/** The engine call as lib/engine/index.js expects it. */
+/** The engine call as lib/engine/index.js expects it: the answer, or a DiagramError. */
 export async function call(request) {
-  const out = py.toJS(await handle(request));
+  await ready();
+  return callSync(request);
+}
+
+/** call() without the await, once ready() has resolved. */
+export function callSync(request) {
+  // through the bridge's JSON, as phase 1 did: same values and the same (sorted) key order, which
+  // the converters' output order follows
+  const out = JSON.parse(dump(handle(request)));
   if (out.error) {
     const { code, message, ...details } = out.error;
     throw new DiagramError(message, code, details);

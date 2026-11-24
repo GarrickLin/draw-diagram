@@ -2,10 +2,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { runJson, run, tmp, skipWithoutPython } from "./helpers.js";
+import { runJson, run, tmp } from "./helpers.js";
 import { detectLanguage } from "../../skills/draw-diagram/scripts/lib/commands/prepare.js";
 
-const skip = skipWithoutPython;
 
 function request(json) {
   const md = readFileSync(json.instructions, "utf8");
@@ -17,7 +16,7 @@ test("language follows the description", () => {
   assert.equal(detectLanguage("GPU overview"), "en");
 });
 
-test("a Chinese description asks for Chinese labels, an English one for English", { skip }, () => {
+test("a Chinese description asks for Chinese labels, an English one for English", () => {
   const cwd = tmp();
   const zh = runJson(["prepare", "--description", "画一张 GPU 架构总览"], { cwd });
   assert.equal(zh.status, 0, zh.stdout + zh.stderr);
@@ -28,7 +27,7 @@ test("a Chinese description asks for Chinese labels, an English one for English"
   assert.equal(runJson(["prepare", "--description", "GPU", "--language", "zh"], { cwd }).json.language, "zh");
 });
 
-test("the instructions are about draw.io, not an Image Gen prompt", { skip }, () => {
+test("the instructions are about draw.io, not an Image Gen prompt", () => {
   const r = runJson(["prepare", "--description", "GPU overview"], { cwd: tmp() });
   const md = readFileSync(r.json.instructions, "utf8");
   assert.doesNotMatch(md, /Image Gen prompt/);
@@ -36,7 +35,7 @@ test("the instructions are about draw.io, not an Image Gen prompt", { skip }, ()
   assert.match(md, new RegExp(`compile --prep ${r.json.id} --spec`));
 });
 
-test("product renders and spatial illustrations are refused", { skip }, () => {
+test("product renders and spatial illustrations are refused", () => {
   for (const [d, rep] of [["做一张芯片封装的商业产品渲染图，金属质感", "product_render"], ["用剖面插画展示 SoC 的空间结构", "system_illustration"]]) {
     const r = runJson(["prepare", "--description", d]);
     assert.equal(r.status, 1);
@@ -45,7 +44,7 @@ test("product renders and spatial illustrations are refused", { skip }, () => {
   }
 });
 
-test("the same request gets the same ID", { skip }, () => {
+test("the same request gets the same ID", () => {
   const cwd = tmp();
   const a = runJson(["prepare", "--description", "GPU overview"], { cwd });
   const b = runJson(["prepare", "--description", "GPU overview"], { cwd });
@@ -61,7 +60,7 @@ test("usage errors exit 2", () => {
   assert.equal(run(["prepare", "--description", "a", "--language", "fr"]).status, 2);
 });
 
-test("--previous names a compile that must exist", { skip }, () => {
+test("--previous names a compile that must exist", () => {
   const r = runJson(["prepare", "--description", "a", "--previous", "000000000000", "--feedback", "x"]);
   assert.equal(r.status, 1);
   assert.equal(r.json.error.code, "state_missing");

@@ -1,24 +1,27 @@
-"""Bridge between the Node CLI and the silicon-canvas planning and layout engine.
+"""The phase-1 bridge to the Python silicon-canvas engine, kept as the reference for the JS port.
 
-Reads one JSON request on stdin and writes one JSON object on stdout:
+draw-diagram itself no longer runs Python: lib/engine/js.js answers the same requests, line by line
+the same logic, on the transpiled engine. tests/port/parity.mjs sends every request to both and
+compares the bytes. This file reads one JSON request on stdin and writes one JSON object on stdout:
 
     {"op": "prepare", "description": ..., "language": "zh"|"en", "feedback": ..., "previous": {...}|null}
         -> {"messages": [...], "context": {...}, "representation": {...}}
     {"op": "compile", "spec": {...}, "context": {...}}
         -> {"layout": <layout document>}
 
-Errors are {"error": {"code", "message", ...}} with exit status 0; a non-zero status means the
-bridge itself failed. Nothing here reads the clock, the network or a font file.
-
-The layout document is the contract with the Node converters (tests/draw-diagram/layout-doc.schema.json);
-the JavaScript engine of phase 2 must produce the same document.
+Errors are {"error": {"code", "message", ...}} with exit status 0. Run it with PYTHONHASHSEED=0
+(and without -I, which ignores that variable): the JS engine hashes strings as CPython does with seed 0.
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "vendor" / "silicon"))
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE / "silicon"))
+# the patched publication_render measures text with the skill's width table, as the JS engine does
+os.environ.setdefault("DRAW_DIAGRAM_WIDTHS", str(HERE.parents[1] / "skills" / "draw-diagram" / "scripts" / "data" / "widths.json"))
 
 from silicon_canvas import engine, scene_profiles  # noqa: E402
 

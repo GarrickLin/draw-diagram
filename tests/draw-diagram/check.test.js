@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, writeFileSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
-import { runJson, tmp, ROOT, EXAMPLES, loadSpec, skipWithoutPython } from "./helpers.js";
+import { runJson, tmp, ROOT, EXAMPLES, loadSpec } from "./helpers.js";
 import { checkPage } from "../../skills/draw-diagram/scripts/lib/check.js";
 import { pages } from "../../skills/draw-diagram/scripts/lib/drawio-read.js";
 
@@ -91,7 +91,7 @@ test("the contents list names shapes once and keeps algorithm details", () => {
   assert.equal(fsm.inventory.nodes.find((n) => n.id === "idle").label, "IDLE (busy=0)");
 });
 
-test("a file compile made reports the labels the engine left out", { skip: skipWithoutPython }, () => {
+test("a file compile made reports the labels the engine left out", () => {
   const cwd = tmp();
   const { spec, description } = loadSpec(join(EXAMPLES, "gpu.json"));
   writeFileSync(join(cwd, "spec.json"), JSON.stringify(spec));
