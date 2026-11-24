@@ -77,7 +77,7 @@ Warnings are worth a look: a connection passing through an unrelated shape, a la
 
 Then compare the **contents list** `check` prints with the user's request: every module, state, tensor and connection they named, with the right direction, nothing they excluded, nothing invented without a reason. This catches what geometry can't: a wrong connection, a missing block, a reversed arrow.
 
-**2. Look.** Run `dd render <file.drawio>` (writes a PNG next to it) and look at the image. Judge what checking can't: is the main point of the figure obvious, does the hierarchy read correctly, is the main flow easy to follow, are the important parts prominent? Vendor icons render as labelled dashed boxes here; that is the preview, not the file.
+**2. Look.** Run `dd render <file.drawio>` (writes a PNG next to it) and look at the image. Judge what checking can't: is the main point of the figure obvious, does the hierarchy read correctly, is the main flow easy to follow, are the important parts prominent? Vendor icons render as labelled dashed boxes here; that is the preview, not the file. Sequence diagrams don't render correctly at all (`render` says so): review them with `check`'s content list instead.
 
 For a diagram with more than 15 shapes, or when the user asks for it, also do a blind read: give a subagent only the PNG and ask it to describe what the diagram shows. Compare its description with the request; a mismatch is a hierarchy or emphasis problem.
 

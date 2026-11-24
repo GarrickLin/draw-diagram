@@ -1,0 +1,8 @@
+flowchart TD
+    commit[Push to main] --> build[Build and run tests]
+    build --> ok{Tests pass?}
+    ok -- no --> notify[Notify the author]
+    ok -- yes --> staging[Deploy to staging]
+    staging --> smoke{Smoke tests pass?}
+    smoke -- no --> rollback[Roll back staging]
+    smoke -- yes --> prod[Deploy to production]

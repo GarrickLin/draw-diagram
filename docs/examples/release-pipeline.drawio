@@ -1,0 +1,25 @@
+<mxfile host="draw-diagram" type="device">
+  <diagram id="page-1" name="Release pipeline">
+    <mxGraphModel adaptiveColors="auto">
+<root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="commit" value="Push to main" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="10" y="0" width="140" height="60" as="geometry" /></mxCell>
+<mxCell id="build" value="Build and run tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="10" y="96" width="140" height="60" as="geometry" /></mxCell>
+<mxCell id="ok" value="Tests pass?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF6E0;strokeColor=#E8C36A;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="0" y="192" width="160" height="90" as="geometry" /></mxCell>
+<mxCell id="notify" value="Notify the author" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="215" y="207" width="140" height="60" as="geometry" /></mxCell>
+<mxCell id="staging" value="Deploy to staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="10" y="328" width="140" height="60" as="geometry" /></mxCell>
+<mxCell id="smoke" value="Smoke&lt;br&gt;tests pass?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF6E0;strokeColor=#E8C36A;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="0" y="424" width="160" height="90" as="geometry" /></mxCell>
+<mxCell id="rollback" value="Roll back staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="10" y="560" width="140" height="60" as="geometry" /></mxCell>
+<mxCell id="prod" value="Deploy to production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;fontSize=14;" vertex="1" parent="1"><mxGeometry x="215" y="439" width="140" height="60" as="geometry" /></mxCell>
+<mxCell id="commit-build" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#5A626E;fontSize=12;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="commit" target="build"><mxGeometry relative="1" as="geometry" /></mxCell>
+<mxCell id="build-ok" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#5A626E;fontSize=12;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="build" target="ok"><mxGeometry relative="1" as="geometry" /></mxCell>
+<mxCell id="ok-notify" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#C9302C;fontSize=12;endArrow=classic;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ok" target="notify"><mxGeometry relative="1" as="geometry" /></mxCell>
+<mxCell id="ok-staging" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#1E7F3E;fontSize=12;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ok" target="staging"><mxGeometry relative="1" as="geometry" /></mxCell>
+<mxCell id="staging-smoke" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#5A626E;fontSize=12;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="staging" target="smoke"><mxGeometry relative="1" as="geometry" /></mxCell>
+<mxCell id="smoke-rollback" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#C9302C;fontSize=12;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="smoke" target="rollback"><mxGeometry relative="1" as="geometry" /></mxCell>
+<mxCell id="smoke-prod" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#8A94A6;fontColor=#1E7F3E;fontSize=12;endArrow=classic;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="smoke" target="prod"><mxGeometry relative="1" as="geometry" /></mxCell>
+</root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

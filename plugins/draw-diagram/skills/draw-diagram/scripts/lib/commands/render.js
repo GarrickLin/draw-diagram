@@ -40,6 +40,11 @@ export async function run(opts, io) {
   if (r.cjk.needed && !r.cjk.font) {
     warnings.push("No Chinese/Japanese/Korean font was found on this computer, so those characters are drawn as boxes in the image (the .drawio file is fine). Set DRAW_DIAGRAM_CJK_FONT to a .ttf/.ttc/.otf file to fix it.");
   }
+  // diagram-render 不认识 UML 时序图的生命线和时序连线：生命线画成普通方框，消息画成斜线。
+  // 文件本身是对的，只是这张预览图不可信，所以要明说，免得照着图去「修」文件
+  if (/shape=umlLifeline|edgeStyle=sequenceEdgeStyle/.test(text)) {
+    warnings.push("This diagram has UML sequence lifelines, which the renderer can't draw: lifelines come out as plain boxes and messages as slanted lines. The .drawio file is correct and opens properly in draw.io; review the sequence with check's content list, not this image.");
+  }
   // diagram-render 对中日韩字符总是说「由本机字体画出，图片可能因电脑而异」：找到字体时这是预期的，
   // 没找到时这句话不对（字画成了方框），两种情况都由上面那条提示代替
   const shown = warnings.filter((w) => !(r.cjk.needed && /aren't in the bundled fonts/.test(w)));

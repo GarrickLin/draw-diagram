@@ -1,16 +1,34 @@
 # draw-diagram
 
-一个本地运行的 Agent Skill：根据描述画出可编辑的 draw.io 图（`.drawio`），检查版面，并能渲染成 PNG 或 SVG。全程离线，只需要 Node.js 20+。
+**An offline agent skill that turns a description of a chip, system, algorithm or process into an editable, layout-checked draw.io diagram.**
 
-- 芯片和系统架构、算法数据流、状态机、时序图：由 [silicon-canvas](https://github.com/du-du-wang/silicon-canvas) 的规划和版面引擎排版（已移植成 JavaScript），再转换成 draw.io。
-- 流程图、时序图、ER 图、组织结构图等：agent 写 Mermaid、PlantUML、CSV 或 draw.io XML，由 [drawio-mcp](https://github.com/jgraph/drawio-mcp) 的转换器生成。
-- 渲染用 [diagram-render](https://github.com/nowmyagentcan/diagram-render) 编译成的 WASM。
+draw-diagram works in Claude Code, Codex and any agent that loads [Agent Skills](https://agentskills.io). It writes a native `.drawio` file, checks it for overlapping boxes, overflowing text and dangling connections, and renders it to PNG or SVG so the agent can look at what it drew. Everything runs locally on Node.js 20+, with no network access, no Python and no draw.io Desktop.
 
-用法见 `plugins/draw-diagram/skills/draw-diagram/SKILL.md`。
+## Examples
 
-## 安装
+Every image below was made by the skill's own commands (`node tools/build_examples.mjs`); click one to open its `.drawio` source.
 
-下面的 `<owner>` 换成存放本仓库的 GitHub 用户名或组织名；如果仓库不叫 `draw-diagram`，斜杠后面也换成实际的仓库名。`@draw-diagram` 是插件市场的名字，写在仓库的清单里，和 GitHub 用户名无关。
+| | |
+|:---:|:---:|
+| [<img src="docs/examples/gpu-architecture.png" width="420">](docs/examples/gpu-architecture.drawio)<br>**GPU architecture** | [<img src="docs/examples/soc.png" width="420">](docs/examples/soc.drawio)<br>**SoC block diagram** |
+| [<img src="docs/examples/online-attention-dataflow.png" width="420">](docs/examples/online-attention-dataflow.drawio)<br>**Online-softmax attention dataflow** | [<img src="docs/examples/mesh-memory-noc.png" width="420">](docs/examples/mesh-memory-noc.drawio)<br>**2×2 mesh network-on-chip** |
+| [<img src="docs/examples/dma-state-machine.png" width="420">](docs/examples/dma-state-machine.drawio)<br>**DMA engine state machine** | [<img src="docs/examples/ready-valid-timing.png" width="420">](docs/examples/ready-valid-timing.drawio)<br>**Ready/valid handshake timing** |
+| [<img src="docs/examples/release-pipeline.png" width="260">](docs/examples/release-pipeline.drawio)<br>**Release pipeline** (from [Mermaid](docs/examples/src/release-pipeline.mmd)) | [<img src="docs/examples/online-store-schema.png" width="420">](docs/examples/online-store-schema.drawio)<br>**Database schema** (from [Mermaid](docs/examples/src/online-store.mmd)) |
+
+## How it works
+
+The skill picks one of two paths for each request:
+
+- **Planned path**, for chip and system architecture, microarchitecture, algorithm and tensor dataflow, state machines and timing traces. `prepare` turns the user's description into instructions for writing a structured spec; the agent writes the spec; `compile` validates it and lays it out with the planning and layout engine of [silicon-canvas](https://github.com/du-du-wang/silicon-canvas), then converts the layout to draw.io. The engine is a JavaScript port of the Python original, checked byte for byte against CPython (see [`tools/port`](tools/port/README.md)).
+- **Direct path**, for flowcharts, sequence diagrams, ER diagrams, org charts and the like. The agent writes Mermaid, PlantUML, draw.io CSV or draw.io XML, and `convert` turns it into a `.drawio` file with the converters of [drawio-mcp](https://github.com/jgraph/drawio-mcp). `search` finds draw.io shapes and vendor icons in a local index.
+
+Either way the agent then runs `check` (geometry, no image needed) and `render`, which draws the page with [diagram-render](https://github.com/nowmyagentcan/diagram-render) compiled to WebAssembly, so the agent can look at the result before handing it over. Labels follow the user's language. Requests for photorealistic product renders, cutaways or 3D views are declined with an offer to draw a block diagram instead, since draw.io can't draw those.
+
+Limitations: the renderer can't draw UML sequence lifelines, so a sequence diagram's PNG preview is wrong even though its `.drawio` file is fine (`render` warns about this); vendor icons render as labelled placeholders in the preview.
+
+## Install
+
+Replace `<owner>` with the GitHub user or organisation that hosts this repository (and `draw-diagram` after the slash with the repository name, if it differs). `draw-diagram@draw-diagram` is `plugin@marketplace`; both names come from this repository's manifests, not from GitHub.
 
 **Claude Code**
 
@@ -19,7 +37,7 @@ claude plugin marketplace add <owner>/draw-diagram
 claude plugin install draw-diagram@draw-diagram
 ```
 
-在会话里也可以用 `/plugin marketplace add <owner>/draw-diagram` 和 `/plugin install draw-diagram@draw-diagram`；Claude Code 2.1.275 起可以一步完成：`/plugin install draw-diagram --marketplace <owner>/draw-diagram`。技能以 `/draw-diagram:draw-diagram` 调用，平时按描述自动加载。
+Inside a session, `/plugin marketplace add <owner>/draw-diagram` and `/plugin install draw-diagram@draw-diagram` do the same; Claude Code 2.1.275 and later also take `/plugin install draw-diagram --marketplace <owner>/draw-diagram`. The skill loads by itself when you ask for a diagram, or explicitly as `/draw-diagram:draw-diagram`.
 
 **Codex**
 
@@ -28,40 +46,57 @@ codex plugin marketplace add <owner>/draw-diagram
 codex plugin add draw-diagram@draw-diagram
 ```
 
-**其他 agent（`npx skills`）**
+**Other agents, with [`npx skills`](https://skills.sh)**
 
 ```sh
 npx skills add <owner>/draw-diagram
 ```
 
-会询问装给哪些 agent；用 `-a claude-code`、`-a codex` 等直接指定。
+It asks which agents to install for; `-a claude-code`, `-a codex` and so on choose directly.
 
-**手动**：把 `plugins/draw-diagram/skills/draw-diagram` 整个目录复制到 agent 的 skills 目录（例如 `~/.claude/skills/`）。在本仓库里用 Claude Code 时不用安装，`.claude/skills/draw-diagram` 链接到这个技能。
+**By hand**: copy `plugins/draw-diagram/skills/draw-diagram` into your agent's skills folder (for Claude Code, `~/.claude/skills/`). Claude Code sessions inside this repository load it without installing, through `.claude/skills/draw-diagram`.
 
-发新版时同时改两个 `plugin.json` 的 `version`（`tests/draw-diagram/plugin.test.js` 会检查两者一致）；Claude Code 按版本号判断是否需要更新。
+## Using it
 
-## 目录
+Ask for a diagram in plain words, for example:
 
-| 路径 | 内容 |
-| --- | --- |
-| `plugins/draw-diagram/` | 插件：Claude Code 和 Codex 的清单（`.claude-plugin/`、`.codex-plugin/`），以及 `skills/draw-diagram/`，即随包分发的技能（SKILL.md、命令行、引擎、转换器、渲染器、NOTICE） |
-| `.claude-plugin/`、`.agents/plugins/`、`skills.sh.json` | Claude Code 和 Codex 的插件市场清单，`npx skills` 的查找路径 |
-| `tests/draw-diagram/` | skill 的测试，含 27 个规格的基准图（`golden/`），不需要 Python |
-| `tests/port/` | JS 引擎和 CPython 原版的对照测试，需要参考环境，见 `tools/port/README.md` |
-| `tests/upstream/silicon-canvas/` | 测试用的上游规格文件（原样复制，MIT） |
-| `tools/port/` | silicon-canvas 的 Python 源码、Python → JS 转译器、第一阶段的 Python 桥 |
-| `tools/diagram-render-wasm/` | 把 diagram-render 编译成 WASM 的补丁和脚本 |
-| `tools/widths/` | 生成字宽表 `data/widths.json` 的脚本 |
-| `docs/` | 只在本地：需求、实现计划和上游参考仓库（`prds/`、`plans/`、`refs/`），都不进 git |
+- "Draw the architecture of a GPU with four compute clusters, a shared L2 and HBM."
+- "Show the dataflow of FlashAttention's online softmax for one query tile."
+- "Make a state machine for a DMA engine: idle, fetch descriptor, transfer, done."
+- "Turn this Mermaid flowchart into a draw.io file and render a PNG."
 
-## 测试
+The answer is a `.drawio` file that opens in [draw.io](https://app.diagrams.net), draw.io Desktop or the draw.io editor extensions. The commands the agent uses are documented in [`SKILL.md`](plugins/draw-diagram/skills/draw-diagram/SKILL.md); they also work from a terminal:
 
 ```sh
-npm test               # skill 的测试，只需要 Node
-npm run test:port      # 和 CPython 对照，需要 Python 3.14 + Pillow
-npm run build:engine   # 改了 tools/port 下的源码或转译器后，重新生成引擎
+node plugins/draw-diagram/skills/draw-diagram/scripts/draw-diagram.js --help
 ```
 
-## 许可
+## Repository layout
 
-各部分沿用上游的许可（drawio-mcp 和 diagram-render 是 Apache-2.0，silicon-canvas 是 MIT，Liberation 字体是 OFL-1.1），详见 `plugins/draw-diagram/skills/draw-diagram/NOTICE`。
+| Path | Contents |
+| --- | --- |
+| `plugins/draw-diagram/` | The plugin: Claude Code and Codex manifests (`.claude-plugin/`, `.codex-plugin/`) and `skills/draw-diagram/`, the skill itself (SKILL.md, CLI, engine, converters, renderer, NOTICE) |
+| `.claude-plugin/`, `.agents/plugins/`, `skills.sh.json` | Marketplace manifests for Claude Code and Codex; where `npx skills` finds the skill |
+| `docs/examples/` | The example diagrams above and their Mermaid sources |
+| `tests/draw-diagram/` | Tests of the skill, including golden layouts and drawings of 27 specs; need only Node |
+| `tests/port/` | Comparison of the JavaScript engine with the CPython original; need the reference Python, see `tools/port/README.md` |
+| `tests/upstream/silicon-canvas/` | Upstream spec files the tests compile (copied verbatim, MIT) |
+| `tools/port/` | silicon-canvas's Python source, the Python-to-JavaScript translator and the reference bridge |
+| `tools/diagram-render-wasm/` | Patch and script that build diagram-render as WebAssembly |
+| `tools/widths/` | Script that measures the text width table `data/widths.json` |
+| `tools/build_examples.mjs` | Regenerates `docs/examples` |
+
+## Development
+
+```sh
+npm test                       # the skill's tests (Node only)
+npm run test:port              # JavaScript engine vs CPython (needs Python 3.14 with Pillow)
+npm run build:engine           # re-translate the engine after changing tools/port
+node tools/build_examples.mjs  # regenerate docs/examples
+```
+
+When releasing, bump `version` in both `plugins/draw-diagram/.claude-plugin/plugin.json` and `.codex-plugin/plugin.json`; a test checks that they agree, and Claude Code uses the version to decide when to update.
+
+## License
+
+Each part keeps its upstream licence: drawio-mcp and diagram-render are Apache-2.0, silicon-canvas is MIT, and the Liberation fonts are OFL-1.1. See [`NOTICE`](plugins/draw-diagram/skills/draw-diagram/NOTICE) for what comes from where and what was changed.

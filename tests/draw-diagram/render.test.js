@@ -60,6 +60,17 @@ test("Chinese labels use a local CJK font, or warn when there is none", () => {
   if (found.json.cjk_font) assert.deepEqual(found.json.warnings, []);
 });
 
+test("sequence diagrams render with a warning that the image isn't the file", () => {
+  const dir = tmp();
+  writeFileSync(join(dir, "seq.mmd"), "sequenceDiagram\n  A->>B: hello\n  B-->>A: hi\n");
+  assert.equal(run(["convert", "seq.mmd", "-o", "seq.drawio"], { cwd: dir }).status, 0);
+  const r = runJson(["render", "seq.drawio"], { cwd: dir });
+  assert.equal(r.status, 0);
+  assert.ok(r.json.warnings.some((w) => /UML sequence lifelines/.test(w)), JSON.stringify(r.json.warnings));
+  const flow = runJson(["render", join(GOLDEN, "examples__gpu.drawio"), "-o", join(dir, "gpu.png")], { cwd: dir });
+  assert.ok(!flow.json.warnings.some((w) => /UML sequence/.test(w)));
+});
+
 test("errors: bad XML exits 1 with the line, a bad option exits 2", () => {
   const cwd = tmp();
   writeFileSync(join(cwd, "bad.drawio"), "<mxfile><diagram>");
