@@ -1,4 +1,4 @@
-// check：几何检查、引擎标记和内容清单（PRD 第一阶段验收 6）。
+// check：几何检查、引擎标记和内容清单。
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, writeFileSync, copyFileSync } from "node:fs";

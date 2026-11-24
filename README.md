@@ -19,7 +19,7 @@
 | `tools/port/` | silicon-canvas 的 Python 源码、Python → JS 转译器、第一阶段的 Python 桥 |
 | `tools/diagram-render-wasm/` | 把 diagram-render 编译成 WASM 的补丁和脚本 |
 | `tools/widths/` | 生成字宽表 `data/widths.json` 的脚本 |
-| `docs/` | 需求（`prds/`）和实现计划（`plans/`）；`docs/refs/` 放本地参考的上游仓库，不进 git |
+| `docs/` | 只在本地：需求、实现计划和上游参考仓库（`prds/`、`plans/`、`refs/`），都不进 git |
 
 ## 测试
 

@@ -1,4 +1,4 @@
-// render：WASM 渲染（PRD 第一阶段验收 7）。
+// render：WASM 渲染。
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";

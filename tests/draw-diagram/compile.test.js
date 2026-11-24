@@ -1,4 +1,4 @@
-// compile：从规格到 .drawio 的完整流程（PRD 第一阶段验收 1–5）。
+// compile：从规格到 .drawio 的完整流程。
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
