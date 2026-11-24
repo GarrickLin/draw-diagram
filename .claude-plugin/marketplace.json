@@ -1,0 +1,13 @@
+{
+  "name": "draw-diagram",
+  "owner": { "name": "Garrick" },
+  "description": "The draw-diagram skill as a Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "draw-diagram",
+      "source": "./plugins/draw-diagram",
+      "description": "Make editable draw.io diagrams offline: chip and system architecture, algorithm dataflow, state machines and timing laid out by the silicon-canvas engine; flowcharts, sequence, ER and other diagrams from Mermaid, PlantUML or XML. Checks the layout and renders PNG/SVG. Node 20+ only.",
+      "category": "productivity"
+    }
+  ]
+}

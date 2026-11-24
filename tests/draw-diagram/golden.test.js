@@ -11,10 +11,10 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join, relative } from "node:path";
 import { createHash } from "node:crypto";
 import { ROOT, SCRIPTS, UPSTREAM, FIXTURES, loadSpec } from "./helpers.js";
-import { wrapAsMxFile } from "../../skills/draw-diagram/scripts/lib/convert.js";
-import { publicationToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/publication.js";
-import { behaviorToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/behavior.js";
-import { algorithmToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/algorithm.js";
+import { wrapAsMxFile } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/convert.js";
+import { publicationToDrawio } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/publication.js";
+import { behaviorToDrawio } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/behavior.js";
+import { algorithmToDrawio } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/algorithm.js";
 
 const GOLDEN = join(ROOT, "tests", "draw-diagram", "golden");
 const UPDATE = process.env.DRAW_DIAGRAM_UPDATE_GOLDEN === "1";

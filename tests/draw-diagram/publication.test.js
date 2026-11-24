@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join } from "node:path";
-import { publicationToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/publication.js";
+import { publicationToDrawio } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/publication.js";
 import { compileLayout, countCells, EXAMPLES, UPSTREAM } from "./helpers.js";
 
 const FIX = join(UPSTREAM, "tests", "fixtures");

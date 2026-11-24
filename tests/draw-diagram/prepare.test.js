@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { runJson, run, tmp } from "./helpers.js";
-import { detectLanguage } from "../../skills/draw-diagram/scripts/lib/commands/prepare.js";
+import { detectLanguage } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/commands/prepare.js";
 
 
 function request(json) {

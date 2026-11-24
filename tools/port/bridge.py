@@ -21,7 +21,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "silicon"))
 # the patched publication_render measures text with the skill's width table, as the JS engine does
-os.environ.setdefault("DRAW_DIAGRAM_WIDTHS", str(HERE.parents[1] / "skills" / "draw-diagram" / "scripts" / "data" / "widths.json"))
+os.environ.setdefault("DRAW_DIAGRAM_WIDTHS", str(HERE.parents[1] / "plugins" / "draw-diagram" / "skills" / "draw-diagram" / "scripts" / "data" / "widths.json"))
 
 from silicon_canvas import engine, scene_profiles  # noqa: E402
 

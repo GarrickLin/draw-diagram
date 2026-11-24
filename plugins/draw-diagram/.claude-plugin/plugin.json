@@ -1,0 +1,9 @@
+{
+  "name": "draw-diagram",
+  "displayName": "draw-diagram",
+  "description": "Make editable draw.io diagrams offline: chip and system architecture, algorithm dataflow, state machines and timing laid out by the silicon-canvas engine; flowcharts, sequence, ER and other diagrams from Mermaid, PlantUML or XML. Checks the layout and renders PNG/SVG. Node 20+ only.",
+  "version": "0.2.0",
+  "author": { "name": "Garrick" },
+  "license": "SEE LICENSE IN skills/draw-diagram/NOTICE",
+  "keywords": ["draw.io", "drawio", "diagrams", "architecture", "chip", "soc", "gpu", "dataflow", "state-machine", "mermaid"]
+}

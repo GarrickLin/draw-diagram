@@ -6,13 +6,13 @@
 - 流程图、时序图、ER 图、组织结构图等：agent 写 Mermaid、PlantUML、CSV 或 draw.io XML，由 [drawio-mcp](https://github.com/jgraph/drawio-mcp) 的转换器生成。
 - 渲染用 [diagram-render](https://github.com/nowmyagentcan/diagram-render) 编译成的 WASM。
 
-用法见 `skills/draw-diagram/SKILL.md`。在本仓库里用 Claude Code 时，`.claude/skills/draw-diagram` 链接到这个 skill，会自动加载；要装到别处，把 `skills/draw-diagram` 整个目录复制到对应的 skills 目录即可。
+用法见 `plugins/draw-diagram/skills/draw-diagram/SKILL.md`。在本仓库里用 Claude Code 时，`.claude/plugins/draw-diagram/skills/draw-diagram` 链接到这个 skill，会自动加载；要装到别处，把 `plugins/draw-diagram/skills/draw-diagram` 整个目录复制到对应的 skills 目录即可。
 
 ## 目录
 
 | 路径 | 内容 |
 | --- | --- |
-| `skills/draw-diagram/` | 随包分发的 skill：SKILL.md、命令行、引擎、转换器、渲染器，以及 NOTICE |
+| `plugins/draw-diagram/skills/draw-diagram/` | 随包分发的 skill：SKILL.md、命令行、引擎、转换器、渲染器，以及 NOTICE |
 | `tests/draw-diagram/` | skill 的测试，含 27 个规格的基准图（`golden/`），不需要 Python |
 | `tests/port/` | JS 引擎和 CPython 原版的对照测试，需要参考环境，见 `tools/port/README.md` |
 | `tests/upstream/silicon-canvas/` | 测试用的上游规格文件（原样复制，MIT） |
@@ -31,4 +31,4 @@ npm run build:engine   # 改了 tools/port 下的源码或转译器后，重新�
 
 ## 许可
 
-各部分沿用上游的许可（drawio-mcp 和 diagram-render 是 Apache-2.0，silicon-canvas 是 MIT，Liberation 字体是 OFL-1.1），详见 `skills/draw-diagram/NOTICE`。
+各部分沿用上游的许可（drawio-mcp 和 diagram-render 是 Apache-2.0，silicon-canvas 是 MIT，Liberation 字体是 OFL-1.1），详见 `plugins/draw-diagram/skills/draw-diagram/NOTICE`。

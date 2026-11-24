@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { createDrawio } from "../../skills/draw-diagram/scripts/lib/convert.js";
+import { createDrawio } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/convert.js";
 import { SKILL, run } from "./helpers.js";
 
 const md = readFileSync(join(SKILL, "SKILL.md"), "utf8");

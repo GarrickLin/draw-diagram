@@ -8,11 +8,11 @@ import { mkdtempSync, readFileSync, existsSync, cpSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createDrawio, detectFormat, wrapAsMxFile } from "../../skills/draw-diagram/scripts/lib/convert.js";
-import { searchShapes } from "../../skills/draw-diagram/scripts/lib/search.js";
+import { createDrawio, detectFormat, wrapAsMxFile } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/convert.js";
+import { searchShapes } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/search.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const SKILL = join(ROOT, "skills", "draw-diagram");
+const SKILL = join(ROOT, "plugins", "draw-diagram", "skills", "draw-diagram");
 const CLI = join(SKILL, "scripts", "draw-diagram.js");
 
 function run(args, input, cwd) {

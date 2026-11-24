@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { runJson, run, tmp, ROOT } from "./helpers.js";
-import { needsCjk, render } from "../../skills/draw-diagram/scripts/lib/render.js";
+import { needsCjk, render } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/render.js";
 
 const GOLDEN = join(ROOT, "tests", "draw-diagram", "golden");
 const NATIVE = process.env.DIAGRAM_RENDER_BIN || "/tmp/dr/pkg/diagram-render";
@@ -87,7 +87,7 @@ test("SVG and Latin-only PNG match the official diagram-render binary byte for b
 test("rendering opens no network connection", { skip: spawnSync("which", ["strace"]).status === 0 ? false : "no strace" }, () => {
   const cwd = sample("fixtures__dma-fsm-zh.drawio");
   const log = join(cwd, "net.log");
-  const r = spawnSync("strace", ["-f", "-e", "trace=connect", "-o", log, process.execPath, join(ROOT, "skills", "draw-diagram", "scripts", "draw-diagram.js"), "render", "fixtures__dma-fsm-zh.drawio"], { cwd, encoding: "utf8" });
+  const r = spawnSync("strace", ["-f", "-e", "trace=connect", "-o", log, process.execPath, join(ROOT, "plugins", "draw-diagram", "skills", "draw-diagram", "scripts", "draw-diagram.js"), "render", "fixtures__dma-fsm-zh.drawio"], { cwd, encoding: "utf8" });
   assert.equal(r.status, 0, r.stderr);
   const inet = readFileSync(log, "utf8").split("\n").filter((l) => /connect\(/.test(l) && /AF_INET/.test(l));
   assert.deepEqual(inet, []);

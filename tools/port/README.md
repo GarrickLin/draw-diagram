@@ -10,7 +10,7 @@ draw-diagram 的版面引擎来自 silicon-canvas（Python）。第二阶段把�
 | `silicon/` | silicon-canvas 的 Python 源码（上游提交见 `UPSTREAM`），带 `silicon.patch` 的两处改动：测宽改用 `data/widths.json` |
 | `modules.txt` | 转换的 24 个模块；其余模块（MCP、浏览器桥、打包等）draw-diagram 用不到 |
 | `transpile.py` | Python → JS 转译器。只接受这些模块用到的语法，遇到别的语法直接报错，不会猜 |
-| `build_engine.sh` | 重新生成 `skills/draw-diagram/scripts/lib/engine/silicon/`：转译 24 个模块，复制 `catalog.json`、`reference_images/` 和 LICENSE |
+| `build_engine.sh` | 重新生成 `plugins/draw-diagram/skills/draw-diagram/scripts/lib/engine/silicon/`：转译 24 个模块，复制 `catalog.json`、`reference_images/` 和 LICENSE |
 | `gen_titlecase.py` | 生成运行时的 Unicode 标题大小写表（`lib/engine/py/titlecase.js`） |
 | `bridge.py` | 第一阶段的 Python 桥，现在只作对照的参考答案 |
 

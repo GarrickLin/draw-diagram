@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { runJson, run, tmp, loadSpec, countCells, EXAMPLES, FIXTURES } from "./helpers.js";
-import { fileName } from "../../skills/draw-diagram/scripts/lib/commands/compile.js";
+import { fileName } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/commands/compile.js";
 
 
 /** 在新目录里 prepare + compile 一个规格文件。 */

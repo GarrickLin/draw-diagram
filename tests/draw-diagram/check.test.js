@@ -4,8 +4,8 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync, writeFileSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
 import { runJson, tmp, ROOT, EXAMPLES, loadSpec } from "./helpers.js";
-import { checkPage } from "../../skills/draw-diagram/scripts/lib/check.js";
-import { pages } from "../../skills/draw-diagram/scripts/lib/drawio-read.js";
+import { checkPage } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/check.js";
+import { pages } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/drawio-read.js";
 
 const GOLDEN = join(ROOT, "tests", "draw-diagram", "golden");
 const CELLS = '<mxCell id="0"/><mxCell id="1" parent="0"/>';
@@ -70,7 +70,7 @@ test("every golden diagram passes with no errors", () => {
 });
 
 test("convert output (flowchart, sequence, ER) passes too", async () => {
-  const { createDrawio } = await import("../../skills/draw-diagram/scripts/lib/convert.js");
+  const { createDrawio } = await import("../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/convert.js");
   for (const src of [
     "flowchart TD\n  A[Open login page] --> B{Credentials valid?}\n  B -->|Yes| C[Dashboard]\n  B -->|No| D[Show error]\n  D --> A",
     "sequenceDiagram\n  participant C as Client\n  participant S as Server\n  C->>S: request\n  alt ok\n    S-->>C: 200\n  else fail\n    S-->>C: 500\n  end",

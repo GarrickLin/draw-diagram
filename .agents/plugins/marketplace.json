@@ -1,0 +1,12 @@
+{
+  "name": "draw-diagram",
+  "interface": { "displayName": "draw-diagram" },
+  "plugins": [
+    {
+      "name": "draw-diagram",
+      "source": { "source": "local", "path": "./plugins/draw-diagram" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

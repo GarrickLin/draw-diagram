@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join } from "node:path";
-import { algorithmToDrawio, fullText } from "../../skills/draw-diagram/scripts/lib/layout/algorithm.js";
+import { algorithmToDrawio, fullText } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/algorithm.js";
 import { compileLayout, EXAMPLES, UPSTREAM } from "./helpers.js";
 
 const CASES = [

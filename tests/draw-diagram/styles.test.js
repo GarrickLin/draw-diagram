@@ -1,8 +1,8 @@
 // 样式表：每种类型的样式固定，全部使用 Helvetica。
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { nodeStyle, edgeStyle, containerStyle, labelStyle, fmt } from "../../skills/draw-diagram/scripts/lib/layout/styles.js";
-import { Page, esc, htmlLabel } from "../../skills/draw-diagram/scripts/lib/layout/xml.js";
+import { nodeStyle, edgeStyle, containerStyle, labelStyle, fmt } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/styles.js";
+import { Page, esc, htmlLabel } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/xml.js";
 
 const NODE_KINDS = ["compute", "memory", "io", "control", "stage", "decision", "state", "event", "signal"];
 const EDGE_KINDS = ["data", "control", "feedback", "clock", "relation"];

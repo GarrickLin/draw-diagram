@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { join } from "node:path";
-import { behaviorToDrawio } from "../../skills/draw-diagram/scripts/lib/layout/behavior.js";
+import { behaviorToDrawio } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/layout/behavior.js";
 import { compileLayout, countCells, FIXTURES, UPSTREAM } from "./helpers.js";
 
 const DC = join(UPSTREAM, "tests", "fixtures", "design_coverage");

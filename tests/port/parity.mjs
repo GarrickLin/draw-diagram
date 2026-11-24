@@ -256,7 +256,7 @@ class PythonPool {
 
 let jsEngine = null;
 async function askJs(request) {
-  jsEngine ??= await import(join(ROOT, "skills", "draw-diagram", "scripts", "lib", "engine", "js.js"));
+  jsEngine ??= await import(join(ROOT, "plugins", "draw-diagram", "skills", "draw-diagram", "scripts", "lib", "engine", "js.js"));
   try {
     return await jsEngine.respond(request);
   } catch (e) {

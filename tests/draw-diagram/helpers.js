@@ -6,7 +6,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-export const SKILL = join(ROOT, "skills", "draw-diagram");
+export const SKILL = join(ROOT, "plugins", "draw-diagram", "skills", "draw-diagram");
 export const SCRIPTS = join(SKILL, "scripts");
 export const CLI = join(SCRIPTS, "draw-diagram.js");
 /** silicon-canvas 的规格文件（上游原样复制，见其中的 README.md）。 */

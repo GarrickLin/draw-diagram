@@ -16,7 +16,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const PROGRAMS = join(ROOT, "tests", "port", "programs");
 const PYTHON = process.env.DRAW_DIAGRAM_PYTHON || join(homedir(), ".cache", "draw-diagram", "venv", "bin", "python");
-const ENGINE = join(ROOT, "skills", "draw-diagram", "scripts", "lib", "engine");
+const ENGINE = join(ROOT, "plugins", "draw-diagram", "skills", "draw-diagram", "scripts", "lib", "engine");
 
 export const MODULES = readdirSync(PROGRAMS)
   .filter((f) => /^p_\w+\.py$/.test(f))

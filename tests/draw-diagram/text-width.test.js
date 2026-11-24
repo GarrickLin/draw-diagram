@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { textWidth, textEm } from "../../skills/draw-diagram/scripts/lib/text-width.js";
+import { textWidth, textEm } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/text-width.js";
 import { SCRIPTS, ROOT } from "./helpers.js";
 
 const LABELS = [
@@ -12,7 +12,7 @@ const LABELS = [
 ];
 
 test("ASCII widths are draw.io's Helvetica table", async () => {
-  const { textWidth: drawio } = await import("../../skills/draw-diagram/scripts/vendor/drawio/semantic/text-width.js");
+  const { textWidth: drawio } = await import("../../plugins/draw-diagram/skills/draw-diagram/scripts/vendor/drawio/semantic/text-width.js");
   for (const t of ["On-Chip Interconnect", "Memory Controller", "L2 Cache 4MB", "~!@#$%^&*()_+{}|:\"<>?"]) {
     assert.equal(textWidth(t, 100), drawio(t, 100), t);
     assert.equal(textWidth(t, 100, true), drawio(t, 100, true), t);

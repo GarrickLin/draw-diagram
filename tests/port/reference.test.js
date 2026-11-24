@@ -7,9 +7,9 @@ import { mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { ROOT, ENGINE, PYTHON, SILICON, skipWithoutPython } from "./helpers.js";
-import { textWidth } from "../../skills/draw-diagram/scripts/lib/text-width.js";
+import { textWidth } from "../../plugins/draw-diagram/skills/draw-diagram/scripts/lib/text-width.js";
 
-const SCRIPTS = join(ROOT, "skills", "draw-diagram", "scripts");
+const SCRIPTS = join(ROOT, "plugins", "draw-diagram", "skills", "draw-diagram", "scripts");
 const hasPython3 = spawnSync("python3", ["-c", "import sys; assert sys.version_info >= (3, 12)"]).status === 0;
 
 test("lib/engine/silicon is what tools/port/transpile.py makes now", { skip: hasPython3 ? false : "no python3 >= 3.12" }, () => {
