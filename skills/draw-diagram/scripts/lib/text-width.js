@@ -1,7 +1,7 @@
 // 字宽表：Liberation Sans（与 Helvetica、Arial 字宽相同）的字符宽度，单位 1/1000 em。
 //
-// draw.io 显示西文用 Helvetica，所以方框尺寸和换行都按这张表算。Python 版面引擎通过
-// silicon.patch 读同一份 data/widths.json，两边测出的宽度完全相同。
+// draw.io 显示西文用 Helvetica，所以方框尺寸和换行都按这张表算。版面引擎（silicon-canvas 转成的 JS，
+// 按 silicon.patch 改过测宽）读同一份 data/widths.json，两边测出的宽度完全相同。
 //
 // 规则和 draw.io 自带的 shared/semantic/text-width.js 一致：ASCII 查表；宽字符（中日韩、
 // 全角符号、emoji）按 1 em；其余字符先查补充表，查不到按小写字母 n 的宽度。

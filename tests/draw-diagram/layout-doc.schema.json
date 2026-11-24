@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "draw-diagram/layout-doc/1",
   "title": "draw-diagram layout document",
-  "description": "What the planning and layout engine hands the Node converters for one main figure. Phase 1 makes it in Python (py/bridge.py), phase 2 in JavaScript; both must produce the same document. Fields are only ever added, never changed.",
+  "description": "What the planning and layout engine hands the Node converters for one main figure. Phase 1 made it in Python (now tools/port/bridge.py, kept as the reference); since phase 2 the JavaScript engine makes it, byte for byte the same (tests/port). Fields are only ever added, never changed.",
   "type": "object",
   "required": ["version", "kind", "figure", "spec", "settings", "structure_layout", "layout_scene", "label_layout", "algorithm_flow_plan", "quality", "warnings"],
   "properties": {

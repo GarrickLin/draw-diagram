@@ -1850,6 +1850,8 @@ export const M = new Proxy(METHODS, {
 function def(name, impl) {
   METHODS[name] = impl;
 }
+/** The method names py.M implements for builtin types (tests check the silicon modules call no other). */
+export const methodNames = () => Object.keys(METHODS);
 
 const isList = (o) => Array.isArray(o) && !(o instanceof Tuple);
 const isStr = (o) => typeof o === "string";

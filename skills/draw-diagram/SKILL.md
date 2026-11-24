@@ -89,6 +89,6 @@ Name the file after its content, lowercase and hyphenated: `gpu-architecture.dra
 
 ## Setup notes
 
-- The planned path needs Python 3.11+ with Pillow during this release: set `DRAW_DIAGRAM_PYTHON` to that interpreter if `python3` lacks Pillow. The direct path, `check` and `render` need only Node.
+- Everything runs on Node 20+ alone, offline: the planned path's layout engine, the direct path, `check` and `render`.
 - `render` uses a local Chinese/Japanese/Korean font for those characters (found automatically; set `DRAW_DIAGRAM_CJK_FONT` to a font file otherwise). Without one they show as boxes in the image; the `.drawio` file is unaffected.
 - `prepare` and `compile` keep their state in `.draw-diagram/` in the current directory.
