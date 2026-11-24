@@ -17,7 +17,7 @@
  "tests__fixtures__design_coverage__mesh-memory": {
   "kind": "behavior",
   "layout": "a20a4c059b043e0f",
-  "drawio": "19cf7e58106e6178"
+  "drawio": "39fa2cb7d7729bae"
  },
  "tests__fixtures__design_coverage__ready-valid-trace": {
   "kind": "behavior",
@@ -37,7 +37,7 @@
  "tests__fixtures__design_coverage__retry-controller": {
   "kind": "behavior",
   "layout": "7f46619ce95eceb5",
-  "drawio": "3f076cccccb5cd93"
+  "drawio": "c1bcdb73978f5112"
  },
  "tests__fixtures__editorial_benchmark__engine-reading-plan": {
   "kind": "legacy",
@@ -127,11 +127,11 @@
  "fixtures__dma-fsm-zh": {
   "kind": "behavior",
   "layout": "b7f70fc5b9227086",
-  "drawio": "c88c632454a5b966"
+  "drawio": "a54e939b658256b6"
  },
  "fixtures__dma-fsm": {
   "kind": "behavior",
   "layout": "910bdf17d74968d7",
-  "drawio": "2c5962bf5e5d9f51"
+  "drawio": "20866f15898cdf07"
  }
 }

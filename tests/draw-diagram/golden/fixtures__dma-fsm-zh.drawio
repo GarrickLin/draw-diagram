@@ -17,7 +17,7 @@
 <mxCell id="label-2" value="描述符有效" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;resizable=0;fillColor=none;strokeColor=none;labelBackgroundColor=#FFFFFF;fontColor=#5A626E;fontFamily=Helvetica;fontSize=11.81;" vertex="1" parent="1"><mxGeometry x="299.69" y="171.83" width="135.63" height="17.72" as="geometry"/></mxCell>
 <mxCell id="label-3" value="剩余拍数" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;resizable=0;fillColor=none;strokeColor=none;labelBackgroundColor=#FFFFFF;fontColor=#5A626E;fontFamily=Helvetica;fontSize=11.81;" vertex="1" parent="1"><mxGeometry x="383.69" y="113.2" width="135.63" height="17.72" as="geometry"/></mxCell>
 <mxCell id="label-4" value="最后一拍" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;resizable=0;fillColor=none;strokeColor=none;labelBackgroundColor=#FFFFFF;fontColor=#5A626E;fontFamily=Helvetica;fontSize=11.81;" vertex="1" parent="1"><mxGeometry x="492.19" y="171.83" width="135.63" height="17.72" as="geometry"/></mxCell>
-<mxCell id="label-5" value="确认" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;resizable=0;fillColor=none;strokeColor=none;labelBackgroundColor=#FFFFFF;fontColor=#5A626E;fontFamily=Helvetica;fontSize=11.81;" vertex="1" parent="1"><mxGeometry x="709.63" y="195.89" width="70" height="17.72" as="geometry"/></mxCell>
+<mxCell id="label-5" value="确认" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;resizable=0;fillColor=none;strokeColor=none;labelBackgroundColor=#FFFFFF;fontColor=#5A626E;fontFamily=Helvetica;fontSize=11.81;" vertex="1" parent="1"><mxGeometry x="687.31" y="195.89" width="70" height="17.72" as="geometry"/></mxCell>
 </root>
 </mxGraphModel>
   </diagram>
