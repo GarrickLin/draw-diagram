@@ -10,7 +10,7 @@ import { fileURLToPath as $fileURLToPath } from "node:url";
 
 const __file__ = $fileURLToPath(import.meta.url).replace(/\.js$/, ".py");
 const $F1 = py.F(1);
-export let STRUCTURE_CATEGORIES, _SAME, _EXTERNAL, _PRIVATE, _SHARED, _families, _template_slots;
+export let STRUCTURE_CATEGORIES, _SAME, _EXTERNAL, _PRIVATE, _SHARED, _template_slots, _families;
 py.sig(_box, ["x", "y", "width", "height"]);
 py.sig(_union, ["boxes", "pad"]);
 py.sig(_normal, ["box", "width", "height"]);

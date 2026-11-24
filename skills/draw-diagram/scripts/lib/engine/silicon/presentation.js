@@ -13,7 +13,7 @@ import * as structure_scene from "./structure_scene.js";
 import { fileURLToPath as $fileURLToPath } from "node:url";
 
 const __file__ = $fileURLToPath(import.meta.url).replace(/\.js$/, ".py");
-export let POLICY_VERSION, BUDGETS, _attachment_points, compact_detail, _positions, _flow_positions;
+export let POLICY_VERSION, BUDGETS, compact_detail, _positions, _flow_positions, _attachment_points;
 py.sig(_key, ["node"]);
 py.sig(_buckets, ["spec", "language"]);
 py.sig(_paired_links, ["links"]);

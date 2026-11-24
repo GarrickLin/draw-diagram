@@ -25,6 +25,11 @@ const XXPRIME_5 = 2870177450012600261n;
 
 const toSigned = (u) => (u >= 1n << 63n ? u - (1n << 64n) : u);
 const toUnsigned = (s) => s & U64;
+// masks stay below 2^31, so (i * 5 + 1 + perturb) & mask only needs perturb's low 32 bits
+const low32 = (u) => Number(BigInt.asUintN(32, u));
+function nextSlot(i, perturb, mask) {
+  return (i * 5 + 1 + low32(perturb)) & mask;
+}
 
 function hashInt(n) {
   let h = n >= 0n ? n % P : -(-n % P);
@@ -89,20 +94,46 @@ function hashString(s) {
 
 const objHashes = new WeakMap();
 let nextObj = 1n;
+// a tuple never changes once built, so its hash is computed once
+const TUPLE_HASH = Symbol("tuple hash");
+const strHashes = new Map();
+
+function hashNumber(v) {
+  // |v| < 2^53 < the modulus 2^61 - 1, so the hash of a safe integer is itself
+  if (Number.isSafeInteger(v)) return v === -1 ? -2n : BigInt(v);
+  return Number.isInteger(v) ? hashInt(BigInt(v)) : hashDouble(v);
+}
 
 /** hash(v) as a signed 64-bit BigInt. */
 export function pyhash(v) {
   if (v === null || v === undefined) return HASH_NONE;
-  if (typeof v === "object" && v.constructor && v.constructor.name === "PyFloat") return hashDouble(v.v);
   switch (typeof v) {
     case "boolean":
       return v ? 1n : 0n;
     case "number":
-      return Number.isInteger(v) ? hashInt(BigInt(v)) : hashDouble(v);
-    case "string":
-      return hashString(v);
+      return hashNumber(v);
+    case "string": {
+      let h = strHashes.get(v);
+      if (h === undefined) {
+        h = hashString(v);
+        if (strHashes.size < 1 << 20) strHashes.set(v, h);
+      }
+      return h;
+    }
   }
+  if (v.constructor && v.constructor.name === "PyFloat") return hashNumber(v.v);
   if (Array.isArray(v) && v.constructor.name === "Tuple") {
+    const cached = v[TUPLE_HASH];
+    if (cached !== undefined) return cached;
+    const h = hashTuple(v);
+    v[TUPLE_HASH] = h;
+    return h;
+  }
+  return hashOther(v);
+}
+
+function hashTuple(v) {
+  {
     let acc = XXPRIME_5;
     for (const item of v) {
       const lane = toUnsigned(pyhash(item));
@@ -114,6 +145,9 @@ export function pyhash(v) {
     if (acc === U64) acc = 1546275796n;
     return toSigned(acc);
   }
+}
+
+function hashOther(v) {
   if (v instanceof PySet && v.frozen) {
     // frozenset_hash is order independent; any fixed value consistent with equality works
     let acc = 0n;
@@ -141,6 +175,8 @@ export class PySet {
   }
 
   _init() {
+    // bumped on every write; lib/engine/fast caches mirrors of a set against it
+    this.mods = (this.mods ?? 0) + 1;
     this.mask = MINSIZE - 1;
     this.keys = new Array(MINSIZE);
     this.hashes = new Array(MINSIZE).fill(0n);
@@ -157,7 +193,7 @@ export class PySet {
 
   _lookkey(key, hash) {
     let mask = this.mask;
-    let i = Number(toUnsigned(hash) & BigInt(mask));
+    let i = low32(hash) & mask;
     let perturb = toUnsigned(hash);
     for (;;) {
       let probes = i + LINEAR_PROBES <= mask ? LINEAR_PROBES : 0;
@@ -169,13 +205,13 @@ export class PySet {
         j++;
       } while (probes--);
       perturb >>= PERTURB_SHIFT;
-      i = Number((BigInt(i) * 5n + 1n + perturb) & BigInt(mask));
+      i = nextSlot(i, perturb, mask);
     }
   }
 
   _insertClean(keys, hashes, mask, key, hash) {
     let perturb = toUnsigned(hash);
-    let i = Number(toUnsigned(hash) & BigInt(mask));
+    let i = low32(hash) & mask;
     for (;;) {
       if (keys[i] === undefined) {
         keys[i] = key;
@@ -192,7 +228,7 @@ export class PySet {
         }
       }
       perturb >>= PERTURB_SHIFT;
-      i = Number((BigInt(i) * 5n + 1n + perturb) & BigInt(mask));
+      i = nextSlot(i, perturb, mask);
     }
   }
 
@@ -215,7 +251,7 @@ export class PySet {
   _addEntry(key, hash) {
     for (;;) {
       const mask = this.mask;
-      let i = Number(toUnsigned(hash) & BigInt(mask));
+      let i = low32(hash) & mask;
       let freeslot = -1;
       let perturb = toUnsigned(hash);
       for (;;) {
@@ -237,6 +273,7 @@ export class PySet {
         } while (probes--);
         if (found >= 0) {
           if (freeslot < 0) {
+            this.mods++;
             this.fill++;
             this.used++;
             this.keys[found] = key;
@@ -245,13 +282,14 @@ export class PySet {
             this._resize(this.used > 50000 ? this.used * 2 : this.used * 4);
             return;
           }
+          this.mods++;
           this.used++;
           this.keys[freeslot] = key;
           this.hashes[freeslot] = hash;
           return;
         }
         perturb >>= PERTURB_SHIFT;
-        i = Number((BigInt(i) * 5n + 1n + perturb) & BigInt(mask));
+        i = nextSlot(i, perturb, mask);
       }
     }
   }
@@ -259,6 +297,7 @@ export class PySet {
   _discardEntry(key, hash) {
     const j = this._lookkey(key, hash);
     if (this.keys[j] === undefined) return false;
+    this.mods++;
     this.keys[j] = DUMMY;
     this.hashes[j] = -1n;
     this.used--;
@@ -267,6 +306,7 @@ export class PySet {
 
   _merge(other) {
     if (other === this || other.used === 0) return;
+    this.mods++;
     if ((this.fill + other.used) * 5 >= this.mask * 3) this._resize((this.used + other.used) * 2);
     if (this.fill === 0 && this.mask === other.mask && other.fill === other.used) {
       for (let i = 0; i <= other.mask; i++) {
@@ -342,6 +382,7 @@ export class PySet {
       if (i > this.mask) i = 0;
     }
     const key = this.keys[i];
+    this.mods++;
     this.keys[i] = DUMMY;
     this.hashes[i] = -1n;
     this.used--;
@@ -381,6 +422,7 @@ export class PySet {
     let r = this;
     for (const o of others) r = intersect(r, o);
     if (r !== this) {
+      this.mods++;
       this.keys = r.keys;
       this.hashes = r.hashes;
       this.mask = r.mask;

@@ -7,6 +7,7 @@ import * as math from "../py/math.js";
 import * as pathlib from "../py/pathlib.js";
 import * as pil from "../py/pil.js";
 import * as re from "../py/re.js";
+import * as $fast from "../fast/structure_scene.js";
 import * as publication_render from "./publication_render.js";
 import * as visual_style from "./visual_style.js";
 import { fileURLToPath as $fileURLToPath } from "node:url";
@@ -481,7 +482,7 @@ export function prepare(plan) {
     stub = (py.contains(py.S("left", "right"), side) ? [py.T(x, y), py.T(py.mul(py.getitem(grid, 0), step), y), py.T(py.mul(py.getitem(grid, 0), step), py.mul(py.getitem(grid, 1), step))] : [py.T(x, y), py.T(x, py.mul(py.getitem(grid, 1), step)), py.T(py.mul(py.getitem(grid, 0), step), py.mul(py.getitem(grid, 1), step))]);
     return py.T(stub, grid);
   }, ["nid", "side", "i", "which", "other", "instruction"]);
-  astar = py.sig(function astar(start, goal, bounds = null, line_color = null) {
+  astar = py.sig($fast.astar(function astar(start, goal, bounds = null, line_color = null) {
     let initial, queue, best, parent, end, _, cost, state, x, y, d, nd, dx, dy, nx, ny, point, segment, close, offset, neighbor, nc, ns, points;
     initial = py.T(py.getitem(start, 0), py.getitem(start, 1), -1);
     queue = [py.T(py.add(py.abs(py.sub(py.getitem(start, 0), py.getitem(goal, 0))), py.abs(py.sub(py.getitem(start, 1), py.getitem(goal, 1)))), 0, initial)];
@@ -558,7 +559,7 @@ export function prepare(plan) {
     py.M.append(points, start);
     py.M.reverse(points);
     return points;
-  }, ["start", "goal", "bounds", "line_color"]);
+  }, () => [maxx, maxy, blocked, occupied, segment_colors]), ["start", "goal", "bounds", "line_color"]);
   simple_path = py.sig(function simple_path(edge, start, end, ss, ts, bounds) {
     let routing, normals, valid, candidates, value, xs, ys, x0, y0, x1, y1, feasible, candidate, points, length;
     routing = py.M.get(edge, "routing", py.dict());

@@ -65,6 +65,12 @@ FROM_IMPORTS = {
     ("PIL", "ImageFont"): ("pil.ImageFont", "module"),
 }
 SHIM_MODULES = {"re", "math", "json", "hashlib", "heapq", "os", "io", "copy"}
+# Nested functions with a hand-written fast path in lib/engine/fast/<module>.js, and the closure
+# variables the fast path reads. The generated code passes it the generic function to fall back on.
+FAST = {
+    ("structure_scene", "astar"): ["maxx", "maxy", "blocked", "occupied", "segment_colors"],
+}
+
 SHIM_FILES = {"re": "re", "math": "math", "json": "json", "hashlib": "hashlib", "heapq": "heapq",
               "os": "os", "io": "io", "pathlib": "pathlib", "pil": "pil", "copy": "copy"}
 SHIM_ATTRS = {("copy", "deepcopy"): "py.deepcopy", ("copy", "copy"): "py.shallowcopy"}
@@ -172,6 +178,7 @@ class Scope:
 class Transpiler:
     def __init__(self, module: str, source: str, silicon_modules: set[str]):
         self.module = module
+        self.fast_used = False
         self.source = source
         self.tree = ast.parse(source)
         self.silicon = silicon_modules
@@ -248,7 +255,8 @@ class Transpiler:
         lines = []
         decl = [js_name(n) for n in top_names if n not in self.module_funcs and n not in self.classes
                 and n not in self.from_names and n not in self.imports_ns and n not in SHIM_MODULES]
-        self.wrapped = {s.name for s in body if isinstance(s, ast.FunctionDef) and (s.decorator_list or self.has_captured_defaults(s.args))}
+        # a list in source order, so the generated declarations don't depend on string hashing
+        self.wrapped = [s.name for s in body if isinstance(s, ast.FunctionDef) and (s.decorator_list or self.has_captured_defaults(s.args))]
         decl += [js_name(n) for n in self.wrapped]
         code = []
         for s in body:
@@ -260,6 +268,8 @@ class Transpiler:
         ]
         for shim in sorted(self.shims):
             head.append(f'import * as {shim} from "../py/{SHIM_FILES[shim]}.js";')
+        if self.fast_used:
+            head.append(f'import * as $fast from "../fast/{self.module}.js";')
         for alias, path in sorted(self.imports_ns.items()):
             head.append(f'import * as {js_name(alias)} from "{path}";')
         head.append('import { fileURLToPath as $fileURLToPath } from "node:url";')
@@ -574,6 +584,18 @@ class Transpiler:
         params, captured = self.params_js(fn.args, scope)
         body = self.function_body(fn, scope, ind + 1)
         self.func_is_method = False
+        fast = FAST.get((self.module, fn.name))
+        if fast is not None:
+            # hand-written fast path (lib/engine/fast/<module>.js) wrapping the generic function
+            if module_level or fn.decorator_list or captured or gen:
+                self.fail(fn, "fast path form")
+            self.fast_used = True
+            env = ", ".join(js_name(n) for n in fast)
+            sig = self.sig_call("$f", fn.args).replace("py.sig($f, ", "")[:-2]
+            lines = [f"py.sig($fast.{name}(function {name}({', '.join(params)}) {{"] + body
+            lines.append(p + f"}}, () => [{env}]), {sig});")
+            lines[0] = p + f"{self.name_store(fn.name, scope)} = " + lines[0]
+            return lines
         if module_level and not fn.decorator_list and not captured:
             return [p + f"export function{gen} {name}({', '.join(params)}) {{"] + body + [p + "}", ""]
         func = [f"function{gen} {name}({', '.join(params)}) {{"] + body + [p + "}"]

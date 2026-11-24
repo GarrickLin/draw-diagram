@@ -118,17 +118,24 @@ export class Tuple extends Array {
   }
 }
 
-export function tuple(items = []) {
-  const t = new Tuple();
-  for (const x of iter(items)) t.push(x);
+// new Tuple(n) then index writes: far cheaper than push on an Array subclass
+function tupleOf(arr) {
+  const n = arr.length;
+  const t = new Tuple(n);
+  for (let i = 0; i < n; i++) t[i] = arr[i];
   return t;
 }
 
-export function T(...items) {
-  const t = new Tuple();
-  for (const x of items) t.push(x);
-  return t;
+export function tuple(items = []) {
+  if (items instanceof Tuple) return items;
+  return tupleOf(Array.isArray(items) ? items : [...iter(items)]);
 }
+
+export function T(...items) {
+  return tupleOf(items);
+}
+
+const TUPLE_KEY = Symbol("tuple key");
 
 /** The key a dict stores a value under: Python treats 1, 1.0 and True as one key. */
 export function hashKey(v) {
@@ -144,7 +151,17 @@ export function hashKey(v) {
   }
   if (v === null) return "N";
   if (v instanceof PyFloat) return Object.is(v.v, -0) ? "n0" : "n" + v.v;
-  if (v instanceof Tuple) return "t[" + v.map(hashKey).join(",") + "]";
+  if (v instanceof Tuple) {
+    // a tuple never changes once built, so its key is computed once
+    let k = v[TUPLE_KEY];
+    if (k === undefined) {
+      k = "t[";
+      for (let i = 0; i < v.length; i++) k += (i ? "," : "") + hashKey(v[i]);
+      k += "]";
+      v[TUPLE_KEY] = k;
+    }
+    return k;
+  }
   if (v instanceof PySet && v.frozen) return "f[" + [...v].map(hashKey).sort().join(",") + "]";
   if (Array.isArray(v)) throw new TypeError_("unhashable type: 'list'");
   if (v instanceof PyDict) throw new TypeError_("unhashable type: 'dict'");
@@ -161,6 +178,8 @@ function objId(o) {
 export class PyDict {
   constructor(entries) {
     this.map = new Map();
+    // bumped on every write; lib/engine/fast caches mirrors of a dict against it
+    this.mods = 0;
     if (entries) for (const [k, v] of entries) this.set(k, v);
   }
   get size() {
@@ -169,6 +188,7 @@ export class PyDict {
   set(k, v) {
     const h = hashKey(k);
     const e = this.map.get(h);
+    this.mods++;
     if (e) e[1] = v;
     else this.map.set(h, [k, v]);
     return this;
@@ -194,6 +214,7 @@ export class PyDict {
   delete(k) {
     const h = hashKey(k);
     if (!this.map.has(h)) throw new KeyError(k);
+    this.mods++;
     this.map.delete(h);
   }
   *keys() {
@@ -1799,6 +1820,7 @@ def("popitem", (o) => {
   const last = [...o.map.keys()].pop();
   if (last === undefined) throw new KeyError("popitem(): dictionary is empty");
   const [k, v] = o.map.get(last);
+  o.mods++;
   o.map.delete(last);
   return T(k, v);
 });
@@ -1809,7 +1831,10 @@ def("copy", (o, ...a) => {
 });
 def("clear", (o, ...a) => {
   if (o instanceof PySet) o.clear();
-  else if (o instanceof PyDict) o.map.clear();
+  else if (o instanceof PyDict) {
+    o.mods++;
+    o.map.clear();
+  }
   else if (isList(o)) o.length = 0;
   else return callOwn(o, "clear", a);
   return null;

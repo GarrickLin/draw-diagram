@@ -14,7 +14,7 @@ import * as visual_style from "./visual_style.js";
 import { fileURLToPath as $fileURLToPath } from "node:url";
 
 const __file__ = $fileURLToPath(import.meta.url).replace(/\.js$/, ".py");
-export let _WIDTHS, required_detail, font_path, font;
+export let _WIDTHS, font_path, font, required_detail;
 py.sig(_width_table, []);
 py.sig(_is_wide, ["code"]);
 py.sig(text_em, ["text", "bold"]);
