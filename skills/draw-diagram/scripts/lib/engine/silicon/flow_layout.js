@@ -16,8 +16,8 @@ py.sig(_forward_order, ["ids", "edges", "source_order"]);
 py.sig(_compact, ["nodes", "preferred", "dimensions", "gap", "before"]);
 py.sig(build, ["spec", "figure", "language"]);
 
-SUPPORTED = py.S("architecture", "dataflow", "microarchitecture", "pipeline", "memory");
-PERIPHERAL_KINDS = py.S("control", "feedback", "clock");
+SUPPORTED = py.SC("architecture", "dataflow", "microarchitecture", "pipeline", "memory");
+PERIPHERAL_KINDS = py.SC("control", "feedback", "clock");
 export function _box(x, y, width, height) {
   return py.dict(["x", x], ["y", y], ["width", width], ["height", height]);
 }
@@ -60,7 +60,7 @@ export function _dimensions(node) {
   if (py.eq(kind, "memory")) {
     return py.T(py.max(6.8, width), 1.9, "storage-bar");
   }
-  if (py.contains(py.S("control", "signal", "event"), kind)) {
+  if (py.contains(py.SC("control", "signal", "event"), kind)) {
     return py.T(width, 2.1, "control-block");
   }
   if (py.eq(kind, "io")) {
@@ -307,7 +307,7 @@ export function build(spec, figure, language = "en") {
   for (const $t176 of py.iter(peripheral)) {
     nid = $t176;
     incident = (($t177) => { const $t180 = []; for (const $t178 of py.iter($t177)) { let _, edge; const $t179 = py.unpack($t178, 2); _ = $t179[0]; edge = $t179[1]; if (!(py.contains(py.S(py.getitem(edge, "source"), py.getitem(edge, "target")), nid))) continue; $t180.push(edge); } return $t180; })(edges);
-    is_control = (($t184) => py.bool($t184) ? $t184 : (($t183) => !py.bool($t183) ? $t183 : py.all((function* ($t181) { for (const $t182 of py.iter($t181)) { let edge; edge = $t182; yield py.contains(PERIPHERAL_KINDS, py.getitem(edge, "kind")); } })(incident)))(incident))(py.contains(py.S("control", "signal", "event"), py.getitem(py.getitem(source, nid), "kind")));
+    is_control = (($t184) => py.bool($t184) ? $t184 : (($t183) => !py.bool($t183) ? $t183 : py.all((function* ($t181) { for (const $t182 of py.iter($t181)) { let edge; edge = $t182; yield py.contains(PERIPHERAL_KINDS, py.getitem(edge, "kind")); } })(incident)))(incident))(py.contains(py.SC("control", "signal", "event"), py.getitem(py.getitem(source, nid), "kind")));
     if (!(py.bool(is_control))) {
       py.M.append(ancillary, nid);
       continue;

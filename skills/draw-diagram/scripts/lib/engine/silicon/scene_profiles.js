@@ -95,11 +95,11 @@ export function resolve(settings, description = "", spec = null) {
     const $t11 = py.unpack(py.T("system", "输入要求整体组织与主要关系"), 2);
     actual = $t11[0];
     reason = $t11[1];
-  } else if (py.contains(py.S("fsm", "timing", "microarchitecture"), category)) {
+  } else if (py.contains(py.SC("fsm", "timing", "microarchitecture"), category)) {
     const $t12 = py.unpack(py.T("detail", "内容的核心是精确资源、状态或时序"), 2);
     actual = $t12[0];
     reason = $t12[1];
-  } else if (py.contains(py.S("dataflow", "pipeline", "algorithm"), category)) {
+  } else if (py.contains(py.SC("dataflow", "pipeline", "algorithm"), category)) {
     const $t13 = py.unpack(py.T("flow", "内容的核心是数据或行为过程"), 2);
     actual = $t13[0];
     reason = $t13[1];
@@ -109,7 +109,7 @@ export function resolve(settings, description = "", spec = null) {
     reason = $t14[1];
   }
   profile = py.deepcopy(py.getitem(PROFILES, actual));
-  py.M.update(profile, py.KW({"requested": requested, "selection_reason": reason, "category_adaptation": (py.contains(py.S("algorithm", "fsm", "timing", "pipeline"), category) ? "Preserve the original behavioral grammar; do not draw a chip enclosure." : "Use the reader-purpose projection while preserving source ownership and edge provenance.")}));
+  py.M.update(profile, py.KW({"requested": requested, "selection_reason": reason, "category_adaptation": (py.contains(py.SC("algorithm", "fsm", "timing", "pipeline"), category) ? "Preserve the original behavioral grammar; do not draw a chip enclosure." : "Use the reader-purpose projection while preserving source ownership and edge provenance.")}));
   return profile;
 }
 
@@ -147,7 +147,7 @@ export function resolve_representation(settings, description = "", spec = null) 
   }
   text = py.add(py.add(description, "\n"), py.M.get(settings, "notes", ""));
   category = py.M.get((($t25) => py.bool($t25) ? $t25 : py.dict())(spec), "category", py.M.get(settings, "category", "auto"));
-  behavioral = py.contains(py.S("algorithm", "fsm", "timing", "pipeline"), category);
+  behavioral = py.contains(py.SC("algorithm", "fsm", "timing", "pipeline"), category);
   if (py.eq(requested, "legacy")) {
     const $t26 = py.unpack(py.T("diagram", "已有项目未指定表现形式，保留原技术图解"), 2);
     actual = $t26[0];

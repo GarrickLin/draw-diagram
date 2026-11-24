@@ -760,7 +760,7 @@ export function render(result, figure, labels_only = false) {
     route = $t272[0];
     points = $t272[1];
     color = visual_style.route_color(py.M.get(route, "line_color"), palette);
-    dashed = py.eq(py.M.get(route, "stroke_style", (py.contains(py.S("control", "feedback", "clock"), py.getitem(route, "kind")) ? "dashed" : "solid")), "dashed");
+    dashed = py.eq(py.M.get(route, "stroke_style", (py.contains(py.SC("control", "feedback", "clock"), py.getitem(route, "kind")) ? "dashed" : "solid")), "dashed");
     for (const $t273 of py.iter(py.zip(points, py.slice(points, 1, null)))) {
       const $t274 = py.unpack($t273, 2);
       a = $t274[0];

@@ -15,7 +15,7 @@ _CONTROL = re.compile("\\b(?:ready|grant|done|flush|recover|recovery|completion|
 export function stroke(edge, spec = null) {
   let kind, members, sources, original, label, meaning;
   kind = py.M.get(edge, "kind", "relation");
-  if (py.notIn(py.S("control", "clock", "feedback"), kind)) {
+  if (py.notIn(py.SC("control", "clock", "feedback"), kind)) {
     return "solid";
   }
   if (py.ne(kind, "feedback")) {

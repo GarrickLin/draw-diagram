@@ -9,7 +9,7 @@ import * as re from "../py/re.js";
 import { fileURLToPath as $fileURLToPath } from "node:url";
 
 const __file__ = $fileURLToPath(import.meta.url).replace(/\.js$/, ".py");
-const $F1 = py.F(1);
+const $F1_0 = py.F(1.0);
 export let STRUCTURE_CATEGORIES, _SAME, _EXTERNAL, _PRIVATE, _SHARED, _template_slots, _families;
 py.sig(_box, ["x", "y", "width", "height"]);
 py.sig(_union, ["boxes", "pad"]);
@@ -22,7 +22,7 @@ py.sig(_inventory_signature, ["gid", "groups", "descendant_members", "edges"]);
 py.sig(_zone, ["node", "owner_text"]);
 py.sig(build_overview, ["spec", "language", "hints"]);
 
-STRUCTURE_CATEGORIES = py.S("architecture", "microarchitecture", "memory");
+STRUCTURE_CATEGORIES = py.SC("architecture", "microarchitecture", "memory");
 _SAME = re.compile("same\\s+(?:private\\s+)?resources\\s+(?:as|of)\\s+([\\w-]+)", re.I);
 _EXTERNAL = re.compile("external|off[- ]chip|outside|片外|外部", re.I);
 _PRIVATE = re.compile("private|\\blocal\\b|私有|本地", re.I);
@@ -179,7 +179,7 @@ export function _inventory_signature(gid, groups, descendant_members, edges) {
     }
     return value;
   }, ["value", "identity_label"]);
-  ignored = py.S("id", "group", "parent", "evidence", "origin", "rationale");
+  ignored = py.SC("id", "group", "parent", "evidence", "origin", "rationale");
   facts = py.sig(function facts(item, identity_labels = false) {
     return json.dumps((($t47) => { const $t50 = py.dict(); for (const $t48 of py.iter($t47)) { let key, value; const $t49 = py.unpack($t48, 2); key = $t49[0]; value = $t49[1]; if (!(py.notIn(ignored, key))) continue; $t50.set(key, normalized(value, (($t51) => !py.bool($t51) ? $t51 : py.eq(key, "label"))(identity_labels))); } return $t50; })(py.M.items(item)), py.KW({"sort_keys": true, "ensure_ascii": false, "separators": py.T(",", ":")}));
   }, ["item", "identity_labels"]);
@@ -765,7 +765,7 @@ export function build_overview(spec, language = "en", hints = null) {
       return py.T(_normal(_box(py.add(py.add(py.getitem(system_box, "x"), system_width), 1), 3, 4, py.sub(cursor, 1)), scene_width, scene_height), "vertical");
     }
     if (py.eq(family, "memory")) {
-      return py.T(_normal(_box(py.add(py.getitem(system_box, "x"), 0.4), 3, $F1, py.sub(cursor, 1)), scene_width, scene_height), "vertical");
+      return py.T(_normal(_box(py.add(py.getitem(system_box, "x"), 0.4), 3, $F1_0, py.sub(cursor, 1)), scene_width, scene_height), "vertical");
     }
     if ((py.eq(family, "instruction") && py.contains(lane_by_id, "instruction") && py.contains(lane_by_id, "units"))) {
       const $t312 = py.unpack(py.T(py.getitem(py.getitem(lane_by_id, "instruction"), "box"), py.getitem(py.getitem(lane_by_id, "units"), "box")), 2);
@@ -773,7 +773,7 @@ export function build_overview(spec, language = "en", hints = null) {
       b = $t312[1];
       return py.T(_box(py.getitem(a, "x"), py.add(py.getitem(a, "y"), py.getitem(a, "height")), py.getitem(a, "width"), py.max(0.002, py.sub(py.sub(py.getitem(b, "y"), py.getitem(a, "y")), py.getitem(a, "height")))), "horizontal");
     }
-    if ((py.contains(py.S("service", "exchange", "coordination"), family) && py.contains(lane_by_id, "units"))) {
+    if ((py.contains(py.SC("service", "exchange", "coordination"), family) && py.contains(lane_by_id, "units"))) {
       a = py.getitem(py.getitem(lane_by_id, "units"), "box");
       below = (($t313) => { const $t315 = []; for (const $t314 of py.iter($t313)) { let lane; lane = $t314; if (!(py.gt(py.getitem(py.getitem(lane, "box"), "y"), py.getitem(a, "y")))) continue; $t315.push(py.getitem(lane, "box")); } return $t315; })(lanes);
       end = py.min((function* ($t316) { for (const $t317 of py.iter($t316)) { let b; b = $t317; yield py.getitem(b, "y"); } })(below), py.KW({"default": py.add(py.getitem(frame_box, "y"), py.getitem(frame_box, "height"))}));
@@ -807,7 +807,7 @@ export function build_overview(spec, language = "en", hints = null) {
       source_side = $t324[0];
       target_side = $t324[1];
     }
-    corridor = py.add(py.add(py.getitem(link, "family"), ":"), (py.contains(py.S("control", "feedback", "clock"), py.getitem(link, "kind")) ? "control" : "data"));
+    corridor = py.add(py.add(py.getitem(link, "family"), ":"), (py.contains(py.SC("control", "feedback", "clock"), py.getitem(link, "kind")) ? "control" : "data"));
     track = py.getitem(corridor_counts, corridor);
     py.augitem(corridor_counts, corridor, py.iadd, 1);
     py.setitem(link, "routing", py.dict(["corridor", corridor], ["track", track], ["source_side", source_side], ["target_side", target_side], ["obstacle_aware_routing_required", true], ["no_broadcast_bus_is_inferred", true]));

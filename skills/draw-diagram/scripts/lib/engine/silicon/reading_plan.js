@@ -176,7 +176,7 @@ export function _organization_main(spec, old, language, preserve_payload = false
     return py.call(_ownership_main, [spec, language], {"preserve_payload": preserve_payload});
   }
   p = py.getitem(old, "structure_layout");
-  out = (($t75) => { const $t78 = py.dict(); for (const $t76 of py.iter($t75)) { let k, v; const $t77 = py.unpack($t76, 2); k = $t77[0]; v = $t77[1]; if (!(py.notIn(py.S("structure_layout", "layout_scene", "positions", "dimensions", "glyphs", "attachment_points", "label_layout"), k))) continue; $t78.set(k, py.deepcopy(v)); } return $t78; })(py.M.items(old));
+  out = (($t75) => { const $t78 = py.dict(); for (const $t76 of py.iter($t75)) { let k, v; const $t77 = py.unpack($t76, 2); k = $t77[0]; v = $t77[1]; if (!(py.notIn(py.SC("structure_layout", "layout_scene", "positions", "dimensions", "glyphs", "attachment_points", "label_layout"), k))) continue; $t78.set(k, py.deepcopy(v)); } return $t78; })(py.M.items(old));
   py.setitem(out, "primary", true);
   py.setitem(out, "source_edge_indices", py.sorted((($t79) => { const $t82 = py.set(); for (const $t80 of py.iter($t79)) { let e; e = $t80; for (const $t81 of py.iter(py.M.get(e, "members", []))) { let i; i = $t81; $t82.add(i); } } return $t82; })(py.getitem(p, "projected_links"))));
   py.setitem(out, "macro_edges", py.deepcopy(py.getitem(p, "projected_links")));
@@ -193,7 +193,7 @@ export function _organization_main(spec, old, language, preserve_payload = false
   py.setitem(out, "macro_nodes", []);
   for (const $t104 of py.iter(py.getitem(p, "macro_nodes"))) {
     original = $t104;
-    o = (($t105) => { const $t108 = py.dict(); for (const $t106 of py.iter($t105)) { let k, v; const $t107 = py.unpack($t106, 2); k = $t107[0]; v = $t107[1]; if (!(py.notIn(py.S("box", "template_slots", "header_fraction", "children_labels"), k))) continue; $t108.set(k, py.deepcopy(v)); } return $t108; })(py.M.items(original));
+    o = (($t105) => { const $t108 = py.dict(); for (const $t106 of py.iter($t105)) { let k, v; const $t107 = py.unpack($t106, 2); k = $t107[0]; v = $t107[1]; if (!(py.notIn(py.SC("box", "template_slots", "header_fraction", "children_labels"), k))) continue; $t108.set(k, py.deepcopy(v)); } return $t108; })(py.M.items(original));
     py.setitem(o, "original_group", py.M.get(original, "source_owner", ""));
     py.setitem(o, "children", (($t109) => { const $t111 = []; for (const $t110 of py.iter($t109)) { let x; x = $t110; if (!(!(py.bool(py.M.get(x, "visual_reference_only"))))) continue; $t111.push(py.dict(["id", py.getitem(x, "source_node_id")], ["label", py.getitem(x, "label")], ["kind", py.getitem(x, "kind")], ["detail", py.M.get(py.getitem(source_nodes, py.getitem(x, "source_node_id")), "detail", "")])); } return $t111; })(py.M.get(original, "template_slots", [])));
     if ((py.contains(representative_of, py.getitem(original, "id")) || py.bool(py.M.get(original, "inherited_visual_only")))) {
@@ -458,7 +458,7 @@ export function _concept_main(spec, language) {
     py.M.setdefault(node, "concept_role", (py.bool(py.getitem(node, "external")) ? "external-resource" : "functional-region"));
     py.setitem(node, "detail", "");
   }
-  indices = (($t321) => { const $t324 = []; for (const $t322 of py.iter($t321)) { let i, edge; const $t323 = py.unpack($t322, 2); i = $t323[0]; edge = $t323[1]; if (!((py.contains(py.S("data", "relation", "control"), py.getitem(edge, "kind")) && py.ne(py.getitem(owner, py.getitem(edge, "source")), py.getitem(owner, py.getitem(edge, "target")))))) continue; $t324.push(i); } return $t324; })(py.enumerate(py.getitem(spec, "edges")));
+  indices = (($t321) => { const $t324 = []; for (const $t322 of py.iter($t321)) { let i, edge; const $t323 = py.unpack($t322, 2); i = $t323[0]; edge = $t323[1]; if (!((py.contains(py.SC("data", "relation", "control"), py.getitem(edge, "kind")) && py.ne(py.getitem(owner, py.getitem(edge, "source")), py.getitem(owner, py.getitem(edge, "target")))))) continue; $t324.push(i); } return $t324; })(py.enumerate(py.getitem(spec, "edges")));
   const $t325 = py.unpack(_project_edges(spec, indices, owner), 2);
   links = $t325[0];
   _ = $t325[1];
@@ -573,9 +573,9 @@ export function build(spec, settings, legacy_plan, description = "") {
   resolved = py.call(scene_profiles.resolve, [settings], {"spec": spec});
   scene = (($t425) => py.bool($t425) ? $t425 : (py.bool(resolved) ? py.getitem(resolved, "id") : null))(py.M.get(settings, "resolved_scene"));
   profile = py.M.get(scene_profiles.PROFILES, scene);
-  behavioral = py.contains(py.S("algorithm", "fsm", "timing", "pipeline"), py.getitem(spec, "category"));
+  behavioral = py.contains(py.SC("algorithm", "fsm", "timing", "pipeline"), py.getitem(spec, "category"));
   representation = (($t426) => py.bool($t426) ? $t426 : py.getitem(py.call(scene_profiles.resolve_representation, [settings], {"spec": spec}), "id"))(py.M.get(settings, "resolved_representation"));
-  if ((py.eq(representation, "diagram") && py.contains(py.S("fsm", "timing", "memory", "pipeline"), py.getitem(spec, "category")))) {
+  if ((py.eq(representation, "diagram") && py.contains(py.SC("fsm", "timing", "memory", "pipeline"), py.getitem(spec, "category")))) {
     primary = behavior_guide.primary(spec, language);
   }
   if ((py.eq(representation, "diagram") && py.bool(algorithm_flow.applicable(spec)))) {
@@ -624,12 +624,12 @@ export function build(spec, settings, legacy_plan, description = "") {
     py.setitem(f, "technical_annex", !(py.bool(py.getitem(f, "primary"))));
     role = py.M.get(f, "view_role", "");
     scoped_edges = (($t454) => { const $t456 = []; for (const $t455 of py.iter($t454)) { let i; i = $t455; $t456.push(py.getitem(py.getitem(spec, "edges"), i)); } return $t456; })(py.M.get(f, "edge_indices", []));
-    control_only = (($t462) => !py.bool($t462) ? $t462 : (($t461) => !py.bool($t461) ? $t461 : py.any((function* ($t459) { for (const $t460 of py.iter($t459)) { let n; n = $t460; if (!(py.contains(py.M.get(f, "node_ids", []), py.getitem(n, "id")))) continue; yield py.eq(py.getitem(n, "kind"), "control"); } })(py.getitem(spec, "nodes"))))(py.all((function* ($t457) { for (const $t458 of py.iter($t457)) { let e; e = $t458; yield py.contains(py.S("control", "feedback", "clock"), py.getitem(e, "kind")); } })(scoped_edges))))(py.bool(scoped_edges));
-    if ((py.eq(role, "control") || (py.bool(control_only) && py.notIn(py.S("fsm", "timing", "algorithm"), py.getitem(spec, "category"))))) {
+    control_only = (($t462) => !py.bool($t462) ? $t462 : (($t461) => !py.bool($t461) ? $t461 : py.any((function* ($t459) { for (const $t460 of py.iter($t459)) { let n; n = $t460; if (!(py.contains(py.M.get(f, "node_ids", []), py.getitem(n, "id")))) continue; yield py.eq(py.getitem(n, "kind"), "control"); } })(py.getitem(spec, "nodes"))))(py.all((function* ($t457) { for (const $t458 of py.iter($t457)) { let e; e = $t458; yield py.contains(py.SC("control", "feedback", "clock"), py.getitem(e, "kind")); } })(scoped_edges))))(py.bool(scoped_edges));
+    if ((py.eq(role, "control") || (py.bool(control_only) && py.notIn(py.SC("fsm", "timing", "algorithm"), py.getitem(spec, "category"))))) {
       const $t463 = py.unpack(py.T("control-band", "Which actual resources receive control and which completion signals return?"), 2);
       grammar = $t463[0];
       question = $t463[1];
-    } else if (py.contains(py.S("fsm", "timing", "pipeline", "algorithm"), py.getitem(spec, "category"))) {
+    } else if (py.contains(py.SC("fsm", "timing", "pipeline", "algorithm"), py.getitem(spec, "category"))) {
       const $t464 = py.unpack(py.T(py.getitem(spec, "category"), "What behavior, dependency, or interaction should the reader understand?"), 2);
       grammar = $t464[0];
       question = $t464[1];

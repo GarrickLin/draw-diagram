@@ -20,7 +20,7 @@ py.sig(build, ["spec"]);
 py.sig(primary, ["spec", "language"]);
 
 POLICY_VERSION = "ALGO1";
-ROLES = py.S("tensor", "operator", "reduction", "state", "storage", "index", "decision");
+ROLES = py.SC("tensor", "operator", "reduction", "state", "storage", "index", "decision");
 _TENSOR = re.compile("tensor|matrix|vector|feature\\s*map|embedding|张量|矩阵|向量|特征图|\\[[^\\]]*[,×][^\\]]*\\]|[A-Za-z0-9_{}]+\\s*[×]\\s*[A-Za-z0-9_{}]+|∈", re.I);
 _OPERATOR = re.compile("matmul|multiply|multiplication|convol|softmax|normalize|normalization|transpose|reshape|attention|gather|scatter|projection|reduce|reduction|elementwise|dot\\s*product|exp\\(|乘|卷积|归一化|规约|转置|重排|加权|点积|求和", re.I);
 _REDUCTION = re.compile("\\b(?:reduce|reduction|sum|max|min|argmax|argmin)\\b|∑|Σ|规约|求和|最大值|最小值", re.I);
@@ -70,7 +70,7 @@ export function _role(node) {
   kind = py.M.get(node, "kind");
   if (py.eq(kind, "decision")) {
     role = "decision";
-  } else if (py.contains(py.S("memory", "io", "signal"), kind)) {
+  } else if (py.contains(py.SC("memory", "io", "signal"), kind)) {
     if (py.bool(py.M.search(_STATE, text))) {
       role = "state";
     } else if (py.bool(py.M.search(_INDEX, label))) {
@@ -99,10 +99,10 @@ export function applicable(spec) {
     return false;
   }
   nodes = py.M.get(spec, "nodes", []);
-  if (py.any((function* ($t4) { for (const $t5 of py.iter($t4)) { let node; node = $t5; yield py.contains(py.S("tensor", "operator", "reduction", "state", "index"), py.M.get(node, "diagram_role")); } })(nodes))) {
+  if (py.any((function* ($t4) { for (const $t5 of py.iter($t4)) { let node; node = $t5; yield py.contains(py.SC("tensor", "operator", "reduction", "state", "index"), py.M.get(node, "diagram_role")); } })(nodes))) {
     return true;
   }
-  tensor_count = py.sum((function* ($t6) { for (const $t7 of py.iter($t6)) { let node; node = $t7; if (!(py.contains(py.S("memory", "io", "signal"), py.M.get(node, "kind")))) continue; yield py.bool(py.M.search(_TENSOR, py.add(py.add(py.M.get(node, "label", ""), " "), py.M.get(node, "detail", "")))); } })(nodes));
+  tensor_count = py.sum((function* ($t6) { for (const $t7 of py.iter($t6)) { let node; node = $t7; if (!(py.contains(py.SC("memory", "io", "signal"), py.M.get(node, "kind")))) continue; yield py.bool(py.M.search(_TENSOR, py.add(py.add(py.M.get(node, "label", ""), " "), py.M.get(node, "detail", "")))); } })(nodes));
   return (($t10) => !py.bool($t10) ? $t10 : py.any((function* ($t8) { for (const $t9 of py.iter($t8)) { let node; node = $t9; if (!(py.contains(py.S("compute", "stage"), py.M.get(node, "kind")))) continue; yield py.M.search(_OPERATOR, py.add(py.add(py.M.get(node, "label", ""), " "), py.M.get(node, "detail", ""))); } })(nodes)))(py.ge(tensor_count, 2));
 }
 
@@ -219,7 +219,7 @@ export function _topology(spec, objects) {
   for (const $t87 of py.iter(ids)) {
     nid = $t87;
     targets = py.list(py.fromkeys((function* ($t88) { for (const $t89 of py.iter($t88)) { let target, i; const $t90 = py.unpack($t89, 2); target = $t90[0]; i = $t90[1]; if (!(py.notIn(return_set, i))) continue; yield target; } })(py.getitem(graph, nid))));
-    if ((!(py.bool(py.getitem(dag_in, nid))) && py.contains(py.S("tensor", "index", "storage"), py.getitem(roles, nid)) && py.eq(py.len(targets), 1))) {
+    if ((!(py.bool(py.getitem(dag_in, nid))) && py.contains(py.SC("tensor", "index", "storage"), py.getitem(roles, nid)) && py.eq(py.len(targets), 1))) {
       target = py.getitem(targets, 0);
       py.setitem(columns, nid, py.max(0, py.sub(py.getitem(ranks, target), 1)));
       py.M.append(nearby_operands, py.dict(["source_node_id", nid], ["consumer_node_id", target], ["column", py.getitem(columns, nid)], ["basis", "independent supplied operand placed beside its single consumer; dependency rank is unchanged"]));
@@ -285,7 +285,7 @@ export function build(spec) {
     edge = $t123[1];
     state_operand = (($t126) => !py.bool($t126) ? $t126 : py.any((function* ($t124) { for (const $t125 of py.iter($t124)) { let endpoint; endpoint = $t125; yield py.eq(py.getitem(py.getitem(by_id, endpoint), "role"), "state"); } })(py.T(py.getitem(edge, "source"), py.getitem(edge, "target")))))(py.eq(py.getitem(edge, "kind"), "feedback"));
     data_return = (($t127) => !py.bool($t127) ? $t127 : py.eq(edge_semantics.stroke(edge), "solid"))(py.eq(py.getitem(edge, "kind"), "feedback"));
-    py.M.append(relations, py.dict(["source_edge_index", index], {spread: py.deepcopy(edge)}, ["display_role", (py.bool(state_operand) ? "state operand/update" : (py.bool(data_return) ? "data return" : (py.contains(py.S("control", "clock", "feedback"), py.getitem(edge, "kind")) ? "control dependency" : "data/dependency")))], ["display_stroke", ((py.bool(state_operand) || py.bool(data_return) || py.contains(py.S("data", "relation"), py.getitem(edge, "kind"))) ? "solid" : "dashed")]));
+    py.M.append(relations, py.dict(["source_edge_index", index], {spread: py.deepcopy(edge)}, ["display_role", (py.bool(state_operand) ? "state operand/update" : (py.bool(data_return) ? "data return" : (py.contains(py.SC("control", "clock", "feedback"), py.getitem(edge, "kind")) ? "control dependency" : "data/dependency")))], ["display_stroke", ((py.bool(state_operand) || py.bool(data_return) || py.contains(py.S("data", "relation"), py.getitem(edge, "kind"))) ? "solid" : "dashed")]));
   }
   return py.dict(["version", POLICY_VERSION], ["source_hash", py.M.hexdigest(hashlib.sha256(py.M.encode(json.dumps(spec, py.KW({"ensure_ascii": false, "sort_keys": true, "separators": py.T(",", ":")})))))], ["objects", objects], ["relations", relations], ["groups", (($t128) => { const $t130 = []; for (const $t129 of py.iter($t128)) { let group; group = $t129; $t130.push(py.dict({spread: py.deepcopy(group)}, ["member_node_ids", (($t131) => { const $t133 = []; for (const $t132 of py.iter($t131)) { let node; node = $t132; if (!(py.eq(py.getitem(node, "group"), py.getitem(group, "id")))) continue; $t133.push(py.getitem(node, "id")); } return $t133; })(py.getitem(spec, "nodes"))])); } return $t130; })(py.getitem(spec, "groups"))], ["motifs", py.bitor((($t134) => { const $t136 = py.dict(); for (const $t135 of py.iter($t134)) { let key; key = $t135; $t136.set(key, py.getitem(topology, key)); } return $t136; })(py.T("parallel_branches", "joins", "recurrence_components")), py.dict(["reductions", (($t137) => { const $t139 = []; for (const $t138 of py.iter($t137)) { let o; o = $t138; if (!(py.eq(py.getitem(o, "role"), "reduction"))) continue; $t139.push(py.getitem(o, "source_node_id")); } return $t139; })(objects)], ["recurrence_exits", recurrence_exits], ["data_residency", (($t140) => { const $t142 = []; for (const $t141 of py.iter($t140)) { let o; o = $t141; if (!(py.bool(py.getitem(o, "residency")))) continue; $t142.push(py.dict(["source_node_id", py.getitem(o, "source_node_id")], ["residency", py.getitem(o, "residency")])); } return $t142; })(objects)], ["tensor_shapes", (($t143) => { const $t145 = []; for (const $t144 of py.iter($t143)) { let o; o = $t144; if (!(py.bool(py.getitem(o, "tensor_shape")))) continue; $t145.push(py.dict(["source_node_id", py.getitem(o, "source_node_id")], ["shape", py.getitem(o, "tensor_shape")])); } return $t145; })(objects)]))], ["composition", py.dict(["grammar", grammar], {spread: topology}, ["group_policy", "compact group headings or short open brackets over actual members; no large empty container frames"], ["recurrence_exit_branches", recurrence_exits], ["residency_labels", (($t146) => { const $t150 = []; for (const $t147 of py.iter($t146)) { let group, text, ids; const $t148 = py.unpack($t147, 2); const $t149 = py.unpack($t148[0], 2); group = $t149[0]; text = $t149[1]; ids = $t148[1]; $t150.push(py.dict(["source_group", group], ["text", text], ["source_node_ids", ids])); } return $t150; })(py.M.items(residency_labels))], ["outgoing_contracts", outputs], ["connector_cardinality", (($t151) => { const $t155 = []; for (const $t152 of py.iter($t151)) { let a, b, indices; const $t153 = py.unpack($t152, 2); const $t154 = py.unpack($t153[0], 2); a = $t154[0]; b = $t154[1]; indices = $t153[1]; $t155.push(py.dict(["source_node_id", a], ["target_node_id", b], ["source_edge_indices", indices], ["connector_count", py.len(indices)])); } return $t155; })(py.M.items(adjacency))], ["object_budget", "prefer 8–14 main objects per panel; if the complete source is larger, use aligned source-backed panels without dropping leaves or dependencies"])], ["semantic_policy", "Shapes, axes, tiles and residency are shown only when supplied. Separate operands remain separate. Visible source cycles retain exact direction. A graphical join is not a reduction, matrix multiply is not elementwise multiplication, and no tensor is silently a hardware memory."]);
 }
@@ -412,7 +412,7 @@ compile_figure = (($t166) => py.sig(function compile_figure(figure, spec, settin
       line = py.iadd(line, "; thin solid directed previous-state operand or new-state update, preserving the original recurrence");
     } else if (py.eq(py.getitem(rel, "display_role"), "data return")) {
       line = py.iadd(line, "; thin solid directed return of the supplied data payload");
-    } else if (py.contains(py.S("control", "clock", "feedback"), py.getitem(rel, "kind"))) {
+    } else if (py.contains(py.SC("control", "clock", "feedback"), py.getitem(rel, "kind"))) {
       line = py.iadd(line, py.add(py.add("; distinguish this supplied ", py.getitem(rel, "kind")), " dependency by a fine dashed stroke; it is not a tensor transfer"));
     } else {
       line = py.iadd(line, "; thin solid directed dependency");

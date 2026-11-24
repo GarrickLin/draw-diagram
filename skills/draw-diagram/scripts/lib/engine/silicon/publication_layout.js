@@ -9,7 +9,7 @@ import * as structure_scene from "./structure_scene.js";
 import { fileURLToPath as $fileURLToPath } from "node:url";
 
 const __file__ = $fileURLToPath(import.meta.url).replace(/\.js$/, ".py");
-const $F0 = py.F(0);
+const $F0_0 = py.F(0.0);
 export let WIDTH;
 py.sig(_box, ["x", "y", "width", "height"]);
 py.sig(_normal, ["box", "height"]);
@@ -733,7 +733,7 @@ export function _owned_join_candidate(nodes, edges, typography, columns) {
       sides = py.T("right", "left");
     } else if ((py.eq(source, join) && py.contains(right, target))) {
       sides = py.T("right", "left");
-    } else if ((py.contains(right, source) && py.eq(target, join) && py.contains(py.S("control", "feedback", "clock"), py.getitem(edge, "kind")))) {
+    } else if ((py.contains(right, source) && py.eq(target, join) && py.contains(py.SC("control", "feedback", "clock"), py.getitem(edge, "kind")))) {
       sides = py.T("left", "right");
     } else {
       return py.T(null, "A relation outside the source-owned join needs another hierarchy view");
@@ -2062,7 +2062,7 @@ export function _segment_distance(a, b, c, d) {
     contact = (($t816) => !py.bool($t816) ? $t816 : (() => { const $t813 = py.sub(py.min(py.getitem(v0, 1), py.getitem(v1, 1)), epsilon); const $t814 = py.getitem(h0, 1); if (!(py.le($t813, $t814))) return false; const $t815 = py.add(py.max(py.getitem(v0, 1), py.getitem(v1, 1)), epsilon); return py.le($t814, $t815); })())((() => { const $t810 = py.sub(py.min(py.getitem(h0, 0), py.getitem(h1, 0)), epsilon); const $t811 = py.getitem(v0, 0); if (!(py.le($t810, $t811))) return false; const $t812 = py.add(py.max(py.getitem(h0, 0), py.getitem(h1, 0)), epsilon); return py.le($t811, $t812); })());
   }
   if (py.bool(contact)) {
-    return $F0;
+    return $F0_0;
   }
   point_distance = py.sig(function point_distance(point, start, end) {
     let dx, dy, length_squared, t;
@@ -2527,10 +2527,10 @@ export function build(spec, figure, settings) {
     }
   }
   grammar = py.M.get(contract, "grammar");
-  if (py.notIn(py.S("product-concept", "folded-flow", "control-band", "resource-array", "exact-flow", "ownership-flow"), grammar)) {
+  if (py.notIn(py.SC("product-concept", "folded-flow", "control-band", "resource-array", "exact-flow", "ownership-flow"), grammar)) {
     return null;
   }
-  if ((py.eq(grammar, "exact-flow") && py.notIn(py.S("architecture", "microarchitecture", "dataflow", "pipeline", "memory"), py.M.get(spec, "category")))) {
+  if ((py.eq(grammar, "exact-flow") && py.notIn(py.SC("architecture", "microarchitecture", "dataflow", "pipeline", "memory"), py.M.get(spec, "category")))) {
     return null;
   }
   const $t1004 = py.unpack(_source_projection(spec, figure), 2);
@@ -2756,7 +2756,7 @@ export function build(spec, figure, settings) {
   labels = $t1058[1];
   if (py.contains(py.S("ownership-flow", "resource-array"), grammar)) {
     document_height = py.truediv(target_width, py.getitem(py.getitem(plan, "canvas"), "natural_aspect"));
-    portrait = py.contains(py.S("portrait", "3:4", "9:16", "A4"), py.M.get(settings, "aspect"));
+    portrait = py.contains(py.SC("portrait", "3:4", "9:16", "A4"), py.M.get(settings, "aspect"));
     py.setitem(py.getitem(py.getitem(plan, "layout_scene"), "quality"), "document_fit", py.dict(["height_mm", py.round(document_height, 1)], ["default_limit_mm", 140], ["status", ((py.bool(portrait) || py.le(document_height, 140)) ? "pass" : "limited")], ["no_font_shrink", true], ["meaning", "Native source routing and typography do not certify a tall figure as publication-ready."]));
   }
   py.setitem(plan, "composition_diagnostics", py.deepcopy(py.getitem(figure, "composition_diagnostics")));

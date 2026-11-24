@@ -76,7 +76,7 @@ export function subject_plan(text, spec) {
   focus = (py.bool(matches) ? py.getitem(py.min(matches), 1) : null);
   if (py.bool(_explicit_die_focus(opening))) {
     focus = "die";
-  } else if ((py.contains(py.S(null, "die", "package"), focus) && py.bool(_whole_package_owner(opening, spec)))) {
+  } else if ((py.contains(py.SC(null, "die", "package"), focus) && py.bool(_whole_package_owner(opening, spec)))) {
     focus = "package";
   }
   node_text = (($t13) => { const $t15 = py.dict(); for (const $t14 of py.iter($t13)) { let n; n = $t14; $t15.set(py.getitem(n, "id"), py.getitem(n, "label")); } return $t15; })(py.getitem(spec, "nodes"));
@@ -114,7 +114,7 @@ export function subject_plan(text, spec) {
 export function shot_direction(plan, mode, text) {
   let scale, systems, camera, camera_explicit, composition;
   scale = py.getitem(plan, "scale");
-  systems = py.contains(py.S("rack", "server", "system"), scale);
+  systems = py.contains(py.SC("rack", "server", "system"), scale);
   camera = py.M.get(py.dict(["rack", "A near-frontal, slightly offset product camera with corrected verticals. Reveal a narrow side face for depth while preserving the rack's front rhythm; no overhead view or miniature-chip presentation."], ["server", "A restrained three-quarter chassis camera, elevated only enough to show the source-backed serviceable modules. Use a long lens and straight structural edges; do not lift covers or explode trays unless requested."], ["system", "An elevated three-quarter system view with a shared horizon and consistent scale. Arrange equivalent devices as peers around the supplied shared hub, keeping physical silhouettes distinct and the principal links traceable."], ["board", "A moderately elevated oblique product camera that exposes the board plane and its major source-backed parts. Use a readable diagonal silhouette and controlled perspective, not a front-on sliver."], ["wafer", "A controlled shallow three-quarter view that makes the circular wafer silhouette and restrained surface reflectance readable, without a sci-fi landscape."], ["die", "A close, moderately elevated product camera that reveals the die face and a believable edge. Let selective reflectance carry surface detail instead of adding glowing circuit wallpaper."]), scale, "A close three-quarter product camera with a long lens, a decisive diagonal silhouette and visible edge thickness. Keep one face dominant and avoid wide-angle distortion.");
   camera_explicit = _positive(text, "camera|angle|perspective|isometric|overhead|top[ -]?down|镜头|视角|相机|俯视|顶视|等距|轴测");
   camera_explicit = (($t37) => py.bool($t37) ? $t37 : py.bool(re.search("(?:不要|不用|避免|no|without).{0,12}(?:俯视|等距|top.down|isometric)", text, re.I)))(camera_explicit);

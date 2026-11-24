@@ -295,7 +295,7 @@ export function build(spec, figure, settings = null) {
     }
   }
   if ((py.any((function* ($t95) { for (const $t96 of py.iter($t95)) { let edge; edge = $t96; yield py.eq(py.getitem(edge, "kind"), "data"); } })(py.M.get(spec, "edges", []))) && py.any((function* ($t97) { for (const $t98 of py.iter($t97)) { let edge; edge = $t98; yield py.contains(py.S("control", "clock"), py.getitem(edge, "kind")); } })(py.M.get(spec, "edges", []))))) {
-    for (const $t99 of py.iter([py.T("payload-path", py.S("data", "relation")), py.T("control-interaction", py.S("control", "clock", "feedback"))])) {
+    for (const $t99 of py.iter([py.T("payload-path", py.S("data", "relation")), py.T("control-interaction", py.SC("control", "clock", "feedback"))])) {
       const $t100 = py.unpack($t99, 2);
       name = $t100[0];
       kinds = $t100[1];

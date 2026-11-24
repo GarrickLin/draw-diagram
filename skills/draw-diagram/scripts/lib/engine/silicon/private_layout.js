@@ -59,7 +59,7 @@ _context_role = (($t1) => py.sig(function _context_role(node, groups, edges = $t
   let owners, outgoing;
   owners = py.M.join(" ", (function* ($t2) { for (const $t3 of py.iter($t2)) { let g; g = $t3; yield py.getitem(py.getitem(groups, g), "label"); } })(_path(py.M.get(node, "group", ""), groups)));
   outgoing = (($t4) => { const $t6 = []; for (const $t5 of py.iter($t4)) { let edge; edge = $t5; if (!(py.eq(py.getitem(edge, "source"), py.getitem(node, "id")))) continue; $t6.push(edge); } return $t6; })(edges);
-  if ((py.bool(outgoing) && py.all((function* ($t7) { for (const $t8 of py.iter($t7)) { let edge; edge = $t8; yield py.contains(py.S("control", "feedback", "clock"), py.getitem(edge, "kind")); } })(outgoing)))) {
+  if ((py.bool(outgoing) && py.all((function* ($t7) { for (const $t8 of py.iter($t7)) { let edge; edge = $t8; yield py.contains(py.SC("control", "feedback", "clock"), py.getitem(edge, "kind")); } })(outgoing)))) {
     return "control";
   }
   if (py.eq(_role(node), "control")) {
@@ -310,7 +310,7 @@ export function build_detail(spec, figure, language = "en") {
       context_roles = (($t213) => { const $t215 = py.set(); for (const $t214 of py.iter($t213)) { let nid; nid = $t214; $t215.add(py.getitem(context_placement, nid)); } return $t215; })(external);
       corridor = (py.contains(context_roles, "control") ? "top-control" : (py.contains(context_roles, "storage") ? "bottom-memory" : "right-services"));
     } else {
-      corridor = (py.contains(py.S("control", "feedback", "clock"), py.getitem(edge, "kind")) ? "local-right-control" : "local-left-return");
+      corridor = (py.contains(py.SC("control", "feedback", "clock"), py.getitem(edge, "kind")) ? "local-right-control" : "local-left-return");
     }
     const $t216 = py.unpack(py.T(py.getitem(normalized, a), py.getitem(normalized, b)), 2);
     source_box = $t216[0];

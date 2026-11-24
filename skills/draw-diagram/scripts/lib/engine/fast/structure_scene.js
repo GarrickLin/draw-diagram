@@ -156,6 +156,8 @@ const stateKey = (x, y, d) => pointKey(x, y) * 5 + (d + 1);
  * env() returns the closure's [maxx, maxy, blocked, occupied, segment_colors] at call time.
  */
 export function astar(generic, env) {
+  // DRAW_DIAGRAM_FAST=0 runs the generic transpiled function (tests compare the two)
+  if (process.env.DRAW_DIAGRAM_FAST === "0") return generic;
   return function astar(start, goal, bounds = null, line_color = null) {
     const [maxxV, maxyV, blocked, occupied, segmentColors] = env();
     // path points are start plus unit steps: a float or bool start would give floats or ints

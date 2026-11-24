@@ -413,7 +413,7 @@ export function prepare(plan) {
     ss = $t136[0];
     ts = $t136[1];
     routing = py.M.get(edge, "routing", py.dict());
-    if ((py.bool(py.M.get(routing, "outer_route")) || py.notIn(py.S(py.T("right", "left"), py.T("left", "right"), py.T("bottom", "top"), py.T("top", "bottom")), py.T(ss, ts)))) {
+    if ((py.bool(py.M.get(routing, "outer_route")) || py.notIn(py.SC(py.T("right", "left"), py.T("left", "right"), py.T("bottom", "top"), py.T("top", "bottom")), py.T(ss, ts)))) {
       continue;
     }
     axis = (py.contains(py.S("top", "bottom"), ss) ? 0 : 1);
@@ -1002,7 +1002,7 @@ export function render(result, figure, labels_only = false) {
   for (const $t329 of py.iter(py.getitem(scene, "routes"))) {
     e = $t329;
     points = (($t330) => { const $t333 = []; for (const $t331 of py.iter($t330)) { let x, y; const $t332 = py.unpack($t331, 2); x = $t332[0]; y = $t332[1]; $t333.push(py.T(py.mul(x, width), py.mul(y, height))); } return $t333; })(py.getitem(e, "points"));
-    dashed = py.eq(py.M.get(e, "stroke_style", (py.contains(py.S("control", "clock", "feedback"), py.getitem(e, "kind")) ? "dashed" : "solid")), "dashed");
+    dashed = py.eq(py.M.get(e, "stroke_style", (py.contains(py.SC("control", "clock", "feedback"), py.getitem(e, "kind")) ? "dashed" : "solid")), "dashed");
     color = (py.bool(dashed) ? py.call(visual_style.boundary_color, [palette], {"strong": true}) : visual_style.route_color(py.M.get(e, "line_color"), palette));
     for (const $t334 of py.iter(py.zip(points, py.slice(points, 1, null)))) {
       const $t335 = py.unpack($t334, 2);

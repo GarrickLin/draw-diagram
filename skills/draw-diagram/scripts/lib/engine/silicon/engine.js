@@ -57,8 +57,8 @@ STYLES = (($t4) => { const $t6 = py.dict(); for (const $t5 of py.iter($t4)) { le
 REFERENCE_PROFILES = py.dict(["paper", ["architecture/feather-2024-fig7-system-overview.png", "dataflow/scnn-2017-fig6-pe-sparse-dataflow.png"]], ["blueprint", ["architecture/nvidia-hopper-sm-official.png", "architecture/highlight-2023-fig6c-hierarchical-architecture.png"]], ["signal", ["architecture/highlight-2023-fig10-sparse-pe-datapath.png", "architecture/feather-2024-fig7-system-overview.png"]], ["monochrome", ["architecture/highlight-2023-fig6c-hierarchical-architecture.png", "architecture/eyeriss-2016-fig1-general-cnn-accelerator.png"]]);
 ASPECTS = py.dict(["auto", "adapt canvas to the circuitry"], ["16:9", "landscape 16:9, target 3840 × 2160 if supported"], ["4:3", "landscape 4:3, target 3200 × 2400 if supported"], ["1:1", "square 1:1, target 2048 × 2048 if supported"], ["A4", "portrait A4 proportions (1:1.414); use the nearest supported resolution"]);
 DENSITIES = py.dict(["low", py.T(8, "overview; target 4–8 visible blocks per figure")], ["medium", py.T(16, "balanced technical explanation; target no more than 16 visible blocks per figure")], ["high", py.T(20, "detailed technical explanation; target no more than 20 visible blocks per figure")]);
-EDGE_KINDS = py.S("data", "control", "feedback", "clock", "relation");
-NODE_KINDS = py.S("compute", "memory", "io", "control", "stage", "decision", "state", "event", "signal");
+EDGE_KINDS = py.SC("data", "control", "feedback", "clock", "relation");
+NODE_KINDS = py.SC("compute", "memory", "io", "control", "stage", "decision", "state", "event", "signal");
 VISUAL_CHOICES = py.dict(["style", py.tuple(STYLES)], ["density", py.tuple(DENSITIES)], ["language", py.T("en", "zh")], ["aspect", py.tuple(ASPECTS)]);
 export function _reference_paths(spec, figure, style) {
   return reference_selector.select(spec, figure, style);
@@ -113,7 +113,7 @@ export function _specification_schema(mode, category = "auto") {
     const $t11 = py.unpack($t10, 2);
     name = $t11[0];
     properties = $t11[1];
-    required = (($t12) => { const $t14 = []; for (const $t13 of py.iter($t12)) { let key; key = $t13; if (!(py.notIn(py.S("diagram_role", "tensor_shape", "reduction_axis", "residency"), key))) continue; $t14.push(key); } return $t14; })(properties);
+    required = (($t12) => { const $t14 = []; for (const $t13 of py.iter($t12)) { let key; key = $t13; if (!(py.notIn(py.SC("diagram_role", "tensor_shape", "reduction_axis", "residency"), key))) continue; $t14.push(key); } return $t14; })(properties);
     py.setitem(definitions, name, py.dict(["type", "object"], ["properties", properties], ["required", required], ["additionalProperties", false]));
   }
   properties = py.dict(["title", py.call(text, [180], {"minLength": 1})], ["summary", text(2000)], ["category", (py.ne(category, "auto") ? py.dict(["const", category]) : py.dict(["enum", py.sorted(CATEGORIES)]))], ["verbatim_labels", py.dict(["type", "array"], ["maxItems", 50], ["items", py.call(text, [180], {"minLength": 1})])], ["groups", py.dict(["type", "array"], ["maxItems", 12], ["items", py.dict(["$ref", "#/$defs/group"])])], ["nodes", py.dict(["type", "array"], ["minItems", 1], ["maxItems", 50], ["items", py.dict(["$ref", "#/$defs/node"])])], ["edges", py.dict(["type", "array"], ["maxItems", 100], ["items", py.dict(["$ref", "#/$defs/edge"])])], ["layout", text(4000)]);
@@ -171,7 +171,7 @@ export function normalize_settings(payload) {
     throw new py.ValueError("请求必须是 JSON 对象。");
   }
   settings = py.dict();
-  for (const $t25 of py.iter([py.T("category", "auto", py.set([...py.iter(CATEGORIES), "auto"])), py.T("style", "paper", py.set([...py.iter(STYLES), "auto"])), py.T("aspect", "auto", ASPECTS), py.T("language", "en", py.S("en", "zh", "auto")), py.T("density", "medium", py.set([...py.iter(DENSITIES), "auto"])), py.T("completion_mode", "auto", py.S("auto", "strict"))])) {
+  for (const $t25 of py.iter([py.T("category", "auto", py.set([...py.iter(CATEGORIES), "auto"])), py.T("style", "paper", py.set([...py.iter(STYLES), "auto"])), py.T("aspect", "auto", ASPECTS), py.T("language", "en", py.SC("en", "zh", "auto")), py.T("density", "medium", py.set([...py.iter(DENSITIES), "auto"])), py.T("completion_mode", "auto", py.S("auto", "strict"))])) {
     const $t26 = py.unpack($t25, 3);
     key = $t26[0];
     default$ = $t26[1];
@@ -201,7 +201,7 @@ export function normalize_settings(payload) {
   }
   if (py.contains(payload, "explanatory_mode")) {
     mode = py.getitem(payload, "explanatory_mode");
-    if ((!(py.isinstance(mode, "str")) || py.notIn(py.S("auto", "hero", "annotated_context", "functional_cutaway", "assembly"), mode))) {
+    if ((!(py.isinstance(mode, "str")) || py.notIn(py.SC("auto", "hero", "annotated_context", "functional_cutaway", "assembly"), mode))) {
       throw new py.ValueError("不支持的 explanatory_mode 选项。");
     }
     py.setitem(settings, "explanatory_mode", mode);
@@ -461,7 +461,7 @@ export function _style_prompt(settings) {
     contract = py.dict(["scene", profile], ["graphic_language", visual_language.build(settings)]);
     fingerprint = py.add(py.add(py.add("SCENE1-", py.getitem(profile, "id")), "-"), py.slice(py.M.hexdigest(hashlib.sha256(py.M.encode(json.dumps(contract, py.KW({"ensure_ascii": false, "sort_keys": true}))))), null, 10));
     lines = [("STYLE CONTRACT " + py.format(fingerprint)), py.add("Reader purpose: ", py.getitem(profile, "question")), py.add(py.add("Palette: ", py.M.join("; ", (function* ($t61) { for (const $t62 of py.iter($t61)) { let key, value; const $t63 = py.unpack($t62, 2); key = $t63[0]; value = $t63[1]; yield (py.format(key) + " " + py.format(value)); } })(py.M.items(py.getitem(style, "palette"))))), "."), "Purpose controls abstraction, composition, symbols and typography; this palette is only a secondary appearance choice.", ...py.iter(py.getitem(profile, "rules")), "Use one neutral sans-serif family, consistently aligned text and crisp edges. Keep a legible hierarchy at the intended document or slide width; split scope rather than shrinking labels.", "No invented hardware, connections, parameters, performance claims or source labels. A crossing without a dot is not a connection. Optional prose stays in the caption."];
-    if (py.contains(py.S("algorithm", "fsm", "timing", "pipeline"), py.getitem(settings, "category"))) {
+    if (py.contains(py.SC("algorithm", "fsm", "timing", "pipeline"), py.getitem(settings, "category"))) {
       py.M.append(lines, "CATEGORY ADAPTATION: Preserve this source's behavioral notation and shared time/order semantics. Do not draw a hero chip or hardware enclosure around states, equations, procedural steps or signal lanes.");
     }
     if (py.contains(py.S("fsm", "algorithm"), py.getitem(settings, "category"))) {
@@ -832,7 +832,7 @@ export function compile_result(spec, settings, description = "", feedback = "", 
     py.setitem(f, "generation_canvas", py.getitem(composed, "canvas"));
   }
   selected = py.next((function* ($t160) { for (const $t161 of py.iter($t160)) { let f; f = $t161; if (!(py.eq(py.getitem(f, "id"), figure_id))) continue; yield f; } })(figures), py.next((function* ($t162) { for (const $t163 of py.iter($t162)) { let f; f = $t163; if (!(py.bool(py.M.get(f, "primary")))) continue; yield f; } })(figures)));
-  keys = py.S("id", "kind", "abstract", "title", "summary", "node_ids", "edge_indices", "context_nodes", "node_count", "edge_count", "view_role", "view_type", "main_group", "primary", "technical_annex", "design_contract", "diagram_design", "visual_contract", "figure_strategy", "layout_strategy", "source_edge_indices", "representation", "render_contract", "requires_composition_guide", "composition_guide_optional");
+  keys = py.SC("id", "kind", "abstract", "title", "summary", "node_ids", "edge_indices", "context_nodes", "node_count", "edge_count", "view_role", "view_type", "main_group", "primary", "technical_annex", "design_contract", "diagram_design", "visual_contract", "figure_strategy", "layout_strategy", "source_edge_indices", "representation", "render_contract", "requires_composition_guide", "composition_guide_optional");
   public_plan = py.dict({spread: plan}, ["figures", (($t164) => { const $t166 = []; for (const $t165 of py.iter($t164)) { let f; f = $t165; $t166.push((($t167) => { const $t170 = py.dict(); for (const $t168 of py.iter($t167)) { let k, v; const $t169 = py.unpack($t168, 2); k = $t169[0]; v = $t169[1]; if (!(py.contains(keys, k))) continue; $t170.set(k, v); } return $t170; })(py.M.items(f))); } return $t166; })(figures)]);
   py.M.update(result, py.KW({"version": 3, "prompt": py.getitem(py.getitem(figures, 0), "prompt"), "edit_prompt": py.getitem(selected, "edit_prompt"), "figures": figures, "render_plan": public_plan, "selected_figure_id": py.getitem(selected, "id"), "reading_plan": py.getitem(plan, "reading_plan"), "figure_strategy": py.getitem(selected, "figure_strategy"), "visual_contract": py.getitem(selected, "visual_contract"), "source_hash": reading_plan.source_hash(spec)}));
   for (const $t171 of py.iter(figures)) {
@@ -903,7 +903,7 @@ export function finish_request(data, context) {
   if (py.eq(requested_category, "auto")) {
     context = py.dict({spread: context}, ["settings", py.dict({spread: py.getitem(context, "settings")}, ["category", py.getitem(spec, "category")])]);
   }
-  if ((py.contains(py.S("architecture", "microarchitecture", "dataflow", "memory"), py.getitem(spec, "category")) && !((py.bool(py.getitem(context, "feedback")) && py.bool(py.getitem(context, "lock_structure")))))) {
+  if ((py.contains(py.SC("architecture", "microarchitecture", "dataflow", "memory"), py.getitem(spec, "category")) && !((py.bool(py.getitem(context, "feedback")) && py.bool(py.getitem(context, "lock_structure")))))) {
     for (const $t193 of py.iter(py.getitem(spec, "groups"))) {
       group = $t193;
       members = (($t194) => { const $t196 = []; for (const $t195 of py.iter($t194)) { let n; n = $t195; if (!(py.eq(py.getitem(n, "group"), py.getitem(group, "id")))) continue; $t196.push(n); } return $t196; })(py.getitem(spec, "nodes"));

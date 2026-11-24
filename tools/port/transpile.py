@@ -15,6 +15,8 @@ stops it with the file and line, rather than guessing.
 from __future__ import annotations
 
 import ast
+import re
+import math
 import json
 import sys
 from pathlib import Path
@@ -80,8 +82,25 @@ BINOPS = {
     ast.Mod: "mod", ast.Pow: "pow", ast.BitAnd: "bitand", ast.BitOr: "bitor", ast.BitXor: "bitxor",
     ast.LShift: "lshift", ast.RShift: "rshift",
 }
-AUGOPS = {**BINOPS, ast.Add: "iadd", ast.Sub: "isub", ast.Mult: "imul", ast.BitOr: "ior", ast.BitAnd: "iand"}
+AUGOPS = {**BINOPS, ast.Add: "iadd", ast.Sub: "isub", ast.Mult: "imul", ast.BitOr: "ior", ast.BitAnd: "iand", ast.BitXor: "ixor"}
 CMPOPS = {ast.Eq: "eq", ast.NotEq: "ne", ast.Lt: "lt", ast.LtE: "le", ast.Gt: "gt", ast.GtE: "ge"}
+
+
+FOLDABLE_BINOPS = (ast.Add, ast.Sub, ast.Mult, ast.Div, ast.FloorDiv, ast.Mod, ast.Pow, ast.LShift, ast.RShift,
+                   ast.BitAnd, ast.BitOr, ast.BitXor)
+
+
+def folds_to_constant(e) -> bool:
+    """Whether CPython's optimizer turns the expression into a constant (numbers, strings, tuples of those)."""
+    if isinstance(e, ast.Constant):
+        return True
+    if isinstance(e, ast.UnaryOp) and isinstance(e.op, (ast.USub, ast.UAdd, ast.Invert)):
+        return folds_to_constant(e.operand)
+    if isinstance(e, ast.BinOp) and isinstance(e.op, FOLDABLE_BINOPS):
+        return folds_to_constant(e.left) and folds_to_constant(e.right)
+    if isinstance(e, ast.Tuple):
+        return all(folds_to_constant(x) for x in e.elts)
+    return False
 
 
 class Unsupported(Exception):
@@ -746,14 +765,16 @@ class Transpiler:
                 raise Unsupported(f"{self.module}: integer literal {v} exceeds 2^53")
             return str(v)
         if isinstance(v, float):
-            if v == int(v) and abs(v) < 2 ** 53:
-                name = "$F" + str(int(v)).replace("-", "m")
-                self.float_consts[name] = str(int(v))
-                return name
             if v != v:
                 return "NaN"
             if v in (float("inf"), float("-inf")):
                 return "Infinity" if v > 0 else "-Infinity"
+            if v == int(v):
+                # an integral float literal must stay a float (repr 1.0, 1e+16, -0.0): a PyFloat constant
+                text = "-0" if math.copysign(1, v) < 0 and v == 0 else repr(v)
+                name = "$F" + re.sub(r"[^0-9A-Za-z]", lambda m: {"-": "m", "+": "p", ".": "_"}[m.group(0)], text)
+                self.float_consts[name] = text
+                return name
             return repr(v)
         if isinstance(v, str):
             return js_str(v)
@@ -787,7 +808,11 @@ class Transpiler:
         if isinstance(e, ast.Set):
             if any(isinstance(x, ast.Starred) for x in e.elts):
                 return "py.set([" + ", ".join(self.elt(x, scope) for x in e.elts) + "])"
-            return "py.S(" + ", ".join(self.expr(x, scope) for x in e.elts) + ")"
+            # CPython turns a display of 3+ constants into BUILD_SET 0 + a frozenset constant + SET_UPDATE:
+            # the set is merged from the frozenset's table, which lays it out differently from adding
+            # the items one by one. py.SC takes that path.
+            fn = "py.SC" if len(e.elts) >= 3 and all(folds_to_constant(x) for x in e.elts) else "py.S"
+            return fn + "(" + ", ".join(self.expr(x, scope) for x in e.elts) + ")"
         if isinstance(e, ast.Dict):
             parts = []
             for k, v in zip(e.keys, e.values):

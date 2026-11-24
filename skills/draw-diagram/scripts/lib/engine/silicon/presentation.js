@@ -237,7 +237,7 @@ export function _inside_scope(group_id, scope_id, groups) {
 _positions = (($t76) => py.sig(function _positions(ids, edges, nodes, category, context = $t76) {
   let columns, indegree, adjacency, edge, s, t, ordered, ready, src, dst, ranks, positions, degrees, shared, hub, peers;
   columns = py.min(4, py.max(1, math.ceil(math.sqrt(py.len(ids)))));
-  if (py.contains(py.S("dataflow", "pipeline", "algorithm"), category)) {
+  if (py.contains(py.SC("dataflow", "pipeline", "algorithm"), category)) {
     indegree = (($t77) => { const $t79 = py.dict(); for (const $t78 of py.iter($t77)) { let i; i = $t78; $t79.set(i, 0); } return $t79; })(ids);
     adjacency = py.defaultdict(py.set);
     for (const $t80 of py.iter(edges)) {
@@ -271,7 +271,7 @@ _positions = (($t76) => py.sig(function _positions(ids, edges, nodes, category, 
     ordered = py.sorted(ids, py.KW({"key": ((i) => py.T(py.M.get(ranks, py.getitem(py.getitem(nodes, i), "kind"), 1), _key(py.getitem(nodes, i))))}));
   }
   positions = (($t86) => { const $t89 = py.dict(); for (const $t87 of py.iter($t86)) { let pos, nid; const $t88 = py.unpack($t87, 2); pos = $t88[0]; nid = $t88[1]; $t89.set(nid, py.dict(["row", py.add(py.floordiv(pos, columns), 1)], ["column", py.add(py.mod(pos, columns), 1)])); } return $t89; })(py.enumerate(ordered));
-  if (py.contains(py.S("architecture", "microarchitecture", "memory"), category)) {
+  if (py.contains(py.SC("architecture", "microarchitecture", "memory"), category)) {
     degrees = py.counter((function* ($t90) { for (const $t91 of py.iter($t90)) { let edge; edge = $t91; for (const $t92 of py.iter(py.T(py.getitem(edge, "source"), py.getitem(edge, "target")))) { let x; x = $t92; yield x; } } })(edges));
     shared = py.sorted((function* ($t93) { for (const $t94 of py.iter($t93)) { let nid; nid = $t94; if (!((py.eq(py.getitem(py.getitem(nodes, nid), "kind"), "memory") && py.ge(py.getitem(degrees, nid), 6)))) continue; yield nid; } })(ids), py.KW({"key": ((nid) => py.T(py.neg(py.getitem(degrees, nid)), _key(py.getitem(nodes, nid))))}));
     if (py.bool(shared)) {
@@ -289,7 +289,7 @@ _flow_positions = (($t102) => py.sig(function _flow_positions(ids, edges, nodes,
   forward = py.defaultdict(py.set);
   for (const $t103 of py.iter(edges)) {
     e = $t103;
-    if ((py.contains(py.S("data", "relation", "control"), py.getitem(e, "kind")) && py.ne(py.getitem(e, "source"), py.getitem(e, "target")))) {
+    if ((py.contains(py.SC("data", "relation", "control"), py.getitem(e, "kind")) && py.ne(py.getitem(e, "source"), py.getitem(e, "target")))) {
       py.M.add(py.getitem(forward, py.getitem(e, "source")), py.getitem(e, "target"));
     }
   }
@@ -465,7 +465,7 @@ export function _closed_private_views(spec, figures, limit, edge_limit, language
     group = $t175;
     gid = py.getitem(group, "id");
     direct = (($t176) => { const $t178 = []; for (const $t177 of py.iter($t176)) { let n; n = $t177; if (!(py.eq(py.getitem(n, "group"), gid))) continue; $t178.push(n); } return $t178; })(py.getitem(spec, "nodes"));
-    if ((py.lt(py.len(direct), 4) || !(py.le(py.S("control", "compute", "memory"), (($t179) => { const $t181 = py.set(); for (const $t180 of py.iter($t179)) { let n; n = $t180; $t181.add(py.getitem(n, "kind")); } return $t181; })(direct))))) {
+    if ((py.lt(py.len(direct), 4) || !(py.le(py.SC("control", "compute", "memory"), (($t179) => { const $t181 = py.set(); for (const $t180 of py.iter($t179)) { let n; n = $t180; $t181.add(py.getitem(n, "kind")); } return $t181; })(direct))))) {
       continue;
     }
     if ((py.bool(re.search("shared|共享", py.getitem(group, "label"), re.I)) && !(py.bool(re.search("private|私有", py.getitem(group, "label"), re.I))))) {
@@ -480,7 +480,7 @@ export function _closed_private_views(spec, figures, limit, edge_limit, language
     phases = [];
     for (const $t192 of py.iter(["control", "datapath"])) {
       phase = $t192;
-      indices = (($t193) => { const $t195 = []; for (const $t194 of py.iter($t193)) { let i; i = $t194; if (!(py.eq(py.contains(py.S("control", "feedback", "clock"), py.getitem(py.getitem(py.getitem(spec, "edges"), i), "kind")), py.eq(phase, "control")))) continue; $t195.push(i); } return $t195; })(incident);
+      indices = (($t193) => { const $t195 = []; for (const $t194 of py.iter($t193)) { let i; i = $t194; if (!(py.eq(py.contains(py.SC("control", "feedback", "clock"), py.getitem(py.getitem(py.getitem(spec, "edges"), i), "kind")), py.eq(phase, "control")))) continue; $t195.push(i); } return $t195; })(incident);
       if (!(py.bool(indices))) {
         continue;
       }
@@ -550,8 +550,8 @@ export function build_plan(spec, density = "medium", language = "en") {
     fig = py.dict(["id", "overview"], ["kind", "overview"], ["abstract", false], ["title", py.getitem(spec, "title")], ["summary", "完整结构在一张图内呈现。"], ["node_ids", py.sorted(nodes, py.KW({"key": ((i) => _key(py.getitem(nodes, i)))}))], ["edge_indices", py.list(py.range(py.len(edges)))], ["context_nodes", []]);
     figures = [fig];
     data_indices = (($t229) => { const $t232 = []; for (const $t230 of py.iter($t229)) { let i, e; const $t231 = py.unpack($t230, 2); i = $t231[0]; e = $t231[1]; if (!(py.contains(py.S("data", "relation"), py.getitem(e, "kind")))) continue; $t232.push(i); } return $t232; })(py.enumerate(edges));
-    control_indices = (($t233) => { const $t236 = []; for (const $t234 of py.iter($t233)) { let i, e; const $t235 = py.unpack($t234, 2); i = $t235[0]; e = $t235[1]; if (!(py.contains(py.S("control", "feedback", "clock"), py.getitem(e, "kind")))) continue; $t236.push(i); } return $t236; })(py.enumerate(edges));
-    if ((py.contains(py.S("microarchitecture", "dataflow", "pipeline"), py.getitem(spec, "category")) && py.ge(py.len(data_indices), 8) && py.ge(py.len(control_indices), 5))) {
+    control_indices = (($t233) => { const $t236 = []; for (const $t234 of py.iter($t233)) { let i, e; const $t235 = py.unpack($t234, 2); i = $t235[0]; e = $t235[1]; if (!(py.contains(py.SC("control", "feedback", "clock"), py.getitem(e, "kind")))) continue; $t236.push(i); } return $t236; })(py.enumerate(edges));
+    if ((py.contains(py.SC("microarchitecture", "dataflow", "pipeline"), py.getitem(spec, "category")) && py.ge(py.len(data_indices), 8) && py.ge(py.len(control_indices), 5))) {
       figures = [];
       used = (($t237) => { const $t240 = py.set(); for (const $t238 of py.iter($t237)) { let e; e = $t238; for (const $t239 of py.iter(py.T(py.getitem(e, "source"), py.getitem(e, "target")))) { let x; x = $t239; $t240.add(x); } } return $t240; })(edges);
       isolated = py.sub(py.set(nodes), used);
@@ -669,7 +669,7 @@ export function build_plan(spec, density = "medium", language = "en") {
       }
       priority = py.dict(["data", 0], ["relation", 1], ["control", 2], ["feedback", 3], ["clock", 4]);
       abstract_edges = (($t302) => { const $t306 = []; for (const $t303 of py.iter($t302)) { let s, t, kind, indices; const $t304 = py.unpack($t303, 2); const $t305 = py.unpack($t304[0], 3); s = $t305[0]; t = $t305[1]; kind = $t305[2]; indices = $t304[1]; $t306.push(py.dict(["source", s], ["target", t], ["kind", kind], ["label", ""], ["members", indices])); } return $t306; })(py.slice(py.sorted(py.M.items(aggregated), py.KW({"key": ((entry) => py.T(py.getitem(priority, py.getitem(py.getitem(entry, 0), 2)), py.getitem(py.getitem(entry, 0), 0), py.getitem(py.getitem(entry, 0), 1)))})), null, edge_limit));
-      structural = py.contains(py.S("architecture", "microarchitecture", "memory"), py.getitem(spec, "category"));
+      structural = py.contains(py.SC("architecture", "microarchitecture", "memory"), py.getitem(spec, "category"));
       hub_candidates = (($t307) => { const $t309 = []; for (const $t308 of py.iter($t307)) { let n; n = $t308; if (!((py.contains(py.S("memory", "io"), py.getitem(n, "kind")) && py.eq(py.len(py.getitem(n, "members")), 1) && py.ge(py.getitem(degree, py.getitem(py.getitem(n, "members"), 0)), 6)))) continue; $t309.push(n); } return $t309; })(macro_nodes);
       focal_hub = (py.bool(hub_candidates) ? py.getitem(py.max(hub_candidates, py.KW({"key": ((n) => py.getitem(degree, py.getitem(py.getitem(n, "members"), 0)))})), "id") : "");
       overview_links = (py.bool(focal_hub) ? _paired_links((($t310) => { const $t312 = []; for (const $t311 of py.iter($t310)) { let e; e = $t311; if (!((py.contains(py.T(py.getitem(e, "source"), py.getitem(e, "target")), focal_hub) && py.eq(py.getitem(e, "kind"), "data")))) continue; $t312.push(e); } return $t312; })(abstract_edges)) : _paired_links(abstract_edges));
@@ -718,7 +718,7 @@ export function build_plan(spec, density = "medium", language = "en") {
     fig = $t325;
     visible = (py.bool(py.getitem(fig, "abstract")) ? (($t326) => { const $t328 = py.dict(); for (const $t327 of py.iter($t326)) { let n; n = $t327; $t328.set(py.getitem(n, "id"), n); } return $t328; })(py.M.get(fig, "macro_nodes", [])) : (($t329) => { const $t331 = py.dict(); for (const $t330 of py.iter($t329)) { let nid; nid = $t330; $t331.set(nid, py.getitem(nodes, nid)); } return $t331; })(py.getitem(fig, "node_ids")));
     links = (py.bool(py.getitem(fig, "abstract")) ? py.M.get(fig, "macro_edges", []) : (($t332) => { const $t334 = []; for (const $t333 of py.iter($t332)) { let i; i = $t333; $t334.push(py.getitem(edges, i)); } return $t334; })(py.getitem(fig, "edge_indices")));
-    if (((!(py.bool(py.getitem(fig, "abstract"))) || py.eq(py.getitem(spec, "category"), "dataflow")) && py.contains(py.S("architecture", "dataflow", "pipeline", "microarchitecture", "algorithm"), py.getitem(spec, "category")) && py.bool(links))) {
+    if (((!(py.bool(py.getitem(fig, "abstract"))) || py.eq(py.getitem(spec, "category"), "dataflow")) && py.contains(py.SC("architecture", "dataflow", "pipeline", "microarchitecture", "algorithm"), py.getitem(spec, "category")) && py.bool(links))) {
       const $t335 = py.unpack(_flow_positions(py.list(visible), links, visible, py.getitem(fig, "context_nodes")), 2);
       py.setitem(fig, "positions", $t335[0]);
       returns = $t335[1];
@@ -883,7 +883,7 @@ export function compile_structure_figure(fig, spec, settings, style_prompt, requ
     i = $t419[0];
     e = $t419[1];
     arrow = (py.bool(py.M.get(e, "bidirectional")) ? "<->" : "->");
-    treatment = (py.contains(py.S("control", "clock", "feedback"), py.getitem(e, "kind")) ? "fine dashed control" : "narrow solid data");
+    treatment = (py.contains(py.SC("control", "clock", "feedback"), py.getitem(e, "kind")) ? "fine dashed control" : "narrow solid data");
     full_label = py.M.get(e, "label", "");
     deferred = (($t422) => !py.bool($t422) ? $t422 : (($t421) => !py.bool($t421) ? $t421 : (($t420) => !py.bool($t420) ? $t420 : py.notIn(required_labels, full_label))(py.notIn(visible_edge_labels, full_label)))(full_label))((visible_edge_labels != null));
     py.M.append(lines, py.add(py.add(("R" + py.format(i) + ": " + py.format(py.getitem(e, "source")) + " " + py.format(arrow) + " " + py.format(py.getitem(e, "target")) + "; " + py.format(treatment) + "; "), (py.bool(deferred) ? py.add(py.add("no edge text; full meaning ", quote(full_label)), " belongs in caption") : (py.bool(full_label) ? py.add("label ", quote(full_label)) : "no edge text"))), "."));
@@ -1023,7 +1023,7 @@ export function compile_figure(fig, spec, settings, style_prompt, category_rules
     }
   }
   if (!(py.bool(py.getitem(fig, "abstract")))) {
-    if ((py.eq(py.len(py.getitem(spec, "nodes")), py.len(visible)) || py.contains(py.S("fsm", "algorithm", "timing", "pipeline"), py.getitem(spec, "category")))) {
+    if ((py.eq(py.len(py.getitem(spec, "nodes")), py.len(visible)) || py.contains(py.SC("fsm", "algorithm", "timing", "pipeline"), py.getitem(spec, "category")))) {
       if (py.bool(py.getitem(spec, "steps"))) {
         lines = py.iadd(lines, ["EXACT BEHAVIOR / CYCLES / OPERATIONS:", ...py.iter(py.getitem(spec, "steps"))]);
       }

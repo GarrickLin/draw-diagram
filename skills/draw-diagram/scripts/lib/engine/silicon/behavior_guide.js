@@ -72,7 +72,7 @@ export function _traces(spec) {
         return null;
       }
       axis = candidate;
-      py.M.append(rows, py.dict(["id", py.getitem(node, "id")], ["label", py.getitem(node, "label")], ["values", values], ["source_field", "nodes.detail"], ["source_text", py.M.group(match, 0)], ["kind", (py.le(py.set(values), py.S("0", "1", "x", "X", "z", "Z")) ? "binary" : "bus")]));
+      py.M.append(rows, py.dict(["id", py.getitem(node, "id")], ["label", py.getitem(node, "label")], ["values", values], ["source_field", "nodes.detail"], ["source_text", py.M.group(match, 0)], ["kind", (py.le(py.set(values), py.SC("0", "1", "x", "X", "z", "Z")) ? "binary" : "bus")]));
     } else if (py.bool(re.search("rising\\s+(?:sampling\\s+)?edges|上升.*采样|采样.*上升", py.M.get(node, "detail", ""), re.I))) {
       py.M.append(rows, py.dict(["id", py.getitem(node, "id")], ["label", py.getitem(node, "label")], ["kind", "sample-markers"], ["values", []], ["source_field", "nodes.detail"], ["source_text", py.getitem(node, "detail")]));
     } else {

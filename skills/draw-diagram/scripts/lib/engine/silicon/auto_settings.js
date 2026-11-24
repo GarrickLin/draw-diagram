@@ -64,7 +64,7 @@ export function saved_record(value, choices) {
   }
   selection = validate_selection(py.M.get(value, "selected"), fields, choices);
   method = py.M.get(value, "method");
-  if (py.notIn(py.S("semantic-response", "saved-selection", "compatibility-defaults"), method)) {
+  if (py.notIn(py.SC("semantic-response", "saved-selection", "compatibility-defaults"), method)) {
     throw new py.ValueError("automatic_visual_settings.method 无效。");
   }
   return py.dict(["requested", (($t18) => { const $t20 = py.dict(); for (const $t19 of py.iter($t18)) { let key; key = $t19; $t20.set(key, "auto"); } return $t20; })(fields)], ["selected", selection], ["method", method]);

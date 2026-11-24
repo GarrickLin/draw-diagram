@@ -92,7 +92,7 @@ export function _projection(text, feedback = "") {
             const $t14 = py.unpack(py.T("dimensional", false), 2);
             result = $t14[0];
             frontal = $t14[1];
-          } else if ((py.bool(excluded) && py.notIn(py.S("isometric", "等距", "轴测"), py.M.casefold(py.M.group(match))))) {
+          } else if ((py.bool(excluded) && py.notIn(py.SC("isometric", "等距", "轴测"), py.M.casefold(py.M.group(match))))) {
             const $t15 = py.unpack(py.T("flat_2d", false), 2);
             result = $t15[0];
             frontal = $t15[1];
@@ -192,7 +192,7 @@ export function _art_direction(text, representation, settings, palette, required
 export function _explanation_mode(text, feedback, settings, subject_kind, spec) {
   let requested, modes, functional_pattern, select, revision, _, excluded_cutaway, selected;
   requested = py.M.get(settings, "explanatory_mode", "auto");
-  modes = py.S("hero", "annotated_context", "functional_cutaway", "assembly");
+  modes = py.SC("hero", "annotated_context", "functional_cutaway", "assembly");
   if (py.contains(modes, requested)) {
     return py.T(requested, "The user selected this explanatory treatment.");
   }
@@ -367,7 +367,7 @@ export function _visible_semantics(spec, mode, required_labels, no_text, control
     if ((py.contains(py.S("clock", "control"), py.getitem(edge, "kind")) && !(py.bool(control_detail)))) {
       continue;
     }
-    directionality = (py.contains(py.S("data", "control", "feedback", "clock"), py.getitem(edge, "kind")) ? "source-directed" : "association");
+    directionality = (py.contains(py.SC("data", "control", "feedback", "clock"), py.getitem(edge, "kind")) ? "source-directed" : "association");
     key = py.T(start, end, directionality);
     if (py.notIn(relationship_map, key)) {
       py.setitem(relationship_map, key, py.dict(["source", start], ["target", end], ["source_label", py.next((function* ($t90) { for (const $t91 of py.iter($t90)) { let item; item = $t91; if (!(py.eq(py.getitem(item, "id"), start))) continue; yield py.getitem(item, "label"); } })(py.add(selected, context)), py.getitem(py.getitem(nodes, py.getitem(edge, "source")), "label"))], ["target_label", py.next((function* ($t92) { for (const $t93 of py.iter($t92)) { let item; item = $t93; if (!(py.eq(py.getitem(item, "id"), end))) continue; yield py.getitem(item, "label"); } })(py.add(selected, context)), py.getitem(py.getitem(nodes, py.getitem(edge, "target")), "label"))], ["labels", []], ["kinds", []], ["source_edge_indices", []], ["source_node_pairs", []], ["origin", py.M.get(edge, "origin", "given")], ["directionality", directionality]));
@@ -476,7 +476,7 @@ build = (($t116) => py.sig(function build(spec, figure, settings, description = 
   py.setitem(art_direction, "lighting", py.getitem(shot, "lighting"));
   py.setitem(art_direction, "palette_policy", py.getitem(shot, "color"));
   py.setitem(py.getitem(art_direction, "labels"), "policy", py.add(py.getitem(shot, "typography"), " Required text is exact and legible, with strong contrast against the actual surface."));
-  if (py.notIn(py.S("assembled_section", "logical_function_plane", "exploded_assembly"), py.getitem(composition, "geometry"))) {
+  if (py.notIn(py.SC("assembled_section", "logical_function_plane", "exploded_assembly"), py.getitem(composition, "geometry"))) {
     py.setitem(art_direction, "composition", py.getitem(shot, "composition"));
   }
   py.setitem(art_direction, "shot_profile", shot);
@@ -510,7 +510,7 @@ build = (($t116) => py.sig(function build(spec, figure, settings, description = 
   frontal = $t167[1];
   _apply_projection(art_direction, composition, projection, frontal, settings);
   if (py.eq(projection, "flat_2d")) {
-    subject_instruction = (py.contains(py.S("assembled_section", "coherent_assembly", "exploded_assembly"), py.getitem(composition, "geometry")) ? "the complete source-described assembly as a flat explanatory drawing, preserving its supplied parts, layer order and membership" : "the complete selected source subject as a flat explanatory illustration; show logical ownership and selected relationships without a three-dimensional package or measured physical floorplan");
+    subject_instruction = (py.contains(py.SC("assembled_section", "coherent_assembly", "exploded_assembly"), py.getitem(composition, "geometry")) ? "the complete source-described assembly as a flat explanatory drawing, preserving its supplied parts, layer order and membership" : "the complete selected source subject as a flat explanatory illustration; show logical ownership and selected relationships without a three-dimensional package or measured physical floorplan");
     py.setitem(visible, "primary_subject", subject_instruction);
   }
   questions = py.dict(["hero", "What is the product's visual identity?"], ["annotated_context", "What does the complete product do, and how does it connect to its environment?"], ["functional_cutaway", "How are the product's main functions organized, and what connects them?"], ["assembly", "How do the system's objects, shared resources and interfaces work together?"]);
@@ -548,7 +548,7 @@ export function _prompt(brief, spec) {
   }
   if (py.eq(mode, "hero")) {
     plan = py.getitem(py.getitem(brief, "subject"), "plan");
-    object_ids = (py.contains(py.S("rack", "server", "system"), py.getitem(plan, "scale")) ? py.list(nodes) : py.getitem(plan, "source_physical_part_ids"));
+    object_ids = (py.contains(py.SC("rack", "server", "system"), py.getitem(plan, "scale")) ? py.list(nodes) : py.getitem(plan, "source_physical_part_ids"));
     if (py.bool(object_ids)) {
       physical = (($t186) => { const $t188 = []; for (const $t187 of py.iter($t186)) { let node_id; node_id = $t187; $t188.push(py.getitem(py.getitem(nodes, node_id), "label")); } return $t188; })(object_ids);
       py.M.append(lines, py.add(py.add("Source-specified objects, including on an unlabelled hero: ", json.dumps(physical, py.KW({"ensure_ascii": false}))), ". These are object identities and counts, not requested printed labels. Keep their supplied membership and assembly state; do not add or duplicate parts for visual richness. Internal resources may remain inside an explicitly intact enclosure; independent system devices remain distinct."));
@@ -574,7 +574,7 @@ export function _prompt(brief, spec) {
         }
       }
     }
-    if (py.contains(py.S("rack", "server", "system"), py.getitem(py.getitem(py.getitem(brief, "subject"), "plan"), "scale"))) {
+    if (py.contains(py.SC("rack", "server", "system"), py.getitem(py.getitem(py.getitem(brief, "subject"), "plan"), "scale"))) {
       py.M.append(lines, "Do not collapse the system into a single chip, convert device roles into package parts, or duplicate the inventory in peripheral bullet lists. A system device's exact exterior is illustrative unless supplied; keep its source identity and selected connections readable.");
     } else {
       py.M.append(lines, "Keep the supplied parts within their actual source assembly and preserve their membership. Do not invent additional packages, duplicate the assembly, or repeat its inventory in peripheral bullet lists.");

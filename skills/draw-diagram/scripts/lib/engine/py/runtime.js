@@ -16,6 +16,7 @@
 // integral value, so str(), repr(), format() and json.dumps() print what Python prints.
 
 import { PySet, pyhash, setEquality } from "./pyset.js";
+import { TITLECASE } from "./titlecase.js";
 export { PySet, pyhash };
 
 // ─── Numbers ─────────────────────────────────────────────────────
@@ -267,7 +268,22 @@ export class Counter extends PyDict {
     const items = sorted(new DictView(this, "items"), KW({ key: (it) => it[1], reverse: true }));
     return n === null ? items : items.slice(0, Math.max(0, nv(n)));
   }
+  elements() {
+    const out = [];
+    for (const [k, v] of this.map.values()) for (let i = 0; i < nv(v); i++) out.push(k);
+    return out;
+  }
+  total() {
+    return sum([...this.values()]);
+  }
+  /** Counter.update: a mapping adds its counts, any other iterable counts its elements. */
+  addCounts(other, sign = 1) {
+    if (other instanceof PyDict) for (const [k, v] of other.entries()) this.set(k, add(this.get(k, 0), sign === 1 ? v : neg(v)));
+    else for (const k of iter(other)) this.set(k, add(this.get(k, 0), sign));
+  }
 }
+// Counter methods reached through py.M (callOwn skips other dict internals)
+const COUNTER_METHODS = new Set(["most_common", "elements", "total"]);
 
 /** dict.keys() / values() / items(): re-iterable, sized views as in Python. */
 export class DictView {
@@ -329,6 +345,10 @@ export function frozenset(items = null) {
 /** Set literal {a, b}: BUILD_SET adds the items in order. */
 export function S(...items) {
   return new PySet(items);
+}
+/** A set display of 3+ constants: built as CPython runs it, a frozenset constant merged into set(). */
+export function SC(...items) {
+  return new PySet(new PySet(items, true));
 }
 
 export class Deque {
@@ -528,13 +548,9 @@ export function eq(a, b) {
     }
     return true;
   }
-  if (a instanceof PySet) {
-    if (!(b instanceof PySet) || a.size !== b.size) return false;
-    for (const x of a) if (!b.has(x)) return false;
-    return true;
-  }
+  // sets, frozensets and keys/items views compare as sets (dictview_richcompare for the views)
+  if (setLike(a) && setLike(b)) return sizeOf(a) === sizeOf(b) && containedIn(a, b);
   if (a instanceof Range && b instanceof Range) return eq(list(a), list(b));
-  if (a instanceof DictView && b instanceof DictView && a.kind !== "values") return eq(new PySet(a), new PySet(b));
   return false;
 }
 export function ne(a, b) {
@@ -680,7 +696,8 @@ export function sub(a, b) {
   return bothInt(a, b) ? nv(a) - nv(b) : fl(nv(a) - nv(b));
 }
 export function mul(a, b) {
-  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return a * b;
+  // + 0: Python ints have no -0 (JS gives 0 * -5 === -0)
+  if (typeof a === "number" && typeof b === "number" && Number.isInteger(a) && Number.isInteger(b)) return a * b + 0;
   if (typeof a === "string" && isIntLike(b)) return nv(b) > 0 ? a.repeat(nv(b)) : "";
   if (typeof b === "string" && isIntLike(a)) return mul(b, a);
   if (Array.isArray(a) && isIntLike(b)) {
@@ -690,7 +707,7 @@ export function mul(a, b) {
   }
   if (Array.isArray(b) && isIntLike(a)) return mul(b, a);
   numOp(a, b, "*");
-  return bothInt(a, b) ? nv(a) * nv(b) : fl(nv(a) * nv(b));
+  return bothInt(a, b) ? nv(a) * nv(b) + 0 : fl(nv(a) * nv(b));
 }
 export function truediv(a, b) {
   if (a && typeof a.__truediv__ === "function") return a.__truediv__(b);
@@ -698,32 +715,35 @@ export function truediv(a, b) {
   if (nv(b) === 0) throw new ZeroDivisionError(bothInt(a, b) ? "division by zero" : "float division by zero");
   return fl(nv(a) / nv(b));
 }
-function pyFmod(a, b) {
-  let m = a % b;
-  if (m) {
-    if (b < 0 !== m < 0) m += b;
-  } else {
-    m = b < 0 ? -0 : 0;
-  }
-  return m;
-}
 export function floordiv(a, b) {
   numOp(a, b, "//");
   const x = nv(a);
   const y = nv(b);
   if (y === 0) throw new ZeroDivisionError(bothInt(a, b) ? "integer division or modulo by zero" : "float floor division by zero");
-  if (bothInt(a, b)) return Math.floor(x / y);
-  // float_floor_div
-  const m = pyFmod(x, y);
-  const div = (x - m) / y;
-  let r;
-  if (div) {
-    r = Math.floor(div);
-    if (div - r > 0.5) r += 1;
+  if (bothInt(a, b)) return Math.floor(x / y) + 0;
+  return fl(floatDivMod(x, y)[0]);
+}
+const copysign0 = (v) => (v < 0 || Object.is(v, -0) ? -0 : 0);
+/** _float_div_mod (Objects/floatobject.c): [floordiv, mod] of two floats. */
+function floatDivMod(vx, wx) {
+  let mod = vx % wx; // fmod
+  let div = (vx - mod) / wx;
+  if (mod) {
+    if (wx < 0 !== mod < 0) {
+      mod += wx;
+      div -= 1.0;
+    }
   } else {
-    r = (x / y < 0 ? -1 : 1) * 0;
+    mod = copysign0(wx);
   }
-  return fl(r);
+  let floordiv;
+  if (div) {
+    floordiv = Math.floor(div);
+    if (div - floordiv > 0.5) floordiv += 1.0;
+  } else {
+    floordiv = copysign0(vx / wx);
+  }
+  return [floordiv, mod];
 }
 export function mod(a, b) {
   if (typeof a === "string") throw new NotImplementedError("printf-style formatting is not supported");
@@ -733,9 +753,9 @@ export function mod(a, b) {
   if (y === 0) throw new ZeroDivisionError(bothInt(a, b) ? "integer modulo by zero" : "float modulo by zero");
   if (bothInt(a, b)) {
     const r = x % y;
-    return r !== 0 && r < 0 !== y < 0 ? r + y : r;
+    return (r !== 0 && r < 0 !== y < 0 ? r + y : r) + 0;
   }
-  return fl(pyFmod(x, y));
+  return fl(floatDivMod(x, y)[1]);
 }
 export function pow(a, b) {
   numOp(a, b, "**");
@@ -743,9 +763,9 @@ export function pow(a, b) {
   return fl(nv(a) ** nv(b));
 }
 export function neg(a) {
-  if (typeof a === "number") return -a;
+  if (typeof a === "number") return Number.isInteger(a) ? 0 - a : -a; // an int: no -0
   if (a instanceof PyFloat) return fl(-a.v);
-  if (typeof a === "boolean") return -nv(a);
+  if (typeof a === "boolean") return 0 - nv(a);
   throw new TypeError_(`bad operand type for unary -: '${typeName(a)}'`);
 }
 export function pos(a) {
@@ -789,6 +809,8 @@ export function bitor(a, b) {
   return nv(a) | nv(b);
 }
 export function bitxor(a, b) {
+  // the set itself, not a copy: its table order decides the result's
+  if (setLike(a) && setLike(b)) return (a instanceof PySet ? a : viewToSet(a)).symmetric_difference(b);
   if (typeof a === "boolean" && typeof b === "boolean") return a !== b;
   return nv(a) ^ nv(b);
 }
@@ -824,6 +846,13 @@ export function ior(a, b) {
     return a;
   }
   return bitor(a, b);
+}
+export function ixor(a, b) {
+  if (a instanceof PySet && setLike(b)) {
+    a.symmetric_difference_update(b);
+    return a;
+  }
+  return bitxor(a, b);
 }
 export function iand(a, b) {
   if (a instanceof PySet && b instanceof PySet) {
@@ -868,6 +897,7 @@ export function getitem(o, k) {
     return o[normIndex(k, o.length, "string")];
   }
   if (o instanceof Range) return [...o][normIndex(k, o.__len__(), "range object")];
+  if (o instanceof Deque) return o.items[normIndex(k, o.items.length, "deque")];
   if (o && typeof o.__getitem__ === "function") return o.__getitem__(k);
   if (o === null || o === undefined) throw new TypeError_("'NoneType' object is not subscriptable");
   throw new TypeError_(`'${typeName(o)}' object is not subscriptable`);
@@ -1157,11 +1187,12 @@ export function round(x, n = null) {
   if (n === null || n === undefined) {
     if (int) return v;
     if (!Number.isFinite(v)) throw new ValueError(Number.isNaN(v) ? "cannot convert float NaN to integer" : "cannot convert float infinity to integer");
+    // + 0: round(-0.0) is the int 0
     const f = Math.floor(v);
     const d = v - f;
-    if (d > 0.5) return f + 1;
-    if (d < 0.5) return f;
-    return f % 2 === 0 ? f : f + 1;
+    if (d > 0.5) return f + 1 + 0;
+    if (d < 0.5) return f + 0;
+    return (f % 2 === 0 ? f : f + 1) + 0;
   }
   n = nv(n);
   if (int) {
@@ -1369,7 +1400,7 @@ export function format(v, spec = "") {
       s = p === null ? numStr(v) : formatG(x, p, type === undefined && isF);
       if (type === "G") s = s.toUpperCase();
     } else if (type === "f" || type === "F") {
-      s = Number.isFinite(x) ? fixedHalfEven(x, prec === undefined ? 6 : Number(prec)) : floatRepr(x);
+      s = fixedHalfEven(x, prec === undefined ? 6 : Number(prec));
       if (type === "F") s = s.toUpperCase();
     } else if (type === "%") {
       s = fixedHalfEven(x * 100, prec === undefined ? 6 : Number(prec)) + "%";
@@ -1408,20 +1439,59 @@ export function format(v, spec = "") {
   }
   return s;
 }
+// Float formatting as CPython does it (correctly rounded, half to even on the exact binary value):
+// a finite double is exactly N × 10^k for integers N, k, so rounding is exact BigInt arithmetic.
+const F64 = new DataView(new ArrayBuffer(8));
+/** |x| = N × 10^k exactly; [N, k] for finite nonzero x. */
+function exactDecimal(x) {
+  F64.setFloat64(0, Math.abs(x));
+  const hi = F64.getUint32(0);
+  const lo = F64.getUint32(4);
+  const expField = (hi >>> 20) & 0x7ff;
+  let m = (BigInt(hi & 0xfffff) << 32n) | BigInt(lo);
+  let e;
+  if (expField === 0) e = -1074;
+  else {
+    m |= 1n << 52n;
+    e = expField - 1075;
+  }
+  if (e >= 0) return [m << BigInt(e), 0];
+  return [m * 5n ** BigInt(-e), e]; // m / 2^k = m·5^k / 10^k
+}
+/** N × 10^k rounded half-even to a multiple of 10^target; returns the multiple's count. */
+function roundTo(N, k, target) {
+  if (target <= k) return N * 10n ** BigInt(k - target);
+  const d = 10n ** BigInt(target - k);
+  const q = N / d;
+  const r2 = (N % d) * 2n;
+  return r2 > d || (r2 === d && q % 2n === 1n) ? q + 1n : q;
+}
+const negSign = (x) => (x < 0 || Object.is(x, -0) ? "-" : "");
 function fixedHalfEven(x, p) {
-  const r = roundDigits(x, p);
-  return r.toFixed(p);
+  if (!Number.isFinite(x)) return floatRepr(x);
+  if (x === 0) return negSign(x) + "0" + (p ? "." + "0".repeat(p) : "");
+  const [N, k] = exactDecimal(x);
+  let digits = roundTo(N, k, -p).toString().padStart(p + 1, "0");
+  if (p) digits = digits.slice(0, -p) + "." + digits.slice(-p);
+  return negSign(x) + digits;
+}
+/** [mantissa digits (p + 1 of them), decimal exponent] of x rounded to p + 1 significant digits */
+function sigDigits(x, p) {
+  const [N, k] = exactDecimal(x);
+  let exp = N.toString().length - 1 + k;
+  let q = roundTo(N, k, exp - p);
+  if (q.toString().length > p + 1) {
+    exp += 1;
+    q /= 10n;
+  }
+  return [q.toString(), exp];
 }
 function expHalfEven(x, p) {
   if (!Number.isFinite(x)) return floatRepr(x);
-  if (x === 0) return (Object.is(x, -0) ? "-" : "") + "0" + (p ? "." + "0".repeat(p) : "") + "e+00";
-  let exp = Math.floor(Math.log10(Math.abs(x)));
-  let m = roundDigits(x / 10 ** exp, p);
-  if (Math.abs(m) >= 10) {
-    exp += 1;
-    m = roundDigits(x / 10 ** exp, p);
-  }
-  return m.toFixed(p) + "e" + (exp < 0 ? "-" : "+") + String(Math.abs(exp)).padStart(2, "0");
+  if (x === 0) return negSign(x) + "0" + (p ? "." + "0".repeat(p) : "") + "e+00";
+  const [digits, exp] = sigDigits(x, p);
+  const mant = digits[0] + (p ? "." + digits.slice(1) : "");
+  return negSign(x) + mant + "e" + (exp < 0 ? "-" : "+") + String(Math.abs(exp)).padStart(2, "0");
 }
 /** %g: precision p significant digits; `general` is the no-type float form (keeps ".0"). */
 function formatG(x, p, general) {
@@ -1738,6 +1808,7 @@ function noMethod(o, name) {
 const METHODS = Object.create(null);
 
 function callOwn(o, name, args) {
+  if (o instanceof Counter && COUNTER_METHODS.has(name)) return o[name](...args);
   if (o !== null && o !== undefined && typeof o === "object" && !(o instanceof PyDict) && !Array.isArray(o)) {
     const f = o[name];
     if (typeof f === "function") {
@@ -1784,6 +1855,11 @@ def("setdefault", (o, k, d = null) => {
 });
 def("update", (o, ...args) => {
   const [pos, kw] = splitKw(args);
+  if (o instanceof Counter) {
+    if (pos.length) o.addCounts(pos[0]);
+    if (Object.keys(kw).length) o.addCounts(new PyDict(Object.entries(kw)));
+    return null;
+  }
   if (o instanceof PyDict) {
     dictUpdate(o, pos[0] ?? null, kw);
     return null;
@@ -1963,8 +2039,19 @@ def("replace", (o, ...a) => (isStr(o) ? strReplace(o, ...a) : callOwn(o, "replac
 def("lower", (o) => o.toLowerCase());
 def("upper", (o) => o.toUpperCase());
 def("casefold", (o) => casefold(o));
-def("title", (o) => o.toLowerCase().replace(/(^|[^\p{L}])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()));
-def("capitalize", (o) => (o ? [...o][0].toUpperCase() + [...o].slice(1).join("").toLowerCase() : o));
+// str.title (do_title): a character after a cased one is lowercased, any other is titlecased
+const CASED = /[\p{Lowercase}\p{Uppercase}\p{Lt}]/u;
+const titleChar = (c) => TITLECASE[c] ?? c.toUpperCase();
+def("title", (o) => {
+  let out = "";
+  let previousCased = false;
+  for (const c of o) {
+    out += previousCased ? c.toLowerCase() : titleChar(c);
+    previousCased = CASED.test(c);
+  }
+  return out;
+});
+def("capitalize", (o) => (o ? titleChar([...o][0]) + [...o].slice(1).join("").toLowerCase() : o));
 def("isdigit", (o) => o.length > 0 && /^[\p{Nd}²³¹⁰⁴-⁹₀-₉①-⑨⑴-⑼⒈-⒐⓪⓵-⓽⓿❶-❾➀-➈➊-➒]+$/u.test(o));
 def("isdecimal", (o) => o.length > 0 && /^\p{Nd}+$/u.test(o));
 def("isnumeric", (o) => o.length > 0 && /^\p{N}+$/u.test(o));

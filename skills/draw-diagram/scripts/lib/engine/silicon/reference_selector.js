@@ -45,7 +45,7 @@ export function _safe_raster(relative) {
   }
   relative = py.M.replace(relative, "\\", "/");
   name = new pathlib.PurePosixPath(relative);
-  if ((py.bool(py.M.is_absolute(name)) || py.contains(py.getattr(name, "parts"), "..") || py.notIn(py.S(".png", ".jpg", ".jpeg", ".webp"), py.M.lower(py.getattr(name, "suffix"))))) {
+  if ((py.bool(py.M.is_absolute(name)) || py.contains(py.getattr(name, "parts"), "..") || py.notIn(py.SC(".png", ".jpg", ".jpeg", ".webp"), py.M.lower(py.getattr(name, "suffix"))))) {
     return null;
   }
   try {
@@ -102,7 +102,7 @@ export function _records() {
       if ((!(py.bool(path)) && py.is(py.M.get(data, "metadata_only"), true))) {
         candidate = py.M.get(raw, "path", "");
         name = (py.isinstance(candidate, "str") ? new pathlib.PurePosixPath(candidate) : new pathlib.PurePosixPath(".."));
-        if ((!(py.bool(py.M.is_absolute(name))) && py.notIn(py.getattr(name, "parts"), "..") && py.notIn(py.strCall(name), "\\") && py.contains(py.S(".png", ".jpg", ".jpeg", ".webp"), py.M.lower(py.getattr(name, "suffix"))))) {
+        if ((!(py.bool(py.M.is_absolute(name))) && py.notIn(py.getattr(name, "parts"), "..") && py.notIn(py.strCall(name), "\\") && py.contains(py.SC(".png", ".jpg", ".jpeg", ".webp"), py.M.lower(py.getattr(name, "suffix"))))) {
           path = py.strCall(name);
         }
       }
@@ -111,7 +111,7 @@ export function _records() {
       }
       kind = py.M.casefold(_text(py.M.get(raw, "diagram_type")));
       focus = (($t20) => { const $t22 = []; for (const $t21 of py.iter($t20)) { let item; item = $t21; $t22.push(py.M.casefold(_text(item))); } return $t22; })(_items(py.M.get(raw, "focus")));
-      if ((py.contains(py.S("caption", "figure-caption", "legend", "legend-only", "performance", "chart", "table", "photo"), kind) || py.bool(py.bitand(py.set(focus), py.S("caption-only", "legend-only", "performance-chart"))))) {
+      if ((py.contains(py.SC("caption", "figure-caption", "legend", "legend-only", "performance", "chart", "table", "photo"), kind) || py.bool(py.bitand(py.set(focus), py.SC("caption-only", "legend-only", "performance-chart"))))) {
         continue;
       }
       item = py.M.setdefault(merged, path, py.dict(["path", path], ["focus", []], ["features", []], ["manifests", []], ["source_url", ""]));
@@ -122,7 +122,7 @@ export function _records() {
       py.M.append(py.getitem(item, "manifests"), manifest);
       for (const $t26 of py.iter(py.T("diagram_type", "category", "verification", "width", "height", "source_url", "reference_tier"))) {
         field = $t26;
-        if ((py.contains(py.S("diagram_type", "category", "source_url", "reference_tier"), field) && !(py.isinstance(py.M.get(raw, field), "str")))) {
+        if ((py.contains(py.SC("diagram_type", "category", "source_url", "reference_tier"), field) && !(py.isinstance(py.M.get(raw, field), "str")))) {
           continue;
         }
         if (py.bool(py.M.get(raw, field))) {
@@ -242,9 +242,9 @@ export function _task(spec, figure) {
   if (!(py.bool(nodes))) {
     return py.dict(["family", "unknown"], ["view_role", role], ["mode", py.M.strip(mode)], ["weights", py.dict()], ["visible_nodes", 0], ["edge_kinds", py.dict()], ["package_allowed", false], ["expression_traits", []]);
   }
-  package_allowed = (($t94) => py.bool($t94) ? $t94 : py.bool(re.search("package|packaging|封装", mode)))(py.contains(py.S("package", "packaging", "package-overview"), role));
+  package_allowed = (($t94) => py.bool($t94) ? $t94 : py.bool(re.search("package|packaging|封装", mode)))(py.contains(py.SC("package", "packaging", "package-overview"), role));
   data = (($t95) => { const $t97 = []; for (const $t96 of py.iter($t95)) { let edge; edge = $t96; if (!(py.eq(py.M.get(edge, "kind", "data"), "data"))) continue; $t97.push(edge); } return $t97; })(edges);
-  control = (($t98) => { const $t100 = []; for (const $t99 of py.iter($t98)) { let edge; edge = $t99; if (!(py.contains(py.S("control", "feedback", "clock"), py.M.get(edge, "kind")))) continue; $t100.push(edge); } return $t100; })(edges);
+  control = (($t98) => { const $t100 = []; for (const $t99 of py.iter($t98)) { let edge; edge = $t99; if (!(py.contains(py.SC("control", "feedback", "clock"), py.M.get(edge, "kind")))) continue; $t100.push(edge); } return $t100; })(edges);
   const $t101 = py.unpack(py.T(py.defaultdict(py.set), py.defaultdict(py.set)), 2);
   incoming = $t101[0];
   outgoing = $t101[1];
@@ -261,7 +261,7 @@ export function _task(spec, figure) {
     objects = (($t106) => { const $t108 = []; for (const $t107 of py.iter($t106)) { let item; item = $t107; if (!((py.isinstance(item, "dict") && py.contains(by_id, py.M.get(item, "source_node_id"))))) continue; $t108.push(item); } return $t108; })(_items(py.M.get(algorithm, "objects")));
     roles = (($t109) => { const $t111 = py.set(); for (const $t110 of py.iter($t109)) { let item; item = $t110; $t111.add(py.M.get(item, "role")); } return $t111; })(objects);
     weights = (py.bool(edges) ? py.dict(["flow", 5]) : py.dict());
-    if (py.bool(py.bitand(roles, py.S("operator", "reduction", "decision")))) {
+    if (py.bool(py.bitand(roles, py.SC("operator", "reduction", "decision")))) {
       py.setitem(weights, "operator", 9);
     }
     if (py.contains(roles, "tensor")) {
@@ -312,7 +312,7 @@ export function _task(spec, figure) {
   cross_owner = py.sum((function* ($t178) { for (const $t179 of py.iter($t178)) { let edge; edge = $t179; yield py.ne(py.M.get(owner_of, py.getitem(edge, "source")), py.M.get(owner_of, py.getitem(edge, "target"))); } })(edges));
   owner_count = py.len(py.sub(py.set(py.M.values(owner_of)), py.S("")));
   swimlane = (($t184) => py.bool($t184) ? $t184 : (($t183) => !py.bool($t183) ? $t183 : (($t182) => !py.bool($t182) ? $t182 : (($t181) => !py.bool($t181) ? $t181 : py.bool(py.M.get(spec, "steps")))(py.ge(cross_owner, 2)))(py.ge(owner_count, 3)))(py.bool((($t180) => !py.bool($t180) ? $t180 : control)(data))))(py.contains(mode, "swimlane"));
-  temporal = (($t186) => py.bool($t186) ? $t186 : (($t185) => py.bool($t185) ? $t185 : py.bool(re.search("timing|sequence", mode)))(py.contains(py.S("timing", "sequence", "interaction"), role)))(py.eq(category, "timing"));
+  temporal = (($t186) => py.bool($t186) ? $t186 : (($t185) => py.bool($t185) ? $t185 : py.bool(re.search("timing|sequence", mode)))(py.contains(py.SC("timing", "sequence", "interaction"), role)))(py.eq(category, "timing"));
   pipeline = (($t187) => py.bool($t187) ? $t187 : py.contains(mode, "pipeline"))(py.eq(category, "pipeline"));
   topology = (($t191) => py.bool($t191) ? $t191 : (($t190) => !py.bool($t190) ? $t190 : py.bool(re.search("router|\\bNoC\\b|路由器", labels, re.I)))(py.ge(py.sum((function* ($t188) { for (const $t189 of py.iter($t188)) { let node; node = $t189; yield py.eq(py.M.get(node, "kind"), "io"); } })(nodes)), 3)))(py.bool(re.search("mesh|network-topology|noc-topology|interconnect-topology", mode)));
   comparison = (($t192) => py.bool($t192) ? $t192 : py.bool(re.search("comparison|compare|before-after", mode)))(py.bool(py.M.get(figure, "comparison")));
@@ -369,7 +369,7 @@ export function _task(spec, figure) {
   if (py.bool(zoom)) {
     py.setitem(weights, "zoom", 12);
   }
-  if (py.contains(py.S("flow", "memory", "pipeline"), family)) {
+  if (py.contains(py.SC("flow", "memory", "pipeline"), family)) {
     if (py.bool(dual)) {
       py.setitem(weights, "dual_input", 15);
     }
@@ -446,7 +446,7 @@ export function explain(spec, figure, style = "paper") {
     if ((py.eq(style_id, "monochrome") && (py.contains(focus_text, "monochrome") || py.contains(py.M.join(" ", py.getitem(record, "features")), "黑白")))) {
       score = py.iadd(score, 6);
     }
-    if ((py.contains(py.S("paper", "blueprint", "signal"), style_id) && py.any((function* ($t230) { for (const $t231 of py.iter($t230)) { let word; word = $t231; yield py.contains(py.M.join(" ", py.getitem(record, "features")), word); } })(py.T("低饱和", "浅色", "灰白", "浅粉", "浅黄"))))) {
+    if ((py.contains(py.SC("paper", "blueprint", "signal"), style_id) && py.any((function* ($t230) { for (const $t231 of py.iter($t230)) { let word; word = $t231; yield py.contains(py.M.join(" ", py.getitem(record, "features")), word); } })(py.T("低饱和", "浅色", "灰白", "浅粉", "浅黄"))))) {
       score = py.iadd(score, 1);
     }
     if (py.gt(score, 0)) {
@@ -500,7 +500,7 @@ export function expression_rules(selection) {
   families = $t240[1];
   for (const $t241 of py.iter(py.sorted(candidates, py.KW({"key": ((name) => py.T(py.neg(py.getitem(py.getitem(candidates, name), 0)), py.neg(py.getitem(py.getitem(candidates, name), 1)), name))})))) {
     trait = $t241;
-    family = (py.contains(py.S("organization", "hierarchy", "private_shared", "shared_band"), trait) ? "ownership" : (py.contains(py.S("dual_input", "branch_merge"), trait) ? "junction" : trait));
+    family = (py.contains(py.SC("organization", "hierarchy", "private_shared", "shared_band"), trait) ? "ownership" : (py.contains(py.S("dual_input", "branch_merge"), trait) ? "junction" : trait));
     if (py.contains(families, family)) {
       continue;
     }

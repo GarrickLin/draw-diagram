@@ -7,8 +7,9 @@
 // perturbation, the resize rules, and the paths of construction, merge, union, intersection
 // and difference, each of which fills the table in its own order.
 //
-// Strings hash randomly in CPython (PYTHONHASHSEED); their order can't matter to correct code,
-// so they get a fixed hash here.
+// Strings hash with SipHash-1-3 keyed by PYTHONHASHSEED. Here the key is the one PYTHONHASHSEED=0
+// gives (all zeros), so a set of strings iterates as CPython run with PYTHONHASHSEED=0. Code that
+// depends on that order gives seed-dependent results in CPython too; this port matches seed 0.
 
 const P = (1n << 61n) - 1n; // _PyHASH_MODULUS
 const BITS = 61n;
@@ -81,14 +82,61 @@ function hashDouble(v) {
   return toSigned(x);
 }
 
-function hashString(s) {
-  // FNV-1a over UTF-16 units; any fixed hash is as valid as CPython's random one
-  let h = 0xcbf29ce484222325n;
-  for (let i = 0; i < s.length; i++) {
-    h ^= BigInt(s.charCodeAt(i));
-    h = (h * 0x100000001b3n) & U64;
+const rotl = (x, b) => ((x << b) | (x >> (64n - b))) & U64;
+
+/** CPython's siphash13 (Python/pyhash.c) with k0 = k1 = 0, over bytes. */
+function siphash13(bytes) {
+  let v0 = 0x736f6d6570736575n;
+  let v1 = 0x646f72616e646f6dn;
+  let v2 = 0x6c7967656e657261n;
+  let v3 = 0x7465646279746573n;
+  const round = () => {
+    v0 = (v0 + v1) & U64;
+    v2 = (v2 + v3) & U64;
+    v1 = rotl(v1, 13n) ^ v0;
+    v3 = rotl(v3, 16n) ^ v2;
+    v0 = rotl(v0, 32n);
+    v2 = (v2 + v1) & U64;
+    v0 = (v0 + v3) & U64;
+    v1 = rotl(v1, 17n) ^ v2;
+    v3 = rotl(v3, 21n) ^ v0;
+    v2 = rotl(v2, 32n);
+  };
+  const n = bytes.length;
+  let i = 0;
+  for (; i + 8 <= n; i += 8) {
+    let m = 0n;
+    for (let j = 7; j >= 0; j--) m = (m << 8n) | BigInt(bytes[i + j]);
+    v3 ^= m;
+    round();
+    v0 ^= m;
   }
-  h = toSigned(h);
+  let t = BigInt(n & 0xff) << 56n;
+  for (let j = n - i - 1; j >= 0; j--) t |= BigInt(bytes[i + j]) << BigInt(8 * j);
+  v3 ^= t;
+  round();
+  v0 ^= t;
+  v2 ^= 0xffn;
+  round();
+  round();
+  round();
+  return v0 ^ v1 ^ v2 ^ v3;
+}
+
+/** hash(str): the bytes are the string's storage, 1, 2 or 4 bytes per code point (PEP 393). */
+function hashString(s) {
+  if (s.length === 0) return 0n;
+  const cps = [];
+  let max = 0;
+  for (const ch of s) {
+    const c = ch.codePointAt(0);
+    cps.push(c);
+    if (c > max) max = c;
+  }
+  const kind = max <= 0xff ? 1 : max <= 0xffff ? 2 : 4;
+  const bytes = new Uint8Array(cps.length * kind);
+  for (let i = 0; i < cps.length; i++) for (let k = 0; k < kind; k++) bytes[i * kind + k] = (cps[i] >> (8 * k)) & 0xff;
+  const h = toSigned(siphash13(bytes));
   return h === -1n ? -2n : h;
 }
 
@@ -149,10 +197,15 @@ function hashTuple(v) {
 
 function hashOther(v) {
   if (v instanceof PySet && v.frozen) {
-    // frozenset_hash is order independent; any fixed value consistent with equality works
-    let acc = 0n;
-    for (const k of v) acc ^= toUnsigned(pyhash(k)) * 1927868237n;
-    return toSigned(acc & U64);
+    // frozenset_hash (Objects/setobject.c); empty and dummy slots cancel out of the xor
+    const shuffle = (h) => (((h ^ 89869747n) ^ (h << 16n)) * 3644798167n) & U64;
+    let hash = 0n;
+    for (const k of v) hash ^= shuffle(toUnsigned(pyhash(k)));
+    hash ^= (BigInt(v.size + 1) * 1927868237n) & U64;
+    hash ^= (hash >> 11n) ^ (hash >> 25n);
+    hash = (hash * 69069n + 907133923n) & U64;
+    if (hash === U64) hash = 590923713n;
+    return toSigned(hash);
   }
   if (Array.isArray(v) || v instanceof PySet || (v && v.map instanceof Map)) {
     throw new TypeError(`unhashable type: '${Array.isArray(v) ? "list" : v instanceof PySet ? "set" : "dict"}'`);
@@ -414,6 +467,25 @@ export class PySet {
     let r = difference1(this, others[0]);
     for (const o of others.slice(1)) r.difference_update(o);
     return r;
+  }
+  /** set_symmetric_difference_impl (3.14): set(other), then each key of self, in self's table order, discarded or added */
+  symmetric_difference(other) {
+    const result = new PySet(other, this.frozen);
+    result.symmetric_difference_update(this);
+    return result;
+  }
+  /** set_symmetric_difference_update: other's keys (as a set) discarded from self or added */
+  symmetric_difference_update(other) {
+    if (other === this) {
+      this.clear();
+      return;
+    }
+    const o = other instanceof PySet ? other : new PySet(other);
+    for (let i = 0; i <= o.mask; i++) {
+      const k = o.keys[i];
+      if (k === undefined || k === DUMMY) continue;
+      if (!this._discardEntry(k, o.hashes[i])) this._addEntry(k, o.hashes[i]);
+    }
   }
   difference_update(...others) {
     for (const o of others) differenceUpdate(this, o);

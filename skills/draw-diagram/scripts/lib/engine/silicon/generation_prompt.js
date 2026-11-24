@@ -7,7 +7,7 @@ import * as visual_style from "./visual_style.js";
 import { fileURLToPath as $fileURLToPath } from "node:url";
 
 const __file__ = $fileURLToPath(import.meta.url).replace(/\.js$/, ".py");
-const $F1 = py.F(1);
+const $F1_0 = py.F(1.0);
 export let annotations, Any, VERSION, CANVASES, GPT_IMAGE_SIZES, EXPLICIT_ASPECTS, HARD_RULES;
 py.sig(_q, ["text"]);
 py.sig(_family, ["fig"]);
@@ -20,9 +20,9 @@ py.sig(_content_block, ["content"]);
 py.sig(compose, ["fig", "spec", "settings", "guide_size", "user_notes", "feedback"]);
 
 VERSION = "GEN1";
-CANVASES = [py.T("21:9", py.truediv(21, 9)), py.T("16:9", py.truediv(16, 9)), py.T("3:2", py.truediv(3, 2)), py.T("4:3", py.truediv(4, 3)), py.T("1:1", $F1), py.T("3:4", py.truediv(3, 4)), py.T("2:3", py.truediv(2, 3))];
-GPT_IMAGE_SIZES = [py.T("1536x1024", 1.5), py.T("1024x1024", $F1), py.T("1024x1536", py.truediv(2, 3))];
-EXPLICIT_ASPECTS = py.dict(["16:9", py.truediv(16, 9)], ["4:3", py.truediv(4, 3)], ["1:1", $F1], ["A4", py.truediv(1, 1.414)]);
+CANVASES = [py.T("21:9", py.truediv(21, 9)), py.T("16:9", py.truediv(16, 9)), py.T("3:2", py.truediv(3, 2)), py.T("4:3", py.truediv(4, 3)), py.T("1:1", $F1_0), py.T("3:4", py.truediv(3, 4)), py.T("2:3", py.truediv(2, 3))];
+GPT_IMAGE_SIZES = [py.T("1536x1024", 1.5), py.T("1024x1024", $F1_0), py.T("1024x1536", py.truediv(2, 3))];
+EXPLICIT_ASPECTS = py.dict(["16:9", py.truediv(16, 9)], ["4:3", py.truediv(4, 3)], ["1:1", $F1_0], ["A4", py.truediv(1, 1.414)]);
 export function _q(text) {
   return json.dumps(py.strCall(text), py.KW({"ensure_ascii": false}));
 }
@@ -270,7 +270,7 @@ export function compose(fig, spec, settings, guide_size = null, user_notes = "",
     bands = (($t80) => { const $t82 = []; for (const $t81 of py.iter($t80)) { let column; column = $t81; if (!(py.bool(column))) continue; $t82.push(py.M.join(" + ", (function* ($t83) { for (const $t84 of py.iter($t83)) { let x; x = $t84; yield _q(x); } })(column))); } return $t82; })(py.getitem(content, "columns"));
     py.M.append(parts, py.add(py.add("Reading order left to right: ", py.M.join(" | ", bands)), ". Independent inputs sit on separate lanes; operands enter their operator from separate sides."));
   }
-  gpt_ratio = py.getitem(py.dict(["1536x1024", 1.5], ["1024x1024", $F1], ["1024x1536", py.truediv(2, 3)]), py.getitem(canvas, "gpt_image_size"));
+  gpt_ratio = py.getitem(py.dict(["1536x1024", 1.5], ["1024x1024", $F1_0], ["1024x1536", py.truediv(2, 3)]), py.getitem(canvas, "gpt_image_size"));
   fit = (py.lt(py.truediv(py.abs(py.sub(gpt_ratio, py.getitem(canvas, "content_ratio"))), py.getitem(canvas, "content_ratio")), 0.15) ? "" : (" If the generator only offers " + py.format(py.getitem(canvas, "gpt_image_size")) + ", use it and fill that frame with larger blocks and text instead of leaving empty bands."));
   py.M.append(parts, ("Canvas: " + py.format(py.getitem(canvas, "aspect")) + " " + py.format(orientation) + ". The figure spans about 90% of the width with balanced margins and no large empty bands." + py.format(fit)));
   py.M.append(parts, visual_system(settings, family));
