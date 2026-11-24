@@ -42,7 +42,7 @@ test("layout needs no font file", async () => {
   const silicon = await import(join(SCRIPTS, "lib", "engine", "silicon", "engine.js"));
   const res = {};
   for (const name of ["soc", "gpu", "attention-dataflow", "online-attention-dataflow"]) {
-    const r = silicon.compile_manual(py.fromJS(JSON.parse(readFileSync(join(ROOT, "docs", "refs", "silicon-canvas", "examples", `${name}.json`), "utf8"))));
+    const r = silicon.compile_manual(py.fromJS(JSON.parse(readFileSync(join(ROOT, "tests", "upstream", "silicon-canvas", "examples", `${name}.json`), "utf8"))));
     res[name] = py.toJS(py.getitem(r, "figures")).find((f) => f.primary).layout_strategy;
   }
   assert.deepEqual(res, {

@@ -1,0 +1,12 @@
+{
+  "name": "draw-diagram",
+  "private": true,
+  "type": "module",
+  "description": "An offline Agent Skill that makes editable draw.io diagrams, with a JS port of the silicon-canvas layout engine",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/draw-diagram/*.test.js",
+    "test:port": "node --test tests/port/*.test.js",
+    "build:engine": "sh tools/port/build_engine.sh"
+  }
+}

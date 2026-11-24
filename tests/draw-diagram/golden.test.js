@@ -54,7 +54,7 @@ async function layoutFor(path) {
 }
 
 function name(path) {
-  return relative(ROOT, path).replace(/^docs\/refs\/silicon-canvas\//, "").replace(/^tests\/draw-diagram\//, "").replace(/[/\\]/g, "__").replace(/\.json$/, "");
+  return relative(ROOT, path).replace(/^tests\/upstream\/silicon-canvas\//, "").replace(/^tests\/draw-diagram\//, "").replace(/[/\\]/g, "__").replace(/\.json$/, "");
 }
 
 const sha = (s) => createHash("sha256").update(s).digest("hex").slice(0, 16);

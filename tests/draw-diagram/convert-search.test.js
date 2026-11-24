@@ -1,4 +1,4 @@
-// draw-diagram 的 convert 和 search，从 skills/drawio 的测试迁移过来。
+// draw-diagram 的 convert 和 search（最初从已删除的 skills/drawio 的测试迁移过来）。
 // 运行：node --test tests/draw-diagram/
 
 import { test } from "node:test";
@@ -185,7 +185,7 @@ test("the limit is honoured and an empty query is rejected", () => {
 // ---- 命令行 ----
 
 test("CLI converts stdin to the -o path and prints it", () => {
-  const dir = mkdtempSync(join(tmpdir(), "drawio-skill-"));
+  const dir = mkdtempSync(join(tmpdir(), "draw-diagram-"));
   const r = run(["convert", "-", "-o", "flow.drawio"], "flowchart TD\n A-->B", dir);
   assert.equal(r.status, 0, r.stderr);
   assert.equal(r.stdout.trim(), join(dir, "flow.drawio") + ": flowchart");
@@ -193,7 +193,7 @@ test("CLI converts stdin to the -o path and prints it", () => {
 });
 
 test("CLI names the output after the input file", () => {
-  const dir = mkdtempSync(join(tmpdir(), "drawio-skill-"));
+  const dir = mkdtempSync(join(tmpdir(), "draw-diagram-"));
   execFileSync("sh", ["-c", "printf 'erDiagram\\n A ||--o{ B : has\\n' > schema.mmd"], { cwd: dir });
   const r = run(["convert", "schema.mmd"], undefined, dir);
   assert.equal(r.status, 0, r.stderr);
@@ -201,7 +201,7 @@ test("CLI names the output after the input file", () => {
 });
 
 test("CLI exits 1 on a diagram error and 2 on a usage error", () => {
-  const dir = mkdtempSync(join(tmpdir(), "drawio-skill-"));
+  const dir = mkdtempSync(join(tmpdir(), "draw-diagram-"));
   const bad = run(["convert", "-", "-o", "x.drawio"], "classDiagram\n class A", dir);
   assert.equal(bad.status, 1);
   assert.match(bad.stderr, /cannot be converted offline/);
@@ -227,7 +227,7 @@ test("CLI search prints one block per query", () => {
 // ---- 分发 ----
 
 test("the skill runs from a copy with no node_modules", () => {
-  const dir = mkdtempSync(join(tmpdir(), "drawio-skill-copy-"));
+  const dir = mkdtempSync(join(tmpdir(), "draw-diagram-copy-"));
   const copy = join(dir, "draw-diagram");
   cpSync(SKILL, copy, { recursive: true });
   rmSync(join(copy, "scripts", "node_modules"), { recursive: true, force: true });

@@ -2,7 +2,7 @@
 // Python vs JS engine parity: every request goes to tools/port/bridge.py (CPython) and to the
 // transpiled JS engine, and the two answers must be the same bytes.
 //
-// Cases: every spec under docs/refs/silicon-canvas and tests/draw-diagram/fixtures, in English
+// Cases: every spec under tests/upstream/silicon-canvas and tests/draw-diagram/fixtures, in English
 // and Chinese, plus seeded random variants of each (nodes dropped, edges reversed, labels
 // rewritten, ...). A variant may be invalid; then both engines must reject it the same way.
 //
@@ -41,7 +41,7 @@ function walk(dir) {
 /** Every spec file: {name, spec, description}. */
 export function specs() {
   const out = [];
-  for (const dir of [join(ROOT, "docs", "refs", "silicon-canvas"), join(ROOT, "tests", "draw-diagram", "fixtures")]) {
+  for (const dir of [join(ROOT, "tests", "upstream", "silicon-canvas"), join(ROOT, "tests", "draw-diagram", "fixtures")]) {
     for (const p of walk(dir)) {
       let d;
       try {

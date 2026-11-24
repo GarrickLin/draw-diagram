@@ -9,7 +9,8 @@ export const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const SKILL = join(ROOT, "skills", "draw-diagram");
 export const SCRIPTS = join(SKILL, "scripts");
 export const CLI = join(SCRIPTS, "draw-diagram.js");
-export const UPSTREAM = join(ROOT, "docs", "refs", "silicon-canvas");
+/** silicon-canvas 的规格文件（上游原样复制，见其中的 README.md）。 */
+export const UPSTREAM = join(ROOT, "tests", "upstream", "silicon-canvas");
 export const EXAMPLES = join(UPSTREAM, "examples");
 export const FIXTURES = join(ROOT, "tests", "draw-diagram", "fixtures");
 
