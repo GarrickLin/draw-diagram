@@ -5,6 +5,7 @@
 
 const IMPLEMENTATIONS = {
   python: () => import("./python.js"),
+  js: () => import("./js.js"),
 };
 
 async function implementation() {
