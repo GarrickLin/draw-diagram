@@ -1,0 +1,2157 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "organization",
+  "layout_strategy": "publication-candidates",
+  "title": "Generic SoC System Overview"
+ },
+ "kind": "publication",
+ "label_layout": {
+  "body_font_px": 36,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     3,
+     4
+    ],
+    "text": "access"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "link"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     14
+    ],
+    "text": "resp"
+   }
+  ],
+  "height": 1554,
+  "labels": [
+   {
+    "box": {
+     "height": 0.026692,
+     "width": 0.074517,
+     "x": 0.889094,
+     "y": 0.274298
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "DQ/DQS"
+   },
+   {
+    "box": {
+     "height": 0.026692,
+     "width": 0.027294,
+     "x": 0.293297,
+     "y": 0.923758
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     13
+    ],
+    "text": "req"
+   }
+  ],
+  "signal_font_px": 34,
+  "target_width_mm": 160,
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 1554,
+  "line_legend": {},
+  "quality": {
+   "body_font_pt": 9,
+   "deferred_labels": [
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      3,
+      4
+     ],
+     "text": "access"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      8
+     ],
+     "text": "link"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      14
+     ],
+     "text": "resp"
+    }
+   ],
+   "deferred_scope_titles": [],
+   "document_fit": {
+    "default_limit_mm": 140,
+    "height_mm": 138.1,
+    "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+    "no_font_shrink": true,
+    "status": "pass"
+   },
+   "failed_routes": [],
+   "geometry_is_not_raster_acceptance": true,
+   "input_traces": {
+    "clear": true,
+    "failures": [],
+    "owners": [
+     {
+      "geometry_is_not_new_hardware_ports": true,
+      "minimum_path_clearance_px": 637.999,
+      "minimum_port_gap_px": 637.999,
+      "owner": "g_offchip",
+      "paths_touch_or_share": false,
+      "producer_count": 2,
+      "required_port_gap_px": 54,
+      "target_width_mm": 160
+     }
+    ]
+   },
+   "labels_placed": 2,
+   "no_common_bus_inferred": true,
+   "organization_traces": {
+    "clear": true,
+    "contacts": [],
+    "geometry_is_not_new_junctions": true
+   },
+   "owner_scope_entries": {
+    "clear": true,
+    "failures": [],
+    "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+   },
+   "publication_typography": true,
+   "requested_routes": 8,
+   "route_count": 8,
+   "routes_complete": true,
+   "signal_font_pt": 8.5,
+   "target_width_mm": 160,
+   "typography_measured": true
+  },
+  "routes": [
+   {
+    "family": "forward",
+    "id": "p1",
+    "kind": "data",
+    "label": "",
+    "meanings_in_caption": [
+     "read/write",
+     "burst"
+    ],
+    "members": [
+     0,
+     1,
+     2
+    ],
+    "points": [
+     [
+      0.399166,
+      0.464607
+     ],
+     [
+      0.4325,
+      0.464607
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.35751295336787564,
+     "source_side": "right",
+     "target_fraction": 0.7149425287356321,
+     "target_side": "left"
+    },
+    "source": "g_compute",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "n_noc",
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "p2",
+    "kind": "data",
+    "label": "access",
+    "meanings_in_caption": [],
+    "members": [
+     3,
+     4
+    ],
+    "points": [
+     [
+      0.5675,
+      0.118404
+     ],
+     [
+      0.600833,
+      0.118404
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.09655172413793103,
+     "source_side": "right",
+     "target_fraction": 0.2781456953642384,
+     "target_side": "left"
+    },
+    "source": "n_noc",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "g_mem",
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "p3",
+    "kind": "data",
+    "label": "DQ/DQS",
+    "meanings_in_caption": [],
+    "members": [
+     5
+    ],
+    "points": [
+     [
+      0.955277,
+      0.135778
+     ],
+     [
+      0.970277,
+      0.135778
+     ],
+     [
+      0.970277,
+      0.743244
+     ],
+     [
+      0.955277,
+      0.743244
+     ]
+    ],
+    "routing": {
+     "organization_track": "outside-service-column",
+     "source_fraction": 0.3675496688741722,
+     "source_side": "right",
+     "target_fraction": 0.3816568047337278,
+     "target_side": "right"
+    },
+    "source": "g_mem",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "g_offchip",
+    "target_side": "right"
+   },
+   {
+    "family": "forward",
+    "id": "p4",
+    "kind": "data",
+    "label": "",
+    "meanings_in_caption": [
+     "MMIO",
+     "DMA path"
+    ],
+    "members": [
+     6,
+     7
+    ],
+    "points": [
+     [
+      0.5675,
+      0.370657
+     ],
+     [
+      0.600833,
+      0.370657
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.5471264367816092,
+     "source_side": "right",
+     "target_fraction": 0.1891891891891892,
+     "target_side": "left"
+    },
+    "source": "n_noc",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "g_periph",
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "p5",
+    "kind": "data",
+    "label": "link",
+    "meanings_in_caption": [],
+    "members": [
+     8
+    ],
+    "points": [
+     [
+      0.600833,
+      0.440154
+     ],
+     [
+      0.594166,
+      0.440154
+     ],
+     [
+      0.594166,
+      0.743244
+     ],
+     [
+      0.600833,
+      0.743244
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.43243243243243246,
+     "source_side": "left",
+     "target_fraction": 0.3816568047337278,
+     "target_side": "left"
+    },
+    "source": "g_periph",
+    "source_side": "left",
+    "stroke_style": "solid",
+    "target": "g_offchip",
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "p6",
+    "kind": "control",
+    "label": "",
+    "meanings_in_caption": [
+     "pwr ctrl",
+     "debug"
+    ],
+    "members": [
+     11,
+     12
+    ],
+    "points": [
+     [
+      0.399166,
+      0.124196
+     ],
+     [
+      0.405833,
+      0.124196
+     ],
+     [
+      0.405833,
+      0.429858
+     ],
+     [
+      0.399166,
+      0.429858
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.23604060913705585,
+     "source_side": "right",
+     "target_fraction": 0.21761658031088082,
+     "target_side": "right"
+    },
+    "source": "g_sys",
+    "source_side": "right",
+    "stroke_style": "dashed",
+    "target": "g_compute",
+    "target_side": "right"
+   },
+   {
+    "family": "return",
+    "id": "p7",
+    "kind": "control",
+    "label": "req",
+    "meanings_in_caption": [],
+    "members": [
+     13
+    ],
+    "points": [
+     [
+      0.600833,
+      0.405405
+     ],
+     [
+      0.5841664999999999,
+      0.405405
+     ],
+     [
+      0.5841664999999999,
+      0.9581724581724582
+     ],
+     [
+      0.029722000000000002,
+      0.9581724581724582
+     ],
+     [
+      0.029722000000000002,
+      0.447233
+     ],
+     [
+      0.044722,
+      0.447233
+     ]
+    ],
+    "routing": {
+     "outer_route": true,
+     "source_fraction": 0.3108108108108108,
+     "source_side": "left",
+     "target_fraction": 0.28756476683937826,
+     "target_side": "left",
+     "waypoint_axis": "y",
+     "waypoint_value": 0.9581724581724582
+    },
+    "source": "g_periph",
+    "source_side": "left",
+    "stroke_style": "dashed",
+    "target": "g_compute",
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "p8",
+    "kind": "feedback",
+    "label": "resp",
+    "meanings_in_caption": [],
+    "members": [
+     14
+    ],
+    "points": [
+     [
+      0.600833,
+      0.153153
+     ],
+     [
+      0.5675,
+      0.153153
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.45695364238410596,
+     "source_side": "left",
+     "target_fraction": 0.15862068965517243,
+     "target_side": "right"
+    },
+    "source": "g_mem",
+    "source_side": "left",
+    "stroke_style": "solid",
+    "target": "n_noc",
+    "target_side": "right"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "body_font_pt": 9,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     3,
+     4
+    ],
+    "text": "access"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "link"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     14
+    ],
+    "text": "resp"
+   }
+  ],
+  "deferred_scope_titles": [],
+  "document_fit": {
+   "default_limit_mm": 140,
+   "height_mm": 138.1,
+   "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+   "no_font_shrink": true,
+   "status": "pass"
+  },
+  "failed_routes": [],
+  "geometry_is_not_raster_acceptance": true,
+  "input_traces": {
+   "clear": true,
+   "failures": [],
+   "owners": [
+    {
+     "geometry_is_not_new_hardware_ports": true,
+     "minimum_path_clearance_px": 637.999,
+     "minimum_port_gap_px": 637.999,
+     "owner": "g_offchip",
+     "paths_touch_or_share": false,
+     "producer_count": 2,
+     "required_port_gap_px": 54,
+     "target_width_mm": 160
+    }
+   ]
+  },
+  "labels_placed": 2,
+  "no_common_bus_inferred": true,
+  "organization_traces": {
+   "clear": true,
+   "contacts": [],
+   "geometry_is_not_new_junctions": true
+  },
+  "owner_scope_entries": {
+   "clear": true,
+   "failures": [],
+   "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+  },
+  "publication_typography": true,
+  "requested_routes": 8,
+  "route_count": 8,
+  "routes_complete": true,
+  "signal_font_pt": 8.5,
+  "target_width_mm": 160,
+  "typography_measured": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Chip boundary encloses all groups except g_offchip.",
+   "All blocks and links are generic illustrative choices, not a specific product."
+  ],
+  "assumptions": [
+   "按通用 SoC 参考设计补入 CPU 集群、加速器、DMA、片上 SRAM、DRAM 控制器、外设、高速 IO、时钟复位、电源管理与安全调试等模块。",
+   "片外 DRAM 与主机/外部设备置于芯片边界之外，仅由片上控制器/接口连接。",
+   "互联被抽象为单一共享主干，未指定协议、位宽、拓扑或仲裁策略。",
+   "未给出具体容量、频率、核数等数值，图中不标注此类参数。"
+  ],
+  "category": "architecture",
+  "checks": [
+   "确认计算子系统与存储子系统的边界是否符合目标芯片的物理归属。",
+   "确认外设与高速接口清单是否覆盖实际需求。",
+   "确认时钟/电源/安全控制线是否需要单独成图。"
+  ],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "read/write",
+    "origin": "assumed",
+    "rationale": "CPU 经互联访问存储与外设",
+    "source": "n_cpu",
+    "target": "n_noc"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "read/write",
+    "origin": "assumed",
+    "rationale": "加速器共享同一互联",
+    "source": "n_accel",
+    "target": "n_noc"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "burst",
+    "origin": "assumed",
+    "rationale": "DMA 通过互联搬运数据",
+    "source": "n_dma",
+    "target": "n_noc"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "access",
+    "origin": "assumed",
+    "rationale": "互联到片上 SRAM 的访问路径",
+    "source": "n_noc",
+    "target": "n_sram"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "access",
+    "origin": "assumed",
+    "rationale": "互联到 DRAM 控制器的访问路径",
+    "source": "n_noc",
+    "target": "n_memctl"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "DQ/DQS",
+    "origin": "assumed",
+    "rationale": "片外存储接口",
+    "source": "n_memctl",
+    "target": "n_dram"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "MMIO",
+    "origin": "assumed",
+    "rationale": "外设寄存器访问",
+    "source": "n_noc",
+    "target": "n_periph"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "DMA path",
+    "origin": "assumed",
+    "rationale": "高速接口数据通路",
+    "source": "n_noc",
+    "target": "n_hsio"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "link",
+    "origin": "assumed",
+    "rationale": "对外链路",
+    "source": "n_hsio",
+    "target": "n_host"
+   },
+   {
+    "evidence": "",
+    "kind": "clock",
+    "label": "clk/rst",
+    "origin": "assumed",
+    "rationale": "时钟复位分发",
+    "source": "n_clk",
+    "target": "n_cpu"
+   },
+   {
+    "evidence": "",
+    "kind": "clock",
+    "label": "clk/rst",
+    "origin": "assumed",
+    "rationale": "时钟复位分发",
+    "source": "n_clk",
+    "target": "n_noc"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "pwr ctrl",
+    "origin": "assumed",
+    "rationale": "电源域控制",
+    "source": "n_pwr",
+    "target": "n_cpu"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "debug",
+    "origin": "assumed",
+    "rationale": "调试与安全控制",
+    "source": "n_sec",
+    "target": "n_cpu"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "req",
+    "origin": "assumed",
+    "rationale": "外设请求 DMA 搬运",
+    "source": "n_periph",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "",
+    "kind": "feedback",
+    "label": "resp",
+    "origin": "assumed",
+    "rationale": "存储返回数据/响应",
+    "source": "n_memctl",
+    "target": "n_noc"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "g_compute",
+    "label": "Compute Subsystem",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "SoC 通常以计算子系统为核心，先建立功能分区"
+   },
+   {
+    "evidence": "",
+    "id": "g_mem",
+    "label": "Memory Subsystem",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "区分片上存储层次与片外 DRAM 归属"
+   },
+   {
+    "evidence": "",
+    "id": "g_periph",
+    "label": "Peripheral & IO Subsystem",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "外设与对外接口通常独立成区"
+   },
+   {
+    "evidence": "",
+    "id": "g_sys",
+    "label": "System Management",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "时钟复位、电源与安全调试属于全局支撑功能"
+   },
+   {
+    "evidence": "",
+    "id": "g_offchip",
+    "label": "Off-Chip",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "片外器件应置于芯片边界之外"
+   }
+  ],
+  "layout": "Main view left-to-right: g_compute on the left, n_noc as the central vertical spine, g_mem on the right, g_offchip (n_dram, n_host) at the far right outside the chip boundary. g_periph sits bottom-center below the interconnect; g_sys spans the top as a shallow band. Reading order: compute -> interconnect -> memory/peripherals -> off-chip. Reserve a lower corridor for the n_memctl->n_noc response and a top corridor for clock/power/security control lines.",
+  "nodes": [
+   {
+    "detail": "Application cores + private caches",
+    "evidence": "",
+    "group": "g_compute",
+    "id": "n_cpu",
+    "kind": "compute",
+    "label": "CPU Cluster",
+    "origin": "assumed",
+    "rationale": "通用 SoC 的主控计算单元"
+   },
+   {
+    "detail": "Domain-specific compute engine",
+    "evidence": "",
+    "group": "g_compute",
+    "id": "n_accel",
+    "kind": "compute",
+    "label": "Accelerator / DSP",
+    "origin": "assumed",
+    "rationale": "现代 SoC 常含专用加速器"
+   },
+   {
+    "detail": "Bulk data mover",
+    "evidence": "",
+    "group": "g_compute",
+    "id": "n_dma",
+    "kind": "compute",
+    "label": "DMA Engine",
+    "origin": "assumed",
+    "rationale": "负责外设与存储间批量搬运"
+   },
+   {
+    "detail": "Shared bus / NoC fabric",
+    "evidence": "",
+    "group": "",
+    "id": "n_noc",
+    "kind": "control",
+    "label": "On-Chip Interconnect",
+    "origin": "assumed",
+    "rationale": "作为全片共享互联主干"
+   },
+   {
+    "detail": "Shared scratchpad / last-level buffer",
+    "evidence": "",
+    "group": "g_mem",
+    "id": "n_sram",
+    "kind": "memory",
+    "label": "On-Chip SRAM",
+    "origin": "assumed",
+    "rationale": "片上共享存储层次"
+   },
+   {
+    "detail": "External memory interface",
+    "evidence": "",
+    "group": "g_mem",
+    "id": "n_memctl",
+    "kind": "control",
+    "label": "DRAM Controller",
+    "origin": "assumed",
+    "rationale": "片上控制器，连接片外 DRAM"
+   },
+   {
+    "detail": "Off-chip main memory",
+    "evidence": "",
+    "group": "g_offchip",
+    "id": "n_dram",
+    "kind": "memory",
+    "label": "External DRAM",
+    "origin": "assumed",
+    "rationale": "片外主存，位于芯片边界之外"
+   },
+   {
+    "detail": "UART / SPI / I2C / GPIO",
+    "evidence": "",
+    "group": "g_periph",
+    "id": "n_periph",
+    "kind": "io",
+    "label": "Peripheral Controllers",
+    "origin": "assumed",
+    "rationale": "常见低速外设集合"
+   },
+   {
+    "detail": "PCIe / Ethernet / USB",
+    "evidence": "",
+    "group": "g_periph",
+    "id": "n_hsio",
+    "kind": "io",
+    "label": "High-Speed IO",
+    "origin": "assumed",
+    "rationale": "对外高速接口"
+   },
+   {
+    "detail": "Off-chip peer",
+    "evidence": "",
+    "group": "g_offchip",
+    "id": "n_host",
+    "kind": "io",
+    "label": "Host / External Device",
+    "origin": "assumed",
+    "rationale": "片外主机或设备"
+   },
+   {
+    "detail": "PLL / clock gating / reset tree",
+    "evidence": "",
+    "group": "g_sys",
+    "id": "n_clk",
+    "kind": "control",
+    "label": "Clock & Reset",
+    "origin": "assumed",
+    "rationale": "全片时钟与复位源"
+   },
+   {
+    "detail": "DVFS / power domains",
+    "evidence": "",
+    "group": "g_sys",
+    "id": "n_pwr",
+    "kind": "control",
+    "label": "Power Management",
+    "origin": "assumed",
+    "rationale": "电源域与功耗管理"
+   },
+   {
+    "detail": "Secure boot / JTAG / trace",
+    "evidence": "",
+    "group": "g_sys",
+    "id": "n_sec",
+    "kind": "control",
+    "label": "Security & Debug",
+    "origin": "assumed",
+    "rationale": "安全启动与调试通道"
+   }
+  ],
+  "questions": [
+   "是否需要把互联展开为多主多从的拓扑（如 crossbar/NoC）？",
+   "是否需要补充中断控制器或低功耗域划分等子系统？"
+  ],
+  "steps": [],
+  "summary": "面向“完整的 SoC 系统”的通用示意：以片上总线/互联为中心，左侧为计算子系统（CPU 集群、加速器），右侧为存储层次与片外 DRAM，下方为外设与安全/调试子系统，顶部为时钟复位与电源管理。所有模块与连接均为按常见工程实践补入的通用示例，可按实际设计增删。",
+  "title": "Generic SoC System Overview",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "g_compute": {
+    "height": 0.248391,
+    "width": 0.354444,
+    "x": 0.044722,
+    "y": 0.375804
+   },
+   "g_mem": {
+    "height": 0.194337,
+    "width": 0.354444,
+    "x": 0.600833,
+    "y": 0.06435
+   },
+   "g_offchip": {
+    "height": 0.217503,
+    "width": 0.354444,
+    "x": 0.600833,
+    "y": 0.660232
+   },
+   "g_periph": {
+    "height": 0.285714,
+    "width": 0.354444,
+    "x": 0.600833,
+    "y": 0.316602
+   },
+   "g_sys": {
+    "height": 0.253539,
+    "width": 0.354444,
+    "x": 0.044722,
+    "y": 0.06435
+   },
+   "n_noc": {
+    "height": 0.559846,
+    "width": 0.135,
+    "x": 0.4325,
+    "y": 0.06435
+   }
+  },
+  "candidate_id": "ownership-hub-2",
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 1.158301,
+   "reading_direction": "existing-data-hub-with-owned-subsystems",
+   "target_width_mm": 160
+  },
+  "composition_diagnostics": {
+   "candidates": [
+    {
+     "accepted": true,
+     "deferred_label_count": 3,
+     "document_height_mm": 138.1,
+     "geometry": {
+      "bends": 10,
+      "crossings": 0,
+      "longest_route_px": 2708,
+      "routing_cost_px": 5100,
+      "total_route_px": 4940
+     },
+     "id": "ownership-hub-2",
+     "natural_aspect": 1.158301,
+     "reasons": []
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 3,
+     "document_height_mm": 160.5,
+     "geometry": {
+      "bends": 10,
+      "crossings": 0,
+      "longest_route_px": 2801.5,
+      "routing_cost_px": 5556.5,
+      "total_route_px": 5396.5
+     },
+     "id": "ownership-hub-1",
+     "natural_aspect": 0.996678,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "ownership-join-1",
+     "reasons": [
+      "No single source-owned join establishes this hierarchy"
+     ]
+    },
+    {
+     "accepted": false,
+     "id": "ownership-join-2",
+     "reasons": [
+      "No single source-owned join establishes this hierarchy"
+     ]
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 0,
+     "document_height_mm": 275.4,
+     "geometry": {
+      "bends": 21,
+      "crossings": 0,
+      "longest_route_px": 1169,
+      "routing_cost_px": 5762.5,
+      "total_route_px": 5426.5
+     },
+     "id": "top-to-bottom-1",
+     "natural_aspect": 0.58102,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "left-to-right-1",
+     "reasons": [
+      "Horizontal subsystem inventories exceed the fixed-font document width"
+     ]
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 0,
+     "document_height_mm": 241.6,
+     "geometry": {
+      "bends": 19,
+      "crossings": 0,
+      "longest_route_px": 1208,
+      "routing_cost_px": 6036.5,
+      "total_route_px": 5732.5
+     },
+     "id": "top-to-bottom-2",
+     "natural_aspect": 0.662252,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "left-to-right-2",
+     "reasons": [
+      "Horizontal subsystem inventories exceed the fixed-font document width"
+     ]
+    }
+   ],
+   "grammar": "ownership-flow",
+   "selected": "ownership-hub-2",
+   "selection_policy": "Hard route/typography/crossover/boundary gates, then document height before optional prose and length plus 16px per bend for subsystem organization; no beauty score"
+  },
+  "containers": [],
+  "insets": [],
+  "layout_scene": {
+   "height": 1554,
+   "line_legend": {},
+   "quality": {
+    "body_font_pt": 9,
+    "deferred_labels": [
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       3,
+       4
+      ],
+      "text": "access"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       8
+      ],
+      "text": "link"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       14
+      ],
+      "text": "resp"
+     }
+    ],
+    "deferred_scope_titles": [],
+    "document_fit": {
+     "default_limit_mm": 140,
+     "height_mm": 138.1,
+     "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+     "no_font_shrink": true,
+     "status": "pass"
+    },
+    "failed_routes": [],
+    "geometry_is_not_raster_acceptance": true,
+    "input_traces": {
+     "clear": true,
+     "failures": [],
+     "owners": [
+      {
+       "geometry_is_not_new_hardware_ports": true,
+       "minimum_path_clearance_px": 637.999,
+       "minimum_port_gap_px": 637.999,
+       "owner": "g_offchip",
+       "paths_touch_or_share": false,
+       "producer_count": 2,
+       "required_port_gap_px": 54,
+       "target_width_mm": 160
+      }
+     ]
+    },
+    "labels_placed": 2,
+    "no_common_bus_inferred": true,
+    "organization_traces": {
+     "clear": true,
+     "contacts": [],
+     "geometry_is_not_new_junctions": true
+    },
+    "owner_scope_entries": {
+     "clear": true,
+     "failures": [],
+     "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+    },
+    "publication_typography": true,
+    "requested_routes": 8,
+    "route_count": 8,
+    "routes_complete": true,
+    "signal_font_pt": 8.5,
+    "target_width_mm": 160,
+    "typography_measured": true
+   },
+   "routes": [
+    {
+     "family": "forward",
+     "id": "p1",
+     "kind": "data",
+     "label": "",
+     "meanings_in_caption": [
+      "read/write",
+      "burst"
+     ],
+     "members": [
+      0,
+      1,
+      2
+     ],
+     "points": [
+      [
+       0.399166,
+       0.464607
+      ],
+      [
+       0.4325,
+       0.464607
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.35751295336787564,
+      "source_side": "right",
+      "target_fraction": 0.7149425287356321,
+      "target_side": "left"
+     },
+     "source": "g_compute",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "n_noc",
+     "target_side": "left"
+    },
+    {
+     "family": "forward",
+     "id": "p2",
+     "kind": "data",
+     "label": "access",
+     "meanings_in_caption": [],
+     "members": [
+      3,
+      4
+     ],
+     "points": [
+      [
+       0.5675,
+       0.118404
+      ],
+      [
+       0.600833,
+       0.118404
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.09655172413793103,
+      "source_side": "right",
+      "target_fraction": 0.2781456953642384,
+      "target_side": "left"
+     },
+     "source": "n_noc",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "g_mem",
+     "target_side": "left"
+    },
+    {
+     "family": "forward",
+     "id": "p3",
+     "kind": "data",
+     "label": "DQ/DQS",
+     "meanings_in_caption": [],
+     "members": [
+      5
+     ],
+     "points": [
+      [
+       0.955277,
+       0.135778
+      ],
+      [
+       0.970277,
+       0.135778
+      ],
+      [
+       0.970277,
+       0.743244
+      ],
+      [
+       0.955277,
+       0.743244
+      ]
+     ],
+     "routing": {
+      "organization_track": "outside-service-column",
+      "source_fraction": 0.3675496688741722,
+      "source_side": "right",
+      "target_fraction": 0.3816568047337278,
+      "target_side": "right"
+     },
+     "source": "g_mem",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "g_offchip",
+     "target_side": "right"
+    },
+    {
+     "family": "forward",
+     "id": "p4",
+     "kind": "data",
+     "label": "",
+     "meanings_in_caption": [
+      "MMIO",
+      "DMA path"
+     ],
+     "members": [
+      6,
+      7
+     ],
+     "points": [
+      [
+       0.5675,
+       0.370657
+      ],
+      [
+       0.600833,
+       0.370657
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.5471264367816092,
+      "source_side": "right",
+      "target_fraction": 0.1891891891891892,
+      "target_side": "left"
+     },
+     "source": "n_noc",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "g_periph",
+     "target_side": "left"
+    },
+    {
+     "family": "forward",
+     "id": "p5",
+     "kind": "data",
+     "label": "link",
+     "meanings_in_caption": [],
+     "members": [
+      8
+     ],
+     "points": [
+      [
+       0.600833,
+       0.440154
+      ],
+      [
+       0.594166,
+       0.440154
+      ],
+      [
+       0.594166,
+       0.743244
+      ],
+      [
+       0.600833,
+       0.743244
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.43243243243243246,
+      "source_side": "left",
+      "target_fraction": 0.3816568047337278,
+      "target_side": "left"
+     },
+     "source": "g_periph",
+     "source_side": "left",
+     "stroke_style": "solid",
+     "target": "g_offchip",
+     "target_side": "left"
+    },
+    {
+     "family": "forward",
+     "id": "p6",
+     "kind": "control",
+     "label": "",
+     "meanings_in_caption": [
+      "pwr ctrl",
+      "debug"
+     ],
+     "members": [
+      11,
+      12
+     ],
+     "points": [
+      [
+       0.399166,
+       0.124196
+      ],
+      [
+       0.405833,
+       0.124196
+      ],
+      [
+       0.405833,
+       0.429858
+      ],
+      [
+       0.399166,
+       0.429858
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.23604060913705585,
+      "source_side": "right",
+      "target_fraction": 0.21761658031088082,
+      "target_side": "right"
+     },
+     "source": "g_sys",
+     "source_side": "right",
+     "stroke_style": "dashed",
+     "target": "g_compute",
+     "target_side": "right"
+    },
+    {
+     "family": "return",
+     "id": "p7",
+     "kind": "control",
+     "label": "req",
+     "meanings_in_caption": [],
+     "members": [
+      13
+     ],
+     "points": [
+      [
+       0.600833,
+       0.405405
+      ],
+      [
+       0.5841664999999999,
+       0.405405
+      ],
+      [
+       0.5841664999999999,
+       0.9581724581724582
+      ],
+      [
+       0.029722000000000002,
+       0.9581724581724582
+      ],
+      [
+       0.029722000000000002,
+       0.447233
+      ],
+      [
+       0.044722,
+       0.447233
+      ]
+     ],
+     "routing": {
+      "outer_route": true,
+      "source_fraction": 0.3108108108108108,
+      "source_side": "left",
+      "target_fraction": 0.28756476683937826,
+      "target_side": "left",
+      "waypoint_axis": "y",
+      "waypoint_value": 0.9581724581724582
+     },
+     "source": "g_periph",
+     "source_side": "left",
+     "stroke_style": "dashed",
+     "target": "g_compute",
+     "target_side": "left"
+    },
+    {
+     "family": "forward",
+     "id": "p8",
+     "kind": "feedback",
+     "label": "resp",
+     "meanings_in_caption": [],
+     "members": [
+      14
+     ],
+     "points": [
+      [
+       0.600833,
+       0.153153
+      ],
+      [
+       0.5675,
+       0.153153
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.45695364238410596,
+      "source_side": "left",
+      "target_fraction": 0.15862068965517243,
+      "target_side": "right"
+     },
+     "source": "g_mem",
+     "source_side": "left",
+     "stroke_style": "solid",
+     "target": "n_noc",
+     "target_side": "right"
+    }
+   ],
+   "width": 1800
+  },
+  "macro_edges": [
+   {
+    "family": "forward",
+    "id": "p1",
+    "kind": "data",
+    "label": "",
+    "meanings_in_caption": [
+     "read/write",
+     "burst"
+    ],
+    "members": [
+     0,
+     1,
+     2
+    ],
+    "routing": {
+     "source_fraction": 0.35751295336787564,
+     "source_side": "right",
+     "target_fraction": 0.7149425287356321,
+     "target_side": "left"
+    },
+    "source": "g_compute",
+    "stroke_style": "solid",
+    "target": "n_noc"
+   },
+   {
+    "family": "forward",
+    "id": "p2",
+    "kind": "data",
+    "label": "access",
+    "meanings_in_caption": [],
+    "members": [
+     3,
+     4
+    ],
+    "routing": {
+     "source_fraction": 0.09655172413793103,
+     "source_side": "right",
+     "target_fraction": 0.2781456953642384,
+     "target_side": "left"
+    },
+    "source": "n_noc",
+    "stroke_style": "solid",
+    "target": "g_mem"
+   },
+   {
+    "family": "forward",
+    "id": "p3",
+    "kind": "data",
+    "label": "DQ/DQS",
+    "meanings_in_caption": [],
+    "members": [
+     5
+    ],
+    "routing": {
+     "organization_track": "outside-service-column",
+     "source_fraction": 0.3675496688741722,
+     "source_side": "right",
+     "target_fraction": 0.3816568047337278,
+     "target_side": "right"
+    },
+    "source": "g_mem",
+    "stroke_style": "solid",
+    "target": "g_offchip"
+   },
+   {
+    "family": "forward",
+    "id": "p4",
+    "kind": "data",
+    "label": "",
+    "meanings_in_caption": [
+     "MMIO",
+     "DMA path"
+    ],
+    "members": [
+     6,
+     7
+    ],
+    "routing": {
+     "source_fraction": 0.5471264367816092,
+     "source_side": "right",
+     "target_fraction": 0.1891891891891892,
+     "target_side": "left"
+    },
+    "source": "n_noc",
+    "stroke_style": "solid",
+    "target": "g_periph"
+   },
+   {
+    "family": "forward",
+    "id": "p5",
+    "kind": "data",
+    "label": "link",
+    "meanings_in_caption": [],
+    "members": [
+     8
+    ],
+    "routing": {
+     "source_fraction": 0.43243243243243246,
+     "source_side": "left",
+     "target_fraction": 0.3816568047337278,
+     "target_side": "left"
+    },
+    "source": "g_periph",
+    "stroke_style": "solid",
+    "target": "g_offchip"
+   },
+   {
+    "family": "forward",
+    "id": "p6",
+    "kind": "control",
+    "label": "",
+    "meanings_in_caption": [
+     "pwr ctrl",
+     "debug"
+    ],
+    "members": [
+     11,
+     12
+    ],
+    "routing": {
+     "source_fraction": 0.23604060913705585,
+     "source_side": "right",
+     "target_fraction": 0.21761658031088082,
+     "target_side": "right"
+    },
+    "source": "g_sys",
+    "stroke_style": "dashed",
+    "target": "g_compute"
+   },
+   {
+    "family": "return",
+    "id": "p7",
+    "kind": "control",
+    "label": "req",
+    "meanings_in_caption": [],
+    "members": [
+     13
+    ],
+    "routing": {
+     "outer_route": true,
+     "source_fraction": 0.3108108108108108,
+     "source_side": "left",
+     "target_fraction": 0.28756476683937826,
+     "target_side": "left",
+     "waypoint_axis": "y",
+     "waypoint_value": 0.9581724581724582
+    },
+    "source": "g_periph",
+    "stroke_style": "dashed",
+    "target": "g_compute"
+   },
+   {
+    "family": "forward",
+    "id": "p8",
+    "kind": "feedback",
+    "label": "resp",
+    "meanings_in_caption": [],
+    "members": [
+     14
+    ],
+    "routing": {
+     "source_fraction": 0.45695364238410596,
+     "source_side": "left",
+     "target_fraction": 0.15862068965517243,
+     "target_side": "right"
+    },
+    "source": "g_mem",
+    "stroke_style": "solid",
+    "target": "n_noc"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "Shared bus / NoC fabric",
+    "id": "n_noc",
+    "kind": "control",
+    "label": "On-Chip Interconnect",
+    "members": [
+     "n_noc"
+    ],
+    "original_group": ""
+   },
+   {
+    "boundary_port_count": 2,
+    "children": [
+     {
+      "id": "n_cpu",
+      "kind": "compute",
+      "label": "CPU Cluster"
+     },
+     {
+      "id": "n_accel",
+      "kind": "compute",
+      "label": "Accelerator / DSP"
+     },
+     {
+      "id": "n_dma",
+      "kind": "compute",
+      "label": "DMA Engine"
+     }
+    ],
+    "entry_sources": [],
+    "expanded": true,
+    "id": "g_compute",
+    "kind": "compute",
+    "label": "Compute Subsystem",
+    "logical_group": true,
+    "members": [
+     "n_cpu",
+     "n_accel",
+     "n_dma"
+    ],
+    "original_group": "",
+    "scope_ports_by_side": true,
+    "source_group": "g_compute",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 2,
+    "children": [
+     {
+      "id": "n_sram",
+      "kind": "memory",
+      "label": "On-Chip SRAM"
+     },
+     {
+      "id": "n_memctl",
+      "kind": "control",
+      "label": "DRAM Controller"
+     }
+    ],
+    "entry_sources": [
+     "n_noc"
+    ],
+    "expanded": true,
+    "id": "g_mem",
+    "kind": "io",
+    "label": "Memory Subsystem",
+    "logical_group": true,
+    "members": [
+     "n_sram",
+     "n_memctl"
+    ],
+    "original_group": "",
+    "scope_ports_by_side": true,
+    "source_group": "g_mem",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 3,
+    "children": [
+     {
+      "id": "n_periph",
+      "kind": "io",
+      "label": "Peripheral Controllers",
+      "required_detail": "UART / SPI / I2C / GPIO"
+     },
+     {
+      "id": "n_hsio",
+      "kind": "io",
+      "label": "High-Speed IO"
+     }
+    ],
+    "entry_sources": [
+     "n_noc"
+    ],
+    "expanded": true,
+    "id": "g_periph",
+    "kind": "io",
+    "label": "Peripheral & IO Subsystem",
+    "logical_group": true,
+    "members": [
+     "n_periph",
+     "n_hsio"
+    ],
+    "original_group": "",
+    "scope_ports_by_side": true,
+    "source_group": "g_periph",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 1,
+    "children": [
+     {
+      "id": "n_clk",
+      "kind": "control",
+      "label": "Clock & Reset"
+     },
+     {
+      "id": "n_pwr",
+      "kind": "control",
+      "label": "Power Management"
+     },
+     {
+      "id": "n_sec",
+      "kind": "control",
+      "label": "Security & Debug"
+     }
+    ],
+    "entry_sources": [],
+    "expanded": true,
+    "id": "g_sys",
+    "kind": "io",
+    "label": "System Management",
+    "logical_group": true,
+    "members": [
+     "n_clk",
+     "n_pwr",
+     "n_sec"
+    ],
+    "original_group": "",
+    "scope_ports_by_side": true,
+    "source_group": "g_sys",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 1,
+    "children": [
+     {
+      "id": "n_dram",
+      "kind": "memory",
+      "label": "External DRAM"
+     },
+     {
+      "id": "n_host",
+      "kind": "io",
+      "label": "Host / External Device"
+     }
+    ],
+    "entry_sources": [
+     "g_mem",
+     "g_periph"
+    ],
+    "expanded": true,
+    "id": "g_offchip",
+    "kind": "io",
+    "label": "Off-Chip",
+    "logical_group": true,
+    "members": [
+     "n_dram",
+     "n_host"
+    ],
+    "original_group": "",
+    "scope_ports_by_side": true,
+    "source_group": "g_offchip",
+    "zone": "external"
+   }
+  ],
+  "node_to_macro": {
+   "n_accel": "g_compute",
+   "n_clk": "g_sys",
+   "n_cpu": "g_compute",
+   "n_dma": "g_compute",
+   "n_dram": "g_offchip",
+   "n_host": "g_offchip",
+   "n_hsio": "g_periph",
+   "n_memctl": "g_mem",
+   "n_noc": "n_noc",
+   "n_periph": "g_periph",
+   "n_pwr": "g_sys",
+   "n_sec": "g_sys",
+   "n_sram": "g_mem"
+  },
+  "projection": {
+   "deferred_edges": [
+    {
+     "index": 9,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 10,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    }
+   ],
+   "folded_groups": [
+    "g_compute",
+    "g_mem",
+    "g_periph",
+    "g_sys",
+    "g_offchip"
+   ],
+   "internal_edges": [],
+   "meaning": "True group boundaries summarize only their source inventory and external relationships. A supplied xN group denotes that inventory's original multiplicity; no new instances or internal wiring are invented.",
+   "ownership_unchanged": true,
+   "retained_payload_edge_indices": [],
+   "retained_payload_groups": [],
+   "source_node_to_macro": {
+    "n_accel": "g_compute",
+    "n_clk": "g_sys",
+    "n_cpu": "g_compute",
+    "n_dma": "g_compute",
+    "n_dram": "g_offchip",
+    "n_host": "g_offchip",
+    "n_hsio": "g_periph",
+    "n_memctl": "g_mem",
+    "n_noc": "n_noc",
+    "n_periph": "g_periph",
+    "n_pwr": "g_sys",
+    "n_sec": "g_sys",
+    "n_sram": "g_mem"
+   }
+  },
+  "scene_id": "system",
+  "source_edge_indices": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13,
+   14
+  ],
+  "source_group_labels": {
+   "g_compute": "Compute Subsystem",
+   "g_mem": "Memory Subsystem",
+   "g_offchip": "Off-Chip",
+   "g_periph": "Peripheral & IO Subsystem",
+   "g_sys": "System Management"
+  },
+  "source_group_parents": {
+   "g_compute": "",
+   "g_mem": "",
+   "g_offchip": "",
+   "g_periph": "",
+   "g_sys": ""
+  },
+  "source_ownership": {
+   "n_accel": "g_compute",
+   "n_clk": "g_sys",
+   "n_cpu": "g_compute",
+   "n_dma": "g_compute",
+   "n_dram": "g_offchip",
+   "n_host": "g_offchip",
+   "n_hsio": "g_periph",
+   "n_memctl": "g_mem",
+   "n_noc": "",
+   "n_periph": "g_periph",
+   "n_pwr": "g_sys",
+   "n_sec": "g_sys",
+   "n_sram": "g_mem"
+  },
+  "symbol_metrics": {
+   "g_compute": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 18,
+       "y": 166
+      },
+      "id": "n_cpu",
+      "kind": "compute",
+      "label": "CPU Cluster",
+      "lines": [
+       "CPU Cluster"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 328,
+       "y": 166
+      },
+      "id": "n_accel",
+      "kind": "compute",
+      "label": "Accelerator / DSP",
+      "lines": [
+       "Accelerator",
+       "/ DSP"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 68,
+       "width": 292,
+       "x": 18,
+       "y": 294
+      },
+      "id": "n_dma",
+      "kind": "compute",
+      "label": "DMA Engine",
+      "lines": [
+       "DMA Engine"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 90,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 386,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Compute Subsystem"
+    ],
+    "width": 638
+   },
+   "g_mem": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 18,
+       "y": 166
+      },
+      "id": "n_sram",
+      "kind": "memory",
+      "label": "On-Chip SRAM",
+      "lines": [
+       "On-Chip SRAM"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 328,
+       "y": 166
+      },
+      "id": "n_memctl",
+      "kind": "control",
+      "label": "DRAM Controller",
+      "lines": [
+       "DRAM",
+       "Controller"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 90,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 302,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Memory Subsystem"
+    ],
+    "width": 638
+   },
+   "g_offchip": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 18,
+       "y": 202
+      },
+      "id": "n_dram",
+      "kind": "memory",
+      "label": "External DRAM",
+      "lines": [
+       "External DRAM"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 328,
+       "y": 202
+      },
+      "id": "n_host",
+      "kind": "io",
+      "label": "Host / External Device",
+      "lines": [
+       "Host / External",
+       "Device"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 126,
+    "entry_port_spacing_px": 54,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 338,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Off-Chip"
+    ],
+    "width": 638
+   },
+   "g_periph": {
+    "children": [
+     {
+      "box_px": {
+       "height": 200,
+       "width": 292,
+       "x": 18,
+       "y": 220
+      },
+      "id": "n_periph",
+      "kind": "io",
+      "label": "Peripheral Controllers",
+      "lines": [
+       "Peripheral",
+       "Controllers",
+       "UART / SPI",
+       "/ I2C / GPIO"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 200,
+       "width": 292,
+       "x": 328,
+       "y": 220
+      },
+      "id": "n_hsio",
+      "kind": "io",
+      "label": "High-Speed IO",
+      "lines": [
+       "High-Speed IO"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 144,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 444,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Peripheral & IO Subsystem"
+    ],
+    "width": 638
+   },
+   "g_sys": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 18,
+       "y": 130
+      },
+      "id": "n_clk",
+      "kind": "control",
+      "label": "Clock & Reset",
+      "lines": [
+       "Clock & Reset"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 328,
+       "y": 130
+      },
+      "id": "n_pwr",
+      "kind": "control",
+      "label": "Power Management",
+      "lines": [
+       "Power",
+       "Management"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 292,
+       "x": 18,
+       "y": 258
+      },
+      "id": "n_sec",
+      "kind": "control",
+      "label": "Security & Debug",
+      "lines": [
+       "Security",
+       "& Debug"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 54,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 394,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "System Management"
+    ],
+    "width": 638
+   },
+   "n_noc": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 110,
+    "height": 112,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "On-Chip",
+     "Interconnect"
+    ],
+    "width": 243
+   }
+  },
+  "system_frame": {
+   "box": {
+    "height": 1,
+    "width": 1,
+    "x": 0,
+    "y": 0
+   },
+   "display_only": true,
+   "label": ""
+  },
+  "title": "Generic SoC System Overview",
+  "type": "publication",
+  "typography": {
+   "body_pt": 9,
+   "body_px": 36,
+   "no_font_shrink": true,
+   "signal_pt": 8.5,
+   "signal_px": 34,
+   "symbol_profile": "plain",
+   "target_width_mm": 160
+  },
+  "version": "CPS6",
+  "view_role": "organization",
+  "view_type": "publication-ownership-flow"
+ },
+ "version": 1,
+ "warnings": []
+}

@@ -1,0 +1,1111 @@
+{
+ "algorithm_flow_plan": {
+  "composition": {
+   "connector_cardinality": [
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      0
+     ],
+     "source_node_id": "q",
+     "target_node_id": "scores"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      1
+     ],
+     "source_node_id": "k",
+     "target_node_id": "scores"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      2
+     ],
+     "source_node_id": "scores",
+     "target_node_id": "scale_mask"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      3
+     ],
+     "source_node_id": "mask",
+     "target_node_id": "scale_mask"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      4
+     ],
+     "source_node_id": "scale_mask",
+     "target_node_id": "softmax"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      5
+     ],
+     "source_node_id": "softmax",
+     "target_node_id": "weighted"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      6
+     ],
+     "source_node_id": "v",
+     "target_node_id": "weighted"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      7
+     ],
+     "source_node_id": "weighted",
+     "target_node_id": "output"
+    }
+   ],
+   "dependency_layers": [
+    {
+     "node_ids": [
+      "q",
+      "k",
+      "v",
+      "mask"
+     ],
+     "rank": 0
+    },
+    {
+     "node_ids": [
+      "scores"
+     ],
+     "rank": 1
+    },
+    {
+     "node_ids": [
+      "scale_mask"
+     ],
+     "rank": 2
+    },
+    {
+     "node_ids": [
+      "softmax"
+     ],
+     "rank": 3
+    },
+    {
+     "node_ids": [
+      "weighted"
+     ],
+     "rank": 4
+    },
+    {
+     "node_ids": [
+      "output"
+     ],
+     "rank": 5
+    }
+   ],
+   "display_columns": [
+    {
+     "column": 0,
+     "node_ids": [
+      "q",
+      "k"
+     ]
+    },
+    {
+     "column": 1,
+     "node_ids": [
+      "mask",
+      "scores"
+     ]
+    },
+    {
+     "column": 2,
+     "node_ids": [
+      "scale_mask"
+     ]
+    },
+    {
+     "column": 3,
+     "node_ids": [
+      "v",
+      "softmax"
+     ]
+    },
+    {
+     "column": 4,
+     "node_ids": [
+      "weighted"
+     ]
+    },
+    {
+     "column": 5,
+     "node_ids": [
+      "output"
+     ]
+    }
+   ],
+   "grammar": "branched-tensor-flow",
+   "group_policy": "compact group headings or short open brackets over actual members; no large empty container frames",
+   "joins": [
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      0,
+      1
+     ],
+     "source_node_ids": [
+      "q",
+      "k"
+     ],
+     "target_node_id": "scores"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      2,
+      3
+     ],
+     "source_node_ids": [
+      "scores",
+      "mask"
+     ],
+     "target_node_id": "scale_mask"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      5,
+      6
+     ],
+     "source_node_ids": [
+      "softmax",
+      "v"
+     ],
+     "target_node_id": "weighted"
+    }
+   ],
+   "layer_meaning": "graphical dependency layers only; not cycles, latencies, pipeline stages or serialized execution",
+   "matched_operand_placement": [
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 0,
+     "consumer_node_id": "scores",
+     "source_node_id": "q"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 0,
+     "consumer_node_id": "scores",
+     "source_node_id": "k"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 3,
+     "consumer_node_id": "weighted",
+     "source_node_id": "v"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 1,
+     "consumer_node_id": "scale_mask",
+     "source_node_id": "mask"
+    }
+   ],
+   "object_budget": "prefer 8–14 main objects per panel; if the complete source is larger, use aligned source-backed panels without dropping leaves or dependencies",
+   "outgoing_contracts": [
+    {
+     "allowed_target_node_ids": [
+      "scores"
+     ],
+     "source_edge_indices": [
+      0
+     ],
+     "source_node_id": "q"
+    },
+    {
+     "allowed_target_node_ids": [
+      "scores"
+     ],
+     "source_edge_indices": [
+      1
+     ],
+     "source_node_id": "k"
+    },
+    {
+     "allowed_target_node_ids": [
+      "weighted"
+     ],
+     "source_edge_indices": [
+      6
+     ],
+     "source_node_id": "v"
+    },
+    {
+     "allowed_target_node_ids": [
+      "scale_mask"
+     ],
+     "source_edge_indices": [
+      3
+     ],
+     "source_node_id": "mask"
+    },
+    {
+     "allowed_target_node_ids": [
+      "scale_mask"
+     ],
+     "source_edge_indices": [
+      2
+     ],
+     "source_node_id": "scores"
+    },
+    {
+     "allowed_target_node_ids": [
+      "softmax"
+     ],
+     "source_edge_indices": [
+      4
+     ],
+     "source_node_id": "scale_mask"
+    },
+    {
+     "allowed_target_node_ids": [
+      "weighted"
+     ],
+     "source_edge_indices": [
+      5
+     ],
+     "source_node_id": "softmax"
+    },
+    {
+     "allowed_target_node_ids": [
+      "output"
+     ],
+     "source_edge_indices": [
+      7
+     ],
+     "source_node_id": "weighted"
+    },
+    {
+     "allowed_target_node_ids": [],
+     "source_edge_indices": [],
+     "source_node_id": "output"
+    }
+   ],
+   "parallel_branches": [],
+   "primary_reading_axis": "left-to-right dependency order",
+   "recurrence_components": [],
+   "recurrence_exit_branches": [],
+   "residency_labels": [],
+   "return_edge_indices": [],
+   "state_lane_node_ids": []
+  },
+  "groups": [
+   {
+    "evidence": "三路输入并行",
+    "id": "g_inputs",
+    "label": "Inputs",
+    "member_node_ids": [
+     "q",
+     "k",
+     "v",
+     "mask"
+    ],
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "三路输入并行",
+    "id": "g_ops",
+    "label": "Attention computation",
+    "member_node_ids": [
+     "scores",
+     "scale_mask",
+     "softmax",
+     "weighted"
+    ],
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   }
+  ],
+  "motifs": {
+   "data_residency": [],
+   "joins": [
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      0,
+      1
+     ],
+     "source_node_ids": [
+      "q",
+      "k"
+     ],
+     "target_node_id": "scores"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      2,
+      3
+     ],
+     "source_node_ids": [
+      "scores",
+      "mask"
+     ],
+     "target_node_id": "scale_mask"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      5,
+      6
+     ],
+     "source_node_ids": [
+      "softmax",
+      "v"
+     ],
+     "target_node_id": "weighted"
+    }
+   ],
+   "parallel_branches": [],
+   "recurrence_components": [],
+   "recurrence_exits": [],
+   "reductions": [
+    "softmax"
+   ],
+   "tensor_shapes": [
+    {
+     "shape": "N × d_k",
+     "source_node_id": "q"
+    },
+    {
+     "shape": "N × d_k",
+     "source_node_id": "k"
+    },
+    {
+     "shape": "N × d_v",
+     "source_node_id": "v"
+    },
+    {
+     "shape": "N × N",
+     "source_node_id": "mask"
+    },
+    {
+     "shape": "N × N",
+     "source_node_id": "scores"
+    },
+    {
+     "shape": "N × N",
+     "source_node_id": "scale_mask"
+    },
+    {
+     "shape": "N × N",
+     "source_node_id": "softmax"
+    },
+    {
+     "shape": "N × d_v",
+     "source_node_id": "weighted"
+    },
+    {
+     "shape": "N × d_v",
+     "source_node_id": "output"
+    }
+   ]
+  },
+  "objects": [
+   {
+    "detail": "Query tensor; N × d_k",
+    "evidence": "输入 Q 和 K 的形状都是 N × d_k",
+    "label": "Q",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Query tensor; N × d_k",
+     "diagram_role": "tensor",
+     "kind": "io",
+     "label": "Q",
+     "tensor_shape": "N × d_k"
+    },
+    "source_group": "g_inputs",
+    "source_node_id": "q",
+    "tensor_shape": "N × d_k",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Query tensor"
+     ],
+     "mathematical_lines": [],
+     "name": "Q",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "N × d_k"
+    }
+   },
+   {
+    "detail": "Key tensor; N × d_k",
+    "evidence": "输入 Q 和 K 的形状都是 N × d_k",
+    "label": "K",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Key tensor; N × d_k",
+     "diagram_role": "tensor",
+     "kind": "io",
+     "label": "K",
+     "tensor_shape": "N × d_k"
+    },
+    "source_group": "g_inputs",
+    "source_node_id": "k",
+    "tensor_shape": "N × d_k",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Key tensor"
+     ],
+     "mathematical_lines": [],
+     "name": "K",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "N × d_k"
+    }
+   },
+   {
+    "detail": "Value tensor; N × d_v",
+    "evidence": "V 是 N × d_v",
+    "label": "V",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Value tensor; N × d_v",
+     "diagram_role": "tensor",
+     "kind": "io",
+     "label": "V",
+     "tensor_shape": "N × d_v"
+    },
+    "source_group": "g_inputs",
+    "source_node_id": "v",
+    "tensor_shape": "N × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Value tensor"
+     ],
+     "mathematical_lines": [],
+     "name": "V",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "N × d_v"
+    }
+   },
+   {
+    "detail": "N × N; M_ij = 0 for j <= i, otherwise -inf",
+    "evidence": "M 在允许位置为 0，未来位置为 -inf",
+    "label": "Causal mask M",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "N × N; M_ij = 0 for j <= i, otherwise -inf",
+     "diagram_role": "tensor",
+     "kind": "io",
+     "label": "Causal mask M",
+     "tensor_shape": "N × N"
+    },
+    "source_group": "g_inputs",
+    "source_node_id": "mask",
+    "tensor_shape": "N × N",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "M_ij = 0 for j <= i, otherwise -inf"
+     ],
+     "name": "Causal mask M",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "N × N"
+    }
+   },
+   {
+    "detail": "S = QK^T; contraction over d_k",
+    "evidence": "Q、K 汇入 QK^T 得到 N × N 分数",
+    "label": "QK^T",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "S = QK^T; contraction over d_k",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "QK^T",
+     "tensor_shape": "N × N"
+    },
+    "source_group": "g_ops",
+    "source_node_id": "scores",
+    "tensor_shape": "N × N",
+    "text_plan": {
+     "axis_lines": [
+      "contraction over d_k"
+     ],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "S = QK^T"
+     ],
+     "name": "QK^T",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "N × N"
+    }
+   },
+   {
+    "detail": "Z = S / sqrt(d_k) + M",
+    "evidence": "除以 sqrt(d_k) 并加上 causal mask M",
+    "label": "Scale + mask",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Z = S / sqrt(d_k) + M",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Scale + mask",
+     "tensor_shape": "N × N"
+    },
+    "source_group": "g_ops",
+    "source_node_id": "scale_mask",
+    "tensor_shape": "N × N",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "Z = S / sqrt(d_k) + M"
+     ],
+     "name": "Scale + mask",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "N × N"
+    }
+   },
+   {
+    "detail": "P = softmax(Z), normalized across key positions",
+    "evidence": "逐行 softmax 得到 P",
+    "label": "Row-wise softmax",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "reduction",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "reduction",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "P = softmax(Z), normalized across key positions",
+     "diagram_role": "reduction",
+     "kind": "compute",
+     "label": "Row-wise softmax",
+     "tensor_shape": "N × N"
+    },
+    "source_group": "g_ops",
+    "source_node_id": "softmax",
+    "tensor_shape": "N × N",
+    "text_plan": {
+     "axis_lines": [
+      "normalized across key positions"
+     ],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "P = softmax(Z)"
+     ],
+     "name": "Row-wise softmax",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "N × N"
+    }
+   },
+   {
+    "detail": "Weighted value sum; contraction over key positions",
+    "evidence": "P 与旁路传入的 V 做 PV",
+    "label": "PV",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Weighted value sum; contraction over key positions",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "PV",
+     "tensor_shape": "N × d_v"
+    },
+    "source_group": "g_ops",
+    "source_node_id": "weighted",
+    "tensor_shape": "N × d_v",
+    "text_plan": {
+     "axis_lines": [
+      "contraction over key positions"
+     ],
+     "caption_only_detail": [
+      "Weighted value sum"
+     ],
+     "mathematical_lines": [],
+     "name": "PV",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "N × d_v"
+    }
+   },
+   {
+    "detail": "Output tensor",
+    "evidence": "输出 O，形状 N × d_v",
+    "label": "O",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Output tensor",
+     "diagram_role": "tensor",
+     "kind": "io",
+     "label": "O",
+     "tensor_shape": "N × d_v"
+    },
+    "source_group": "",
+    "source_node_id": "output",
+    "tensor_shape": "N × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Output tensor"
+     ],
+     "mathematical_lines": [],
+     "name": "O",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "N × d_v"
+    }
+   }
+  ],
+  "relations": [
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "Q、K 汇入 QK^T 得到 N × N 分数",
+    "kind": "data",
+    "label": "Q",
+    "origin": "given",
+    "rationale": "",
+    "source": "q",
+    "source_edge_index": 0,
+    "target": "scores"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "Q、K 汇入 QK^T 得到 N × N 分数",
+    "kind": "data",
+    "label": "K (transposed in matmul)",
+    "origin": "given",
+    "rationale": "",
+    "source": "k",
+    "source_edge_index": 1,
+    "target": "scores"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "除以 sqrt(d_k) 并加上 causal mask M",
+    "kind": "data",
+    "label": "S",
+    "origin": "given",
+    "rationale": "",
+    "source": "scores",
+    "source_edge_index": 2,
+    "target": "scale_mask"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "除以 sqrt(d_k) 并加上 causal mask M",
+    "kind": "data",
+    "label": "M",
+    "origin": "given",
+    "rationale": "",
+    "source": "mask",
+    "source_edge_index": 3,
+    "target": "scale_mask"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "逐行 softmax 得到 P",
+    "kind": "data",
+    "label": "Z",
+    "origin": "given",
+    "rationale": "",
+    "source": "scale_mask",
+    "source_edge_index": 4,
+    "target": "softmax"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "P 与旁路传入的 V 做 PV",
+    "kind": "data",
+    "label": "P",
+    "origin": "given",
+    "rationale": "",
+    "source": "softmax",
+    "source_edge_index": 5,
+    "target": "weighted"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "P 与旁路传入的 V 做 PV",
+    "kind": "data",
+    "label": "V",
+    "origin": "given",
+    "rationale": "",
+    "source": "v",
+    "source_edge_index": 6,
+    "target": "weighted"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "输出 O，形状 N × d_v",
+    "kind": "data",
+    "label": "O",
+    "origin": "given",
+    "rationale": "",
+    "source": "weighted",
+    "source_edge_index": 7,
+    "target": "output"
+   }
+  ],
+  "semantic_policy": "Shapes, axes, tiles and residency are shown only when supplied. Separate operands remain separate. Visible source cycles retain exact direction. A graphical join is not a reduction, matrix multiply is not elementwise multiplication, and no tensor is silently a hardware memory.",
+  "source_hash": "f0780decee0c164fe542d1962e14aeee95e14b7ab50b2cd3aa821530e68905e6",
+  "version": "ALGO1"
+ },
+ "figure": {
+  "design_limit": null,
+  "id": "algorithm-flow",
+  "layout_strategy": "algorithm-dependency-plan",
+  "title": "Scaled Dot-Product Attention"
+ },
+ "kind": "algorithm",
+ "label_layout": null,
+ "layout_scene": {},
+ "quality": {},
+ "settings": {
+  "aspect": "auto",
+  "category": "dataflow",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "flow",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Batch and head dimensions are omitted.",
+   "Additive mask precedes softmax; V does not enter score normalization."
+  ],
+  "assumptions": [
+   "Single attention head, causal self-attention, no dropout."
+  ],
+  "category": "dataflow",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "Q、K 汇入 QK^T 得到 N × N 分数",
+    "kind": "data",
+    "label": "Q",
+    "origin": "given",
+    "rationale": "",
+    "source": "q",
+    "target": "scores"
+   },
+   {
+    "evidence": "Q、K 汇入 QK^T 得到 N × N 分数",
+    "kind": "data",
+    "label": "K (transposed in matmul)",
+    "origin": "given",
+    "rationale": "",
+    "source": "k",
+    "target": "scores"
+   },
+   {
+    "evidence": "除以 sqrt(d_k) 并加上 causal mask M",
+    "kind": "data",
+    "label": "S",
+    "origin": "given",
+    "rationale": "",
+    "source": "scores",
+    "target": "scale_mask"
+   },
+   {
+    "evidence": "除以 sqrt(d_k) 并加上 causal mask M",
+    "kind": "data",
+    "label": "M",
+    "origin": "given",
+    "rationale": "",
+    "source": "mask",
+    "target": "scale_mask"
+   },
+   {
+    "evidence": "逐行 softmax 得到 P",
+    "kind": "data",
+    "label": "Z",
+    "origin": "given",
+    "rationale": "",
+    "source": "scale_mask",
+    "target": "softmax"
+   },
+   {
+    "evidence": "P 与旁路传入的 V 做 PV",
+    "kind": "data",
+    "label": "P",
+    "origin": "given",
+    "rationale": "",
+    "source": "softmax",
+    "target": "weighted"
+   },
+   {
+    "evidence": "P 与旁路传入的 V 做 PV",
+    "kind": "data",
+    "label": "V",
+    "origin": "given",
+    "rationale": "",
+    "source": "v",
+    "target": "weighted"
+   },
+   {
+    "evidence": "输出 O，形状 N × d_v",
+    "kind": "data",
+    "label": "O",
+    "origin": "given",
+    "rationale": "",
+    "source": "weighted",
+    "target": "output"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "三路输入并行",
+    "id": "g_inputs",
+    "label": "Inputs",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "三路输入并行",
+    "id": "g_ops",
+    "label": "Attention computation",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   }
+  ],
+  "layout": "Parallel Q and K inputs meet at QK^T. A compact mask side input meets the scale/mask operator. Scores proceed to row-wise softmax; the independent V lane bypasses the score path and joins P only at PV. O is the rightmost sink. Shapes belong to tensors, not decorative badges. Grouping is explanatory, not a hardware containment claim.",
+  "nodes": [
+   {
+    "detail": "Query tensor; N × d_k",
+    "diagram_role": "tensor",
+    "evidence": "输入 Q 和 K 的形状都是 N × d_k",
+    "group": "g_inputs",
+    "id": "q",
+    "kind": "io",
+    "label": "Q",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × d_k"
+   },
+   {
+    "detail": "Key tensor; N × d_k",
+    "diagram_role": "tensor",
+    "evidence": "输入 Q 和 K 的形状都是 N × d_k",
+    "group": "g_inputs",
+    "id": "k",
+    "kind": "io",
+    "label": "K",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × d_k"
+   },
+   {
+    "detail": "Value tensor; N × d_v",
+    "diagram_role": "tensor",
+    "evidence": "V 是 N × d_v",
+    "group": "g_inputs",
+    "id": "v",
+    "kind": "io",
+    "label": "V",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × d_v"
+   },
+   {
+    "detail": "N × N; M_ij = 0 for j <= i, otherwise -inf",
+    "diagram_role": "tensor",
+    "evidence": "M 在允许位置为 0，未来位置为 -inf",
+    "group": "g_inputs",
+    "id": "mask",
+    "kind": "io",
+    "label": "Causal mask M",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × N"
+   },
+   {
+    "detail": "S = QK^T; contraction over d_k",
+    "diagram_role": "operator",
+    "evidence": "Q、K 汇入 QK^T 得到 N × N 分数",
+    "group": "g_ops",
+    "id": "scores",
+    "kind": "compute",
+    "label": "QK^T",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × N"
+   },
+   {
+    "detail": "Z = S / sqrt(d_k) + M",
+    "diagram_role": "operator",
+    "evidence": "除以 sqrt(d_k) 并加上 causal mask M",
+    "group": "g_ops",
+    "id": "scale_mask",
+    "kind": "compute",
+    "label": "Scale + mask",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × N"
+   },
+   {
+    "detail": "P = softmax(Z), normalized across key positions",
+    "diagram_role": "reduction",
+    "evidence": "逐行 softmax 得到 P",
+    "group": "g_ops",
+    "id": "softmax",
+    "kind": "compute",
+    "label": "Row-wise softmax",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × N"
+   },
+   {
+    "detail": "Weighted value sum; contraction over key positions",
+    "diagram_role": "operator",
+    "evidence": "P 与旁路传入的 V 做 PV",
+    "group": "g_ops",
+    "id": "weighted",
+    "kind": "compute",
+    "label": "PV",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × d_v"
+   },
+   {
+    "detail": "Output tensor",
+    "diagram_role": "tensor",
+    "evidence": "输出 O，形状 N × d_v",
+    "group": "",
+    "id": "output",
+    "kind": "io",
+    "label": "O",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "N × d_v"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "One-head causal self-attention with parallel Q/K/V inputs, row-wise probability normalization and an independent value path.",
+  "title": "Scaled Dot-Product Attention",
+  "verbatim_labels": []
+ },
+ "structure_layout": null,
+ "version": 1,
+ "warnings": []
+}

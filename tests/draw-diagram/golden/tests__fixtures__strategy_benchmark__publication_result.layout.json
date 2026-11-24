@@ -1,0 +1,1539 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "overview",
+  "layout_strategy": "legacy-technical-annex",
+  "title": "Synthetic branched signal processor"
+ },
+ "kind": "legacy",
+ "label_layout": {
+  "height": 450,
+  "labels": [
+   {
+    "box": {
+     "height": 0.046667,
+     "width": 0.035573,
+     "x": 0.362739,
+     "y": 0.376601
+    },
+    "color": "#17324D",
+    "text": "branch A"
+   },
+   {
+    "box": {
+     "height": 0.046667,
+     "width": 0.035573,
+     "x": 0.357514,
+     "y": 0.800262
+    },
+    "color": "#17324D",
+    "text": "branch B"
+   },
+   {
+    "box": {
+     "height": 0.046667,
+     "width": 0.061253,
+     "x": 0.599356,
+     "y": 0.471013
+    },
+    "color": "#17324D",
+    "text": "scaled samples"
+   },
+   {
+    "box": {
+     "height": 0.046667,
+     "width": 0.06224,
+     "x": 0.609808,
+     "y": 0.708072
+    },
+    "color": "#17324D",
+    "text": "filtered samples"
+   },
+   {
+    "box": {
+     "height": 0.046667,
+     "width": 0.073111,
+     "x": 0.266778,
+     "y": 0.746667
+    },
+    "color": "#17324D",
+    "text": "reference samples"
+   }
+  ],
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 450,
+  "line_legend": {},
+  "quality": {
+   "failed_routes": [],
+   "no_common_bus_inferred": true,
+   "requested_routes": 7,
+   "route_count": 7,
+   "routes_complete": true
+  },
+  "routes": [
+   {
+    "family": "forward",
+    "id": "E1",
+    "kind": "data",
+    "label": "sample block",
+    "members": [
+     0
+    ],
+    "points": [
+     [
+      0.20754,
+      0.593137
+     ],
+     [
+      0.214207,
+      0.593137
+     ],
+     [
+      0.214207,
+      0.611765
+     ],
+     [
+      0.254199,
+      0.611765
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "samples",
+    "source_edge_index": 0,
+    "source_nodes": [
+     "samples"
+    ],
+    "source_side": "right",
+    "target": "decode",
+    "target_nodes": [
+     "decode"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "E2",
+    "kind": "data",
+    "label": "branch A",
+    "members": [
+     1
+    ],
+    "points": [
+     [
+      0.348637,
+      0.586274
+     ],
+     [
+      0.355304,
+      0.586274
+     ],
+     [
+      0.355304,
+      0.458823
+     ],
+     [
+      0.405748,
+      0.458823
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-1",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "decode",
+    "source_edge_index": 1,
+    "source_nodes": [
+     "decode"
+    ],
+    "source_side": "right",
+    "target": "gain",
+    "target_nodes": [
+     "gain"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "E3",
+    "kind": "data",
+    "label": "branch B",
+    "members": [
+     2
+    ],
+    "points": [
+     [
+      0.348637,
+      0.637255
+     ],
+     [
+      0.355304,
+      0.637255
+     ],
+     [
+      0.355304,
+      0.764706
+     ],
+     [
+      0.395297,
+      0.764706
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-1",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "decode",
+    "source_edge_index": 2,
+    "source_nodes": [
+     "decode"
+    ],
+    "source_side": "right",
+    "target": "filter",
+    "target_nodes": [
+     "filter"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "E4",
+    "kind": "data",
+    "label": "scaled samples",
+    "members": [
+     3
+    ],
+    "points": [
+     [
+      0.5838,
+      0.458823
+     ],
+     [
+      0.590467,
+      0.458823
+     ],
+     [
+      0.590467,
+      0.573529
+     ],
+     [
+      0.640911,
+      0.573529
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-2",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "gain",
+    "source_edge_index": 3,
+    "source_nodes": [
+     "gain"
+    ],
+    "source_side": "right",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "E5",
+    "kind": "data",
+    "label": "filtered samples",
+    "members": [
+     4
+    ],
+    "points": [
+     [
+      0.594252,
+      0.764706
+     ],
+     [
+      0.600919,
+      0.764706
+     ],
+     [
+      0.600919,
+      0.65
+     ],
+     [
+      0.640911,
+      0.65
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-2",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "filter",
+    "source_edge_index": 4,
+    "source_nodes": [
+     "filter"
+    ],
+    "source_side": "right",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "E6",
+    "kind": "data",
+    "label": "reference samples",
+    "members": [
+     5
+    ],
+    "points": [
+     [
+      0.20754,
+      0.630392
+     ],
+     [
+      0.217778,
+      0.630392
+     ],
+     [
+      0.217778,
+      0.711111
+     ],
+     [
+      0.388889,
+      0.711111
+     ],
+     [
+      0.388889,
+      0.613333
+     ],
+     [
+      0.631111,
+      0.613333
+     ],
+     [
+      0.631111,
+      0.611765
+     ],
+     [
+      0.640911,
+      0.611765
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "samples",
+    "source_edge_index": 5,
+    "source_nodes": [
+     "samples"
+    ],
+    "source_side": "right",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "E7",
+    "kind": "data",
+    "label": "combined samples",
+    "members": [
+     6
+    ],
+    "points": [
+     [
+      0.745801,
+      0.611765
+     ],
+     [
+      0.79246,
+      0.611765
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-3",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "join",
+    "source_edge_index": 6,
+    "source_nodes": [
+     "join"
+    ],
+    "source_side": "right",
+    "target": "output",
+    "target_nodes": [
+     "output"
+    ],
+    "target_side": "left"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "failed_routes": [],
+  "no_common_bus_inferred": true,
+  "requested_routes": 7,
+  "route_count": 7,
+  "routes_complete": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [],
+  "assumptions": [
+   "Independent synthetic graph for safe guide export tests."
+  ],
+  "category": "architecture",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "sample block",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "samples",
+    "target": "decode"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "branch A",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "target": "gain"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "branch B",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "target": "filter"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "scaled samples",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gain",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered samples",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "filter",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "reference samples",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "samples",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "combined samples",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "target": "output"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "processing",
+    "label": "Processing stage",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "inputs",
+    "label": "Input resources",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "",
+  "nodes": [
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "inputs",
+    "id": "samples",
+    "kind": "memory",
+    "label": "Sample store",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "processing",
+    "id": "decode",
+    "kind": "compute",
+    "label": "Decode",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "processing",
+    "id": "gain",
+    "kind": "compute",
+    "label": "Gain transform",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "processing",
+    "id": "filter",
+    "kind": "compute",
+    "label": "Filter transform",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "processing",
+    "id": "join",
+    "kind": "compute",
+    "label": "Combine",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "processing",
+    "id": "output",
+    "kind": "memory",
+    "label": "Output queue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "A generic decoding and two-branch processing example with a shared reference input.",
+  "title": "Synthetic branched signal processor",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": false,
+  "boxes": {
+   "decode": {
+    "height": 0.152941,
+    "width": 0.094438,
+    "x": 0.254199,
+    "y": 0.535294
+   },
+   "filter": {
+    "height": 0.152941,
+    "width": 0.198955,
+    "x": 0.395297,
+    "y": 0.688235
+   },
+   "gain": {
+    "height": 0.152941,
+    "width": 0.178052,
+    "x": 0.405748,
+    "y": 0.382353
+   },
+   "join": {
+    "height": 0.152941,
+    "width": 0.10489,
+    "x": 0.640911,
+    "y": 0.535294
+   },
+   "output": {
+    "height": 0.111765,
+    "width": 0.157148,
+    "x": 0.79246,
+    "y": 0.555882
+   },
+   "samples": {
+    "height": 0.111765,
+    "width": 0.157148,
+    "x": 0.050392,
+    "y": 0.555882
+   }
+  },
+  "canvas": {
+   "coordinate_system": "normalized",
+   "label_unit_pixels": 33.594625,
+   "natural_aspect": 4,
+   "reading_direction": "left-to-right"
+  },
+  "component_lanes": [],
+  "containers": [
+   {
+    "box": {
+     "height": 0.623529,
+     "width": 0.725271,
+     "x": 0.239268,
+     "y": 0.264706
+    },
+    "continuation_of": null,
+    "id": "processing",
+    "label": "Processing stage",
+    "members": [
+     "join",
+     "decode",
+     "filter",
+     "gain",
+     "output"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": null,
+    "scope_source_members": [
+     "join",
+     "decode",
+     "filter",
+     "gain",
+     "output"
+    ],
+    "source_group": "processing",
+    "source_members": [
+     "join",
+     "decode",
+     "filter",
+     "gain",
+     "output"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.276471,
+     "width": 0.18701,
+     "x": 0.035461,
+     "y": 0.438235
+    },
+    "continuation_of": null,
+    "id": "inputs",
+    "label": "Input resources",
+    "members": [
+     "samples"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": null,
+    "scope_source_members": [
+     "samples"
+    ],
+    "source_group": "inputs",
+    "source_members": [
+     "samples"
+    ]
+   }
+  ],
+  "context_nodes": [],
+  "coverage": {
+   "duplicate_edge_indices": [],
+   "missing_edges": [],
+   "missing_nodes": [],
+   "nodes_projected": 6,
+   "source_edges": 7,
+   "source_nodes": 6
+  },
+  "deferred_links": [],
+  "edge_indices": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "feedback_source_nodes": [],
+  "flow_basis": "data",
+  "flow_ranks": {
+   "decode": 1,
+   "filter": 2,
+   "gain": 2,
+   "join": 3,
+   "output": 4,
+   "samples": 0
+  },
+  "forward_edge_indices": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "internal_edges": [],
+  "macro_edges": [
+   {
+    "family": "forward",
+    "id": "E1",
+    "kind": "data",
+    "label": "sample block",
+    "members": [
+     0
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "samples",
+    "source_edge_index": 0,
+    "source_nodes": [
+     "samples"
+    ],
+    "stroke_style": "solid",
+    "target": "decode",
+    "target_nodes": [
+     "decode"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E2",
+    "kind": "data",
+    "label": "branch A",
+    "members": [
+     1
+    ],
+    "routing": {
+     "corridor": "forward-stage-1",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "decode",
+    "source_edge_index": 1,
+    "source_nodes": [
+     "decode"
+    ],
+    "stroke_style": "solid",
+    "target": "gain",
+    "target_nodes": [
+     "gain"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E3",
+    "kind": "data",
+    "label": "branch B",
+    "members": [
+     2
+    ],
+    "routing": {
+     "corridor": "forward-stage-1",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "decode",
+    "source_edge_index": 2,
+    "source_nodes": [
+     "decode"
+    ],
+    "stroke_style": "solid",
+    "target": "filter",
+    "target_nodes": [
+     "filter"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E4",
+    "kind": "data",
+    "label": "scaled samples",
+    "members": [
+     3
+    ],
+    "routing": {
+     "corridor": "forward-stage-2",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "gain",
+    "source_edge_index": 3,
+    "source_nodes": [
+     "gain"
+    ],
+    "stroke_style": "solid",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E5",
+    "kind": "data",
+    "label": "filtered samples",
+    "members": [
+     4
+    ],
+    "routing": {
+     "corridor": "forward-stage-2",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "filter",
+    "source_edge_index": 4,
+    "source_nodes": [
+     "filter"
+    ],
+    "stroke_style": "solid",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E6",
+    "kind": "data",
+    "label": "reference samples",
+    "members": [
+     5
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "samples",
+    "source_edge_index": 5,
+    "source_nodes": [
+     "samples"
+    ],
+    "stroke_style": "solid",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E7",
+    "kind": "data",
+    "label": "combined samples",
+    "members": [
+     6
+    ],
+    "routing": {
+     "corridor": "forward-stage-3",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "join",
+    "source_edge_index": 6,
+    "source_nodes": [
+     "join"
+    ],
+    "stroke_style": "solid",
+    "target": "output",
+    "target_nodes": [
+     "output"
+    ]
+   }
+  ],
+  "macro_nodes": [
+   {
+    "box": {
+     "height": 0.152941,
+     "width": 0.10489,
+     "x": 0.640911,
+     "y": 0.535294
+    },
+    "context": false,
+    "detail": "",
+    "id": "join",
+    "kind": "compute",
+    "label": "Combine",
+    "members": [
+     "join"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.152941,
+     "width": 0.10489,
+     "x": 0.640911,
+     "y": 0.535294
+    },
+    "source_ancestry": [
+     "processing"
+    ],
+    "source_group": "processing",
+    "source_node_index": 4,
+    "source_owner": "processing",
+    "stage_rank": 3,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.152941,
+     "width": 0.094438,
+     "x": 0.254199,
+     "y": 0.535294
+    },
+    "context": false,
+    "detail": "",
+    "id": "decode",
+    "kind": "compute",
+    "label": "Decode",
+    "members": [
+     "decode"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.152941,
+     "width": 0.094438,
+     "x": 0.254199,
+     "y": 0.535294
+    },
+    "source_ancestry": [
+     "processing"
+    ],
+    "source_group": "processing",
+    "source_node_index": 1,
+    "source_owner": "processing",
+    "stage_rank": 1,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.152941,
+     "width": 0.198955,
+     "x": 0.395297,
+     "y": 0.688235
+    },
+    "context": false,
+    "detail": "",
+    "id": "filter",
+    "kind": "compute",
+    "label": "Filter transform",
+    "members": [
+     "filter"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.152941,
+     "width": 0.198955,
+     "x": 0.395297,
+     "y": 0.688235
+    },
+    "source_ancestry": [
+     "processing"
+    ],
+    "source_group": "processing",
+    "source_node_index": 3,
+    "source_owner": "processing",
+    "stage_rank": 2,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.152941,
+     "width": 0.178052,
+     "x": 0.405748,
+     "y": 0.382353
+    },
+    "context": false,
+    "detail": "",
+    "id": "gain",
+    "kind": "compute",
+    "label": "Gain transform",
+    "members": [
+     "gain"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.152941,
+     "width": 0.178052,
+     "x": 0.405748,
+     "y": 0.382353
+    },
+    "source_ancestry": [
+     "processing"
+    ],
+    "source_group": "processing",
+    "source_node_index": 2,
+    "source_owner": "processing",
+    "stage_rank": 2,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.111765,
+     "width": 0.157148,
+     "x": 0.79246,
+     "y": 0.555882
+    },
+    "context": false,
+    "detail": "",
+    "id": "output",
+    "kind": "memory",
+    "label": "Output queue",
+    "members": [
+     "output"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.111765,
+     "width": 0.157148,
+     "x": 0.79246,
+     "y": 0.555882
+    },
+    "source_ancestry": [
+     "processing"
+    ],
+    "source_group": "processing",
+    "source_node_index": 5,
+    "source_owner": "processing",
+    "stage_rank": 4,
+    "type": "resource",
+    "visual_role": "storage-bar",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.111765,
+     "width": 0.157148,
+     "x": 0.050392,
+     "y": 0.555882
+    },
+    "context": false,
+    "detail": "",
+    "id": "samples",
+    "kind": "memory",
+    "label": "Sample store",
+    "members": [
+     "samples"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.111765,
+     "width": 0.157148,
+     "x": 0.050392,
+     "y": 0.555882
+    },
+    "source_ancestry": [
+     "inputs"
+    ],
+    "source_group": "inputs",
+    "source_node_index": 0,
+    "source_owner": "inputs",
+    "stage_rank": 0,
+    "type": "resource",
+    "visual_role": "storage-bar",
+    "zone": "flow"
+   }
+  ],
+  "main_group": null,
+  "node_ids": [
+   "join",
+   "decode",
+   "filter",
+   "gain",
+   "output",
+   "samples"
+  ],
+  "node_to_macro": {
+   "decode": "decode",
+   "filter": "filter",
+   "gain": "gain",
+   "join": "join",
+   "output": "output",
+   "samples": "samples"
+  },
+  "pair_data_relations": false,
+  "projected_links": [
+   {
+    "family": "forward",
+    "id": "E1",
+    "kind": "data",
+    "label": "sample block",
+    "members": [
+     0
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "samples",
+    "source_edge_index": 0,
+    "source_nodes": [
+     "samples"
+    ],
+    "stroke_style": "solid",
+    "target": "decode",
+    "target_nodes": [
+     "decode"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E2",
+    "kind": "data",
+    "label": "branch A",
+    "members": [
+     1
+    ],
+    "routing": {
+     "corridor": "forward-stage-1",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "decode",
+    "source_edge_index": 1,
+    "source_nodes": [
+     "decode"
+    ],
+    "stroke_style": "solid",
+    "target": "gain",
+    "target_nodes": [
+     "gain"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E3",
+    "kind": "data",
+    "label": "branch B",
+    "members": [
+     2
+    ],
+    "routing": {
+     "corridor": "forward-stage-1",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "decode",
+    "source_edge_index": 2,
+    "source_nodes": [
+     "decode"
+    ],
+    "stroke_style": "solid",
+    "target": "filter",
+    "target_nodes": [
+     "filter"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E4",
+    "kind": "data",
+    "label": "scaled samples",
+    "members": [
+     3
+    ],
+    "routing": {
+     "corridor": "forward-stage-2",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "gain",
+    "source_edge_index": 3,
+    "source_nodes": [
+     "gain"
+    ],
+    "stroke_style": "solid",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E5",
+    "kind": "data",
+    "label": "filtered samples",
+    "members": [
+     4
+    ],
+    "routing": {
+     "corridor": "forward-stage-2",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "filter",
+    "source_edge_index": 4,
+    "source_nodes": [
+     "filter"
+    ],
+    "stroke_style": "solid",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E6",
+    "kind": "data",
+    "label": "reference samples",
+    "members": [
+     5
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "samples",
+    "source_edge_index": 5,
+    "source_nodes": [
+     "samples"
+    ],
+    "stroke_style": "solid",
+    "target": "join",
+    "target_nodes": [
+     "join"
+    ]
+   },
+   {
+    "family": "forward",
+    "id": "E7",
+    "kind": "data",
+    "label": "combined samples",
+    "members": [
+     6
+    ],
+    "routing": {
+     "corridor": "forward-stage-3",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "join",
+    "source_edge_index": 6,
+    "source_nodes": [
+     "join"
+    ],
+    "stroke_style": "solid",
+    "target": "output",
+    "target_nodes": [
+     "output"
+    ]
+   }
+  ],
+  "region_slots": [],
+  "repeat_families": [],
+  "return_edge_indices": [],
+  "role_lanes": [
+   {
+    "box": {
+     "height": 0.147059,
+     "width": 0.168346,
+     "x": 0.044793,
+     "y": 0.538235
+    },
+    "display_only": true,
+    "id": "stage-0",
+    "members": [
+     "samples"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 0,
+    "role": "data-stage"
+   },
+   {
+    "box": {
+     "height": 0.188235,
+     "width": 0.105636,
+     "x": 0.2486,
+     "y": 0.517647
+    },
+    "display_only": true,
+    "id": "stage-1",
+    "members": [
+     "decode"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 1,
+    "role": "data-stage"
+   },
+   {
+    "box": {
+     "height": 0.494118,
+     "width": 0.210153,
+     "x": 0.389698,
+     "y": 0.364706
+    },
+    "display_only": true,
+    "id": "stage-2",
+    "members": [
+     "gain",
+     "filter"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 2,
+    "role": "data-stage"
+   },
+   {
+    "box": {
+     "height": 0.188235,
+     "width": 0.116088,
+     "x": 0.635312,
+     "y": 0.517647
+    },
+    "display_only": true,
+    "id": "stage-3",
+    "members": [
+     "join"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 3,
+    "role": "data-stage"
+   },
+   {
+    "box": {
+     "height": 0.147059,
+     "width": 0.168346,
+     "x": 0.786861,
+     "y": 0.538235
+    },
+    "display_only": true,
+    "id": "stage-4",
+    "members": [
+     "output"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 4,
+    "role": "data-stage"
+   }
+  ],
+  "routing_corridors": [],
+  "scope_owner_nodes": [],
+  "slot_boxes": {
+   "decode": {
+    "height": 0.152941,
+    "width": 0.094438,
+    "x": 0.254199,
+    "y": 0.535294
+   },
+   "filter": {
+    "height": 0.152941,
+    "width": 0.198955,
+    "x": 0.395297,
+    "y": 0.688235
+   },
+   "gain": {
+    "height": 0.152941,
+    "width": 0.178052,
+    "x": 0.405748,
+    "y": 0.382353
+   },
+   "join": {
+    "height": 0.152941,
+    "width": 0.10489,
+    "x": 0.640911,
+    "y": 0.535294
+   },
+   "output": {
+    "height": 0.111765,
+    "width": 0.157148,
+    "x": 0.79246,
+    "y": 0.555882
+   },
+   "samples": {
+    "height": 0.111765,
+    "width": 0.157148,
+    "x": 0.050392,
+    "y": 0.555882
+   }
+  },
+  "source_nested_groups": [],
+  "source_ownership": {
+   "decode": "processing",
+   "filter": "processing",
+   "gain": "processing",
+   "join": "processing",
+   "output": "processing",
+   "samples": "inputs"
+  },
+  "system_frame": {
+   "box": {
+    "height": 0.823529,
+    "width": 0.944009,
+    "x": 0.027996,
+    "y": 0.088235
+   },
+   "display_only": true,
+   "id": "@flow",
+   "label": "Synthetic branched signal processor",
+   "not_an_added_hardware_node": true,
+   "replaces_container": null,
+   "source_group": null
+  },
+  "title": "Synthetic branched signal processor",
+  "type": "directed_flow",
+  "view_type": "graph-led-datapath",
+  "warnings": [
+   "Dependency ranks are geometric positions, not clock cycles. Outer return routes retain their original kind and direction.",
+   "Source containment and context ownership are unchanged; no node, bus, port, parameter or hardware copy is introduced."
+  ]
+ },
+ "version": 1,
+ "warnings": []
+}

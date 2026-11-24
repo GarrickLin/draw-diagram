@@ -1,0 +1,60 @@
+drawio skill
+
+This skill includes software and documentation from the draw.io MCP Server
+project:
+
+  draw.io MCP Server
+  Copyright draw.io Ltd (JGraph Ltd)
+  https://github.com/jgraph/drawio-mcp
+  Licensed under the Apache License, Version 2.0.
+  The full license text is in scripts/vendor/LICENSE.
+
+Taken from commit a7d1ead5397200659239269a6fe9ae431cbfe27d (2026-11-20).
+
+Files copied without modification
+---------------------------------
+
+  scripts/vendor/convert/*.js        from shared/convert/
+  scripts/vendor/semantic/*.js       from shared/semantic/
+  scripts/vendor/diagram-shorthand.js
+  scripts/vendor/grid-layout.js
+  scripts/vendor/grid-lines.js
+  scripts/vendor/icon-resolver.js
+  scripts/vendor/icon-table.js
+  scripts/vendor/mx-model.js
+  scripts/vendor/mx-xml.js
+  scripts/vendor/normalize-model.js
+  scripts/vendor/repair-xml.js
+  scripts/vendor/shape-search.js     from shared/
+  scripts/data/shape-index.json      from shape-search/search-index.json
+  references/xml-essentials.md
+  references/xml-reference.md
+  references/style-reference.md      from shared/
+
+Files modified
+--------------
+
+  references/mermaid-reference.md
+    Shortened from shared/mermaid-reference.md to the three Mermaid types
+    this skill converts offline (flowchart, sequenceDiagram, erDiagram).
+    The sections on the other diagram types and on the ELK layout were
+    removed, the introduction and the closing section were rewritten, and
+    the title example was completed.
+
+  SKILL.md
+    Written for this skill, based on the structure and the XML rules of
+    plugins/claude-code/skills/drawio/SKILL.md. The parts on draw.io
+    Desktop, headless browsers, PNG/SVG/PDF export and browser URLs were
+    removed.
+
+Files not from draw.io MCP Server
+---------------------------------
+
+  scripts/drawio.js
+  scripts/lib/core.js
+  scripts/package.json
+  NOTICE
+
+  scripts/lib/core.js calls the vendored modules above. Its shape search
+  follows the matching rule of plugins/claude-code/skills/drawio/scripts/
+  find-shapes.js (every query word must be one of a shape's tags).

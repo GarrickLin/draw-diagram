@@ -1,0 +1,4 @@
+repository: https://github.com/nowmyagentcan/diagram-render
+commit: 55eb15b2c7ca04abbcb2843967874eca265fc4fa
+built by: tools/diagram-render-wasm/build.sh (upstream + tools/diagram-render-wasm/wasm.patch)
+fonts: Liberation 2.x from the diagram-render v0.1.0 linux-x64 release, unmodified

@@ -1,0 +1,1435 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "organization",
+  "layout_strategy": "publication-candidates",
+  "title": "GPU Architecture Overview"
+ },
+ "kind": "publication",
+ "label_layout": {
+  "body_font_px": 36,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     9,
+     10
+    ],
+    "text": "miss / spill / fill"
+   }
+  ],
+  "height": 980,
+  "labels": [
+   {
+    "box": {
+     "height": 0.042327,
+     "width": 0.092367,
+     "x": 0.066667,
+     "y": 0.227051
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "commands"
+   },
+   {
+    "box": {
+     "height": 0.042327,
+     "width": 0.122816,
+     "x": 0.299426,
+     "y": 0.362776
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "workgroups x4"
+   }
+  ],
+  "signal_font_px": 34,
+  "target_width_mm": 160,
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 980,
+  "line_legend": {},
+  "quality": {
+   "body_font_pt": 9,
+   "deferred_labels": [
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      9,
+      10
+     ],
+     "text": "miss / spill / fill"
+    }
+   ],
+   "deferred_scope_titles": [],
+   "document_fit": {
+    "default_limit_mm": 140,
+    "height_mm": 87.1,
+    "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+    "no_font_shrink": true,
+    "status": "pass"
+   },
+   "failed_routes": [],
+   "geometry_is_not_raster_acceptance": true,
+   "input_traces": {
+    "clear": true,
+    "failures": [],
+    "owners": []
+   },
+   "labels_placed": 2,
+   "no_common_bus_inferred": true,
+   "organization_traces": {
+    "clear": true,
+    "contacts": [],
+    "geometry_is_not_new_junctions": true
+   },
+   "owner_scope_entries": {
+    "clear": true,
+    "failures": [],
+    "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+   },
+   "publication_typography": true,
+   "requested_routes": 3,
+   "route_count": 3,
+   "routes_complete": true,
+   "signal_font_pt": 8.5,
+   "target_width_mm": 160,
+   "typography_measured": true
+  },
+  "routes": [
+   {
+    "family": "forward",
+    "id": "p1",
+    "kind": "control",
+    "label": "commands",
+    "meanings_in_caption": [],
+    "members": [
+     0
+    ],
+    "points": [
+     [
+      0.176111,
+      0.171429
+     ],
+     [
+      0.176111,
+      0.191837
+     ],
+     [
+      0.06,
+      0.191837
+     ],
+     [
+      0.06,
+      0.417347
+     ],
+     [
+      0.070833,
+      0.417347
+     ]
+    ],
+    "routing": {
+     "source_side": "bottom",
+     "target_fraction": 0.23417721518987342,
+     "target_side": "left"
+    },
+    "source": "n_host",
+    "source_side": "bottom",
+    "stroke_style": "dashed",
+    "target": "g_front",
+    "target_side": "left"
+   },
+   {
+    "family": "forward",
+    "id": "p2",
+    "kind": "control",
+    "label": "workgroups x4",
+    "meanings_in_caption": [],
+    "members": [
+     2
+    ],
+    "points": [
+     [
+      0.281389,
+      0.417347
+     ],
+     [
+      0.440278,
+      0.417347
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.23417721518987342,
+     "source_side": "right",
+     "target_fraction": 0.21764705882352942,
+     "target_side": "left"
+    },
+    "source": "g_front",
+    "source_side": "right",
+    "stroke_style": "dashed",
+    "target": "g_cluster",
+    "target_side": "left"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "miss / spill",
+      "source": "g_cluster",
+      "target": "g_mem"
+     },
+     {
+      "label": "fill",
+      "source": "g_mem",
+      "target": "g_cluster"
+     }
+    ],
+    "family": "forward",
+    "id": "p3",
+    "kind": "data",
+    "label": "miss / spill / fill",
+    "meanings_in_caption": [],
+    "members": [
+     9,
+     10
+    ],
+    "points": [
+     [
+      0.655278,
+      0.408164
+     ],
+     [
+      0.7275,
+      0.408164
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.2,
+     "source_side": "right",
+     "target_fraction": 0.19540229885057472,
+     "target_side": "left"
+    },
+    "source": "g_cluster",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "g_mem",
+    "target_side": "left"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "body_font_pt": 9,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     9,
+     10
+    ],
+    "text": "miss / spill / fill"
+   }
+  ],
+  "deferred_scope_titles": [],
+  "document_fit": {
+   "default_limit_mm": 140,
+   "height_mm": 87.1,
+   "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+   "no_font_shrink": true,
+   "status": "pass"
+  },
+  "failed_routes": [],
+  "geometry_is_not_raster_acceptance": true,
+  "input_traces": {
+   "clear": true,
+   "failures": [],
+   "owners": []
+  },
+  "labels_placed": 2,
+  "no_common_bus_inferred": true,
+  "organization_traces": {
+   "clear": true,
+   "contacts": [],
+   "geometry_is_not_new_junctions": true
+  },
+  "owner_scope_entries": {
+   "clear": true,
+   "failures": [],
+   "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+  },
+  "publication_typography": true,
+  "requested_routes": 3,
+  "route_count": 3,
+  "routes_complete": true,
+  "signal_font_pt": 8.5,
+  "target_width_mm": 160,
+  "typography_measured": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Cluster is shown once as a template; the dispatcher fans out to four identical clusters.",
+   "Only key data and control paths are drawn; per-warp control signals are intentionally omitted."
+  ],
+  "assumptions": [
+   "四个计算簇按同构处理，图中只画一个模板簇并标注 x4。",
+   "主机接口按通用 PCIe 类主机链路示意，未指定具体协议版本。",
+   "片上存储合并表示共享内存与寄存器文件，未区分具体容量。",
+   "L2 与显存之间只画一条经内存控制器的往返路径，未展开多通道与仲裁细节。"
+  ],
+  "category": "architecture",
+  "checks": [
+   "确认模板簇 x4 的表示方式是否满足介绍需求。",
+   "确认 L2 共享关系是否需要在图中显式画出四条簇到 L2 的连接。"
+  ],
+  "edges": [
+   {
+    "evidence": "主机接口接到命令处理器",
+    "kind": "control",
+    "label": "commands",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_host",
+    "target": "n_cmd"
+   },
+   {
+    "evidence": "任务分发到四个计算簇",
+    "kind": "control",
+    "label": "kernel launch",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_cmd",
+    "target": "n_disp"
+   },
+   {
+    "evidence": "任务分发到四个计算簇",
+    "kind": "control",
+    "label": "workgroups x4",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_disp",
+    "target": "n_warp"
+   },
+   {
+    "evidence": "warp 调度、SIMD",
+    "kind": "control",
+    "label": "issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_warp",
+    "target": "n_simd"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_warp",
+    "target": "n_tensor"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operands",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_smem",
+    "target": "n_simd"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operands",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_smem",
+    "target": "n_tensor"
+   },
+   {
+    "evidence": "片上存储",
+    "kind": "data",
+    "label": "results",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_simd",
+    "target": "n_smem"
+   },
+   {
+    "evidence": "片上存储",
+    "kind": "data",
+    "label": "results",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_tensor",
+    "target": "n_smem"
+   },
+   {
+    "evidence": "簇之间共享 L2",
+    "kind": "data",
+    "label": "miss / spill",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_smem",
+    "target": "n_l2"
+   },
+   {
+    "evidence": "簇之间共享 L2",
+    "kind": "data",
+    "label": "fill",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_l2",
+    "target": "n_smem"
+   },
+   {
+    "evidence": "经内存控制器访问显存",
+    "kind": "data",
+    "label": "miss",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_l2",
+    "target": "n_mc"
+   },
+   {
+    "evidence": "访问显存",
+    "kind": "data",
+    "label": "read / write",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_mc",
+    "target": "n_dram"
+   },
+   {
+    "evidence": "访问显存",
+    "kind": "data",
+    "label": "data return",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_dram",
+    "target": "n_mc"
+   },
+   {
+    "evidence": "经内存控制器访问显存",
+    "kind": "data",
+    "label": "fill",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_mc",
+    "target": "n_l2"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "主机接口接到命令处理器",
+    "id": "g_host",
+    "label": "Host Interface",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "命令处理器，任务分发到四个计算簇",
+    "id": "g_front",
+    "label": "Command Front End",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "每簇有 warp 调度、SIMD、张量单元和片上存储",
+    "id": "g_cluster",
+    "label": "Compute Cluster (x4)",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "簇之间共享 L2，并经内存控制器访问显存",
+    "id": "g_mem",
+    "label": "Memory Subsystem",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   }
+  ],
+  "layout": "Left-to-right main path: g_host (n_host) -> g_front (n_cmd, n_disp) -> g_cluster (n_warp, n_simd, n_tensor, n_smem) -> g_mem (n_l2, n_mc, n_dram). g_cluster is drawn as one populated template cluster with a 'x4' multiplicity label; the other three clusters are implied by the fan-out from n_disp, not drawn as separate blocks. Inside g_cluster, n_warp sits at the top as the control lane, n_simd and n_tensor in the middle as parallel compute lanes, n_smem at the bottom as the storage lane. g_mem is a horizontal band below the cluster, with n_l2 on the left, n_mc in the middle and n_dram on the right. Reserve a lower corridor for the L2 <-> memory-controller <-> DRAM round trip. Do not expand internal control signals inside the cluster.",
+  "nodes": [
+   {
+    "detail": "PCIe / host link",
+    "evidence": "主机接口",
+    "group": "g_host",
+    "id": "n_host",
+    "kind": "io",
+    "label": "Host Interface",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Decode & dispatch",
+    "evidence": "命令处理器",
+    "group": "g_front",
+    "id": "n_cmd",
+    "kind": "control",
+    "label": "Command Processor",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Fan-out to 4 clusters",
+    "evidence": "任务分发到四个计算簇",
+    "group": "g_front",
+    "id": "n_disp",
+    "kind": "control",
+    "label": "Task Dispatcher",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Warp issue & scoreboard",
+    "evidence": "warp 调度",
+    "group": "g_cluster",
+    "id": "n_warp",
+    "kind": "control",
+    "label": "Warp Scheduler",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Vector ALU lanes",
+    "evidence": "SIMD",
+    "group": "g_cluster",
+    "id": "n_simd",
+    "kind": "compute",
+    "label": "SIMD Unit",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Matrix / MMA datapath",
+    "evidence": "张量单元",
+    "group": "g_cluster",
+    "id": "n_tensor",
+    "kind": "compute",
+    "label": "Tensor Unit",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Shared memory / register file",
+    "evidence": "片上存储",
+    "group": "g_cluster",
+    "id": "n_smem",
+    "kind": "memory",
+    "label": "On-Chip Storage",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Shared across clusters",
+    "evidence": "簇之间共享 L2",
+    "group": "g_mem",
+    "id": "n_l2",
+    "kind": "memory",
+    "label": "Shared L2 Cache",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "DRAM scheduling",
+    "evidence": "内存控制器",
+    "group": "g_mem",
+    "id": "n_mc",
+    "kind": "control",
+    "label": "Memory Controller",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Off-chip frame buffer",
+    "evidence": "显存",
+    "group": "g_mem",
+    "id": "n_dram",
+    "kind": "memory",
+    "label": "DRAM (Device Memory)",
+    "origin": "given",
+    "rationale": ""
+   }
+  ],
+  "questions": [
+   "是否需要把四个计算簇分别画出并标注各自的连接？",
+   "是否需要补充主机接口的具体协议或带宽标注？"
+  ],
+  "steps": [],
+  "summary": "面向同事介绍的通用 GPU 系统架构示意：主机接口接入命令处理器，任务分发到四个计算簇；每簇含 warp 调度、SIMD、张量单元与片上存储；四簇共享 L2，经内存控制器访问显存。图中只保留层级与关键连接，不展开簇内每条控制信号。",
+  "title": "GPU Architecture Overview",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "g_cluster": {
+    "height": 0.520408,
+    "width": 0.215,
+    "x": 0.440278,
+    "y": 0.304082
+   },
+   "g_front": {
+    "height": 0.483673,
+    "width": 0.210556,
+    "x": 0.070833,
+    "y": 0.304082
+   },
+   "g_mem": {
+    "height": 0.532653,
+    "width": 0.201667,
+    "x": 0.7275,
+    "y": 0.304082
+   },
+   "n_host": {
+    "height": 0.069388,
+    "width": 0.149444,
+    "x": 0.101389,
+    "y": 0.102041
+   }
+  },
+  "candidate_id": "left-to-right-1",
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 1.836735,
+   "reading_direction": "left-to-right",
+   "target_width_mm": 160
+  },
+  "composition_diagnostics": {
+   "candidates": [
+    {
+     "accepted": false,
+     "id": "ownership-hub-2",
+     "reasons": [
+      "No single existing data hub establishes this organization"
+     ]
+    },
+    {
+     "accepted": false,
+     "id": "ownership-hub-1",
+     "reasons": [
+      "No single existing data hub establishes this organization"
+     ]
+    },
+    {
+     "accepted": false,
+     "id": "ownership-join-1",
+     "reasons": [
+      "No single source-owned join establishes this hierarchy"
+     ]
+    },
+    {
+     "accepted": false,
+     "id": "ownership-join-2",
+     "reasons": [
+      "No single source-owned join establishes this hierarchy"
+     ]
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 0,
+     "document_height_mm": 203.9,
+     "geometry": {
+      "bends": 7,
+      "crossings": 0,
+      "longest_route_px": 623,
+      "routing_cost_px": 1745.5,
+      "total_route_px": 1633.5
+     },
+     "id": "top-to-bottom-1",
+     "natural_aspect": 0.784656,
+     "reasons": []
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 1,
+     "document_height_mm": 87.1,
+     "geometry": {
+      "bends": 3,
+      "crossings": 0,
+      "longest_route_px": 469.5,
+      "routing_cost_px": 933.5,
+      "total_route_px": 885.5
+     },
+     "id": "left-to-right-1",
+     "natural_aspect": 1.836735,
+     "reasons": []
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 0,
+     "document_height_mm": 166.2,
+     "geometry": {
+      "bends": 7,
+      "crossings": 0,
+      "longest_route_px": 575,
+      "routing_cost_px": 1584,
+      "total_route_px": 1472
+     },
+     "id": "top-to-bottom-2",
+     "natural_aspect": 0.962567,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "left-to-right-2",
+     "reasons": [
+      "Horizontal subsystem inventories exceed the fixed-font document width"
+     ]
+    }
+   ],
+   "grammar": "ownership-flow",
+   "selected": "left-to-right-1",
+   "selection_policy": "Hard route/typography/crossover/boundary gates, then document height before optional prose and length plus 16px per bend for subsystem organization; no beauty score"
+  },
+  "containers": [],
+  "insets": [],
+  "layout_scene": {
+   "height": 980,
+   "line_legend": {},
+   "quality": {
+    "body_font_pt": 9,
+    "deferred_labels": [
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       9,
+       10
+      ],
+      "text": "miss / spill / fill"
+     }
+    ],
+    "deferred_scope_titles": [],
+    "document_fit": {
+     "default_limit_mm": 140,
+     "height_mm": 87.1,
+     "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+     "no_font_shrink": true,
+     "status": "pass"
+    },
+    "failed_routes": [],
+    "geometry_is_not_raster_acceptance": true,
+    "input_traces": {
+     "clear": true,
+     "failures": [],
+     "owners": []
+    },
+    "labels_placed": 2,
+    "no_common_bus_inferred": true,
+    "organization_traces": {
+     "clear": true,
+     "contacts": [],
+     "geometry_is_not_new_junctions": true
+    },
+    "owner_scope_entries": {
+     "clear": true,
+     "failures": [],
+     "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+    },
+    "publication_typography": true,
+    "requested_routes": 3,
+    "route_count": 3,
+    "routes_complete": true,
+    "signal_font_pt": 8.5,
+    "target_width_mm": 160,
+    "typography_measured": true
+   },
+   "routes": [
+    {
+     "family": "forward",
+     "id": "p1",
+     "kind": "control",
+     "label": "commands",
+     "meanings_in_caption": [],
+     "members": [
+      0
+     ],
+     "points": [
+      [
+       0.176111,
+       0.171429
+      ],
+      [
+       0.176111,
+       0.191837
+      ],
+      [
+       0.06,
+       0.191837
+      ],
+      [
+       0.06,
+       0.417347
+      ],
+      [
+       0.070833,
+       0.417347
+      ]
+     ],
+     "routing": {
+      "source_side": "bottom",
+      "target_fraction": 0.23417721518987342,
+      "target_side": "left"
+     },
+     "source": "n_host",
+     "source_side": "bottom",
+     "stroke_style": "dashed",
+     "target": "g_front",
+     "target_side": "left"
+    },
+    {
+     "family": "forward",
+     "id": "p2",
+     "kind": "control",
+     "label": "workgroups x4",
+     "meanings_in_caption": [],
+     "members": [
+      2
+     ],
+     "points": [
+      [
+       0.281389,
+       0.417347
+      ],
+      [
+       0.440278,
+       0.417347
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.23417721518987342,
+      "source_side": "right",
+      "target_fraction": 0.21764705882352942,
+      "target_side": "left"
+     },
+     "source": "g_front",
+     "source_side": "right",
+     "stroke_style": "dashed",
+     "target": "g_cluster",
+     "target_side": "left"
+    },
+    {
+     "bidirectional": true,
+     "directional_labels": [
+      {
+       "label": "miss / spill",
+       "source": "g_cluster",
+       "target": "g_mem"
+      },
+      {
+       "label": "fill",
+       "source": "g_mem",
+       "target": "g_cluster"
+      }
+     ],
+     "family": "forward",
+     "id": "p3",
+     "kind": "data",
+     "label": "miss / spill / fill",
+     "meanings_in_caption": [],
+     "members": [
+      9,
+      10
+     ],
+     "points": [
+      [
+       0.655278,
+       0.408164
+      ],
+      [
+       0.7275,
+       0.408164
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.2,
+      "source_side": "right",
+      "target_fraction": 0.19540229885057472,
+      "target_side": "left"
+     },
+     "source": "g_cluster",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "g_mem",
+     "target_side": "left"
+    }
+   ],
+   "width": 1800
+  },
+  "macro_edges": [
+   {
+    "family": "forward",
+    "id": "p1",
+    "kind": "control",
+    "label": "commands",
+    "meanings_in_caption": [],
+    "members": [
+     0
+    ],
+    "routing": {
+     "source_side": "bottom",
+     "target_fraction": 0.23417721518987342,
+     "target_side": "left"
+    },
+    "source": "n_host",
+    "stroke_style": "dashed",
+    "target": "g_front"
+   },
+   {
+    "family": "forward",
+    "id": "p2",
+    "kind": "control",
+    "label": "workgroups x4",
+    "meanings_in_caption": [],
+    "members": [
+     2
+    ],
+    "routing": {
+     "source_fraction": 0.23417721518987342,
+     "source_side": "right",
+     "target_fraction": 0.21764705882352942,
+     "target_side": "left"
+    },
+    "source": "g_front",
+    "stroke_style": "dashed",
+    "target": "g_cluster"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "miss / spill",
+      "source": "g_cluster",
+      "target": "g_mem"
+     },
+     {
+      "label": "fill",
+      "source": "g_mem",
+      "target": "g_cluster"
+     }
+    ],
+    "family": "forward",
+    "id": "p3",
+    "kind": "data",
+    "label": "miss / spill / fill",
+    "meanings_in_caption": [],
+    "members": [
+     9,
+     10
+    ],
+    "routing": {
+     "source_fraction": 0.2,
+     "source_side": "right",
+     "target_fraction": 0.19540229885057472,
+     "target_side": "left"
+    },
+    "source": "g_cluster",
+    "stroke_style": "solid",
+    "target": "g_mem"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "PCIe / host link",
+    "id": "n_host",
+    "kind": "io",
+    "label": "Host Interface",
+    "members": [
+     "n_host"
+    ],
+    "original_group": "g_host"
+   },
+   {
+    "boundary_port_count": 2,
+    "children": [
+     {
+      "id": "n_cmd",
+      "kind": "control",
+      "label": "Command Processor"
+     },
+     {
+      "id": "n_disp",
+      "kind": "control",
+      "label": "Task Dispatcher",
+      "required_detail": "Fan-out to 4 clusters"
+     }
+    ],
+    "entry_sources": [],
+    "expanded": true,
+    "id": "g_front",
+    "kind": "io",
+    "label": "Command Front End",
+    "logical_group": true,
+    "members": [
+     "n_cmd",
+     "n_disp"
+    ],
+    "original_group": "",
+    "source_group": "g_front",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 2,
+    "children": [
+     {
+      "id": "n_warp",
+      "kind": "control",
+      "label": "Warp Scheduler"
+     },
+     {
+      "id": "n_simd",
+      "kind": "compute",
+      "label": "SIMD Unit"
+     },
+     {
+      "id": "n_tensor",
+      "kind": "compute",
+      "label": "Tensor Unit"
+     },
+     {
+      "id": "n_smem",
+      "kind": "memory",
+      "label": "On-Chip Storage"
+     }
+    ],
+    "entry_sources": [
+     "g_mem"
+    ],
+    "expanded": true,
+    "id": "g_cluster",
+    "kind": "compute",
+    "label": "Compute Cluster (x4)",
+    "logical_group": true,
+    "members": [
+     "n_warp",
+     "n_simd",
+     "n_tensor",
+     "n_smem"
+    ],
+    "original_group": "",
+    "source_group": "g_cluster",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 1,
+    "children": [
+     {
+      "id": "n_l2",
+      "kind": "memory",
+      "label": "Shared L2 Cache"
+     },
+     {
+      "id": "n_mc",
+      "kind": "control",
+      "label": "Memory Controller"
+     },
+     {
+      "id": "n_dram",
+      "kind": "memory",
+      "label": "DRAM (Device Memory)"
+     }
+    ],
+    "entry_sources": [
+     "g_cluster"
+    ],
+    "expanded": true,
+    "id": "g_mem",
+    "kind": "io",
+    "label": "Memory Subsystem",
+    "logical_group": true,
+    "members": [
+     "n_l2",
+     "n_mc",
+     "n_dram"
+    ],
+    "original_group": "",
+    "source_group": "g_mem",
+    "zone": "owned-subsystem"
+   }
+  ],
+  "node_to_macro": {
+   "n_cmd": "g_front",
+   "n_disp": "g_front",
+   "n_dram": "g_mem",
+   "n_host": "n_host",
+   "n_l2": "g_mem",
+   "n_mc": "g_mem",
+   "n_simd": "g_cluster",
+   "n_smem": "g_cluster",
+   "n_tensor": "g_cluster",
+   "n_warp": "g_cluster"
+  },
+  "projection": {
+   "deferred_edges": [
+    {
+     "index": 1,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 3,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 4,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 5,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 6,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 7,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 8,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 11,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 12,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 13,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 14,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    }
+   ],
+   "folded_groups": [
+    "g_front",
+    "g_cluster",
+    "g_mem"
+   ],
+   "internal_edges": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    13,
+    14
+   ],
+   "meaning": "True group boundaries summarize only their source inventory and external relationships. A supplied xN group denotes that inventory's original multiplicity; no new instances or internal wiring are invented.",
+   "ownership_unchanged": true,
+   "retained_payload_edge_indices": [],
+   "retained_payload_groups": [],
+   "source_node_to_macro": {
+    "n_cmd": "g_front",
+    "n_disp": "g_front",
+    "n_dram": "g_mem",
+    "n_host": "n_host",
+    "n_l2": "g_mem",
+    "n_mc": "g_mem",
+    "n_simd": "g_cluster",
+    "n_smem": "g_cluster",
+    "n_tensor": "g_cluster",
+    "n_warp": "g_cluster"
+   }
+  },
+  "scene_id": "system",
+  "source_edge_indices": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "source_group_labels": {
+   "g_cluster": "Compute Cluster (x4)",
+   "g_front": "Command Front End",
+   "g_host": "Host Interface",
+   "g_mem": "Memory Subsystem"
+  },
+  "source_group_parents": {
+   "g_cluster": "",
+   "g_front": "",
+   "g_host": "",
+   "g_mem": ""
+  },
+  "source_ownership": {
+   "n_cmd": "g_front",
+   "n_disp": "g_front",
+   "n_dram": "g_mem",
+   "n_host": "g_host",
+   "n_l2": "g_mem",
+   "n_mc": "g_mem",
+   "n_simd": "g_cluster",
+   "n_smem": "g_cluster",
+   "n_tensor": "g_cluster",
+   "n_warp": "g_cluster"
+  },
+  "symbol_metrics": {
+   "g_cluster": {
+    "children": [
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 166
+      },
+      "id": "n_warp",
+      "kind": "control",
+      "label": "Warp Scheduler",
+      "lines": [
+       "Warp Scheduler"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 250
+      },
+      "id": "n_simd",
+      "kind": "compute",
+      "label": "SIMD Unit",
+      "lines": [
+       "SIMD Unit"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 334
+      },
+      "id": "n_tensor",
+      "kind": "compute",
+      "label": "Tensor Unit",
+      "lines": [
+       "Tensor Unit"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 418
+      },
+      "id": "n_smem",
+      "kind": "memory",
+      "label": "On-Chip Storage",
+      "lines": [
+       "On-Chip Storage"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 90,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 510,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Compute Cluster (x4)"
+    ],
+    "width": 387
+   },
+   "g_front": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 166
+      },
+      "id": "n_cmd",
+      "kind": "control",
+      "label": "Command Processor",
+      "lines": [
+       "Command",
+       "Processor"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 156,
+       "width": 300,
+       "x": 18,
+       "y": 294
+      },
+      "id": "n_disp",
+      "kind": "control",
+      "label": "Task Dispatcher",
+      "lines": [
+       "Task Dispatcher",
+       "Fan-out to",
+       "4 clusters"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 90,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 474,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Command Front End"
+    ],
+    "width": 379
+   },
+   "g_mem": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 130
+      },
+      "id": "n_l2",
+      "kind": "memory",
+      "label": "Shared L2 Cache",
+      "lines": [
+       "Shared",
+       "L2 Cache"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 258
+      },
+      "id": "n_mc",
+      "kind": "control",
+      "label": "Memory Controller",
+      "lines": [
+       "Memory",
+       "Controller"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 386
+      },
+      "id": "n_dram",
+      "kind": "memory",
+      "label": "DRAM (Device Memory)",
+      "lines": [
+       "DRAM (Device",
+       "Memory)"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 54,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 522,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Memory Subsystem"
+    ],
+    "width": 363
+   },
+   "n_host": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 68,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Host Interface"
+    ],
+    "width": 269
+   }
+  },
+  "system_frame": {
+   "box": {
+    "height": 1,
+    "width": 1,
+    "x": 0,
+    "y": 0
+   },
+   "display_only": true,
+   "label": ""
+  },
+  "title": "GPU Architecture Overview",
+  "type": "publication",
+  "typography": {
+   "body_pt": 9,
+   "body_px": 36,
+   "no_font_shrink": true,
+   "signal_pt": 8.5,
+   "signal_px": 34,
+   "symbol_profile": "plain",
+   "target_width_mm": 160
+  },
+  "version": "CPS6",
+  "view_role": "organization",
+  "view_type": "publication-ownership-flow"
+ },
+ "version": 1,
+ "warnings": []
+}

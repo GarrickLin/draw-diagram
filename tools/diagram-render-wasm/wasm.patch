@@ -1,0 +1,436 @@
+diff --color -ruN '--exclude=target' '--exclude=cmp' '--exclude=*.mjs' '--exclude=*.png' '--exclude=*.log' drw-base/Cargo.toml /tmp/drw/Cargo.toml
+--- a/Cargo.toml	2026-11-24 17:15:43.297810629 +0800
++++ b/Cargo.toml	2026-11-24 17:04:01.970502903 +0800
+@@ -15,16 +15,28 @@
+ percent-encoding = "2.3.2"
+ png = "0.18.1"
+ quick-xml = "0.42.0"
+-rmcp = { version = "3.8.0", default-features = false, features = ["server", "macros", "transport-io", "schemars"] }
+-resvg = { version = "0.49.0", default-features = false, features = ["text", "system-fonts", "memmap-fonts", "raster-images"] }
++resvg = { version = "0.49.0", default-features = false, features = ["text", "raster-images"] }
+ roxmltree = "0.21.2"
+-schemars = "1.2.3"
+ serde = { version = "1.0.229", features = ["derive"] }
+ serde_json = { version = "1.0.154", features = ["preserve_order", "raw_value"] }
+ skrifa = { version = "0.44.0", default-features = false, features = ["std"] }
+-tokio = { version = "1.54.1", features = ["rt"] }
+ wuff = { version = "0.2.9", default-features = false, features = ["brotli"] }
+ 
++[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
++rmcp = { version = "3.8.0", default-features = false, features = ["server", "macros", "transport-io", "schemars"] }
++resvg = { version = "0.49.0", default-features = false, features = ["text", "system-fonts", "memmap-fonts", "raster-images"] }
++schemars = "1.2.3"
++tokio = { version = "1.54.1", features = ["rt"] }
++
++[lib]
++name = "diagram_render"
++path = "src/lib.rs"
++crate-type = ["cdylib", "rlib"]
++
++[[bin]]
++name = "diagram-render"
++path = "src/main.rs"
++
+ [profile.release]
+ lto = true
+ codegen-units = 1
+diff --color -ruN '--exclude=target' '--exclude=cmp' '--exclude=*.mjs' '--exclude=*.png' '--exclude=*.log' drw-base/src/excalidraw/text.rs /tmp/drw/src/excalidraw/text.rs
+--- a/src/excalidraw/text.rs	2026-11-24 17:15:43.299083244 +0800
++++ b/src/excalidraw/text.rs	2026-11-24 17:06:40.624912593 +0800
+@@ -173,7 +173,7 @@
+                     }
+                     let mut loaded = system.lock().unwrap();
+                     if !*loaded {
+-                        Arc::make_mut(db).load_system_fonts();
++                        crate::raster::load_system(Arc::make_mut(db));
+                         *loaded = true;
+                     }
+                     (db.faces())
+diff --color -ruN '--exclude=target' '--exclude=cmp' '--exclude=*.mjs' '--exclude=*.png' '--exclude=*.log' drw-base/src/leash.rs /tmp/drw/src/leash.rs
+--- a/src/leash.rs	2026-11-24 17:15:43.299135264 +0800
++++ b/src/leash.rs	2026-11-24 17:06:05.766129737 +0800
+@@ -159,3 +159,18 @@
+         }
+     }
+ }
++
++/// A wasm32 build never starts a child: the engines that need one aren't part of it.
++#[cfg(target_arch = "wasm32")]
++pub struct Leash;
++
++#[cfg(target_arch = "wasm32")]
++impl Leash {
++    pub fn new(_child: &Child) -> std::io::Result<Self> {
++        Err(std::io::Error::new(std::io::ErrorKind::Unsupported, "no child processes in wasm"))
++    }
++
++    pub fn memory(&self) -> u64 {
++        0
++    }
++}
+diff --color -ruN '--exclude=target' '--exclude=cmp' '--exclude=*.mjs' '--exclude=*.png' '--exclude=*.log' drw-base/src/lib.rs /tmp/drw/src/lib.rs
+--- a/src/lib.rs	1970-01-01 08:00:00.000000000 +0800
++++ b/src/lib.rs	2026-11-24 17:04:01.974271391 +0800
+@@ -0,0 +1,22 @@
++//! The draw.io renderer as a library: built for wasm32 it exports a small C ABI that Node
++//! calls (see wasm.rs); the CLI in main.rs keeps its own module tree.
++
++mod bpmn;
++mod d2;
++mod detect;
++mod dot;
++mod drawio;
++mod engine;
++mod error;
++mod excalidraw;
++mod input;
++mod leash;
++mod mermaid;
++mod netpath;
++mod output;
++mod raster;
++mod svg;
++mod worker;
++
++#[cfg(target_arch = "wasm32")]
++mod wasm;
+diff --color -ruN '--exclude=target' '--exclude=cmp' '--exclude=*.mjs' '--exclude=*.png' '--exclude=*.log' drw-base/src/raster.rs /tmp/drw/src/raster.rs
+--- a/src/raster.rs	2026-11-24 17:15:43.299261186 +0800
++++ b/src/raster.rs	2026-11-24 17:10:26.784932740 +0800
+@@ -32,7 +32,47 @@
+     "LiberationMono-Bold.ttf",
+ ];
+ 
++/// The bytes of the bundled fonts in FILES order, and any extra fonts (CJK and the like) that
++/// stand in for the computer's, as the host handed them over.
++#[cfg(target_arch = "wasm32")]
++pub mod supplied {
++    use std::sync::Mutex;
++
++    pub static BUNDLED: Mutex<Vec<Vec<u8>>> = Mutex::new(Vec::new());
++    pub static EXTRA: Mutex<Vec<Vec<u8>>> = Mutex::new(Vec::new());
++}
++
++/// The bundled fonts' bytes, in FILES order.
++#[cfg(target_arch = "wasm32")]
++fn font_bytes() -> Result<Vec<Vec<u8>>, Error> {
++    let fonts = supplied::BUNDLED.lock().unwrap().clone();
++    match fonts.len() {
++        n if n == FILES.len() => Ok(fonts),
++        _ => Err(Error::fonts_missing(FILES[0])),
++    }
++}
++
++#[cfg(not(target_arch = "wasm32"))]
++fn font_bytes() -> Result<Vec<Vec<u8>>, Error> {
++    let read = |file: &PathBuf| {
++        fs::read(file)
++            .map_err(|e| Error::internal(&format!("can't read the font {}: {e}", file.display())))
++    };
++    fonts()?.iter().map(read).collect()
++}
++
++/// Adds the computer's fonts to `db`; in wasm, the extra fonts the host supplied.
++pub fn load_system(db: &mut Database) {
++    #[cfg(target_arch = "wasm32")]
++    for data in supplied::EXTRA.lock().unwrap().iter() {
++        db.load_font_data(data.clone());
++    }
++    #[cfg(not(target_arch = "wasm32"))]
++    db.load_system_fonts();
++}
++
+ /// The bundled font files, each checked to be there.
++#[cfg_attr(target_arch = "wasm32", allow(dead_code))]
+ pub fn fonts() -> Result<Vec<PathBuf>, Error> {
+     let dir = engine::home().join("fonts");
+     let files: Vec<_> = FILES.iter().map(|f| dir.join(f)).collect();
+@@ -118,11 +158,10 @@
+     if text.is_ascii() {
+         return Ok(missing);
+     }
+-    let file = &fonts()?[0];
++    let data = font_bytes()?.swap_remove(0);
+     let unreadable = |e: &dyn std::fmt::Display| {
+-        Error::internal(&format!("can't read the font {}: {e}", file.display()))
++        Error::internal(&format!("can't read the font {}: {e}", FILES[0]))
+     };
+-    let data = fs::read(file).map_err(|e| unreadable(&e))?;
+     let charmap = FontRef::new(&data).map_err(|e| unreadable(&e))?.charmap();
+     for c in text.chars() {
+         if !c.is_ascii() && !c.is_control() && charmap.map(c).is_none() && !missing.contains(&c) {
+@@ -140,16 +179,17 @@
+ 
+ impl Widths {
+     pub fn load() -> Result<Self, Error> {
+-        let files = fonts()?;
+-        let read = |file: &PathBuf| -> Result<Vec<u8>, Error> {
+-            let unreadable = |e: &dyn std::fmt::Display| {
+-                Error::internal(&format!("can't read the font {}: {e}", file.display()))
+-            };
+-            let data = fs::read(file).map_err(|e| unreadable(&e))?;
+-            FontRef::new(&data).map_err(|e| unreadable(&e))?;
+-            Ok(data)
++        let mut fonts = font_bytes()?;
++        let check = |i: usize, data: &Vec<u8>| {
++            FontRef::new(data)
++                .map(|_| ())
++                .map_err(|e| Error::internal(&format!("can't read the font {}: {e}", FILES[i])))
+         };
+-        Ok(Self([read(&files[0])?, read(&files[1])?]))
++        check(0, &fonts[0])?;
++        check(1, &fonts[1])?;
++        let bold = fonts.swap_remove(1);
++        let regular = fonts.swap_remove(0);
++        Ok(Self([regular, bold]))
+     }
+ 
+     /// The advance width of `text` at `size` px; a character the font lacks counts as 1 em.
+@@ -180,10 +220,8 @@
+     warnings: &mut Vec<Warning>,
+ ) -> Result<Png, Error> {
+     let mut db = Database::new();
+-    for file in fonts()? {
+-        db.load_font_file(&file).map_err(|e| {
+-            Error::internal(&format!("can't read the font {}: {e}", file.display()))
+-        })?;
++    for data in font_bytes()? {
++        db.load_font_data(data);
+     }
+     let found = Mutex::new(Found::default());
+     let too_big = Mutex::new(vec![]);
+@@ -318,7 +356,7 @@
+ /// Loads the computer's fonts the first time a family or character needs them.
+ fn system(db: &mut Arc<Database>, found: &mut Found) {
+     if !found.system {
+-        Arc::make_mut(db).load_system_fonts();
++        load_system(Arc::make_mut(db));
+         found.system = true;
+     }
+ }
+diff --color -ruN '--exclude=target' '--exclude=cmp' '--exclude=*.mjs' '--exclude=*.png' '--exclude=*.log' drw-base/src/wasm.rs /tmp/drw/src/wasm.rs
+--- a/src/wasm.rs	1970-01-01 08:00:00.000000000 +0800
++++ b/src/wasm.rs	2026-11-24 17:08:15.554029654 +0800
+@@ -0,0 +1,222 @@
++//! The C ABI a wasm32 build exports for the draw.io renderer.
++//!
++//! The host (Node) owns files and fonts: it copies the diagram's text into memory it got from
++//! `alloc`, hands over the bundled Liberation fonts (and any extra fonts that stand in for the
++//! computer's, such as a CJK one) with `add_font`, and calls `render` or `check`. Each call leaves
++//! its output bytes and a JSON report in this module, which `out_ptr`/`out_len` and
++//! `meta_ptr`/`meta_len` point at until the next call. The report has the same fields as the
++//! CLI's `--json`: `{width, height, scale, page, pages, warnings}`, or `{error}`.
++//!
++//! Nothing here reads a file, the clock or the network, so a run is the same on every host.
++
++use std::path::Path;
++use std::sync::Mutex;
++use std::time::Duration;
++
++use serde_json::{Value, json};
++
++use crate::drawio;
++use crate::engine::{self, Job, Task};
++use crate::error::{Error, Warning};
++use crate::input::Lines;
++use crate::output::To;
++use crate::raster;
++use crate::svg;
++
++struct Out {
++    bytes: Vec<u8>,
++    meta: Vec<u8>,
++}
++
++static OUT: Mutex<Out> = Mutex::new(Out {
++    bytes: Vec::new(),
++    meta: Vec::new(),
++});
++
++/// `len` bytes the host may write into; give them back with `dealloc`.
++#[unsafe(no_mangle)]
++pub extern "C" fn alloc(len: usize) -> *mut u8 {
++    let mut buf = Vec::<u8>::with_capacity(len.max(1));
++    let ptr = buf.as_mut_ptr();
++    std::mem::forget(buf);
++    ptr
++}
++
++/// Frees what `alloc(len)` gave.
++///
++/// # Safety
++/// `ptr` must come from `alloc(len)` with the same `len`, and not be freed before.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn dealloc(ptr: *mut u8, len: usize) {
++    // SAFETY: the caller passes back exactly what `alloc` made.
++    unsafe { drop(Vec::from_raw_parts(ptr, 0, len.max(1))) };
++}
++
++/// Takes a font: `kind` 0 is the next of the bundled fonts, in the order of `raster::FILES`;
++/// 1 is an extra font used only for characters the bundled ones lack. Returns 0, else 1 when the
++/// bytes aren't a font.
++///
++/// # Safety
++/// `ptr` and `len` must describe bytes the host wrote with `alloc`.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn add_font(kind: u32, ptr: *const u8, len: usize) -> u32 {
++    // SAFETY: the host wrote `len` bytes at `ptr`.
++    let data = unsafe { std::slice::from_raw_parts(ptr, len) }.to_vec();
++    if skrifa::FontRef::new(&data).is_err() && skrifa::raw::FileRef::new(&data).is_err() {
++        return 1;
++    }
++    let list = match kind {
++        0 => &raster::supplied::BUNDLED,
++        _ => &raster::supplied::EXTRA,
++    };
++    list.lock().unwrap().push(data);
++    0
++}
++
++/// Draws the diagram of `len` bytes at `ptr` as SVG (`to` 0) or PNG (`to` 1) at `scale`
++/// (0 for the CLI's default of 2), on the page named by the `page_len` bytes at `page_ptr`
++/// (none when `page_len` is 0). Returns 0 when it drew, 1 when the report holds an error.
++///
++/// # Safety
++/// Each pointer and length must describe bytes the host wrote with `alloc`.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn render(
++    ptr: *const u8,
++    len: usize,
++    to: u32,
++    scale: f64,
++    page_ptr: *const u8,
++    page_len: usize,
++) -> u32 {
++    // SAFETY: as the caller promises.
++    let (text, page) = unsafe { inputs(ptr, len, page_ptr, page_len) };
++    let to = if to == 1 { To::Png } else { To::Svg };
++    let scale = if scale > 0.0 { scale } else { 2.0 };
++    let result = draw(&text, page.as_deref(), to, scale);
++    finish(result)
++}
++
++/// Checks the diagram without drawing an image. Returns 0 when it is valid, 1 when the report
++/// holds an error; its warnings are in the report either way.
++///
++/// # Safety
++/// As for `render`.
++#[unsafe(no_mangle)]
++pub unsafe extern "C" fn check(
++    ptr: *const u8,
++    len: usize,
++    page_ptr: *const u8,
++    page_len: usize,
++) -> u32 {
++    // SAFETY: as the caller promises.
++    let (text, page) = unsafe { inputs(ptr, len, page_ptr, page_len) };
++    let task = task(&text, page.as_deref(), To::Svg);
++    let result = drawio::check(&task).map(|checked| {
++        let warnings: Vec<Value> = checked.warnings.iter().map(Warning::json).collect();
++        (Vec::new(), json!({"valid": true, "errors": [], "warnings": warnings}))
++    });
++    finish(result)
++}
++
++#[unsafe(no_mangle)]
++pub extern "C" fn out_ptr() -> *const u8 {
++    OUT.lock().unwrap().bytes.as_ptr()
++}
++
++#[unsafe(no_mangle)]
++pub extern "C" fn out_len() -> usize {
++    OUT.lock().unwrap().bytes.len()
++}
++
++#[unsafe(no_mangle)]
++pub extern "C" fn meta_ptr() -> *const u8 {
++    OUT.lock().unwrap().meta.as_ptr()
++}
++
++#[unsafe(no_mangle)]
++pub extern "C" fn meta_len() -> usize {
++    OUT.lock().unwrap().meta.len()
++}
++
++unsafe fn inputs(
++    ptr: *const u8,
++    len: usize,
++    page_ptr: *const u8,
++    page_len: usize,
++) -> (String, Option<String>) {
++    // SAFETY: the caller of the export promises both ranges.
++    let text = unsafe { std::slice::from_raw_parts(ptr, len) };
++    let text = String::from_utf8_lossy(text).into_owned();
++    let page = (page_len > 0).then(|| {
++        // SAFETY: as above.
++        let page = unsafe { std::slice::from_raw_parts(page_ptr, page_len) };
++        String::from_utf8_lossy(page).into_owned()
++    });
++    (text, page)
++}
++
++fn task<'a>(text: &'a str, page: Option<&'a str>, to: To) -> Task<'a> {
++    Task {
++        name: "diagram",
++        lines: Lines::new(text),
++        job: Job {
++            stdin: text.as_bytes(),
++            dir: Path::new("."),
++            env: vec![],
++            limit: Duration::from_secs(60),
++            memory: engine::MEMORY_LIMIT,
++        },
++        background: None,
++        page,
++        allow_network: false,
++        to,
++    }
++}
++
++/// What `Opened::draw` and `Opened::picture` do in run.rs, for draw.io only.
++fn draw(text: &str, page: Option<&str>, to: To, scale: f64) -> Result<(Vec<u8>, Value), Error> {
++    let r = drawio::render(&task(text, page, to))?;
++    let (svg, removed) = svg::clean(&String::from_utf8_lossy(&r.svg))
++        .map_err(|e| Error::internal(&format!("the engine's SVG isn't valid XML: {e}")))?;
++    let mut warnings = r.warnings;
++    if removed + r.removed > 0 {
++        warnings.push(Warning::unsafe_content_removed(removed + r.removed));
++    }
++    let page = r.page.map(|p| p.json());
++    let pages: Vec<Value> = r.pages.iter().map(|p| p.json()).collect();
++    let (bytes, width, height, scale) = match to {
++        To::Svg => {
++            let (width, height) = svg::size(&svg);
++            (svg.into_bytes(), width, height, None)
++        }
++        To::Png => {
++            let (width, height) = svg::css_size(&svg);
++            let (scale, reduced) = raster::fit(width, height, scale)?;
++            warnings.extend(reduced);
++            let png = raster::png(&svg, scale, raster::SANS, &mut warnings)?;
++            (png.bytes, png.width, png.height, Some(scale))
++        }
++    };
++    let warnings: Vec<Value> = warnings.iter().map(Warning::json).collect();
++    let meta = json!({
++        "to": if to == To::Png { "png" } else { "svg" },
++        "width": width,
++        "height": height,
++        "scale": scale,
++        "page": page,
++        "pages": pages,
++        "warnings": warnings,
++    });
++    Ok((bytes, meta))
++}
++
++fn finish(result: Result<(Vec<u8>, Value), Error>) -> u32 {
++    let (bytes, meta, code) = match result {
++        Ok((bytes, meta)) => (bytes, meta, 0),
++        Err(e) => (Vec::new(), json!({"error": e.json()}), 1),
++    };
++    let mut out = OUT.lock().unwrap();
++    out.bytes = bytes;
++    out.meta = serde_json::to_vec(&meta).unwrap_or_default();
++    code
++}

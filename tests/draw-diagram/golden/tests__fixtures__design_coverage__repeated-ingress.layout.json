@@ -1,0 +1,2578 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "overview",
+  "layout_strategy": "publication-candidates",
+  "title": "Four-Lane Packet Ingress Engine"
+ },
+ "kind": "publication",
+ "label_layout": {
+  "body_font_px": 36,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     15
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     19
+    ],
+    "text": "configuration"
+   }
+  ],
+  "height": 1471,
+  "labels": [
+   {
+    "box": {
+     "height": 0.028199,
+     "width": 0.158516,
+     "x": 0.081762,
+     "y": 0.392937
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     16
+    ],
+    "text": "selected descriptor"
+   },
+   {
+    "box": {
+     "height": 0.028199,
+     "width": 0.107081,
+     "x": 0.282015,
+     "y": 0.51191
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     17
+    ],
+    "text": "lookup result"
+   },
+   {
+    "box": {
+     "height": 0.028199,
+     "width": 0.165844,
+     "x": 0.175001,
+     "y": 0.59467
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     18
+    ],
+    "text": "classified descriptor"
+   },
+   {
+    "box": {
+     "height": 0.028199,
+     "width": 0.103964,
+     "x": 0.522778,
+     "y": 0.48675
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     20
+    ],
+    "text": "table update"
+   },
+   {
+    "box": {
+     "height": 0.028199,
+     "width": 0.183713,
+     "x": 0.044444,
+     "y": 0.729449
+    },
+    "color": "#6E8BAB",
+    "role": "same-hardware-view",
+    "source_edge_indices": [],
+    "source_object": "lane0",
+    "text": "Same hardware detail"
+   }
+  ],
+  "signal_font_px": 34,
+  "target_width_mm": 160,
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 1471,
+  "line_legend": {},
+  "quality": {
+   "body_font_pt": 9,
+   "deferred_labels": [
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      3
+     ],
+     "text": "tagged descriptor"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      7
+     ],
+     "text": "tagged descriptor"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      11
+     ],
+     "text": "tagged descriptor"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      15
+     ],
+     "text": "tagged descriptor"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      19
+     ],
+     "text": "configuration"
+    }
+   ],
+   "deferred_scope_titles": [],
+   "document_fit": {
+    "default_limit_mm": 140,
+    "height_mm": 130.8,
+    "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+    "no_font_shrink": true,
+    "status": "pass"
+   },
+   "failed_routes": [],
+   "geometry_is_not_raster_acceptance": true,
+   "input_traces": {
+    "clear": true,
+    "failures": [],
+    "owners": []
+   },
+   "labels_placed": 4,
+   "no_common_bus_inferred": true,
+   "organization_traces": {
+    "clear": true,
+    "contacts": []
+   },
+   "owner_scope_entries": {
+    "clear": true,
+    "failures": []
+   },
+   "publication_typography": true,
+   "requested_routes": 9,
+   "route_count": 9,
+   "routes_complete": true,
+   "signal_font_pt": 8.5,
+   "target_width_mm": 160,
+   "typography_measured": true
+  },
+  "routes": [
+   {
+    "family": "service",
+    "id": "P1",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     3
+    ],
+    "points": [
+     [
+      0.201945,
+      0.14412
+     ],
+     [
+      0.201945,
+      0.242692
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.10355781448538755,
+     "target_side": "top"
+    },
+    "source": "lane0",
+    "source_nodes": [
+     "tag0"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "service",
+    "id": "P2",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     7
+    ],
+    "points": [
+     [
+      0.3175,
+      0.14412
+     ],
+     [
+      0.3175,
+      0.242692
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.3678526048284625,
+     "target_side": "top"
+    },
+    "source": "lane1",
+    "source_nodes": [
+     "tag1"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "service",
+    "id": "P3",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     11
+    ],
+    "points": [
+     [
+      0.433056,
+      0.14412
+     ],
+     [
+      0.433056,
+      0.242692
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.6321473951715375,
+     "target_side": "top"
+    },
+    "source": "lane2",
+    "source_nodes": [
+     "tag2"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "service",
+    "id": "P4",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     15
+    ],
+    "points": [
+     [
+      0.548611,
+      0.14412
+     ],
+     [
+      0.548611,
+      0.242692
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.8964421855146124,
+     "target_side": "top"
+    },
+    "source": "lane3",
+    "source_nodes": [
+     "tag3"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "service",
+    "id": "P5",
+    "kind": "data",
+    "label": "selected descriptor",
+    "labels": [
+     "selected descriptor"
+    ],
+    "members": [
+     16
+    ],
+    "points": [
+     [
+      0.246944,
+      0.288919
+     ],
+     [
+      0.246944,
+      0.525153
+     ]
+    ],
+    "source": "arb",
+    "source_nodes": [
+     "arb"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "solid",
+    "target": "classifier",
+    "target_nodes": [
+     "classifier"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "service",
+    "id": "P6",
+    "kind": "data",
+    "label": "lookup result",
+    "labels": [
+     "lookup result"
+    ],
+    "members": [
+     17
+    ],
+    "points": [
+     [
+      0.414167,
+      0.548266
+     ],
+     [
+      0.256944,
+      0.548266
+     ]
+    ],
+    "source": "table",
+    "source_nodes": [
+     "table"
+    ],
+    "source_side": "left",
+    "stroke_style": "solid",
+    "target": "classifier",
+    "target_nodes": [
+     "classifier"
+    ],
+    "target_side": "right"
+   },
+   {
+    "family": "service",
+    "id": "P7",
+    "kind": "data",
+    "label": "classified descriptor",
+    "labels": [
+     "classified descriptor"
+    ],
+    "members": [
+     18
+    ],
+    "points": [
+     [
+      0.168334,
+      0.57138
+     ],
+     [
+      0.168334,
+      0.646159
+     ]
+    ],
+    "source": "classifier",
+    "source_nodes": [
+     "classifier"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "solid",
+    "target": "outputq",
+    "target_nodes": [
+     "outputq"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "external",
+    "id": "P8",
+    "kind": "control",
+    "label": "configuration",
+    "labels": [
+     "configuration"
+    ],
+    "members": [
+     19
+    ],
+    "points": [
+     [
+      0.767222,
+      0.420122
+     ],
+     [
+      0.6925,
+      0.420122
+     ]
+    ],
+    "routing": {
+     "source_side": "left",
+     "target_side": "right"
+    },
+    "source": "host",
+    "source_nodes": [
+     "host"
+    ],
+    "source_side": "left",
+    "stroke_style": "dashed",
+    "target": "manage",
+    "target_nodes": [
+     "manage"
+    ],
+    "target_side": "right"
+   },
+   {
+    "family": "coordination",
+    "id": "P9",
+    "kind": "control",
+    "label": "table update",
+    "labels": [
+     "table update"
+    ],
+    "members": [
+     20
+    ],
+    "points": [
+     [
+      0.516111,
+      0.476546
+     ],
+     [
+      0.516111,
+      0.525153
+     ]
+    ],
+    "source": "manage",
+    "source_nodes": [
+     "manage"
+    ],
+    "source_side": "bottom",
+    "stroke_style": "dashed",
+    "target": "table",
+    "target_nodes": [
+     "table"
+    ],
+    "target_side": "top"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "body_font_pt": 9,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     15
+    ],
+    "text": "tagged descriptor"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     19
+    ],
+    "text": "configuration"
+   }
+  ],
+  "deferred_scope_titles": [],
+  "document_fit": {
+   "default_limit_mm": 140,
+   "height_mm": 130.8,
+   "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+   "no_font_shrink": true,
+   "status": "pass"
+  },
+  "failed_routes": [],
+  "geometry_is_not_raster_acceptance": true,
+  "input_traces": {
+   "clear": true,
+   "failures": [],
+   "owners": []
+  },
+  "labels_placed": 4,
+  "no_common_bus_inferred": true,
+  "organization_traces": {
+   "clear": true,
+   "contacts": []
+  },
+  "owner_scope_entries": {
+   "clear": true,
+   "failures": []
+  },
+  "publication_typography": true,
+  "requested_routes": 9,
+  "route_count": 9,
+  "routes_complete": true,
+  "signal_font_pt": 8.5,
+  "target_width_mm": 160,
+  "typography_measured": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Exactly four independent ingress lanes (0, 1, 2, 3); each has its own RX, parser, queue and tagger.",
+   "Arbiter, route table, classifier, output queue and management are shared once.",
+   "The management host is outside the engine boundary. No cache/coherence protocol is implied."
+  ],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 22 个模块和 21 条连接。模块包括 RX 0、Parser 0、Queue 0、Tagger 0、RX 1、Parser 1、Queue 1、Tagger 1、RX 2、Parser 2；可在反馈中增删调整。"
+  ],
+  "category": "architecture",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packet",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "rx0",
+    "target": "parse0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "parse0",
+    "target": "q0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "dequeue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "q0",
+    "target": "tag0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "tag0",
+    "target": "arb"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packet",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "rx1",
+    "target": "parse1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "parse1",
+    "target": "q1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "dequeue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "q1",
+    "target": "tag1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "tag1",
+    "target": "arb"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packet",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "rx2",
+    "target": "parse2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "parse2",
+    "target": "q2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "dequeue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "q2",
+    "target": "tag2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "tag2",
+    "target": "arb"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packet",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "rx3",
+    "target": "parse3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "parse3",
+    "target": "q3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "dequeue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "q3",
+    "target": "tag3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "tag3",
+    "target": "arb"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "selected descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "arb",
+    "target": "classifier"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "lookup result",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "table",
+    "target": "classifier"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "classified descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "classifier",
+    "target": "outputq"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "configuration",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "host",
+    "target": "manage"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "table update",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "manage",
+    "target": "table"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "engine",
+    "label": "Packet Ingress Engine",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "common",
+    "label": "Shared Services",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "offchip",
+    "label": "Outside Engine",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "lane0",
+    "label": "Ingress Lane 0",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "lane1",
+    "label": "Ingress Lane 1",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "lane2",
+    "label": "Ingress Lane 2",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "lane3",
+    "label": "Ingress Lane 3",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "Four aligned repeated lanes feed the single shared arbiter. Shared classification path is readable left to right. Host remains outside.",
+  "nodes": [
+   {
+    "detail": "Independent input",
+    "evidence": "",
+    "group": "lane0",
+    "id": "rx0",
+    "kind": "io",
+    "label": "RX 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Extract header metadata",
+    "evidence": "",
+    "group": "lane0",
+    "id": "parse0",
+    "kind": "compute",
+    "label": "Parser 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private packet descriptors",
+    "evidence": "",
+    "group": "lane0",
+    "id": "q0",
+    "kind": "memory",
+    "label": "Queue 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Attach lane tag",
+    "evidence": "",
+    "group": "lane0",
+    "id": "tag0",
+    "kind": "compute",
+    "label": "Tagger 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Independent input",
+    "evidence": "",
+    "group": "lane1",
+    "id": "rx1",
+    "kind": "io",
+    "label": "RX 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Extract header metadata",
+    "evidence": "",
+    "group": "lane1",
+    "id": "parse1",
+    "kind": "compute",
+    "label": "Parser 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private packet descriptors",
+    "evidence": "",
+    "group": "lane1",
+    "id": "q1",
+    "kind": "memory",
+    "label": "Queue 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Attach lane tag",
+    "evidence": "",
+    "group": "lane1",
+    "id": "tag1",
+    "kind": "compute",
+    "label": "Tagger 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Independent input",
+    "evidence": "",
+    "group": "lane2",
+    "id": "rx2",
+    "kind": "io",
+    "label": "RX 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Extract header metadata",
+    "evidence": "",
+    "group": "lane2",
+    "id": "parse2",
+    "kind": "compute",
+    "label": "Parser 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private packet descriptors",
+    "evidence": "",
+    "group": "lane2",
+    "id": "q2",
+    "kind": "memory",
+    "label": "Queue 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Attach lane tag",
+    "evidence": "",
+    "group": "lane2",
+    "id": "tag2",
+    "kind": "compute",
+    "label": "Tagger 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Independent input",
+    "evidence": "",
+    "group": "lane3",
+    "id": "rx3",
+    "kind": "io",
+    "label": "RX 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Extract header metadata",
+    "evidence": "",
+    "group": "lane3",
+    "id": "parse3",
+    "kind": "compute",
+    "label": "Parser 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private packet descriptors",
+    "evidence": "",
+    "group": "lane3",
+    "id": "q3",
+    "kind": "memory",
+    "label": "Queue 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Attach lane tag",
+    "evidence": "",
+    "group": "lane3",
+    "id": "tag3",
+    "kind": "compute",
+    "label": "Tagger 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Select among four ingress lanes",
+    "evidence": "",
+    "group": "common",
+    "id": "arb",
+    "kind": "control",
+    "label": "Shared Arbiter",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Read-only lookup for this example",
+    "evidence": "",
+    "group": "common",
+    "id": "table",
+    "kind": "memory",
+    "label": "Shared Route Table",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Route-table lookup + lane metadata",
+    "evidence": "",
+    "group": "common",
+    "id": "classifier",
+    "kind": "compute",
+    "label": "Shared Classifier",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Retain packet ordering per lane",
+    "evidence": "",
+    "group": "common",
+    "id": "outputq",
+    "kind": "memory",
+    "label": "Shared Output Queue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Control-plane updates and 64-bit event totals",
+    "evidence": "",
+    "group": "common",
+    "id": "manage",
+    "kind": "control",
+    "label": "Configuration & Counter Aggregation",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "External software control",
+    "evidence": "",
+    "group": "offchip",
+    "id": "host",
+    "kind": "io",
+    "label": "Management Host",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "Four-Lane Packet Ingress Engine",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "arb": {
+    "height": 0.046227,
+    "width": 0.437222,
+    "x": 0.156667,
+    "y": 0.242692
+   },
+   "classifier": {
+    "height": 0.046227,
+    "width": 0.177222,
+    "x": 0.079722,
+    "y": 0.525153
+   },
+   "host": {
+    "height": 0.046227,
+    "width": 0.188333,
+    "x": 0.767222,
+    "y": 0.397009
+   },
+   "lane0": {
+    "height": 0.076139,
+    "width": 0.090556,
+    "x": 0.156667,
+    "y": 0.067981
+   },
+   "lane1": {
+    "height": 0.076139,
+    "width": 0.090556,
+    "x": 0.272222,
+    "y": 0.067981
+   },
+   "lane2": {
+    "height": 0.076139,
+    "width": 0.090556,
+    "x": 0.387778,
+    "y": 0.067981
+   },
+   "lane3": {
+    "height": 0.076139,
+    "width": 0.090556,
+    "x": 0.503333,
+    "y": 0.067981
+   },
+   "manage": {
+    "height": 0.112848,
+    "width": 0.352778,
+    "x": 0.339722,
+    "y": 0.363698
+   },
+   "outputq": {
+    "height": 0.046227,
+    "width": 0.220556,
+    "x": 0.058056,
+    "y": 0.646159
+   },
+   "table": {
+    "height": 0.046227,
+    "width": 0.203889,
+    "x": 0.414167,
+    "y": 0.525153
+   }
+  },
+  "candidate_id": "resource-data-spine-110",
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 1.223657,
+   "reading_direction": "source-hierarchy-with-representative-expansions",
+   "target_width_mm": 160
+  },
+  "composition_diagnostics": {
+   "candidates": [
+    {
+     "accepted": true,
+     "deferred_label_count": 5,
+     "document_height_mm": 130.8,
+     "geometry": {
+      "bends": 0,
+      "crossings": 0,
+      "longest_route_px": 347.5,
+      "routing_cost_px": 1526.5,
+      "total_route_px": 1526.5
+     },
+     "id": "resource-data-spine-110",
+     "natural_aspect": 1.223657,
+     "reasons": []
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 5,
+     "document_height_mm": 145.2,
+     "geometry": {
+      "bends": 0,
+      "crossings": 0,
+      "longest_route_px": 405.2,
+      "routing_cost_px": 1799.5,
+      "total_route_px": 1799.5
+     },
+     "id": "resource-data-spine-145",
+     "natural_aspect": 1.101591,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "geometry": {
+      "bends": 22,
+      "crossings": 10,
+      "longest_route_px": 722.4,
+      "routing_cost_px": 3555.4,
+      "total_route_px": 3203.4
+     },
+     "id": "resource-array-110",
+     "reasons": [
+      "Independent routes cross without a declared crossover symbol"
+     ]
+    },
+    {
+     "accepted": false,
+     "geometry": {
+      "bends": 22,
+      "crossings": 10,
+      "longest_route_px": 763.6,
+      "routing_cost_px": 3899.5,
+      "total_route_px": 3547.5
+     },
+     "id": "resource-array-145",
+     "reasons": [
+      "Independent routes cross without a declared crossover symbol"
+     ]
+    }
+   ],
+   "grammar": "resource-array",
+   "selected": "resource-data-spine-110",
+   "selection_policy": "Hard route/typography/crossover/boundary gates, then fewer deferred labels, total route length plus 16px per bend, fewer bends and shorter longest route; no beauty score"
+  },
+  "containers": [
+   {
+    "box": {
+     "height": 0.657036,
+     "width": 0.661111,
+     "x": 0.044722,
+     "y": 0.051666
+    },
+    "heading_box": {
+     "height": 0.029367777022433716,
+     "width": 0.2001,
+     "x": 0.05249977777777778,
+     "y": 0.022298222977566284
+    },
+    "id": "engine",
+    "label": "Packet Ingress Engine",
+    "members": [
+     "lane0",
+     "lane1",
+     "lane2",
+     "lane3",
+     "arb",
+     "table",
+     "classifier",
+     "outputq",
+     "manage"
+    ],
+    "source_group": "engine"
+   },
+   {
+    "box": {
+     "height": 0.482325,
+     "width": 0.661111,
+     "x": 0.044722,
+     "y": 0.226377
+    },
+    "heading_box": {
+     "height": 0.029367777022433716,
+     "width": 0.14672,
+     "x": 0.7136107777777778,
+     "y": 0.1970092229775663
+    },
+    "id": "common",
+    "label": "Shared Services",
+    "members": [
+     "arb",
+     "table",
+     "classifier",
+     "outputq",
+     "manage"
+    ],
+    "source_group": "common"
+   }
+  ],
+  "insets": [
+   {
+    "annotation_role": "same-hardware-view",
+    "annotation_text": "Same hardware detail",
+    "box": {
+     "height": 0.171312,
+     "width": 0.310556,
+     "x": 0.044444,
+     "y": 0.767165
+    },
+    "id": "representative-expansion",
+    "label": "Ingress Lane 0",
+    "leader": [
+     [
+      0.156667,
+      0.07777
+     ],
+     [
+      0.014444,
+      0.07777
+     ],
+     [
+      0.014444,
+      0.781849
+     ],
+     [
+      0.044444,
+      0.781849
+     ]
+    ],
+    "leader_mode": "dedicated annotation corridor without arrowhead",
+    "leader_pixels": [
+     [
+      282,
+      114.4
+     ],
+     [
+      26,
+      114.4
+     ],
+     [
+      26,
+      1150.1
+     ],
+     [
+      80,
+      1150.1
+     ]
+    ],
+    "leader_role": "explanatory view leader, without arrowhead or source-edge membership",
+    "metrics": {
+     "children": [
+      {
+       "box_px": {
+        "height": 68,
+        "width": 252.25,
+        "x": 18,
+        "y": 76
+       },
+       "id": "rx0",
+       "kind": "io",
+       "label": "RX 0",
+       "lines": [
+        "RX 0"
+       ]
+      },
+      {
+       "box_px": {
+        "height": 68,
+        "width": 252.25,
+        "x": 288.25,
+        "y": 76
+       },
+       "id": "parse0",
+       "kind": "compute",
+       "label": "Parser 0",
+       "lines": [
+        "Parser 0"
+       ]
+      },
+      {
+       "box_px": {
+        "height": 68,
+        "width": 252.25,
+        "x": 18,
+        "y": 160
+       },
+       "id": "q0",
+       "kind": "memory",
+       "label": "Queue 0",
+       "lines": [
+        "Queue 0"
+       ]
+      },
+      {
+       "box_px": {
+        "height": 68,
+        "width": 252.25,
+        "x": 288.25,
+        "y": 160
+       },
+       "id": "tag0",
+       "kind": "compute",
+       "label": "Tagger 0",
+       "lines": [
+        "Tagger 0"
+       ]
+      }
+     ],
+     "detail_lines": [],
+     "entry_gutter_height": 0,
+     "entry_port_spacing_px": 0,
+     "font_px": 36,
+     "header_height": 66,
+     "height": 252,
+     "ink_header": false,
+     "line_height": 44,
+     "lines": [
+      "Ingress Lane 0"
+     ],
+     "width": 559
+    },
+    "outside_source_owner": true,
+    "same_hardware": true,
+    "source_internal_edge_indices": [
+     0,
+     1,
+     2
+    ],
+    "source_internal_relations": [
+     {
+      "evidence": "",
+      "kind": "data",
+      "label": "packet",
+      "origin": "assumed",
+      "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+      "source": "rx0",
+      "source_edge_index": 0,
+      "target": "parse0"
+     },
+     {
+      "evidence": "",
+      "kind": "data",
+      "label": "descriptor",
+      "origin": "assumed",
+      "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+      "source": "parse0",
+      "source_edge_index": 1,
+      "target": "q0"
+     },
+     {
+      "evidence": "",
+      "kind": "data",
+      "label": "dequeue",
+      "origin": "assumed",
+      "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+      "source": "q0",
+      "source_edge_index": 2,
+      "target": "tag0"
+     }
+    ],
+    "source_members": [
+     "rx0",
+     "parse0",
+     "q0",
+     "tag0"
+    ],
+    "source_object": "lane0"
+   }
+  ],
+  "layout_scene": {
+   "height": 1471,
+   "line_legend": {},
+   "quality": {
+    "body_font_pt": 9,
+    "deferred_labels": [
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       3
+      ],
+      "text": "tagged descriptor"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       7
+      ],
+      "text": "tagged descriptor"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       11
+      ],
+      "text": "tagged descriptor"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       15
+      ],
+      "text": "tagged descriptor"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       19
+      ],
+      "text": "configuration"
+     }
+    ],
+    "deferred_scope_titles": [],
+    "document_fit": {
+     "default_limit_mm": 140,
+     "height_mm": 130.8,
+     "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+     "no_font_shrink": true,
+     "status": "pass"
+    },
+    "failed_routes": [],
+    "geometry_is_not_raster_acceptance": true,
+    "input_traces": {
+     "clear": true,
+     "failures": [],
+     "owners": []
+    },
+    "labels_placed": 4,
+    "no_common_bus_inferred": true,
+    "organization_traces": {
+     "clear": true,
+     "contacts": []
+    },
+    "owner_scope_entries": {
+     "clear": true,
+     "failures": []
+    },
+    "publication_typography": true,
+    "requested_routes": 9,
+    "route_count": 9,
+    "routes_complete": true,
+    "signal_font_pt": 8.5,
+    "target_width_mm": 160,
+    "typography_measured": true
+   },
+   "routes": [
+    {
+     "family": "service",
+     "id": "P1",
+     "kind": "data",
+     "label": "tagged descriptor",
+     "labels": [
+      "tagged descriptor"
+     ],
+     "members": [
+      3
+     ],
+     "points": [
+      [
+       0.201945,
+       0.14412
+      ],
+      [
+       0.201945,
+       0.242692
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.5,
+      "source_side": "bottom",
+      "target_fraction": 0.10355781448538755,
+      "target_side": "top"
+     },
+     "source": "lane0",
+     "source_nodes": [
+      "tag0"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "solid",
+     "target": "arb",
+     "target_nodes": [
+      "arb"
+     ],
+     "target_side": "top"
+    },
+    {
+     "family": "service",
+     "id": "P2",
+     "kind": "data",
+     "label": "tagged descriptor",
+     "labels": [
+      "tagged descriptor"
+     ],
+     "members": [
+      7
+     ],
+     "points": [
+      [
+       0.3175,
+       0.14412
+      ],
+      [
+       0.3175,
+       0.242692
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.5,
+      "source_side": "bottom",
+      "target_fraction": 0.3678526048284625,
+      "target_side": "top"
+     },
+     "source": "lane1",
+     "source_nodes": [
+      "tag1"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "solid",
+     "target": "arb",
+     "target_nodes": [
+      "arb"
+     ],
+     "target_side": "top"
+    },
+    {
+     "family": "service",
+     "id": "P3",
+     "kind": "data",
+     "label": "tagged descriptor",
+     "labels": [
+      "tagged descriptor"
+     ],
+     "members": [
+      11
+     ],
+     "points": [
+      [
+       0.433056,
+       0.14412
+      ],
+      [
+       0.433056,
+       0.242692
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.5,
+      "source_side": "bottom",
+      "target_fraction": 0.6321473951715375,
+      "target_side": "top"
+     },
+     "source": "lane2",
+     "source_nodes": [
+      "tag2"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "solid",
+     "target": "arb",
+     "target_nodes": [
+      "arb"
+     ],
+     "target_side": "top"
+    },
+    {
+     "family": "service",
+     "id": "P4",
+     "kind": "data",
+     "label": "tagged descriptor",
+     "labels": [
+      "tagged descriptor"
+     ],
+     "members": [
+      15
+     ],
+     "points": [
+      [
+       0.548611,
+       0.14412
+      ],
+      [
+       0.548611,
+       0.242692
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.5,
+      "source_side": "bottom",
+      "target_fraction": 0.8964421855146124,
+      "target_side": "top"
+     },
+     "source": "lane3",
+     "source_nodes": [
+      "tag3"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "solid",
+     "target": "arb",
+     "target_nodes": [
+      "arb"
+     ],
+     "target_side": "top"
+    },
+    {
+     "family": "service",
+     "id": "P5",
+     "kind": "data",
+     "label": "selected descriptor",
+     "labels": [
+      "selected descriptor"
+     ],
+     "members": [
+      16
+     ],
+     "points": [
+      [
+       0.246944,
+       0.288919
+      ],
+      [
+       0.246944,
+       0.525153
+      ]
+     ],
+     "source": "arb",
+     "source_nodes": [
+      "arb"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "solid",
+     "target": "classifier",
+     "target_nodes": [
+      "classifier"
+     ],
+     "target_side": "top"
+    },
+    {
+     "family": "service",
+     "id": "P6",
+     "kind": "data",
+     "label": "lookup result",
+     "labels": [
+      "lookup result"
+     ],
+     "members": [
+      17
+     ],
+     "points": [
+      [
+       0.414167,
+       0.548266
+      ],
+      [
+       0.256944,
+       0.548266
+      ]
+     ],
+     "source": "table",
+     "source_nodes": [
+      "table"
+     ],
+     "source_side": "left",
+     "stroke_style": "solid",
+     "target": "classifier",
+     "target_nodes": [
+      "classifier"
+     ],
+     "target_side": "right"
+    },
+    {
+     "family": "service",
+     "id": "P7",
+     "kind": "data",
+     "label": "classified descriptor",
+     "labels": [
+      "classified descriptor"
+     ],
+     "members": [
+      18
+     ],
+     "points": [
+      [
+       0.168334,
+       0.57138
+      ],
+      [
+       0.168334,
+       0.646159
+      ]
+     ],
+     "source": "classifier",
+     "source_nodes": [
+      "classifier"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "solid",
+     "target": "outputq",
+     "target_nodes": [
+      "outputq"
+     ],
+     "target_side": "top"
+    },
+    {
+     "family": "external",
+     "id": "P8",
+     "kind": "control",
+     "label": "configuration",
+     "labels": [
+      "configuration"
+     ],
+     "members": [
+      19
+     ],
+     "points": [
+      [
+       0.767222,
+       0.420122
+      ],
+      [
+       0.6925,
+       0.420122
+      ]
+     ],
+     "routing": {
+      "source_side": "left",
+      "target_side": "right"
+     },
+     "source": "host",
+     "source_nodes": [
+      "host"
+     ],
+     "source_side": "left",
+     "stroke_style": "dashed",
+     "target": "manage",
+     "target_nodes": [
+      "manage"
+     ],
+     "target_side": "right"
+    },
+    {
+     "family": "coordination",
+     "id": "P9",
+     "kind": "control",
+     "label": "table update",
+     "labels": [
+      "table update"
+     ],
+     "members": [
+      20
+     ],
+     "points": [
+      [
+       0.516111,
+       0.476546
+      ],
+      [
+       0.516111,
+       0.525153
+      ]
+     ],
+     "source": "manage",
+     "source_nodes": [
+      "manage"
+     ],
+     "source_side": "bottom",
+     "stroke_style": "dashed",
+     "target": "table",
+     "target_nodes": [
+      "table"
+     ],
+     "target_side": "top"
+    }
+   ],
+   "width": 1800
+  },
+  "macro_edges": [
+   {
+    "family": "service",
+    "id": "P1",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     3
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.10355781448538755,
+     "target_side": "top"
+    },
+    "source": "lane0",
+    "source_nodes": [
+     "tag0"
+    ],
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P2",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     7
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.3678526048284625,
+     "target_side": "top"
+    },
+    "source": "lane1",
+    "source_nodes": [
+     "tag1"
+    ],
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P3",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     11
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.6321473951715375,
+     "target_side": "top"
+    },
+    "source": "lane2",
+    "source_nodes": [
+     "tag2"
+    ],
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P4",
+    "kind": "data",
+    "label": "tagged descriptor",
+    "labels": [
+     "tagged descriptor"
+    ],
+    "members": [
+     15
+    ],
+    "routing": {
+     "source_fraction": 0.5,
+     "source_side": "bottom",
+     "target_fraction": 0.8964421855146124,
+     "target_side": "top"
+    },
+    "source": "lane3",
+    "source_nodes": [
+     "tag3"
+    ],
+    "stroke_style": "solid",
+    "target": "arb",
+    "target_nodes": [
+     "arb"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P5",
+    "kind": "data",
+    "label": "selected descriptor",
+    "labels": [
+     "selected descriptor"
+    ],
+    "members": [
+     16
+    ],
+    "source": "arb",
+    "source_nodes": [
+     "arb"
+    ],
+    "stroke_style": "solid",
+    "target": "classifier",
+    "target_nodes": [
+     "classifier"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P6",
+    "kind": "data",
+    "label": "lookup result",
+    "labels": [
+     "lookup result"
+    ],
+    "members": [
+     17
+    ],
+    "source": "table",
+    "source_nodes": [
+     "table"
+    ],
+    "stroke_style": "solid",
+    "target": "classifier",
+    "target_nodes": [
+     "classifier"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P7",
+    "kind": "data",
+    "label": "classified descriptor",
+    "labels": [
+     "classified descriptor"
+    ],
+    "members": [
+     18
+    ],
+    "source": "classifier",
+    "source_nodes": [
+     "classifier"
+    ],
+    "stroke_style": "solid",
+    "target": "outputq",
+    "target_nodes": [
+     "outputq"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P8",
+    "kind": "control",
+    "label": "configuration",
+    "labels": [
+     "configuration"
+    ],
+    "members": [
+     19
+    ],
+    "routing": {
+     "source_side": "left",
+     "target_side": "right"
+    },
+    "source": "host",
+    "source_nodes": [
+     "host"
+    ],
+    "stroke_style": "dashed",
+    "target": "manage",
+    "target_nodes": [
+     "manage"
+    ]
+   },
+   {
+    "family": "coordination",
+    "id": "P9",
+    "kind": "control",
+    "label": "table update",
+    "labels": [
+     "table update"
+    ],
+    "members": [
+     20
+    ],
+    "source": "manage",
+    "source_nodes": [
+     "manage"
+    ],
+    "stroke_style": "dashed",
+    "target": "table",
+    "target_nodes": [
+     "table"
+    ]
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "display_only": true,
+    "entry_sources": [],
+    "id": "lane0",
+    "inventory_reading_basis": "supplied linear internal dependency",
+    "kind": "compute",
+    "label": "Ingress Lane 0",
+    "members": [
+     "rx0",
+     "parse0",
+     "q0",
+     "tag0"
+    ],
+    "original_group": "engine",
+    "source_group": "lane0",
+    "source_owner": "engine",
+    "template_id": "lane0",
+    "type": "unit-region",
+    "zone": "units"
+   },
+   {
+    "children": [],
+    "display_only": true,
+    "equivalent_to": "lane0",
+    "id": "lane1",
+    "kind": "compute",
+    "label": "Ingress Lane 1",
+    "members": [
+     "rx1",
+     "parse1",
+     "q1",
+     "tag1"
+    ],
+    "original_group": "engine",
+    "source_group": "lane1",
+    "source_owner": "engine",
+    "template_id": "lane0",
+    "type": "unit-region",
+    "zone": "units"
+   },
+   {
+    "children": [],
+    "display_only": true,
+    "equivalent_to": "lane0",
+    "id": "lane2",
+    "kind": "compute",
+    "label": "Ingress Lane 2",
+    "members": [
+     "rx2",
+     "parse2",
+     "q2",
+     "tag2"
+    ],
+    "original_group": "engine",
+    "source_group": "lane2",
+    "source_owner": "engine",
+    "template_id": "lane0",
+    "type": "unit-region",
+    "zone": "units"
+   },
+   {
+    "children": [],
+    "display_only": true,
+    "equivalent_to": "lane0",
+    "id": "lane3",
+    "kind": "compute",
+    "label": "Ingress Lane 3",
+    "members": [
+     "rx3",
+     "parse3",
+     "q3",
+     "tag3"
+    ],
+    "original_group": "engine",
+    "source_group": "lane3",
+    "source_owner": "engine",
+    "template_id": "lane0",
+    "type": "unit-region",
+    "zone": "units"
+   },
+   {
+    "children": [],
+    "detail": "Select among four ingress lanes",
+    "id": "arb",
+    "kind": "control",
+    "label": "Shared Arbiter",
+    "members": [
+     "arb"
+    ],
+    "original_group": "common",
+    "source_group": "common",
+    "source_owner": "common",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "children": [],
+    "detail": "Read-only lookup for this example",
+    "id": "table",
+    "kind": "memory",
+    "label": "Shared Route Table",
+    "members": [
+     "table"
+    ],
+    "original_group": "common",
+    "source_group": "common",
+    "source_owner": "common",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "children": [],
+    "detail": "Route-table lookup + lane metadata",
+    "id": "classifier",
+    "kind": "compute",
+    "label": "Shared Classifier",
+    "members": [
+     "classifier"
+    ],
+    "original_group": "common",
+    "source_group": "common",
+    "source_owner": "common",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "children": [],
+    "detail": "Retain packet ordering per lane",
+    "id": "outputq",
+    "kind": "memory",
+    "label": "Shared Output Queue",
+    "members": [
+     "outputq"
+    ],
+    "original_group": "common",
+    "source_group": "common",
+    "source_owner": "common",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "children": [],
+    "detail": "Control-plane updates and 64-bit event totals",
+    "id": "manage",
+    "kind": "control",
+    "label": "Configuration & Counter Aggregation",
+    "members": [
+     "manage"
+    ],
+    "original_group": "common",
+    "required_detail": "Control-plane updates and 64-bit event totals",
+    "source_group": "common",
+    "source_owner": "common",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "children": [],
+    "detail": "External software control",
+    "id": "host",
+    "kind": "io",
+    "label": "Management Host",
+    "members": [
+     "host"
+    ],
+    "original_group": "offchip",
+    "source_group": "offchip",
+    "source_owner": "offchip",
+    "type": "resource",
+    "zone": "external"
+   }
+  ],
+  "node_to_macro": {
+   "arb": "arb",
+   "classifier": "classifier",
+   "host": "host",
+   "manage": "manage",
+   "outputq": "outputq",
+   "parse0": "lane0",
+   "parse1": "lane1",
+   "parse2": "lane2",
+   "parse3": "lane3",
+   "q0": "lane0",
+   "q1": "lane1",
+   "q2": "lane2",
+   "q3": "lane3",
+   "rx0": "lane0",
+   "rx1": "lane1",
+   "rx2": "lane2",
+   "rx3": "lane3",
+   "table": "table",
+   "tag0": "lane0",
+   "tag1": "lane1",
+   "tag2": "lane2",
+   "tag3": "lane3"
+  },
+  "projection": {
+   "deferred_edges": [],
+   "internal_edges": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14
+   ],
+   "meaning": "Resource organization with a representative expansion of the same source owner. Expansion leaders are explanatory marks without arrowheads, never data edges.",
+   "ownership_unchanged": true,
+   "source_node_to_macro": {
+    "arb": "arb",
+    "classifier": "classifier",
+    "host": "host",
+    "manage": "manage",
+    "outputq": "outputq",
+    "parse0": "lane0",
+    "parse1": "lane1",
+    "parse2": "lane2",
+    "parse3": "lane3",
+    "q0": "lane0",
+    "q1": "lane1",
+    "q2": "lane2",
+    "q3": "lane3",
+    "rx0": "lane0",
+    "rx1": "lane1",
+    "rx2": "lane2",
+    "rx3": "lane3",
+    "table": "table",
+    "tag0": "lane0",
+    "tag1": "lane1",
+    "tag2": "lane2",
+    "tag3": "lane3"
+   }
+  },
+  "scene_id": "system",
+  "source_edge_indices": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ],
+  "source_group_labels": {
+   "common": "Shared Services",
+   "engine": "Packet Ingress Engine",
+   "lane0": "Ingress Lane 0",
+   "lane1": "Ingress Lane 1",
+   "lane2": "Ingress Lane 2",
+   "lane3": "Ingress Lane 3",
+   "offchip": "Outside Engine"
+  },
+  "source_group_parents": {
+   "common": "engine",
+   "engine": "",
+   "lane0": "engine",
+   "lane1": "engine",
+   "lane2": "engine",
+   "lane3": "engine",
+   "offchip": ""
+  },
+  "source_ownership": {
+   "arb": "common",
+   "classifier": "common",
+   "host": "offchip",
+   "manage": "common",
+   "outputq": "common",
+   "parse0": "lane0",
+   "parse1": "lane1",
+   "parse2": "lane2",
+   "parse3": "lane3",
+   "q0": "lane0",
+   "q1": "lane1",
+   "q2": "lane2",
+   "q3": "lane3",
+   "rx0": "lane0",
+   "rx1": "lane1",
+   "rx2": "lane2",
+   "rx3": "lane3",
+   "table": "common",
+   "tag0": "lane0",
+   "tag1": "lane1",
+   "tag2": "lane2",
+   "tag3": "lane3"
+  },
+  "symbol_metrics": {
+   "arb": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 68,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Shared Arbiter"
+    ],
+    "width": 277
+   },
+   "classifier": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 68,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Shared Classifier"
+    ],
+    "width": 319
+   },
+   "host": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 68,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Management Host"
+    ],
+    "width": 339
+   },
+   "lane0": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 110,
+    "height": 112,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Ingress",
+     "Lane 0"
+    ],
+    "width": 163
+   },
+   "lane1": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 110,
+    "height": 112,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Ingress",
+     "Lane 1"
+    ],
+    "width": 163
+   },
+   "lane2": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 110,
+    "height": 112,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Ingress",
+     "Lane 2"
+    ],
+    "width": 163
+   },
+   "lane3": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 110,
+    "height": 112,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Ingress",
+     "Lane 3"
+    ],
+    "width": 163
+   },
+   "manage": {
+    "children": [],
+    "detail_lines": [
+     "Control-plane updates",
+     "and 64-bit event totals"
+    ],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 154,
+    "height": 166,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Configuration & Counter Aggregation"
+    ],
+    "width": 635
+   },
+   "outputq": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 68,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Shared Output Queue"
+    ],
+    "width": 397
+   },
+   "table": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 68,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Shared Route Table"
+    ],
+    "width": 367
+   }
+  },
+  "system_frame": {
+   "box": {
+    "height": 1,
+    "width": 1,
+    "x": 0,
+    "y": 0
+   },
+   "display_only": true,
+   "label": ""
+  },
+  "title": "Four-Lane Packet Ingress Engine",
+  "type": "publication",
+  "typography": {
+   "body_pt": 9,
+   "body_px": 36,
+   "no_font_shrink": true,
+   "signal_pt": 8.5,
+   "signal_px": 34,
+   "symbol_profile": "plain",
+   "target_width_mm": 160
+  },
+  "version": "CPS6",
+  "view_role": "resource-organization",
+  "view_type": "publication-resource-array"
+ },
+ "version": 1,
+ "warnings": [
+  "部分标签较长，构图会优先换行或放入展开图；最终图内文字仍需核对。"
+ ]
+}

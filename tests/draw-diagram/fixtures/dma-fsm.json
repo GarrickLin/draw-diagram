@@ -1,0 +1,22 @@
+{
+  "description": "DMA 控制器状态机：空闲时收到 start 去取描述符，描述符有效后开始传输，每拍传输直到最后一拍，完成后等 ack 回到空闲。",
+  "spec": {
+    "title": "DMA Controller FSM",
+    "summary": "DMA 控制器状态机",
+    "category": "fsm",
+    "groups": [],
+    "nodes": [
+      {"id": "idle", "label": "Idle", "kind": "state", "evidence": "", "origin": "assumed", "rationale": "空闲状态"},
+      {"id": "fetch", "label": "Fetch Descriptor", "kind": "state", "evidence": "", "origin": "assumed", "rationale": "取描述符"},
+      {"id": "xfer", "label": "Transfer", "kind": "state", "evidence": "", "origin": "assumed", "rationale": "传输"},
+      {"id": "done", "label": "Done", "kind": "state", "evidence": "", "origin": "assumed", "rationale": "完成"}
+    ],
+    "edges": [
+      {"source": "idle", "target": "fetch", "kind": "control", "label": "start"},
+      {"source": "fetch", "target": "xfer", "kind": "control", "label": "desc valid"},
+      {"source": "xfer", "target": "xfer", "kind": "control", "label": "beats left"},
+      {"source": "xfer", "target": "done", "kind": "control", "label": "last beat"},
+      {"source": "done", "target": "idle", "kind": "control", "label": "ack"}
+    ]
+  }
+}

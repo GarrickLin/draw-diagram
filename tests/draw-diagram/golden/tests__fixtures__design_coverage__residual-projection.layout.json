@@ -1,0 +1,1222 @@
+{
+ "algorithm_flow_plan": {
+  "composition": {
+   "connector_cardinality": [
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      0
+     ],
+     "source_node_id": "x",
+     "target_node_id": "mm1"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      1
+     ],
+     "source_node_id": "w1",
+     "target_node_id": "mm1"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      2
+     ],
+     "source_node_id": "mm1",
+     "target_node_id": "bias"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      3
+     ],
+     "source_node_id": "b1",
+     "target_node_id": "bias"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      4
+     ],
+     "source_node_id": "bias",
+     "target_node_id": "relu"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      5
+     ],
+     "source_node_id": "relu",
+     "target_node_id": "mm2"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      6
+     ],
+     "source_node_id": "w2",
+     "target_node_id": "mm2"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      7
+     ],
+     "source_node_id": "mm2",
+     "target_node_id": "res"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      8
+     ],
+     "source_node_id": "x",
+     "target_node_id": "res"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      9
+     ],
+     "source_node_id": "res",
+     "target_node_id": "y"
+    }
+   ],
+   "dependency_layers": [
+    {
+     "node_ids": [
+      "x",
+      "w1",
+      "b1",
+      "w2"
+     ],
+     "rank": 0
+    },
+    {
+     "node_ids": [
+      "mm1"
+     ],
+     "rank": 1
+    },
+    {
+     "node_ids": [
+      "bias"
+     ],
+     "rank": 2
+    },
+    {
+     "node_ids": [
+      "relu"
+     ],
+     "rank": 3
+    },
+    {
+     "node_ids": [
+      "mm2"
+     ],
+     "rank": 4
+    },
+    {
+     "node_ids": [
+      "res"
+     ],
+     "rank": 5
+    },
+    {
+     "node_ids": [
+      "y"
+     ],
+     "rank": 6
+    }
+   ],
+   "display_columns": [
+    {
+     "column": 0,
+     "node_ids": [
+      "x",
+      "w1"
+     ]
+    },
+    {
+     "column": 1,
+     "node_ids": [
+      "mm1",
+      "b1"
+     ]
+    },
+    {
+     "column": 2,
+     "node_ids": [
+      "bias"
+     ]
+    },
+    {
+     "column": 3,
+     "node_ids": [
+      "relu",
+      "w2"
+     ]
+    },
+    {
+     "column": 4,
+     "node_ids": [
+      "mm2"
+     ]
+    },
+    {
+     "column": 5,
+     "node_ids": [
+      "res"
+     ]
+    },
+    {
+     "column": 6,
+     "node_ids": [
+      "y"
+     ]
+    }
+   ],
+   "grammar": "branched-tensor-flow",
+   "group_policy": "compact group headings or short open brackets over actual members; no large empty container frames",
+   "joins": [
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      0,
+      1
+     ],
+     "source_node_ids": [
+      "x",
+      "w1"
+     ],
+     "target_node_id": "mm1"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      2,
+      3
+     ],
+     "source_node_ids": [
+      "mm1",
+      "b1"
+     ],
+     "target_node_id": "bias"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      5,
+      6
+     ],
+     "source_node_ids": [
+      "relu",
+      "w2"
+     ],
+     "target_node_id": "mm2"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      7,
+      8
+     ],
+     "source_node_ids": [
+      "mm2",
+      "x"
+     ],
+     "target_node_id": "res"
+    }
+   ],
+   "layer_meaning": "graphical dependency layers only; not cycles, latencies, pipeline stages or serialized execution",
+   "matched_operand_placement": [
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 0,
+     "consumer_node_id": "mm1",
+     "source_node_id": "w1"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 1,
+     "consumer_node_id": "bias",
+     "source_node_id": "b1"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 3,
+     "consumer_node_id": "mm2",
+     "source_node_id": "w2"
+    }
+   ],
+   "object_budget": "prefer 8–14 main objects per panel; if the complete source is larger, use aligned source-backed panels without dropping leaves or dependencies",
+   "outgoing_contracts": [
+    {
+     "allowed_target_node_ids": [
+      "mm1",
+      "res"
+     ],
+     "source_edge_indices": [
+      0,
+      8
+     ],
+     "source_node_id": "x"
+    },
+    {
+     "allowed_target_node_ids": [
+      "mm1"
+     ],
+     "source_edge_indices": [
+      1
+     ],
+     "source_node_id": "w1"
+    },
+    {
+     "allowed_target_node_ids": [
+      "bias"
+     ],
+     "source_edge_indices": [
+      2
+     ],
+     "source_node_id": "mm1"
+    },
+    {
+     "allowed_target_node_ids": [
+      "bias"
+     ],
+     "source_edge_indices": [
+      3
+     ],
+     "source_node_id": "b1"
+    },
+    {
+     "allowed_target_node_ids": [
+      "relu"
+     ],
+     "source_edge_indices": [
+      4
+     ],
+     "source_node_id": "bias"
+    },
+    {
+     "allowed_target_node_ids": [
+      "mm2"
+     ],
+     "source_edge_indices": [
+      5
+     ],
+     "source_node_id": "relu"
+    },
+    {
+     "allowed_target_node_ids": [
+      "mm2"
+     ],
+     "source_edge_indices": [
+      6
+     ],
+     "source_node_id": "w2"
+    },
+    {
+     "allowed_target_node_ids": [
+      "res"
+     ],
+     "source_edge_indices": [
+      7
+     ],
+     "source_node_id": "mm2"
+    },
+    {
+     "allowed_target_node_ids": [
+      "y"
+     ],
+     "source_edge_indices": [
+      9
+     ],
+     "source_node_id": "res"
+    },
+    {
+     "allowed_target_node_ids": [],
+     "source_edge_indices": [],
+     "source_node_id": "y"
+    }
+   ],
+   "parallel_branches": [
+    {
+     "source_edge_indices": [
+      0,
+      8
+     ],
+     "source_node_id": "x",
+     "target_node_ids": [
+      "mm1",
+      "res"
+     ]
+    }
+   ],
+   "primary_reading_axis": "left-to-right dependency order",
+   "recurrence_components": [],
+   "recurrence_exit_branches": [],
+   "residency_labels": [],
+   "return_edge_indices": [],
+   "state_lane_node_ids": []
+  },
+  "groups": [],
+  "motifs": {
+   "data_residency": [],
+   "joins": [
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      0,
+      1
+     ],
+     "source_node_ids": [
+      "x",
+      "w1"
+     ],
+     "target_node_id": "mm1"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      2,
+      3
+     ],
+     "source_node_ids": [
+      "mm1",
+      "b1"
+     ],
+     "target_node_id": "bias"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      5,
+      6
+     ],
+     "source_node_ids": [
+      "relu",
+      "w2"
+     ],
+     "target_node_id": "mm2"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      7,
+      8
+     ],
+     "source_node_ids": [
+      "mm2",
+      "x"
+     ],
+     "target_node_id": "res"
+    }
+   ],
+   "parallel_branches": [
+    {
+     "source_edge_indices": [
+      0,
+      8
+     ],
+     "source_node_id": "x",
+     "target_node_ids": [
+      "mm1",
+      "res"
+     ]
+    }
+   ],
+   "recurrence_components": [],
+   "recurrence_exits": [],
+   "reductions": [],
+   "tensor_shapes": [
+    {
+     "shape": "B×T×D",
+     "source_node_id": "x"
+    },
+    {
+     "shape": "D×H",
+     "source_node_id": "w1"
+    },
+    {
+     "shape": "B×T×H",
+     "source_node_id": "mm1"
+    },
+    {
+     "shape": "H",
+     "source_node_id": "b1"
+    },
+    {
+     "shape": "B×T×H",
+     "source_node_id": "bias"
+    },
+    {
+     "shape": "B×T×H",
+     "source_node_id": "relu"
+    },
+    {
+     "shape": "H×D",
+     "source_node_id": "w2"
+    },
+    {
+     "shape": "B×T×D",
+     "source_node_id": "mm2"
+    },
+    {
+     "shape": "B×T×D",
+     "source_node_id": "res"
+    },
+    {
+     "shape": "B×T×D",
+     "source_node_id": "y"
+    }
+   ]
+  },
+  "objects": [
+   {
+    "detail": "",
+    "evidence": "",
+    "label": "X",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "",
+     "diagram_role": "tensor",
+     "kind": "compute",
+     "label": "X",
+     "tensor_shape": "B×T×D"
+    },
+    "source_group": "",
+    "source_node_id": "x",
+    "tensor_shape": "B×T×D",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [],
+     "name": "X",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "B×T×D"
+    }
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "label": "W1",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "",
+     "diagram_role": "tensor",
+     "kind": "compute",
+     "label": "W1",
+     "tensor_shape": "D×H"
+    },
+    "source_group": "",
+    "source_node_id": "w1",
+    "tensor_shape": "D×H",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [],
+     "name": "W1",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "D×H"
+    }
+   },
+   {
+    "detail": "U = X W1",
+    "evidence": "",
+    "label": "Projection 1",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "U = X W1",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Projection 1",
+     "tensor_shape": "B×T×H"
+    },
+    "source_group": "",
+    "source_node_id": "mm1",
+    "tensor_shape": "B×T×H",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "U = X W1"
+     ],
+     "name": "Projection 1",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B×T×H"
+    }
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "label": "b1",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "",
+     "diagram_role": "tensor",
+     "kind": "compute",
+     "label": "b1",
+     "tensor_shape": "H"
+    },
+    "source_group": "",
+    "source_node_id": "b1",
+    "tensor_shape": "H",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [],
+     "name": "b1",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "H"
+    }
+   },
+   {
+    "detail": "Z = U + b1; broadcast over B and T",
+    "evidence": "",
+    "label": "Bias Add",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Z = U + b1; broadcast over B and T",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Bias Add",
+     "tensor_shape": "B×T×H"
+    },
+    "source_group": "",
+    "source_node_id": "bias",
+    "tensor_shape": "B×T×H",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "broadcast over B and T"
+     ],
+     "mathematical_lines": [
+      "Z = U + b1"
+     ],
+     "name": "Bias Add",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B×T×H"
+    }
+   },
+   {
+    "detail": "A = max(Z, 0)",
+    "evidence": "",
+    "label": "ReLU",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "A = max(Z, 0)",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "ReLU",
+     "tensor_shape": "B×T×H"
+    },
+    "source_group": "",
+    "source_node_id": "relu",
+    "tensor_shape": "B×T×H",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "A = max(Z, 0)"
+     ],
+     "name": "ReLU",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B×T×H"
+    }
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "label": "W2",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "",
+     "diagram_role": "tensor",
+     "kind": "compute",
+     "label": "W2",
+     "tensor_shape": "H×D"
+    },
+    "source_group": "",
+    "source_node_id": "w2",
+    "tensor_shape": "H×D",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [],
+     "name": "W2",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "H×D"
+    }
+   },
+   {
+    "detail": "F = A W2",
+    "evidence": "",
+    "label": "Projection 2",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "F = A W2",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Projection 2",
+     "tensor_shape": "B×T×D"
+    },
+    "source_group": "",
+    "source_node_id": "mm2",
+    "tensor_shape": "B×T×D",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "F = A W2"
+     ],
+     "name": "Projection 2",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B×T×D"
+    }
+   },
+   {
+    "detail": "Y = F + X",
+    "evidence": "",
+    "label": "Residual Add",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Y = F + X",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Residual Add",
+     "tensor_shape": "B×T×D"
+    },
+    "source_group": "",
+    "source_node_id": "res",
+    "tensor_shape": "B×T×D",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "Y = F + X"
+     ],
+     "name": "Residual Add",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B×T×D"
+    }
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "label": "Y",
+    "origin": "assumed",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "",
+     "diagram_role": "tensor",
+     "kind": "compute",
+     "label": "Y",
+     "tensor_shape": "B×T×D"
+    },
+    "source_group": "",
+    "source_node_id": "y",
+    "tensor_shape": "B×T×D",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [],
+     "name": "Y",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "B×T×D"
+    }
+   }
+  ],
+  "relations": [
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "x",
+    "source_edge_index": 0,
+    "target": "mm1"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "w1",
+    "source_edge_index": 1,
+    "target": "mm1"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "mm1",
+    "source_edge_index": 2,
+    "target": "bias"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "b1",
+    "source_edge_index": 3,
+    "target": "bias"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bias",
+    "source_edge_index": 4,
+    "target": "relu"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "relu",
+    "source_edge_index": 5,
+    "target": "mm2"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "w2",
+    "source_edge_index": 6,
+    "target": "mm2"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "mm2",
+    "source_edge_index": 7,
+    "target": "res"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "identity skip",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "x",
+    "source_edge_index": 8,
+    "target": "res"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "res",
+    "source_edge_index": 9,
+    "target": "y"
+   }
+  ],
+  "semantic_policy": "Shapes, axes, tiles and residency are shown only when supplied. Separate operands remain separate. Visible source cycles retain exact direction. A graphical join is not a reduction, matrix multiply is not elementwise multiplication, and no tensor is silently a hardware memory.",
+  "source_hash": "9511e85407c21c6f13349d1d6374db90d37ae7bc5f6f2927df95e2cfac0e621e",
+  "version": "ALGO1"
+ },
+ "figure": {
+  "design_limit": null,
+  "id": "algorithm-flow",
+  "layout_strategy": "algorithm-dependency-plan",
+  "title": "Two-Layer Residual Projection"
+ },
+ "kind": "algorithm",
+ "label_layout": null,
+ "layout_scene": {},
+ "quality": {},
+ "settings": {
+  "aspect": "auto",
+  "category": "algorithm",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "flow",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 10 个模块和 10 条连接。模块包括 X、W1、Projection 1、b1、Bias Add、ReLU、W2、Projection 2、Residual Add、Y；可在反馈中增删调整。"
+  ],
+  "category": "algorithm",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "x",
+    "target": "mm1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "w1",
+    "target": "mm1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "mm1",
+    "target": "bias"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "b1",
+    "target": "bias"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bias",
+    "target": "relu"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "relu",
+    "target": "mm2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "w2",
+    "target": "mm2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "mm2",
+    "target": "res"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "identity skip",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "x",
+    "target": "res"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "res",
+    "target": "y"
+   }
+  ],
+  "groups": [],
+  "layout": "Operator chain horizontally with parameter operands above their consuming operator, residual skip below. No hardware buffers or clock stages.",
+  "nodes": [
+   {
+    "detail": "",
+    "diagram_role": "tensor",
+    "evidence": "",
+    "group": "",
+    "id": "x",
+    "kind": "compute",
+    "label": "X",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×D"
+   },
+   {
+    "detail": "",
+    "diagram_role": "tensor",
+    "evidence": "",
+    "group": "",
+    "id": "w1",
+    "kind": "compute",
+    "label": "W1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "D×H"
+   },
+   {
+    "detail": "U = X W1",
+    "diagram_role": "operator",
+    "evidence": "",
+    "group": "",
+    "id": "mm1",
+    "kind": "compute",
+    "label": "Projection 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×H"
+   },
+   {
+    "detail": "",
+    "diagram_role": "tensor",
+    "evidence": "",
+    "group": "",
+    "id": "b1",
+    "kind": "compute",
+    "label": "b1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "H"
+   },
+   {
+    "detail": "Z = U + b1; broadcast over B and T",
+    "diagram_role": "operator",
+    "evidence": "",
+    "group": "",
+    "id": "bias",
+    "kind": "compute",
+    "label": "Bias Add",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×H"
+   },
+   {
+    "detail": "A = max(Z, 0)",
+    "diagram_role": "operator",
+    "evidence": "",
+    "group": "",
+    "id": "relu",
+    "kind": "compute",
+    "label": "ReLU",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×H"
+   },
+   {
+    "detail": "",
+    "diagram_role": "tensor",
+    "evidence": "",
+    "group": "",
+    "id": "w2",
+    "kind": "compute",
+    "label": "W2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "H×D"
+   },
+   {
+    "detail": "F = A W2",
+    "diagram_role": "operator",
+    "evidence": "",
+    "group": "",
+    "id": "mm2",
+    "kind": "compute",
+    "label": "Projection 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×D"
+   },
+   {
+    "detail": "Y = F + X",
+    "diagram_role": "operator",
+    "evidence": "",
+    "group": "",
+    "id": "res",
+    "kind": "compute",
+    "label": "Residual Add",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×D"
+   },
+   {
+    "detail": "",
+    "diagram_role": "tensor",
+    "evidence": "",
+    "group": "",
+    "id": "y",
+    "kind": "compute",
+    "label": "Y",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "tensor_shape": "B×T×D"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "Two-Layer Residual Projection",
+  "verbatim_labels": []
+ },
+ "structure_layout": null,
+ "version": 1,
+ "warnings": []
+}

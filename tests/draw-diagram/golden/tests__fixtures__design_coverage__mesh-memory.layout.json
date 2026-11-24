@@ -1,0 +1,3598 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "logical-topology",
+  "layout_strategy": "semantic-guide",
+  "title": "2×2 Mesh and Shared Memory Access"
+ },
+ "kind": "behavior",
+ "label_layout": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r0"
+    ],
+    "text": "Router 0"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r1"
+    ],
+    "text": "Router 1"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r2"
+    ],
+    "text": "Router 2"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r3"
+    ],
+    "text": "Router 3"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep0"
+    ],
+    "text": "Endpoint 0"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep1"
+    ],
+    "text": "Endpoint 1"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep2"
+    ],
+    "text": "Endpoint 2"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep3"
+    ],
+    "text": "Endpoint 3"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "bank0"
+    ],
+    "text": "Shared Bank 0"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "bank1"
+    ],
+    "text": "Shared Bank 1"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ctl"
+    ],
+    "text": "Memory Controller"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "dram"
+    ],
+    "text": "External Memory"
+   },
+   {
+    "at": [
+     845,
+     397.04949999999997
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     845,
+     162.964
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     302.95050000000003,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     537.0360000000001,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     1152.9505,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     1387.036,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     845,
+     917.0495
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     845,
+     682.9639999999999
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     275,
+     343.0225
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     275,
+     206.4745
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1415,
+     216.9775
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1415,
+     353.52549999999997
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     275,
+     863.0225
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     12
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     275,
+     726.4745
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     13
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1415,
+     736.9775
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     14
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1415,
+     873.5255
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     15
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     356.9775,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     16
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     493.52549999999997,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     17
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1206.9775,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     18
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1343.5255,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     19
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     608.1355680893333,
+     1184.3089693430159
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     20
+    ],
+    "text": "miss"
+   },
+   {
+    "at": [
+     1033.1355680893332,
+     1085.6910306569841
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     21
+    ],
+    "text": "miss"
+   },
+   {
+    "at": [
+     767.735,
+     1345
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     22
+    ],
+    "text": "command"
+   },
+   {
+    "at": [
+     920.0375,
+     1345
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     23
+    ],
+    "text": "read data"
+   }
+  ]
+ },
+ "layout_scene": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r0"
+    ],
+    "text": "Router 0"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r1"
+    ],
+    "text": "Router 1"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r2"
+    ],
+    "text": "Router 2"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "r3"
+    ],
+    "text": "Router 3"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep0"
+    ],
+    "text": "Endpoint 0"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep1"
+    ],
+    "text": "Endpoint 1"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep2"
+    ],
+    "text": "Endpoint 2"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ep3"
+    ],
+    "text": "Endpoint 3"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "bank0"
+    ],
+    "text": "Shared Bank 0"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "bank1"
+    ],
+    "text": "Shared Bank 1"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ctl"
+    ],
+    "text": "Memory Controller"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "dram"
+    ],
+    "text": "External Memory"
+   },
+   {
+    "at": [
+     845,
+     397.04949999999997
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     845,
+     162.964
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     302.95050000000003,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     537.0360000000001,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     1152.9505,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     1387.036,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     845,
+     917.0495
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     845,
+     682.9639999999999
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     275,
+     343.0225
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     275,
+     206.4745
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1415,
+     216.9775
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1415,
+     353.52549999999997
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     275,
+     863.0225
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     12
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     275,
+     726.4745
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     13
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1415,
+     736.9775
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     14
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1415,
+     873.5255
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     15
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     356.9775,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     16
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     493.52549999999997,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     17
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1206.9775,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     18
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1343.5255,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     19
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     608.1355680893333,
+     1184.3089693430159
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     20
+    ],
+    "text": "miss"
+   },
+   {
+    "at": [
+     1033.1355680893332,
+     1085.6910306569841
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     21
+    ],
+    "text": "miss"
+   },
+   {
+    "at": [
+     767.735,
+     1345
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     22
+    ],
+    "text": "command"
+   },
+   {
+    "at": [
+     920.0375,
+     1345
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     23
+    ],
+    "text": "read data"
+   }
+  ],
+  "objects": [
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r0",
+    "kind": "control",
+    "label": "Router 0",
+    "members": [
+     "r0"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r1",
+    "kind": "control",
+    "label": "Router 1",
+    "members": [
+     "r1"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r2",
+    "kind": "control",
+    "label": "Router 2",
+    "members": [
+     "r2"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r3",
+    "kind": "control",
+    "label": "Router 3",
+    "members": [
+     "r3"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup0",
+    "id": "ep0",
+    "kind": "compute",
+    "label": "Endpoint 0",
+    "members": [
+     "ep0"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup0",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup1",
+    "id": "ep1",
+    "kind": "compute",
+    "label": "Endpoint 1",
+    "members": [
+     "ep1"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup1",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup2",
+    "id": "ep2",
+    "kind": "compute",
+    "label": "Endpoint 2",
+    "members": [
+     "ep2"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup2",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup3",
+    "id": "ep3",
+    "kind": "compute",
+    "label": "Endpoint 3",
+    "members": [
+     "ep3"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup3",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "bank0",
+    "kind": "memory",
+    "label": "Shared Bank 0",
+    "members": [
+     "bank0"
+    ],
+    "origin": "assumed",
+    "original_group": "memory",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "bank1",
+    "kind": "memory",
+    "label": "Shared Bank 1",
+    "members": [
+     "bank1"
+    ],
+    "origin": "assumed",
+    "original_group": "memory",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "ctl",
+    "kind": "control",
+    "label": "Memory Controller",
+    "members": [
+     "ctl"
+    ],
+    "origin": "assumed",
+    "original_group": "memory",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "external",
+    "id": "dram",
+    "kind": "memory",
+    "label": "External Memory",
+    "members": [
+     "dram"
+    ],
+    "origin": "assumed",
+    "original_group": "external",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "quality": {
+   "geometry_is_not_raster_acceptance": true,
+   "routes_complete": true,
+   "semantic_scope_complete": true,
+   "typography_measured": false
+  },
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     845,
+     397.04949999999997
+    ],
+    "members": [
+     0
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      522,
+      292
+     ],
+     [
+      1168,
+      292
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "stroke_style": "solid",
+    "target": "r1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     845,
+     162.964
+    ],
+    "members": [
+     1
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1168,
+      268
+     ],
+     [
+      522,
+      268
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "stroke_style": "solid",
+    "target": "r0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     302.95050000000003,
+     540
+    ],
+    "members": [
+     2
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      408,
+      326
+     ],
+     [
+      408,
+      754
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     537.0360000000001,
+     540
+    ],
+    "members": [
+     3
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      432,
+      754
+     ],
+     [
+      432,
+      326
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "r0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     1152.9505,
+     540
+    ],
+    "members": [
+     4
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1258,
+      326
+     ],
+     [
+      1258,
+      754
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     1387.036,
+     540
+    ],
+    "members": [
+     5
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1282,
+      754
+     ],
+     [
+      1282,
+      326
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "r1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     845,
+     917.0495
+    ],
+    "members": [
+     6
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      522,
+      812
+     ],
+     [
+      1168,
+      812
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     845,
+     682.9639999999999
+    ],
+    "members": [
+     7
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1168,
+      788
+     ],
+     [
+      522,
+      788
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     275,
+     343.0225
+    ],
+    "members": [
+     8
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      232,
+      292
+     ],
+     [
+      318,
+      292
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep0",
+    "stroke_style": "solid",
+    "target": "r0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     275,
+     206.4745
+    ],
+    "members": [
+     9
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      318,
+      268
+     ],
+     [
+      232,
+      268
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "stroke_style": "solid",
+    "target": "ep0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     1415,
+     216.9775
+    ],
+    "members": [
+     10
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1458,
+      268
+     ],
+     [
+      1372,
+      268
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep1",
+    "stroke_style": "solid",
+    "target": "r1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     1415,
+     353.52549999999997
+    ],
+    "members": [
+     11
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1372,
+      292
+     ],
+     [
+      1458,
+      292
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "stroke_style": "solid",
+    "target": "ep1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     275,
+     863.0225
+    ],
+    "members": [
+     12
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      232,
+      812
+     ],
+     [
+      318,
+      812
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep2",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     275,
+     726.4745
+    ],
+    "members": [
+     13
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      318,
+      788
+     ],
+     [
+      232,
+      788
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "ep2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     1415,
+     736.9775
+    ],
+    "members": [
+     14
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1458,
+      788
+     ],
+     [
+      1372,
+      788
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep3",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     1415,
+     873.5255
+    ],
+    "members": [
+     15
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1372,
+      812
+     ],
+     [
+      1458,
+      812
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "ep3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     356.9775,
+     915
+    ],
+    "members": [
+     16
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      408,
+      846
+     ],
+     [
+      408,
+      984
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "bank0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     493.52549999999997,
+     915
+    ],
+    "members": [
+     17
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      432,
+      984
+     ],
+     [
+      432,
+      846
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     1206.9775,
+     915
+    ],
+    "members": [
+     18
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1258,
+      846
+     ],
+     [
+      1258,
+      984
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "bank1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     1343.5255,
+     915
+    ],
+    "members": [
+     19
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1282,
+      984
+     ],
+     [
+      1282,
+      846
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "miss",
+    "label_at": [
+     608.1355680893333,
+     1184.3089693430159
+    ],
+    "members": [
+     20
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      503.2702308080739,
+      1084.5302792683428
+     ],
+     [
+      751.0980170854534,
+      1206.9863618995187
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "stroke_style": "solid",
+    "target": "ctl"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "miss",
+    "label_at": [
+     1033.1355680893332,
+     1085.6910306569841
+    ],
+    "members": [
+     21
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1176.0980170854532,
+      1063.0136381004813
+     ],
+     [
+      928.2702308080738,
+      1185.4697207316572
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "stroke_style": "solid",
+    "target": "ctl"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "command",
+    "label_at": [
+     767.735,
+     1345
+    ],
+    "members": [
+     22
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      833,
+      1286
+     ],
+     [
+      833,
+      1404
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ctl",
+    "stroke_style": "solid",
+    "target": "dram"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "read data",
+    "label_at": [
+     920.0375,
+     1345
+    ],
+    "members": [
+     23
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      857,
+      1404
+     ],
+     [
+      857,
+      1286
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "dram",
+    "stroke_style": "solid",
+    "target": "ctl"
+   }
+  ]
+ },
+ "quality": {
+  "geometry_is_not_raster_acceptance": true,
+  "routes_complete": true,
+  "semantic_scope_complete": true,
+  "typography_measured": false
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "memory",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "The mesh has exactly four routers and four local endpoints. No diagonal r0-r3 or r1-r2 edge.",
+   "No coherence guarantee, capacity, arbitration policy or physical floorplan is supplied."
+  ],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 12 个模块和 24 条连接。模块包括 Router 0、Router 1、Router 2、Router 3、Endpoint 0、Endpoint 1、Endpoint 2、Endpoint 3、Shared Bank 0、Shared Bank 1；可在反馈中增删调整。"
+  ],
+  "category": "memory",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "target": "r1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "target": "r0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "r0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "r1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep0",
+    "target": "r0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "target": "ep0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep1",
+    "target": "r1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "target": "ep1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep2",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "ep2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep3",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "ep3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "bank0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "bank1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "miss",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "target": "ctl"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "miss",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "target": "ctl"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "command",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ctl",
+    "target": "dram"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "read data",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "dram",
+    "target": "ctl"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "fabric",
+    "label": "2×2 Router Mesh",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "memory",
+    "label": "Shared Memory Access",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "external",
+    "label": "Off-Chip",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "epgroup0",
+    "label": "Endpoint Tile 0",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "epgroup1",
+    "label": "Endpoint Tile 1",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "epgroup2",
+    "label": "Endpoint Tile 2",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "epgroup3",
+    "label": "Endpoint Tile 3",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "",
+  "nodes": [
+   {
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r0",
+    "kind": "control",
+    "label": "Router 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r1",
+    "kind": "control",
+    "label": "Router 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r2",
+    "kind": "control",
+    "label": "Router 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r3",
+    "kind": "control",
+    "label": "Router 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup0",
+    "id": "ep0",
+    "kind": "compute",
+    "label": "Endpoint 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup1",
+    "id": "ep1",
+    "kind": "compute",
+    "label": "Endpoint 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup2",
+    "id": "ep2",
+    "kind": "compute",
+    "label": "Endpoint 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup3",
+    "id": "ep3",
+    "kind": "compute",
+    "label": "Endpoint 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "bank0",
+    "kind": "memory",
+    "label": "Shared Bank 0",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "bank1",
+    "kind": "memory",
+    "label": "Shared Bank 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "ctl",
+    "kind": "control",
+    "label": "Memory Controller",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "external",
+    "id": "dram",
+    "kind": "memory",
+    "label": "External Memory",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "2×2 Mesh and Shared Memory Access",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "anchors": [
+   {
+    "coordinate": [
+     0,
+     0
+    ],
+    "coordinate_origin": "logical drawing embedding",
+    "id": "r0",
+    "source_field": "groups.label + source adjacency",
+    "source_text": "2×2 Router Mesh"
+   },
+   {
+    "coordinate": [
+     1,
+     0
+    ],
+    "coordinate_origin": "logical drawing embedding",
+    "id": "r1",
+    "source_field": "groups.label + source adjacency",
+    "source_text": "2×2 Router Mesh"
+   },
+   {
+    "coordinate": [
+     0,
+     1
+    ],
+    "coordinate_origin": "logical drawing embedding",
+    "id": "r2",
+    "source_field": "groups.label + source adjacency",
+    "source_text": "2×2 Router Mesh"
+   },
+   {
+    "coordinate": [
+     1,
+     1
+    ],
+    "coordinate_origin": "logical drawing embedding",
+    "id": "r3",
+    "source_field": "groups.label + source adjacency",
+    "source_text": "2×2 Router Mesh"
+   }
+  ],
+  "grammar": "logical-topology",
+  "height": 1600,
+  "labels": [
+   {
+    "at": [
+     845,
+     397.04949999999997
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     845,
+     162.964
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     302.95050000000003,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     537.0360000000001,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     1152.9505,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     1387.036,
+     540
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     845,
+     917.0495
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "east/south traffic"
+   },
+   {
+    "at": [
+     845,
+     682.9639999999999
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "west/north traffic"
+   },
+   {
+    "at": [
+     275,
+     343.0225
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     275,
+     206.4745
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1415,
+     216.9775
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1415,
+     353.52549999999997
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     275,
+     863.0225
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     12
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     275,
+     726.4745
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     13
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1415,
+     736.9775
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     14
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1415,
+     873.5255
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     15
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     356.9775,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     16
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     493.52549999999997,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     17
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     1206.9775,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     18
+    ],
+    "text": "request"
+   },
+   {
+    "at": [
+     1343.5255,
+     915
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     19
+    ],
+    "text": "response"
+   },
+   {
+    "at": [
+     608.1355680893333,
+     1184.3089693430159
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     20
+    ],
+    "text": "miss"
+   },
+   {
+    "at": [
+     1033.1355680893332,
+     1085.6910306569841
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     21
+    ],
+    "text": "miss"
+   },
+   {
+    "at": [
+     767.735,
+     1345
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     22
+    ],
+    "text": "command"
+   },
+   {
+    "at": [
+     920.0375,
+     1345
+    ],
+    "role": "link",
+    "source_edge_indices": [
+     23
+    ],
+    "text": "read data"
+   }
+  ],
+  "macro_edges": [
+   {
+    "evidence": "",
+    "id": "s0",
+    "kind": "data",
+    "label": "east/south traffic",
+    "members": [
+     0
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "target": "r1"
+   },
+   {
+    "evidence": "",
+    "id": "s1",
+    "kind": "data",
+    "label": "west/north traffic",
+    "members": [
+     1
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "target": "r0"
+   },
+   {
+    "evidence": "",
+    "id": "s2",
+    "kind": "data",
+    "label": "east/south traffic",
+    "members": [
+     2
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "id": "s3",
+    "kind": "data",
+    "label": "west/north traffic",
+    "members": [
+     3
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "r0"
+   },
+   {
+    "evidence": "",
+    "id": "s4",
+    "kind": "data",
+    "label": "east/south traffic",
+    "members": [
+     4
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "id": "s5",
+    "kind": "data",
+    "label": "west/north traffic",
+    "members": [
+     5
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "r1"
+   },
+   {
+    "evidence": "",
+    "id": "s6",
+    "kind": "data",
+    "label": "east/south traffic",
+    "members": [
+     6
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "id": "s7",
+    "kind": "data",
+    "label": "west/north traffic",
+    "members": [
+     7
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "id": "s8",
+    "kind": "data",
+    "label": "request",
+    "members": [
+     8
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep0",
+    "target": "r0"
+   },
+   {
+    "evidence": "",
+    "id": "s9",
+    "kind": "data",
+    "label": "response",
+    "members": [
+     9
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "target": "ep0"
+   },
+   {
+    "evidence": "",
+    "id": "s10",
+    "kind": "data",
+    "label": "request",
+    "members": [
+     10
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep1",
+    "target": "r1"
+   },
+   {
+    "evidence": "",
+    "id": "s11",
+    "kind": "data",
+    "label": "response",
+    "members": [
+     11
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "target": "ep1"
+   },
+   {
+    "evidence": "",
+    "id": "s12",
+    "kind": "data",
+    "label": "request",
+    "members": [
+     12
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep2",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "id": "s13",
+    "kind": "data",
+    "label": "response",
+    "members": [
+     13
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "ep2"
+   },
+   {
+    "evidence": "",
+    "id": "s14",
+    "kind": "data",
+    "label": "request",
+    "members": [
+     14
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep3",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "id": "s15",
+    "kind": "data",
+    "label": "response",
+    "members": [
+     15
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "ep3"
+   },
+   {
+    "evidence": "",
+    "id": "s16",
+    "kind": "data",
+    "label": "request",
+    "members": [
+     16
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "target": "bank0"
+   },
+   {
+    "evidence": "",
+    "id": "s17",
+    "kind": "data",
+    "label": "response",
+    "members": [
+     17
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "target": "r2"
+   },
+   {
+    "evidence": "",
+    "id": "s18",
+    "kind": "data",
+    "label": "request",
+    "members": [
+     18
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "target": "bank1"
+   },
+   {
+    "evidence": "",
+    "id": "s19",
+    "kind": "data",
+    "label": "response",
+    "members": [
+     19
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "target": "r3"
+   },
+   {
+    "evidence": "",
+    "id": "s20",
+    "kind": "data",
+    "label": "miss",
+    "members": [
+     20
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "target": "ctl"
+   },
+   {
+    "evidence": "",
+    "id": "s21",
+    "kind": "data",
+    "label": "miss",
+    "members": [
+     21
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "target": "ctl"
+   },
+   {
+    "evidence": "",
+    "id": "s22",
+    "kind": "data",
+    "label": "command",
+    "members": [
+     22
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ctl",
+    "target": "dram"
+   },
+   {
+    "evidence": "",
+    "id": "s23",
+    "kind": "data",
+    "label": "read data",
+    "members": [
+     23
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "dram",
+    "target": "ctl"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r0",
+    "kind": "control",
+    "label": "Router 0",
+    "members": [
+     "r0"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r1",
+    "kind": "control",
+    "label": "Router 1",
+    "members": [
+     "r1"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r2",
+    "kind": "control",
+    "label": "Router 2",
+    "members": [
+     "r2"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Nearest-neighbor logical router",
+    "evidence": "",
+    "group": "fabric",
+    "id": "r3",
+    "kind": "control",
+    "label": "Router 3",
+    "members": [
+     "r3"
+    ],
+    "origin": "assumed",
+    "original_group": "fabric",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup0",
+    "id": "ep0",
+    "kind": "compute",
+    "label": "Endpoint 0",
+    "members": [
+     "ep0"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup0",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup1",
+    "id": "ep1",
+    "kind": "compute",
+    "label": "Endpoint 1",
+    "members": [
+     "ep1"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup1",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup2",
+    "id": "ep2",
+    "kind": "compute",
+    "label": "Endpoint 2",
+    "members": [
+     "ep2"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup2",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private local endpoint",
+    "evidence": "",
+    "group": "epgroup3",
+    "id": "ep3",
+    "kind": "compute",
+    "label": "Endpoint 3",
+    "members": [
+     "ep3"
+    ],
+    "origin": "assumed",
+    "original_group": "epgroup3",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "bank0",
+    "kind": "memory",
+    "label": "Shared Bank 0",
+    "members": [
+     "bank0"
+    ],
+    "origin": "assumed",
+    "original_group": "memory",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "bank1",
+    "kind": "memory",
+    "label": "Shared Bank 1",
+    "members": [
+     "bank1"
+    ],
+    "origin": "assumed",
+    "original_group": "memory",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "memory",
+    "id": "ctl",
+    "kind": "control",
+    "label": "Memory Controller",
+    "members": [
+     "ctl"
+    ],
+    "origin": "assumed",
+    "original_group": "memory",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "external",
+    "id": "dram",
+    "kind": "memory",
+    "label": "External Memory",
+    "members": [
+     "dram"
+    ],
+    "origin": "assumed",
+    "original_group": "external",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "meaning": "Drawing embedding of the stated logical grid and existing adjacency; coordinates are a layout choice, not supplied measurements. Distances do not assert die placement, area, bandwidth or latency.",
+  "monochrome": false,
+  "positions": {
+   "bank0": [
+    420,
+    1030
+   ],
+   "bank1": [
+    1270,
+    1030
+   ],
+   "ctl": [
+    845,
+    1240
+   ],
+   "dram": [
+    845,
+    1450
+   ],
+   "ep0": [
+    130,
+    280
+   ],
+   "ep1": [
+    1560,
+    280
+   ],
+   "ep2": [
+    130,
+    800
+   ],
+   "ep3": [
+    1560,
+    800
+   ],
+   "r0": [
+    420,
+    280
+   ],
+   "r1": [
+    1270,
+    280
+   ],
+   "r2": [
+    420,
+    800
+   ],
+   "r3": [
+    1270,
+    800
+   ]
+  },
+  "reading_direction": "source-backed logical grid and attached resource tiers",
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     845,
+     397.04949999999997
+    ],
+    "members": [
+     0
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      522,
+      292
+     ],
+     [
+      1168,
+      292
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "stroke_style": "solid",
+    "target": "r1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     845,
+     162.964
+    ],
+    "members": [
+     1
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1168,
+      268
+     ],
+     [
+      522,
+      268
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "stroke_style": "solid",
+    "target": "r0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     302.95050000000003,
+     540
+    ],
+    "members": [
+     2
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      408,
+      326
+     ],
+     [
+      408,
+      754
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     537.0360000000001,
+     540
+    ],
+    "members": [
+     3
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      432,
+      754
+     ],
+     [
+      432,
+      326
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "r0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     1152.9505,
+     540
+    ],
+    "members": [
+     4
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1258,
+      326
+     ],
+     [
+      1258,
+      754
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     1387.036,
+     540
+    ],
+    "members": [
+     5
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1282,
+      754
+     ],
+     [
+      1282,
+      326
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "r1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "east/south traffic",
+    "label_at": [
+     845,
+     917.0495
+    ],
+    "members": [
+     6
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      522,
+      812
+     ],
+     [
+      1168,
+      812
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "west/north traffic",
+    "label_at": [
+     845,
+     682.9639999999999
+    ],
+    "members": [
+     7
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1168,
+      788
+     ],
+     [
+      522,
+      788
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     275,
+     343.0225
+    ],
+    "members": [
+     8
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      232,
+      292
+     ],
+     [
+      318,
+      292
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep0",
+    "stroke_style": "solid",
+    "target": "r0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     275,
+     206.4745
+    ],
+    "members": [
+     9
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      318,
+      268
+     ],
+     [
+      232,
+      268
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r0",
+    "stroke_style": "solid",
+    "target": "ep0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     1415,
+     216.9775
+    ],
+    "members": [
+     10
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1458,
+      268
+     ],
+     [
+      1372,
+      268
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep1",
+    "stroke_style": "solid",
+    "target": "r1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     1415,
+     353.52549999999997
+    ],
+    "members": [
+     11
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1372,
+      292
+     ],
+     [
+      1458,
+      292
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r1",
+    "stroke_style": "solid",
+    "target": "ep1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     275,
+     863.0225
+    ],
+    "members": [
+     12
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      232,
+      812
+     ],
+     [
+      318,
+      812
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep2",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     275,
+     726.4745
+    ],
+    "members": [
+     13
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      318,
+      788
+     ],
+     [
+      232,
+      788
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "ep2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     1415,
+     736.9775
+    ],
+    "members": [
+     14
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1458,
+      788
+     ],
+     [
+      1372,
+      788
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ep3",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     1415,
+     873.5255
+    ],
+    "members": [
+     15
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1372,
+      812
+     ],
+     [
+      1458,
+      812
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "ep3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     356.9775,
+     915
+    ],
+    "members": [
+     16
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      408,
+      846
+     ],
+     [
+      408,
+      984
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r2",
+    "stroke_style": "solid",
+    "target": "bank0"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     493.52549999999997,
+     915
+    ],
+    "members": [
+     17
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      432,
+      984
+     ],
+     [
+      432,
+      846
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "stroke_style": "solid",
+    "target": "r2"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "request",
+    "label_at": [
+     1206.9775,
+     915
+    ],
+    "members": [
+     18
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1258,
+      846
+     ],
+     [
+      1258,
+      984
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "r3",
+    "stroke_style": "solid",
+    "target": "bank1"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "response",
+    "label_at": [
+     1343.5255,
+     915
+    ],
+    "members": [
+     19
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1282,
+      984
+     ],
+     [
+      1282,
+      846
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "stroke_style": "solid",
+    "target": "r3"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "miss",
+    "label_at": [
+     608.1355680893333,
+     1184.3089693430159
+    ],
+    "members": [
+     20
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      503.2702308080739,
+      1084.5302792683428
+     ],
+     [
+      751.0980170854534,
+      1206.9863618995187
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank0",
+    "stroke_style": "solid",
+    "target": "ctl"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "miss",
+    "label_at": [
+     1033.1355680893332,
+     1085.6910306569841
+    ],
+    "members": [
+     21
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      1176.0980170854532,
+      1063.0136381004813
+     ],
+     [
+      928.2702308080738,
+      1185.4697207316572
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank1",
+    "stroke_style": "solid",
+    "target": "ctl"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "command",
+    "label_at": [
+     767.735,
+     1345
+    ],
+    "members": [
+     22
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      833,
+      1286
+     ],
+     [
+      833,
+      1404
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ctl",
+    "stroke_style": "solid",
+    "target": "dram"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "read data",
+    "label_at": [
+     920.0375,
+     1345
+    ],
+    "members": [
+     23
+    ],
+    "mode": "topology-link",
+    "origin": "assumed",
+    "points": [
+     [
+      857,
+      1404
+     ],
+     [
+      857,
+      1286
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "dram",
+    "stroke_style": "solid",
+    "target": "ctl"
+   }
+  ],
+  "type": "behavioral",
+  "width": 1800
+ },
+ "version": 1,
+ "warnings": []
+}

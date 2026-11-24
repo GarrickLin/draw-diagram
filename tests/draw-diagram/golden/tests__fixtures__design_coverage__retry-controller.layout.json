@@ -1,0 +1,2135 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "state-machine",
+  "layout_strategy": "semantic-guide",
+  "title": "One-Retry Command Controller"
+ },
+ "kind": "behavior",
+ "label_layout": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "idle"
+    ],
+    "text": "IDLE"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "issue"
+    ],
+    "text": "ISSUE"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "wait"
+    ],
+    "text": "WAIT"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "retry"
+    ],
+    "text": "RETRY"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "done"
+    ],
+    "text": "DONE"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "error"
+    ],
+    "text": "ERROR"
+   },
+   {
+    "at": [
+     400,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "start"
+   },
+   {
+    "at": [
+     152,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "!start"
+   },
+   {
+    "at": [
+     840,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "accepted"
+   },
+   {
+    "at": [
+     592,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "!accepted"
+   },
+   {
+    "at": [
+     1280,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "ok"
+   },
+   {
+    "at": [
+     1280,
+     351.33333333333337
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "!ok && timeout && !retried"
+   },
+   {
+    "at": [
+     1188.5579309817113,
+     760
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "!ok && timeout && retried"
+   },
+   {
+    "at": [
+     1032,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "!ok && !timeout"
+   },
+   {
+    "at": [
+     1100,
+     145
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "next cycle; retried=1"
+   },
+   {
+    "at": [
+     1702,
+     598
+    ],
+    "max_width": 160,
+    "role": "transition",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "next cycle"
+   },
+   {
+    "at": [
+     1716,
+     851.3333333333334
+    ],
+    "max_width": 132,
+    "role": "transition",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "clear"
+   },
+   {
+    "at": [
+     1472,
+     662.3333333333334
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "!clear"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "idle"
+    ],
+    "text": "busy=0"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "issue"
+    ],
+    "text": "busy=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "wait"
+    ],
+    "text": "busy=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "retry"
+    ],
+    "text": "busy=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "done"
+    ],
+    "text": "done=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "error"
+    ],
+    "text": "error=1"
+   },
+   {
+    "role": "reset-convention",
+    "source_field": "annotations",
+    "text": "Synchronous reset has highest priority and sends every state to IDLE; retried=0."
+   }
+  ]
+ },
+ "layout_scene": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "idle"
+    ],
+    "text": "IDLE"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "issue"
+    ],
+    "text": "ISSUE"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "wait"
+    ],
+    "text": "WAIT"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "retry"
+    ],
+    "text": "RETRY"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "done"
+    ],
+    "text": "DONE"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "error"
+    ],
+    "text": "ERROR"
+   },
+   {
+    "at": [
+     400,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "start"
+   },
+   {
+    "at": [
+     152,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "!start"
+   },
+   {
+    "at": [
+     840,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "accepted"
+   },
+   {
+    "at": [
+     592,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "!accepted"
+   },
+   {
+    "at": [
+     1280,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "ok"
+   },
+   {
+    "at": [
+     1280,
+     351.33333333333337
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "!ok && timeout && !retried"
+   },
+   {
+    "at": [
+     1188.5579309817113,
+     760
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "!ok && timeout && retried"
+   },
+   {
+    "at": [
+     1032,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "!ok && !timeout"
+   },
+   {
+    "at": [
+     1100,
+     145
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "next cycle; retried=1"
+   },
+   {
+    "at": [
+     1702,
+     598
+    ],
+    "max_width": 160,
+    "role": "transition",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "next cycle"
+   },
+   {
+    "at": [
+     1716,
+     851.3333333333334
+    ],
+    "max_width": 132,
+    "role": "transition",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "clear"
+   },
+   {
+    "at": [
+     1472,
+     662.3333333333334
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "!clear"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "idle"
+    ],
+    "text": "busy=0"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "issue"
+    ],
+    "text": "busy=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "wait"
+    ],
+    "text": "busy=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "retry"
+    ],
+    "text": "busy=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "done"
+    ],
+    "text": "done=1"
+   },
+   {
+    "role": "state-output",
+    "source_node_ids": [
+     "error"
+    ],
+    "text": "error=1"
+   },
+   {
+    "role": "reset-convention",
+    "source_field": "annotations",
+    "text": "Synchronous reset has highest priority and sends every state to IDLE; retried=0."
+   }
+  ],
+  "objects": [
+   {
+    "children": [],
+    "detail": "Initial state; busy=0",
+    "evidence": "",
+    "group": "",
+    "id": "idle",
+    "kind": "state",
+    "label": "IDLE",
+    "members": [
+     "idle"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Present command; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "issue",
+    "kind": "state",
+    "label": "ISSUE",
+    "members": [
+     "issue"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Await response; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "wait",
+    "kind": "state",
+    "label": "WAIT",
+    "members": [
+     "wait"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Prepare the single permitted retry; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "retry",
+    "kind": "state",
+    "label": "RETRY",
+    "members": [
+     "retry"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "done=1 for one cycle",
+    "evidence": "",
+    "group": "",
+    "id": "done",
+    "kind": "state",
+    "label": "DONE",
+    "members": [
+     "done"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "error=1 until clear",
+    "evidence": "",
+    "group": "",
+    "id": "error",
+    "kind": "state",
+    "label": "ERROR",
+    "members": [
+     "error"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "quality": {
+   "geometry_is_not_raster_acceptance": true,
+   "routes_complete": true,
+   "semantic_scope_complete": true,
+   "typography_measured": false
+  },
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "start",
+    "label_at": [
+     400,
+     543
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      258,
+      560
+     ],
+     [
+      542,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "stroke_style": "solid",
+    "target": "issue"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!start",
+    "label_at": [
+     152,
+     409
+    ],
+    "members": [
+     1
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      125,
+      505
+     ],
+     [
+      56,
+      470
+     ],
+     [
+      56,
+      436
+     ],
+     [
+      180,
+      436
+     ],
+     [
+      180,
+      482
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "stroke_style": "solid",
+    "target": "idle"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "accepted",
+    "label_at": [
+     840,
+     543
+    ],
+    "members": [
+     2
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      698,
+      560
+     ],
+     [
+      982,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "stroke_style": "solid",
+    "target": "wait"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!accepted",
+    "label_at": [
+     592,
+     409
+    ],
+    "members": [
+     3
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      565,
+      505
+     ],
+     [
+      496,
+      470
+     ],
+     [
+      496,
+      436
+     ],
+     [
+      620,
+      436
+     ],
+     [
+      620,
+      482
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "stroke_style": "solid",
+    "target": "issue"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ok",
+    "label_at": [
+     1280,
+     543
+    ],
+    "members": [
+     4
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1138,
+      560
+     ],
+     [
+      1422,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "done"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && timeout && !retried",
+    "label_at": [
+     1280,
+     351.33333333333337
+    ],
+    "members": [
+     5
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1127.5965516361853,
+      521.0807733003783
+     ],
+     [
+      1432.4034483638147,
+      345.5858933662885
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "retry"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && timeout && retried",
+    "label_at": [
+     1188.5579309817113,
+     760
+    ],
+    "members": [
+     6
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1127.5965516361853,
+      598.9192266996217
+     ],
+     [
+      1432.4034483638147,
+      774.4141066337116
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "error"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && !timeout",
+    "label_at": [
+     1032,
+     409
+    ],
+    "members": [
+     7
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      1005,
+      505
+     ],
+     [
+      936,
+      470
+     ],
+     [
+      936,
+      436
+     ],
+     [
+      1060,
+      436
+     ],
+     [
+      1060,
+      482
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "wait"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "next cycle; retried=1",
+    "label_at": [
+     1100,
+     145
+    ],
+    "members": [
+     8
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1445,
+      251.66666666666669
+     ],
+     [
+      1445,
+      190
+     ],
+     [
+      755,
+      190
+     ],
+     [
+      755,
+      425
+     ],
+     [
+      675,
+      505
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "retry",
+    "stroke_style": "solid",
+    "target": "issue"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "next cycle",
+    "label_at": [
+     1702,
+     598
+    ],
+    "members": [
+     9
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1580,
+      560
+     ],
+     [
+      1610,
+      560
+     ],
+     [
+      1610,
+      1030
+     ],
+     [
+      75,
+      1030
+     ],
+     [
+      75,
+      560
+     ],
+     [
+      100,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "stroke_style": "solid",
+    "target": "idle"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "clear",
+    "label_at": [
+     1716,
+     851.3333333333334
+    ],
+    "members": [
+     10
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1580,
+      813.3333333333334
+     ],
+     [
+      1638,
+      813.3333333333334
+     ],
+     [
+      1638,
+      1076
+     ],
+     [
+      53,
+      1076
+     ],
+     [
+      53,
+      560
+     ],
+     [
+      100,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "stroke_style": "solid",
+    "target": "idle"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!clear",
+    "label_at": [
+     1472,
+     662.3333333333334
+    ],
+    "members": [
+     11
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      1445,
+      758.3333333333334
+     ],
+     [
+      1376,
+      723.3333333333334
+     ],
+     [
+      1376,
+      689.3333333333334
+     ],
+     [
+      1500,
+      689.3333333333334
+     ],
+     [
+      1500,
+      735.3333333333334
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "stroke_style": "solid",
+    "target": "error"
+   }
+  ]
+ },
+ "quality": {
+  "geometry_is_not_raster_acceptance": true,
+  "routes_complete": true,
+  "semantic_scope_complete": true,
+  "typography_measured": false
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "fsm",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "detail",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Synchronous reset has highest priority and sends every state to IDLE; retried=0.",
+   "On IDLE -> ISSUE, retried=0. ok has priority over timeout in WAIT.",
+   "RETRY and DONE have unconditional next-cycle exits; neither has a hold loop."
+  ],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 6 个模块和 12 条连接。模块包括 IDLE、ISSUE、WAIT、RETRY、DONE、ERROR；可在反馈中增删调整。"
+  ],
+  "category": "fsm",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "start",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "target": "issue"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "!start",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "target": "idle"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "accepted",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "target": "wait"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "!accepted",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "target": "issue"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ok",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "done"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && timeout && !retried",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "retry"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && timeout && retried",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "error"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && !timeout",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "wait"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "next cycle; retried=1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "retry",
+    "target": "issue"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "next cycle",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "target": "idle"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "clear",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "target": "idle"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "!clear",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "target": "error"
+   }
+  ],
+  "groups": [],
+  "layout": "Use six state circles. Reset is one global note and one initial-state entry marker, not six duplicate reset arrows. The retry path returns to ISSUE, not IDLE.",
+  "nodes": [
+   {
+    "detail": "Initial state; busy=0",
+    "evidence": "",
+    "group": "",
+    "id": "idle",
+    "kind": "state",
+    "label": "IDLE",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Present command; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "issue",
+    "kind": "state",
+    "label": "ISSUE",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Await response; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "wait",
+    "kind": "state",
+    "label": "WAIT",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Prepare the single permitted retry; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "retry",
+    "kind": "state",
+    "label": "RETRY",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "done=1 for one cycle",
+    "evidence": "",
+    "group": "",
+    "id": "done",
+    "kind": "state",
+    "label": "DONE",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "error=1 until clear",
+    "evidence": "",
+    "group": "",
+    "id": "error",
+    "kind": "state",
+    "label": "ERROR",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "One-Retry Command Controller",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "grammar": "state-machine",
+  "height": 1212,
+  "initial_node_ids": [
+   "idle"
+  ],
+  "labels": [
+   {
+    "at": [
+     400,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "start"
+   },
+   {
+    "at": [
+     152,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "!start"
+   },
+   {
+    "at": [
+     840,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "accepted"
+   },
+   {
+    "at": [
+     592,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "!accepted"
+   },
+   {
+    "at": [
+     1280,
+     543
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "ok"
+   },
+   {
+    "at": [
+     1280,
+     351.33333333333337
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "!ok && timeout && !retried"
+   },
+   {
+    "at": [
+     1188.5579309817113,
+     760
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "!ok && timeout && retried"
+   },
+   {
+    "at": [
+     1032,
+     409
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "!ok && !timeout"
+   },
+   {
+    "at": [
+     1100,
+     145
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "next cycle; retried=1"
+   },
+   {
+    "at": [
+     1702,
+     598
+    ],
+    "max_width": 160,
+    "role": "transition",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "next cycle"
+   },
+   {
+    "at": [
+     1716,
+     851.3333333333334
+    ],
+    "max_width": 132,
+    "role": "transition",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "clear"
+   },
+   {
+    "at": [
+     1472,
+     662.3333333333334
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     11
+    ],
+    "text": "!clear"
+   }
+  ],
+  "macro_edges": [
+   {
+    "evidence": "",
+    "id": "s0",
+    "kind": "control",
+    "label": "start",
+    "members": [
+     0
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "target": "issue"
+   },
+   {
+    "evidence": "",
+    "id": "s1",
+    "kind": "control",
+    "label": "!start",
+    "members": [
+     1
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "target": "idle"
+   },
+   {
+    "evidence": "",
+    "id": "s2",
+    "kind": "control",
+    "label": "accepted",
+    "members": [
+     2
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "target": "wait"
+   },
+   {
+    "evidence": "",
+    "id": "s3",
+    "kind": "control",
+    "label": "!accepted",
+    "members": [
+     3
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "target": "issue"
+   },
+   {
+    "evidence": "",
+    "id": "s4",
+    "kind": "control",
+    "label": "ok",
+    "members": [
+     4
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "done"
+   },
+   {
+    "evidence": "",
+    "id": "s5",
+    "kind": "control",
+    "label": "!ok && timeout && !retried",
+    "members": [
+     5
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "retry"
+   },
+   {
+    "evidence": "",
+    "id": "s6",
+    "kind": "control",
+    "label": "!ok && timeout && retried",
+    "members": [
+     6
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "error"
+   },
+   {
+    "evidence": "",
+    "id": "s7",
+    "kind": "control",
+    "label": "!ok && !timeout",
+    "members": [
+     7
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "target": "wait"
+   },
+   {
+    "evidence": "",
+    "id": "s8",
+    "kind": "control",
+    "label": "next cycle; retried=1",
+    "members": [
+     8
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "retry",
+    "target": "issue"
+   },
+   {
+    "evidence": "",
+    "id": "s9",
+    "kind": "control",
+    "label": "next cycle",
+    "members": [
+     9
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "target": "idle"
+   },
+   {
+    "evidence": "",
+    "id": "s10",
+    "kind": "control",
+    "label": "clear",
+    "members": [
+     10
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "target": "idle"
+   },
+   {
+    "evidence": "",
+    "id": "s11",
+    "kind": "control",
+    "label": "!clear",
+    "members": [
+     11
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "target": "error"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "Initial state; busy=0",
+    "evidence": "",
+    "group": "",
+    "id": "idle",
+    "kind": "state",
+    "label": "IDLE",
+    "members": [
+     "idle"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Present command; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "issue",
+    "kind": "state",
+    "label": "ISSUE",
+    "members": [
+     "issue"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Await response; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "wait",
+    "kind": "state",
+    "label": "WAIT",
+    "members": [
+     "wait"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Prepare the single permitted retry; busy=1",
+    "evidence": "",
+    "group": "",
+    "id": "retry",
+    "kind": "state",
+    "label": "RETRY",
+    "members": [
+     "retry"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "done=1 for one cycle",
+    "evidence": "",
+    "group": "",
+    "id": "done",
+    "kind": "state",
+    "label": "DONE",
+    "members": [
+     "done"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "error=1 until clear",
+    "evidence": "",
+    "group": "",
+    "id": "error",
+    "kind": "state",
+    "label": "ERROR",
+    "members": [
+     "error"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "monochrome": false,
+  "positions": {
+   "done": [
+    1500,
+    560
+   ],
+   "error": [
+    1500,
+    813.3333333333334
+   ],
+   "idle": [
+    180,
+    560
+   ],
+   "issue": [
+    620,
+    560
+   ],
+   "retry": [
+    1500,
+    306.6666666666667
+   ],
+   "wait": [
+    1060,
+    560
+   ]
+  },
+  "reading_direction": "state progression and separate conditional returns",
+  "reset_notes": [
+   "Synchronous reset has highest priority and sends every state to IDLE; retried=0."
+  ],
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "start",
+    "label_at": [
+     400,
+     543
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      258,
+      560
+     ],
+     [
+      542,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "stroke_style": "solid",
+    "target": "issue"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!start",
+    "label_at": [
+     152,
+     409
+    ],
+    "members": [
+     1
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      125,
+      505
+     ],
+     [
+      56,
+      470
+     ],
+     [
+      56,
+      436
+     ],
+     [
+      180,
+      436
+     ],
+     [
+      180,
+      482
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "stroke_style": "solid",
+    "target": "idle"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "accepted",
+    "label_at": [
+     840,
+     543
+    ],
+    "members": [
+     2
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      698,
+      560
+     ],
+     [
+      982,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "stroke_style": "solid",
+    "target": "wait"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!accepted",
+    "label_at": [
+     592,
+     409
+    ],
+    "members": [
+     3
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      565,
+      505
+     ],
+     [
+      496,
+      470
+     ],
+     [
+      496,
+      436
+     ],
+     [
+      620,
+      436
+     ],
+     [
+      620,
+      482
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "issue",
+    "stroke_style": "solid",
+    "target": "issue"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ok",
+    "label_at": [
+     1280,
+     543
+    ],
+    "members": [
+     4
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1138,
+      560
+     ],
+     [
+      1422,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "done"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && timeout && !retried",
+    "label_at": [
+     1280,
+     351.33333333333337
+    ],
+    "members": [
+     5
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1127.5965516361853,
+      521.0807733003783
+     ],
+     [
+      1432.4034483638147,
+      345.5858933662885
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "retry"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && timeout && retried",
+    "label_at": [
+     1188.5579309817113,
+     760
+    ],
+    "members": [
+     6
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1127.5965516361853,
+      598.9192266996217
+     ],
+     [
+      1432.4034483638147,
+      774.4141066337116
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "error"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!ok && !timeout",
+    "label_at": [
+     1032,
+     409
+    ],
+    "members": [
+     7
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      1005,
+      505
+     ],
+     [
+      936,
+      470
+     ],
+     [
+      936,
+      436
+     ],
+     [
+      1060,
+      436
+     ],
+     [
+      1060,
+      482
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "wait",
+    "stroke_style": "solid",
+    "target": "wait"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "next cycle; retried=1",
+    "label_at": [
+     1100,
+     145
+    ],
+    "members": [
+     8
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1445,
+      251.66666666666669
+     ],
+     [
+      1445,
+      190
+     ],
+     [
+      755,
+      190
+     ],
+     [
+      755,
+      425
+     ],
+     [
+      675,
+      505
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "retry",
+    "stroke_style": "solid",
+    "target": "issue"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "next cycle",
+    "label_at": [
+     1702,
+     598
+    ],
+    "members": [
+     9
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1580,
+      560
+     ],
+     [
+      1610,
+      560
+     ],
+     [
+      1610,
+      1030
+     ],
+     [
+      75,
+      1030
+     ],
+     [
+      75,
+      560
+     ],
+     [
+      100,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "stroke_style": "solid",
+    "target": "idle"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "clear",
+    "label_at": [
+     1716,
+     851.3333333333334
+    ],
+    "members": [
+     10
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1580,
+      813.3333333333334
+     ],
+     [
+      1638,
+      813.3333333333334
+     ],
+     [
+      1638,
+      1076
+     ],
+     [
+      53,
+      1076
+     ],
+     [
+      53,
+      560
+     ],
+     [
+      100,
+      560
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "stroke_style": "solid",
+    "target": "idle"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "!clear",
+    "label_at": [
+     1472,
+     662.3333333333334
+    ],
+    "members": [
+     11
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      1445,
+      758.3333333333334
+     ],
+     [
+      1376,
+      723.3333333333334
+     ],
+     [
+      1376,
+      689.3333333333334
+     ],
+     [
+      1500,
+      689.3333333333334
+     ],
+     [
+      1500,
+      735.3333333333334
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "error",
+    "stroke_style": "solid",
+    "target": "error"
+   }
+  ],
+  "state_outputs": {
+   "done": [
+    "done=1"
+   ],
+   "error": [
+    "error=1"
+   ],
+   "idle": [
+    "busy=0"
+   ],
+   "issue": [
+    "busy=1"
+   ],
+   "retry": [
+    "busy=1"
+   ],
+   "wait": [
+    "busy=1"
+   ]
+  },
+  "type": "behavioral",
+  "width": 1800
+ },
+ "version": 1,
+ "warnings": []
+}

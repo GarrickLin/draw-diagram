@@ -1,0 +1,3736 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "overview",
+  "layout_strategy": "legacy-technical-annex",
+  "title": "Generic GPU System Architecture Overview"
+ },
+ "kind": "legacy",
+ "label_layout": {
+  "height": 877,
+  "labels": [
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.016302,
+     "x": 0.143747,
+     "y": 0.055214
+    },
+    "color": "#17324D",
+    "text": "task"
+   },
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.042471,
+     "x": 0.405535,
+     "y": 0.150935
+    },
+    "color": "#6E8BAB",
+    "text": "work items"
+   },
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.084489,
+     "x": 0.288636,
+     "y": 0.624961
+    },
+    "color": "#17324D",
+    "text": "requests / data return"
+   },
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.084489,
+     "x": 0.435471,
+     "y": 0.624961
+    },
+    "color": "#17324D",
+    "text": "requests / data return"
+   },
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.084489,
+     "x": 0.582307,
+     "y": 0.624961
+    },
+    "color": "#17324D",
+    "text": "requests / data return"
+   },
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.084489,
+     "x": 0.729142,
+     "y": 0.624961
+    },
+    "color": "#17324D",
+    "text": "requests / data return"
+   },
+   {
+    "box": {
+     "height": 0.023945,
+     "width": 0.095351,
+     "x": 0.715092,
+     "y": 0.774312
+    },
+    "color": "#17324D",
+    "text": "miss / fetch / data return"
+   }
+  ],
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 877,
+  "line_legend": {},
+  "quality": {
+   "failed_routes": [],
+   "no_common_bus_inferred": true,
+   "requested_routes": 13,
+   "route_count": 13,
+   "routes_complete": true
+  },
+  "routes": [
+   {
+    "family": "external",
+    "id": "P1",
+    "kind": "data",
+    "label": "task",
+    "labels": [
+     "task"
+    ],
+    "members": [
+     0
+    ],
+    "points": [
+     [
+      0.126582,
+      0.097403
+     ],
+     [
+      0.177215,
+      0.097403
+     ]
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.16666666666666666
+    },
+    "source": "n_host",
+    "source_nodes": [
+     "n_host"
+    ],
+    "source_side": "right",
+    "target": "n_hostif",
+    "target_nodes": [
+     "n_hostif"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "other",
+    "id": "P2",
+    "kind": "data",
+    "label": "commands",
+    "labels": [
+     "commands"
+    ],
+    "members": [
+     1
+    ],
+    "points": [
+     [
+      0.268987,
+      0.097403
+     ],
+     [
+      0.300633,
+      0.097403
+     ]
+    ],
+    "routing": {
+     "corridor": "other:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_hostif",
+    "source_nodes": [
+     "n_hostif"
+    ],
+    "source_side": "right",
+    "target": "n_cmd",
+    "target_nodes": [
+     "n_cmd"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "coordination",
+    "id": "P3",
+    "kind": "control",
+    "label": "work items",
+    "labels": [
+     "work items"
+    ],
+    "members": [
+     2
+    ],
+    "points": [
+     [
+      0.396646,
+      0.12987
+     ],
+     [
+      0.396646,
+      0.194805
+     ]
+    ],
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_cmd",
+    "source_nodes": [
+     "n_cmd"
+    ],
+    "source_side": "bottom",
+    "target": "n_sched",
+    "target_nodes": [
+     "n_sched"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "instruction",
+    "id": "P4",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     3
+    ],
+    "points": [
+     [
+      0.253165,
+      0.25974
+     ],
+     [
+      0.253165,
+      0.324675
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.125
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "source_side": "bottom",
+    "target": "g_cluster0",
+    "target_nodes": [
+     "n_ls0"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "instruction",
+    "id": "P5",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     4
+    ],
+    "points": [
+     [
+      0.417721,
+      0.25974
+     ],
+     [
+      0.417721,
+      0.324675
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.375
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "source_side": "bottom",
+    "target": "n_c1",
+    "target_nodes": [
+     "n_c1"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "instruction",
+    "id": "P6",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     5
+    ],
+    "points": [
+     [
+      0.582279,
+      0.25974
+     ],
+     [
+      0.582279,
+      0.324675
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.625
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "source_side": "bottom",
+    "target": "n_c2",
+    "target_nodes": [
+     "n_c2"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "instruction",
+    "id": "P7",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     6
+    ],
+    "points": [
+     [
+      0.746835,
+      0.25974
+     ],
+     [
+      0.746835,
+      0.324675
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 3,
+     "track_fraction": 0.875
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "source_side": "bottom",
+    "target": "n_c3",
+    "target_nodes": [
+     "n_c3"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "requests",
+      "source": "g_cluster0",
+      "target": "n_l2"
+     },
+     {
+      "label": "data return",
+      "source": "n_l2",
+      "target": "g_cluster0"
+     }
+    ],
+    "family": "memory",
+    "id": "P8",
+    "kind": "data",
+    "label": "requests / data return",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     11,
+     12
+    ],
+    "paired_ids": [
+     "P8",
+     "P9"
+    ],
+    "points": [
+     [
+      0.279747,
+      0.584415
+     ],
+     [
+      0.279747,
+      0.688312
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.05
+    },
+    "source": "g_cluster0",
+    "source_nodes": [
+     "n_l10"
+    ],
+    "source_side": "bottom",
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "requests",
+      "source": "n_c1",
+      "target": "n_l2"
+     },
+     {
+      "label": "data return",
+      "source": "n_l2",
+      "target": "n_c1"
+     }
+    ],
+    "family": "memory",
+    "id": "P10",
+    "kind": "data",
+    "label": "requests / data return",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     13,
+     14
+    ],
+    "paired_ids": [
+     "P10",
+     "P11"
+    ],
+    "points": [
+     [
+      0.426582,
+      0.584415
+     ],
+     [
+      0.426582,
+      0.688312
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.25
+    },
+    "source": "n_c1",
+    "source_nodes": [
+     "n_c1"
+    ],
+    "source_side": "bottom",
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "requests",
+      "source": "n_c2",
+      "target": "n_l2"
+     },
+     {
+      "label": "data return",
+      "source": "n_l2",
+      "target": "n_c2"
+     }
+    ],
+    "family": "memory",
+    "id": "P12",
+    "kind": "data",
+    "label": "requests / data return",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     15,
+     16
+    ],
+    "paired_ids": [
+     "P12",
+     "P13"
+    ],
+    "points": [
+     [
+      0.573418,
+      0.584415
+     ],
+     [
+      0.573418,
+      0.688312
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.45
+    },
+    "source": "n_c2",
+    "source_nodes": [
+     "n_c2"
+    ],
+    "source_side": "bottom",
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "requests",
+      "source": "n_c3",
+      "target": "n_l2"
+     },
+     {
+      "label": "data return",
+      "source": "n_l2",
+      "target": "n_c3"
+     }
+    ],
+    "family": "memory",
+    "id": "P14",
+    "kind": "data",
+    "label": "requests / data return",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     17,
+     18
+    ],
+    "paired_ids": [
+     "P14",
+     "P15"
+    ],
+    "points": [
+     [
+      0.720253,
+      0.584415
+     ],
+     [
+      0.720253,
+      0.688312
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 6,
+     "track_fraction": 0.65
+    },
+    "source": "n_c3",
+    "source_nodes": [
+     "n_c3"
+    ],
+    "source_side": "bottom",
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "miss / fetch",
+      "source": "n_l2",
+      "target": "n_memif"
+     },
+     {
+      "label": "data return",
+      "source": "n_memif",
+      "target": "n_l2"
+     }
+    ],
+    "family": "memory",
+    "id": "P16",
+    "kind": "data",
+    "label": "miss / fetch / data return",
+    "labels": [
+     "miss / fetch"
+    ],
+    "members": [
+     19,
+     22
+    ],
+    "paired_ids": [
+     "P16",
+     "P19"
+    ],
+    "points": [
+     [
+      0.706203,
+      0.753247
+     ],
+     [
+      0.706203,
+      0.818182
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 8,
+     "track_fraction": 0.85
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "source_side": "bottom",
+    "target": "n_memif",
+    "target_nodes": [
+     "n_memif"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "requests",
+      "source": "n_memif",
+      "target": "n_dram"
+     },
+     {
+      "label": "data return",
+      "source": "n_dram",
+      "target": "n_memif"
+     }
+    ],
+    "family": "external",
+    "id": "P17",
+    "kind": "data",
+    "label": "requests / data return",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     20,
+     21
+    ],
+    "paired_ids": [
+     "P17",
+     "P18"
+    ],
+    "points": [
+     [
+      0.822785,
+      0.850649
+     ],
+     [
+      0.873418,
+      0.850649
+     ]
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.5
+    },
+    "source": "n_memif",
+    "source_nodes": [
+     "n_memif"
+    ],
+    "source_side": "right",
+    "target": "n_dram",
+    "target_nodes": [
+     "n_dram"
+    ],
+    "target_side": "left"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "failed_routes": [],
+  "no_common_bus_inferred": true,
+  "requested_routes": 13,
+  "route_count": 13,
+  "routes_complete": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Cluster 0 is shown expanded as the representative; Clusters 1–3 are identical peers with the same internal resources.",
+   "Private Register File and Private L1 Cache are per-cluster and not shared; only Shared L2 is common.",
+   "Clusters operate in parallel, not as a serial pipeline."
+  ],
+  "assumptions": [
+   "Command Frontend内部以Command Processor代表命令解析与排序，属通用示意补全。",
+   "Host Interface作为Host与GPU之间的任务提交边界，未指定协议与位宽。",
+   "Shared L2与Memory Interface之间的请求/返回路径为通用读写访问示意，未指定带宽、延迟或周期。",
+   "四个Cluster的私有L1到Shared L2的连接按每个Cluster独立请求/返回绘制，未指定互联拓扑细节。",
+   "执行器数量、缓存容量、位宽、带宽与周期数均未指定，图中不体现。"
+  ],
+  "category": "architecture",
+  "checks": [
+   "确认四个Cluster组在图中尺寸与样式一致，以体现“完全等价”。",
+   "确认私有Register File与L1未与其它Cluster相连，仅Shared L2为共享资源。",
+   "确认请求与数据返回两条方向均有体现，且未暗示Cluster间串行流水。"
+  ],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "task",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_host",
+    "target": "n_hostif"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "commands",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_hostif",
+    "target": "n_cmd"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "work items",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_cmd",
+    "target": "n_sched"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "dispatch",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_sched",
+    "target": "n_ls0"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "dispatch",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_sched",
+    "target": "n_c1"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "dispatch",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_sched",
+    "target": "n_c2"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "dispatch",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_sched",
+    "target": "n_c3"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ls0",
+    "target": "n_exec0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operands",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_rf0",
+    "target": "n_exec0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l10",
+    "target": "n_exec0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "results",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_exec0",
+    "target": "n_rf0"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "requests",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l10",
+    "target": "n_l2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data return",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l2",
+    "target": "n_l10"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "requests",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_c1",
+    "target": "n_l2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data return",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l2",
+    "target": "n_c1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "requests",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_c2",
+    "target": "n_l2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data return",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l2",
+    "target": "n_c2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "requests",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_c3",
+    "target": "n_l2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data return",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l2",
+    "target": "n_c3"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "miss / fetch",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_l2",
+    "target": "n_memif"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "requests",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_memif",
+    "target": "n_dram"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data return",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_dram",
+    "target": "n_memif"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "data return",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_memif",
+    "target": "n_l2"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "g_host",
+    "label": "Host Side",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_front",
+    "label": "Command Frontend",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_sched",
+    "label": "Thread Scheduler / Work Distributor",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_cluster0",
+    "label": "Compute Cluster 0 (Representative)",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_cluster1",
+    "label": "Compute Cluster 1",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_cluster2",
+    "label": "Compute Cluster 2",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_cluster3",
+    "label": "Compute Cluster 3",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_mem",
+    "label": "Shared Memory Hierarchy",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "Left-to-right system overview. Left column: g_host (n_host, n_hostif) then g_front (n_cmd) then g_sched (n_sched) as the task submission chain. Center: a vertical stack of four peer cluster groups — g_cluster0 at top as the representative expanded cluster containing n_ls0, n_exec0, n_rf0, n_l10; g_cluster1, g_cluster2, g_cluster3 below as compact peer blocks (n_c1, n_c2, n_c3) aligned to the same width. Right column: g_mem band with n_l2, n_memif, n_dram stacked top-to-bottom. Forward request edges run left-to-right; data-return edges route back along a lower corridor from g_mem to each cluster. Keep the four cluster groups visually identical in size to signal equivalence; no serial chain between clusters.",
+  "nodes": [
+   {
+    "detail": "Off-chip task source",
+    "evidence": "",
+    "group": "g_host",
+    "id": "n_host",
+    "kind": "io",
+    "label": "Host",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Task submission boundary",
+    "evidence": "",
+    "group": "g_host",
+    "id": "n_hostif",
+    "kind": "io",
+    "label": "Host Interface",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Decode and sequence commands",
+    "evidence": "",
+    "group": "g_front",
+    "id": "n_cmd",
+    "kind": "control",
+    "label": "Command Processor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Distribute work to clusters",
+    "evidence": "",
+    "group": "g_sched",
+    "id": "n_sched",
+    "kind": "control",
+    "label": "Thread Scheduler / Work Distributor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Per-cluster work scheduling",
+    "evidence": "",
+    "group": "g_cluster0",
+    "id": "n_ls0",
+    "kind": "control",
+    "label": "Local Scheduler",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Executor count unspecified",
+    "evidence": "",
+    "group": "g_cluster0",
+    "id": "n_exec0",
+    "kind": "compute",
+    "label": "Execution Resources",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Not shared across clusters",
+    "evidence": "",
+    "group": "g_cluster0",
+    "id": "n_rf0",
+    "kind": "memory",
+    "label": "Private Register File",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Not shared across clusters",
+    "evidence": "",
+    "group": "g_cluster0",
+    "id": "n_l10",
+    "kind": "memory",
+    "label": "Private L1 Cache",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Same resources as g_cluster0",
+    "evidence": "",
+    "group": "g_cluster1",
+    "id": "n_c1",
+    "kind": "compute",
+    "label": "Compute Cluster 1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Same resources as g_cluster0",
+    "evidence": "",
+    "group": "g_cluster2",
+    "id": "n_c2",
+    "kind": "compute",
+    "label": "Compute Cluster 2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Same resources as g_cluster0",
+    "evidence": "",
+    "group": "g_cluster3",
+    "id": "n_c3",
+    "kind": "compute",
+    "label": "Compute Cluster 3",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Shared by all clusters",
+    "evidence": "",
+    "group": "g_mem",
+    "id": "n_l2",
+    "kind": "memory",
+    "label": "Shared L2 Cache",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Off-chip memory access",
+    "evidence": "",
+    "group": "g_mem",
+    "id": "n_memif",
+    "kind": "io",
+    "label": "Memory Interface",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "External DRAM",
+    "evidence": "",
+    "group": "g_mem",
+    "id": "n_dram",
+    "kind": "memory",
+    "label": "Off-chip Memory",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [
+   "是否需要把Command Frontend内部进一步展开（如命令队列、同步/栅栏单元）？",
+   "是否需要补充Cluster内部的共享存储或线程块资源（如Shared Memory / Scratchpad）？"
+  ],
+  "steps": [],
+  "summary": "通用概念性GPU系统架构示意：Host经Host Interface下发任务，Command Frontend解析后由Thread Scheduler / Work Distributor分发到四个同构Compute Clusters；每个Cluster含局部调度与执行资源、私有Register File与私有L1 Cache，四者共享同一Shared L2，再经Memory Interface访问片外Memory，并体现请求与数据返回。Cluster之间为并列同构关系，非串行流水。执行器数量、缓存容量、位宽、带宽与周期数均未指定，属通用示意。",
+  "title": "Generic GPU System Architecture Overview",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "g_cluster0": {
+    "height": 0.25974,
+    "width": 0.151899,
+    "x": 0.177215,
+    "y": 0.324675
+   },
+   "n_c1": {
+    "height": 0.25974,
+    "width": 0.151899,
+    "x": 0.341772,
+    "y": 0.324675
+   },
+   "n_c2": {
+    "height": 0.25974,
+    "width": 0.151899,
+    "x": 0.506329,
+    "y": 0.324675
+   },
+   "n_c3": {
+    "height": 0.25974,
+    "width": 0.151899,
+    "x": 0.670886,
+    "y": 0.324675
+   },
+   "n_cmd": {
+    "height": 0.064935,
+    "width": 0.106013,
+    "x": 0.300633,
+    "y": 0.064935
+   },
+   "n_dram": {
+    "height": 0.064935,
+    "width": 0.113924,
+    "x": 0.873418,
+    "y": 0.818182
+   },
+   "n_host": {
+    "height": 0.064935,
+    "width": 0.113924,
+    "x": 0.012658,
+    "y": 0.064935
+   },
+   "n_hostif": {
+    "height": 0.064935,
+    "width": 0.091772,
+    "x": 0.177215,
+    "y": 0.064935
+   },
+   "n_l2": {
+    "height": 0.064935,
+    "width": 0.64557,
+    "x": 0.177215,
+    "y": 0.688312
+   },
+   "n_memif": {
+    "height": 0.064935,
+    "width": 0.126582,
+    "x": 0.696203,
+    "y": 0.818182
+   },
+   "n_sched": {
+    "height": 0.064935,
+    "width": 0.64557,
+    "x": 0.177215,
+    "y": 0.194805
+   }
+  },
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 2.052
+  },
+  "component_lanes": [],
+  "containers": [
+   {
+    "box": {
+     "height": 0.080519,
+     "width": 0.099367,
+     "x": 0.173418,
+     "y": 0.057143
+    },
+    "id": "g_host",
+    "label": "Host Side",
+    "members": [
+     "n_host",
+     "n_hostif"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "render_boundary": false,
+    "replaces_region": null,
+    "segment_boxes": [
+     {
+      "height": 0.080519,
+      "width": 0.099367,
+      "x": 0.173418,
+      "y": 0.057143
+     },
+     {
+      "height": 0.080519,
+      "width": 0.121519,
+      "x": 0.008861,
+      "y": 0.057143
+     }
+    ],
+    "source_group": "g_host",
+    "source_members": [
+     "n_host",
+     "n_hostif"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.080519,
+     "width": 0.113608,
+     "x": 0.296835,
+     "y": 0.057143
+    },
+    "id": "g_front",
+    "label": "Command Frontend",
+    "members": [
+     "n_cmd"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": null,
+    "segment_boxes": [
+     {
+      "height": 0.080519,
+      "width": 0.113608,
+      "x": 0.296835,
+      "y": 0.057143
+     }
+    ],
+    "source_group": "g_front",
+    "source_members": [
+     "n_cmd"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.080519,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.187013
+    },
+    "id": "g_sched",
+    "label": "Thread Scheduler / Work Distributor",
+    "members": [
+     "n_sched"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": "n_sched",
+    "segment_boxes": [
+     {
+      "height": 0.080519,
+      "width": 0.653165,
+      "x": 0.173418,
+      "y": 0.187013
+     }
+    ],
+    "source_group": "g_sched",
+    "source_members": [
+     "n_sched"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.275325,
+     "width": 0.159494,
+     "x": 0.173418,
+     "y": 0.316883
+    },
+    "id": "g_cluster0",
+    "label": "Compute Cluster 0 (Representative)",
+    "members": [
+     "g_cluster0"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": "g_cluster0",
+    "segment_boxes": [
+     {
+      "height": 0.275325,
+      "width": 0.159494,
+      "x": 0.173418,
+      "y": 0.316883
+     }
+    ],
+    "source_group": "g_cluster0",
+    "source_members": [
+     "n_ls0",
+     "n_exec0",
+     "n_rf0",
+     "n_l10"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.275325,
+     "width": 0.159494,
+     "x": 0.337975,
+     "y": 0.316883
+    },
+    "id": "g_cluster1",
+    "label": "Compute Cluster 1",
+    "members": [
+     "n_c1"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": "n_c1",
+    "segment_boxes": [
+     {
+      "height": 0.275325,
+      "width": 0.159494,
+      "x": 0.337975,
+      "y": 0.316883
+     }
+    ],
+    "source_group": "g_cluster1",
+    "source_members": [
+     "n_c1"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.275325,
+     "width": 0.159494,
+     "x": 0.502532,
+     "y": 0.316883
+    },
+    "id": "g_cluster2",
+    "label": "Compute Cluster 2",
+    "members": [
+     "n_c2"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": "n_c2",
+    "segment_boxes": [
+     {
+      "height": 0.275325,
+      "width": 0.159494,
+      "x": 0.502532,
+      "y": 0.316883
+     }
+    ],
+    "source_group": "g_cluster2",
+    "source_members": [
+     "n_c2"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.275325,
+     "width": 0.159494,
+     "x": 0.667089,
+     "y": 0.316883
+    },
+    "id": "g_cluster3",
+    "label": "Compute Cluster 3",
+    "members": [
+     "n_c3"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": "n_c3",
+    "segment_boxes": [
+     {
+      "height": 0.275325,
+      "width": 0.159494,
+      "x": 0.667089,
+      "y": 0.316883
+     }
+    ],
+    "source_group": "g_cluster3",
+    "source_members": [
+     "n_c3"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.21039,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.680519
+    },
+    "id": "g_mem",
+    "label": "Shared Memory Hierarchy",
+    "members": [
+     "n_l2",
+     "n_memif",
+     "n_dram"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "render_boundary": false,
+    "replaces_region": null,
+    "segment_boxes": [
+     {
+      "height": 0.21039,
+      "width": 0.653165,
+      "x": 0.173418,
+      "y": 0.680519
+     },
+     {
+      "height": 0.080519,
+      "width": 0.121519,
+      "x": 0.86962,
+      "y": 0.81039
+     }
+    ],
+    "source_group": "g_mem",
+    "source_members": [
+     "n_l2",
+     "n_memif",
+     "n_dram"
+    ]
+   }
+  ],
+  "coverage": {
+   "duplicate_edge_indices": [],
+   "missing_edges": [],
+   "missing_nodes": [],
+   "nodes_projected": 14,
+   "source_edges": 23,
+   "source_nodes": 14
+  },
+  "deferred_links": [],
+  "diagram_role": "resource-organization",
+  "internal_edges": [
+   {
+    "members": [
+     7,
+     8,
+     9,
+     10
+    ],
+    "region": "g_cluster0"
+   }
+  ],
+  "link_families": [
+   {
+    "id": "instruction",
+    "link_ids": [
+     "P4",
+     "P5",
+     "P6",
+     "P7"
+    ],
+    "shown": true
+   },
+   {
+    "id": "external",
+    "link_ids": [
+     "P1",
+     "P17",
+     "P18"
+    ],
+    "shown": true
+   },
+   {
+    "id": "memory",
+    "link_ids": [
+     "P8",
+     "P9",
+     "P10",
+     "P11",
+     "P12",
+     "P13",
+     "P14",
+     "P15",
+     "P16",
+     "P19"
+    ],
+    "shown": true
+   },
+   {
+    "id": "coordination",
+    "link_ids": [
+     "P3"
+    ],
+    "shown": true
+   },
+   {
+    "id": "other",
+    "link_ids": [
+     "P2"
+    ],
+    "shown": true
+   }
+  ],
+  "macro_edges": [
+   {
+    "family": "external",
+    "id": "P1",
+    "kind": "data",
+    "label": "task",
+    "labels": [
+     "task"
+    ],
+    "members": [
+     0
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.16666666666666666
+    },
+    "source": "n_host",
+    "source_nodes": [
+     "n_host"
+    ],
+    "target": "n_hostif",
+    "target_nodes": [
+     "n_hostif"
+    ]
+   },
+   {
+    "family": "other",
+    "id": "P2",
+    "kind": "data",
+    "label": "commands",
+    "labels": [
+     "commands"
+    ],
+    "members": [
+     1
+    ],
+    "routing": {
+     "corridor": "other:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_hostif",
+    "source_nodes": [
+     "n_hostif"
+    ],
+    "target": "n_cmd",
+    "target_nodes": [
+     "n_cmd"
+    ]
+   },
+   {
+    "family": "coordination",
+    "id": "P3",
+    "kind": "control",
+    "label": "work items",
+    "labels": [
+     "work items"
+    ],
+    "members": [
+     2
+    ],
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_cmd",
+    "source_nodes": [
+     "n_cmd"
+    ],
+    "target": "n_sched",
+    "target_nodes": [
+     "n_sched"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P4",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     3
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.125
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "g_cluster0",
+    "target_nodes": [
+     "n_ls0"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P5",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     4
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.375
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "n_c1",
+    "target_nodes": [
+     "n_c1"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P6",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     5
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.625
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "n_c2",
+    "target_nodes": [
+     "n_c2"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P7",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     6
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 3,
+     "track_fraction": 0.875
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "n_c3",
+    "target_nodes": [
+     "n_c3"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P8",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     11
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.05
+    },
+    "source": "g_cluster0",
+    "source_nodes": [
+     "n_l10"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P9",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     12
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 1,
+     "track_fraction": 0.15
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "g_cluster0",
+    "target_nodes": [
+     "n_l10"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P10",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     13
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.25
+    },
+    "source": "n_c1",
+    "source_nodes": [
+     "n_c1"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P11",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     14
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.35
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_c1",
+    "target_nodes": [
+     "n_c1"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P12",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     15
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.45
+    },
+    "source": "n_c2",
+    "source_nodes": [
+     "n_c2"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P13",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     16
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 5,
+     "track_fraction": 0.55
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_c2",
+    "target_nodes": [
+     "n_c2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P14",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     17
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 6,
+     "track_fraction": 0.65
+    },
+    "source": "n_c3",
+    "source_nodes": [
+     "n_c3"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P15",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     18
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 7,
+     "track_fraction": 0.75
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_c3",
+    "target_nodes": [
+     "n_c3"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P16",
+    "kind": "data",
+    "label": "miss / fetch",
+    "labels": [
+     "miss / fetch"
+    ],
+    "members": [
+     19
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 8,
+     "track_fraction": 0.85
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_memif",
+    "target_nodes": [
+     "n_memif"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P17",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     20
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.5
+    },
+    "source": "n_memif",
+    "source_nodes": [
+     "n_memif"
+    ],
+    "target": "n_dram",
+    "target_nodes": [
+     "n_dram"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P18",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     21
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "left",
+     "target_side": "right",
+     "track": 2,
+     "track_fraction": 0.8333333333333334
+    },
+    "source": "n_dram",
+    "source_nodes": [
+     "n_dram"
+    ],
+    "target": "n_memif",
+    "target_nodes": [
+     "n_memif"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P19",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     22
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 9,
+     "track_fraction": 0.95
+    },
+    "source": "n_memif",
+    "source_nodes": [
+     "n_memif"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   }
+  ],
+  "macro_nodes": [
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.177215,
+     "y": 0.324675
+    },
+    "children_labels": [
+     "Local Scheduler",
+     "Execution Resources",
+     "Private Register File",
+     "Private L1 Cache"
+    ],
+    "display_only": true,
+    "header_fraction": 0.26,
+    "id": "g_cluster0",
+    "kind": "compute",
+    "label": "Compute Cluster 0 (Representative)",
+    "members": [
+     "n_ls0",
+     "n_exec0",
+     "n_rf0",
+     "n_l10"
+    ],
+    "source_group": "g_cluster0",
+    "source_owner": "",
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": false
+     }
+    ],
+    "type": "unit-region",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.113924,
+     "x": 0.012658,
+     "y": 0.064935
+    },
+    "detail": "Off-chip task source",
+    "id": "n_host",
+    "kind": "io",
+    "label": "Host",
+    "members": [
+     "n_host"
+    ],
+    "source_group": "g_host",
+    "source_owner": "g_host",
+    "type": "resource",
+    "zone": "external"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.091772,
+     "x": 0.177215,
+     "y": 0.064935
+    },
+    "detail": "Task submission boundary",
+    "id": "n_hostif",
+    "kind": "io",
+    "label": "Host Interface",
+    "members": [
+     "n_hostif"
+    ],
+    "source_group": "g_host",
+    "source_owner": "g_host",
+    "type": "resource",
+    "zone": "instruction"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.106013,
+     "x": 0.300633,
+     "y": 0.064935
+    },
+    "detail": "Decode and sequence commands",
+    "id": "n_cmd",
+    "kind": "control",
+    "label": "Command Processor",
+    "members": [
+     "n_cmd"
+    ],
+    "source_group": "g_front",
+    "source_owner": "g_front",
+    "type": "resource",
+    "zone": "instruction"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.64557,
+     "x": 0.177215,
+     "y": 0.194805
+    },
+    "detail": "Distribute work to clusters",
+    "id": "n_sched",
+    "kind": "control",
+    "label": "Thread Scheduler / Work Distributor",
+    "members": [
+     "n_sched"
+    ],
+    "source_group": "g_sched",
+    "source_owner": "g_sched",
+    "type": "resource",
+    "zone": "instruction"
+   },
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.341772,
+     "y": 0.324675
+    },
+    "children_labels": [
+     "Local Scheduler",
+     "Execution Resources",
+     "Private Register File",
+     "Private L1 Cache"
+    ],
+    "detail": "Same resources as g_cluster0",
+    "header_fraction": 0.26,
+    "id": "n_c1",
+    "inheritance_evidence": "Same resources as g_cluster0",
+    "inherited_visual_only": true,
+    "kind": "compute",
+    "label": "Compute Cluster 1",
+    "members": [
+     "n_c1"
+    ],
+    "source_group": "g_cluster1",
+    "source_owner": "g_cluster1",
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": true
+     }
+    ],
+    "type": "collapsed-template",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.506329,
+     "y": 0.324675
+    },
+    "children_labels": [
+     "Local Scheduler",
+     "Execution Resources",
+     "Private Register File",
+     "Private L1 Cache"
+    ],
+    "detail": "Same resources as g_cluster0",
+    "header_fraction": 0.26,
+    "id": "n_c2",
+    "inheritance_evidence": "Same resources as g_cluster0",
+    "inherited_visual_only": true,
+    "kind": "compute",
+    "label": "Compute Cluster 2",
+    "members": [
+     "n_c2"
+    ],
+    "source_group": "g_cluster2",
+    "source_owner": "g_cluster2",
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": true
+     }
+    ],
+    "type": "collapsed-template",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.670886,
+     "y": 0.324675
+    },
+    "children_labels": [
+     "Local Scheduler",
+     "Execution Resources",
+     "Private Register File",
+     "Private L1 Cache"
+    ],
+    "detail": "Same resources as g_cluster0",
+    "header_fraction": 0.26,
+    "id": "n_c3",
+    "inheritance_evidence": "Same resources as g_cluster0",
+    "inherited_visual_only": true,
+    "kind": "compute",
+    "label": "Compute Cluster 3",
+    "members": [
+     "n_c3"
+    ],
+    "source_group": "g_cluster3",
+    "source_owner": "g_cluster3",
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": true
+     }
+    ],
+    "type": "collapsed-template",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.64557,
+     "x": 0.177215,
+     "y": 0.688312
+    },
+    "detail": "Shared by all clusters",
+    "id": "n_l2",
+    "kind": "memory",
+    "label": "Shared L2 Cache",
+    "members": [
+     "n_l2"
+    ],
+    "source_group": "g_mem",
+    "source_owner": "g_mem",
+    "type": "resource",
+    "zone": "memory"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.126582,
+     "x": 0.696203,
+     "y": 0.818182
+    },
+    "detail": "Off-chip memory access",
+    "id": "n_memif",
+    "kind": "io",
+    "label": "Memory Interface",
+    "members": [
+     "n_memif"
+    ],
+    "source_group": "g_mem",
+    "source_owner": "g_mem",
+    "type": "resource",
+    "zone": "memory"
+   },
+   {
+    "box": {
+     "height": 0.064935,
+     "width": 0.113924,
+     "x": 0.873418,
+     "y": 0.818182
+    },
+    "detail": "External DRAM",
+    "id": "n_dram",
+    "kind": "memory",
+    "label": "Off-chip Memory",
+    "members": [
+     "n_dram"
+    ],
+    "source_group": "g_mem",
+    "source_owner": "g_mem",
+    "type": "resource",
+    "zone": "external"
+   }
+  ],
+  "node_to_macro": {
+   "n_c1": "n_c1",
+   "n_c2": "n_c2",
+   "n_c3": "n_c3",
+   "n_cmd": "n_cmd",
+   "n_dram": "n_dram",
+   "n_exec0": "g_cluster0",
+   "n_host": "n_host",
+   "n_hostif": "n_hostif",
+   "n_l10": "g_cluster0",
+   "n_l2": "n_l2",
+   "n_ls0": "g_cluster0",
+   "n_memif": "n_memif",
+   "n_rf0": "g_cluster0",
+   "n_sched": "n_sched"
+  },
+  "projected_links": [
+   {
+    "family": "external",
+    "id": "P1",
+    "kind": "data",
+    "label": "task",
+    "labels": [
+     "task"
+    ],
+    "members": [
+     0
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.16666666666666666
+    },
+    "source": "n_host",
+    "source_nodes": [
+     "n_host"
+    ],
+    "target": "n_hostif",
+    "target_nodes": [
+     "n_hostif"
+    ]
+   },
+   {
+    "family": "other",
+    "id": "P2",
+    "kind": "data",
+    "label": "commands",
+    "labels": [
+     "commands"
+    ],
+    "members": [
+     1
+    ],
+    "routing": {
+     "corridor": "other:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_hostif",
+    "source_nodes": [
+     "n_hostif"
+    ],
+    "target": "n_cmd",
+    "target_nodes": [
+     "n_cmd"
+    ]
+   },
+   {
+    "family": "coordination",
+    "id": "P3",
+    "kind": "control",
+    "label": "work items",
+    "labels": [
+     "work items"
+    ],
+    "members": [
+     2
+    ],
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_cmd",
+    "source_nodes": [
+     "n_cmd"
+    ],
+    "target": "n_sched",
+    "target_nodes": [
+     "n_sched"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P4",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     3
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.125
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "g_cluster0",
+    "target_nodes": [
+     "n_ls0"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P5",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     4
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.375
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "n_c1",
+    "target_nodes": [
+     "n_c1"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P6",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     5
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.625
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "n_c2",
+    "target_nodes": [
+     "n_c2"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P7",
+    "kind": "control",
+    "label": "dispatch",
+    "labels": [
+     "dispatch"
+    ],
+    "members": [
+     6
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 3,
+     "track_fraction": 0.875
+    },
+    "source": "n_sched",
+    "source_nodes": [
+     "n_sched"
+    ],
+    "target": "n_c3",
+    "target_nodes": [
+     "n_c3"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P8",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     11
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.05
+    },
+    "source": "g_cluster0",
+    "source_nodes": [
+     "n_l10"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P9",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     12
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 1,
+     "track_fraction": 0.15
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "g_cluster0",
+    "target_nodes": [
+     "n_l10"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P10",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     13
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.25
+    },
+    "source": "n_c1",
+    "source_nodes": [
+     "n_c1"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P11",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     14
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.35
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_c1",
+    "target_nodes": [
+     "n_c1"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P12",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     15
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.45
+    },
+    "source": "n_c2",
+    "source_nodes": [
+     "n_c2"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P13",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     16
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 5,
+     "track_fraction": 0.55
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_c2",
+    "target_nodes": [
+     "n_c2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P14",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     17
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 6,
+     "track_fraction": 0.65
+    },
+    "source": "n_c3",
+    "source_nodes": [
+     "n_c3"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P15",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     18
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 7,
+     "track_fraction": 0.75
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_c3",
+    "target_nodes": [
+     "n_c3"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P16",
+    "kind": "data",
+    "label": "miss / fetch",
+    "labels": [
+     "miss / fetch"
+    ],
+    "members": [
+     19
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 8,
+     "track_fraction": 0.85
+    },
+    "source": "n_l2",
+    "source_nodes": [
+     "n_l2"
+    ],
+    "target": "n_memif",
+    "target_nodes": [
+     "n_memif"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P17",
+    "kind": "data",
+    "label": "requests",
+    "labels": [
+     "requests"
+    ],
+    "members": [
+     20
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 1,
+     "track_fraction": 0.5
+    },
+    "source": "n_memif",
+    "source_nodes": [
+     "n_memif"
+    ],
+    "target": "n_dram",
+    "target_nodes": [
+     "n_dram"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P18",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     21
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "left",
+     "target_side": "right",
+     "track": 2,
+     "track_fraction": 0.8333333333333334
+    },
+    "source": "n_dram",
+    "source_nodes": [
+     "n_dram"
+    ],
+    "target": "n_memif",
+    "target_nodes": [
+     "n_memif"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P19",
+    "kind": "data",
+    "label": "data return",
+    "labels": [
+     "data return"
+    ],
+    "members": [
+     22
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 9,
+     "track_fraction": 0.95
+    },
+    "source": "n_memif",
+    "source_nodes": [
+     "n_memif"
+    ],
+    "target": "n_l2",
+    "target_nodes": [
+     "n_l2"
+    ]
+   }
+  ],
+  "region_slots": [
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.177215,
+     "y": 0.324675
+    },
+    "id": "g_cluster0",
+    "source_members": [
+     "n_ls0",
+     "n_exec0",
+     "n_rf0",
+     "n_l10"
+    ],
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": false
+     }
+    ]
+   },
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.341772,
+     "y": 0.324675
+    },
+    "id": "n_c1",
+    "source_members": [
+     "n_c1"
+    ],
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": true
+     }
+    ]
+   },
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.506329,
+     "y": 0.324675
+    },
+    "id": "n_c2",
+    "source_members": [
+     "n_c2"
+    ],
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": true
+     }
+    ]
+   },
+   {
+    "box": {
+     "height": 0.25974,
+     "width": 0.151899,
+     "x": 0.670886,
+     "y": 0.324675
+    },
+    "id": "n_c3",
+    "source_members": [
+     "n_c3"
+    ],
+    "template_id": "g_cluster0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.26
+      },
+      "display_label": "Local Scheduler",
+      "kind": "control",
+      "label": "Local Scheduler",
+      "role_lane": "control",
+      "source_group": "g_cluster0",
+      "source_label": "Local Scheduler",
+      "source_node_id": "n_ls0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.4966666666666667
+      },
+      "display_label": "Execution Resources",
+      "kind": "compute",
+      "label": "Execution Resources",
+      "role_lane": "execution",
+      "source_group": "g_cluster0",
+      "source_label": "Execution Resources",
+      "source_node_id": "n_exec0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private Register File",
+      "kind": "memory",
+      "label": "Private Register File",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private Register File",
+      "source_node_id": "n_rf0",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.19959839357429715,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.7333333333333334
+      },
+      "display_label": "Private L1 Cache",
+      "kind": "memory",
+      "label": "Private L1 Cache",
+      "role_lane": "local_storage",
+      "source_group": "g_cluster0",
+      "source_label": "Private L1 Cache",
+      "source_node_id": "n_l10",
+      "visual_reference_only": true
+     }
+    ]
+   }
+  ],
+  "repeat_families": [
+   {
+    "evidence": [
+     "Same resources as g_cluster0",
+     "Same resources as g_cluster0",
+     "Same resources as g_cluster0"
+    ],
+    "instances": [
+     "n_c1",
+     "n_c2",
+     "n_c3"
+    ],
+    "template_group": "g_cluster0"
+   }
+  ],
+  "role_lanes": [
+   {
+    "box": {
+     "height": 0.21039,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.057143
+    },
+    "display_only": true,
+    "id": "instruction",
+    "label": "Instruction / control",
+    "members": [
+     "n_hostif",
+     "n_cmd",
+     "n_sched"
+    ],
+    "role": "instruction"
+   },
+   {
+    "box": {
+     "height": 0.275325,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.316883
+    },
+    "display_only": true,
+    "id": "units",
+    "label": "Repeated private units",
+    "members": [
+     "g_cluster0",
+     "n_c1",
+     "n_c2",
+     "n_c3"
+    ],
+    "role": "repeated-array"
+   },
+   {
+    "box": {
+     "height": 0.21039,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.680519
+    },
+    "display_only": true,
+    "id": "memory",
+    "label": "Shared memory / interface band",
+    "members": [
+     "n_l2",
+     "n_memif"
+    ],
+    "role": "memory"
+   }
+  ],
+  "routing_corridors": [
+   {
+    "axis": "vertical",
+    "box": {
+     "height": 0.935065,
+     "width": 0.025316,
+     "x": 0.841772,
+     "y": 0.038961
+    },
+    "id": "external:data",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 3
+   },
+   {
+    "axis": "vertical",
+    "box": {
+     "height": 0.935065,
+     "width": 0.006329,
+     "x": 0.826582,
+     "y": 0.038961
+    },
+    "id": "other:data",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 1
+   },
+   {
+    "axis": "horizontal",
+    "box": {
+     "height": 0.08831099999999997,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.5922080000000001
+    },
+    "id": "coordination:control",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 1
+   },
+   {
+    "axis": "horizontal",
+    "box": {
+     "height": 0.04935000000000003,
+     "width": 0.653165,
+     "x": 0.173418,
+     "y": 0.267533
+    },
+    "id": "instruction:control",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 4
+   },
+   {
+    "axis": "vertical",
+    "box": {
+     "height": 0.935065,
+     "width": 0.006329,
+     "x": 0.167089,
+     "y": 0.038961
+    },
+    "id": "memory:data",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 10
+   }
+  ],
+  "source_ownership": {
+   "n_c1": "g_cluster1",
+   "n_c2": "g_cluster2",
+   "n_c3": "g_cluster3",
+   "n_cmd": "g_front",
+   "n_dram": "g_mem",
+   "n_exec0": "g_cluster0",
+   "n_host": "g_host",
+   "n_hostif": "g_host",
+   "n_l10": "g_cluster0",
+   "n_l2": "g_mem",
+   "n_ls0": "g_cluster0",
+   "n_memif": "g_mem",
+   "n_rf0": "g_cluster0",
+   "n_sched": "g_sched"
+  },
+  "system_frame": {
+   "box": {
+    "height": 0.948052,
+    "width": 0.670886,
+    "x": 0.164557,
+    "y": 0.025974
+   },
+   "display_only": true,
+   "id": "@system",
+   "label": "Generic GPU System Architecture Overview",
+   "not_an_added_hardware_node": true,
+   "replaces_container": null,
+   "source_group": null
+  },
+  "title": "Generic GPU System Architecture Overview",
+  "type": "hierarchy_overview",
+  "view_type": "containment-led-system",
+  "warnings": [
+   "Group g_host spans supplied internal/external roles; separate segments preserve the source group without moving off-chip memory inside the system frame.",
+   "Group g_mem spans supplied internal/external roles; separate segments preserve the source group without moving off-chip memory inside the system frame.",
+   "The outer system shell is visual framing only; flat functional groups do not establish an additional physical ownership domain."
+  ]
+ },
+ "version": 1,
+ "warnings": [
+  "部分标签较长，构图会优先换行或放入展开图；最终图内文字仍需核对。"
+ ]
+}

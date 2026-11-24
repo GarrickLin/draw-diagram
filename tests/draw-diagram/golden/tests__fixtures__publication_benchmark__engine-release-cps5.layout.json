@@ -1,0 +1,1609 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "concept",
+  "layout_strategy": "publication-candidates",
+  "title": "Dual-Input Tensor Compute Engine Microarchitecture"
+ },
+ "kind": "publication",
+ "label_layout": {
+  "body_font_px": 30,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     0,
+     13
+    ],
+    "text": "A / B read / result write-back"
+   }
+  ],
+  "height": 1170,
+  "labels": [
+   {
+    "box": {
+     "height": 0.027111,
+     "width": 0.009634,
+     "x": 0.625738,
+     "y": 0.330153
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "A"
+   },
+   {
+    "box": {
+     "height": 0.027111,
+     "width": 0.009634,
+     "x": 0.607778,
+     "y": 0.471487
+    },
+    "color": "#17324D",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "B"
+   },
+   {
+    "box": {
+     "height": 0.033333,
+     "width": 0.180633,
+     "x": 0.21,
+     "y": 0.078632
+    },
+    "color": "#17324D",
+    "source_edge_indices": [],
+    "text": "Tensor Compute Engine"
+   }
+  ],
+  "signal_font_px": 26,
+  "target_width_mm": 240,
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 1170,
+  "line_legend": {},
+  "quality": {
+   "body_font_pt": 11,
+   "deferred_labels": [
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      0,
+      13
+     ],
+     "text": "A / B read / result write-back"
+    }
+   ],
+   "deferred_scope_titles": [],
+   "failed_routes": [],
+   "geometry_is_not_raster_acceptance": true,
+   "input_traces": {
+    "clear": true,
+    "failures": [],
+    "owners": []
+   },
+   "labels_placed": 2,
+   "no_common_bus_inferred": true,
+   "organization_traces": {
+    "clear": true,
+    "contacts": []
+   },
+   "owner_scope_entries": {
+    "clear": true,
+    "failures": []
+   },
+   "publication_typography": true,
+   "requested_routes": 4,
+   "route_count": 4,
+   "routes_complete": true,
+   "signal_font_pt": 9.5,
+   "target_width_mm": 240,
+   "typography_measured": true
+  },
+  "routes": [
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "A / B read",
+      "source": "n_mem",
+      "target": "n_dma"
+     },
+     {
+      "label": "result write-back",
+      "source": "n_dma",
+      "target": "n_mem"
+     }
+    ],
+    "id": "p1",
+    "kind": "data",
+    "label": "A / B read / result write-back",
+    "meanings_in_caption": [],
+    "members": [
+     0,
+     13
+    ],
+    "points": [
+     [
+      0.85,
+      0.396367
+     ],
+     [
+      0.84,
+      0.396367
+     ],
+     [
+      0.84,
+      0.441026
+     ],
+     [
+      0.608889,
+      0.441026
+     ],
+     [
+      0.608889,
+      0.396367
+     ],
+     [
+      0.6,
+      0.396367
+     ]
+    ],
+    "routing": {
+     "source_side": "left",
+     "target_side": "right"
+    },
+    "source": "n_mem",
+    "source_side": "left",
+    "stroke_style": "solid",
+    "target": "n_dma",
+    "target_side": "right"
+   },
+   {
+    "id": "p8",
+    "kind": "data",
+    "label": "",
+    "meanings_in_caption": [],
+    "members": [
+     9,
+     10
+    ],
+    "points": [
+     [
+      0.227778,
+      0.720086
+     ],
+     [
+      0.217778,
+      0.720086
+     ],
+     [
+      0.217778,
+      0.793162
+     ],
+     [
+      0.388889,
+      0.793162
+     ],
+     [
+      0.388889,
+      0.865385
+     ],
+     [
+      0.377778,
+      0.865385
+     ]
+    ],
+    "routing": {
+     "source_side": "left",
+     "target_side": "right"
+    },
+    "source": "g_fpu",
+    "source_side": "left",
+    "stroke_style": "solid",
+    "target": "n_result",
+    "target_side": "right"
+   },
+   {
+    "id": "p2",
+    "kind": "data",
+    "label": "A",
+    "meanings_in_caption": [],
+    "members": [
+     1
+    ],
+    "points": [
+     [
+      0.6,
+      0.367521
+     ],
+     [
+      0.661111,
+      0.367521
+     ]
+    ],
+    "routing": {
+     "source_side": "right",
+     "target_side": "left"
+    },
+    "source": "n_dma",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "n_unpackA",
+    "target_side": "left"
+   },
+   {
+    "id": "p3",
+    "kind": "data",
+    "label": "B",
+    "meanings_in_caption": [],
+    "members": [
+     2
+    ],
+    "points": [
+     [
+      0.6,
+      0.429487
+     ],
+     [
+      0.601111,
+      0.429487
+     ],
+     [
+      0.601111,
+      0.540598
+     ],
+     [
+      0.661111,
+      0.540598
+     ]
+    ],
+    "routing": {
+     "source_side": "right",
+     "target_side": "left"
+    },
+    "source": "n_dma",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "n_unpackB",
+    "target_side": "left"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "body_font_pt": 11,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     0,
+     13
+    ],
+    "text": "A / B read / result write-back"
+   }
+  ],
+  "deferred_scope_titles": [],
+  "failed_routes": [],
+  "geometry_is_not_raster_acceptance": true,
+  "input_traces": {
+   "clear": true,
+   "failures": [],
+   "owners": []
+  },
+  "labels_placed": 2,
+  "no_common_bus_inferred": true,
+  "organization_traces": {
+   "clear": true,
+   "contacts": []
+  },
+  "owner_scope_entries": {
+   "clear": true,
+   "failures": []
+  },
+  "publication_typography": true,
+  "requested_routes": 4,
+  "route_count": 4,
+  "routes_complete": true,
+  "signal_font_pt": 9.5,
+  "target_width_mm": 240,
+  "typography_measured": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "microarchitecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "concept",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Arithmetic Unit and Special Function Unit are alternative selectable paths; they are not chained in series.",
+   "All resources except Off-Chip Memory belong to the Tensor Compute Engine."
+  ],
+  "assumptions": [
+   "容量、精度、带宽、周期数均未指定，图中不标注任何具体数值。",
+   "Control Unit 到各模块的发起/协调连线为通用示意，用户仅说明其负责解包、计算、打包的发起与协调。",
+   "Result Registers 与 DMA 的完成回报为补齐的普通协调细节，可按实际设计修改。"
+  ],
+  "category": "microarchitecture",
+  "checks": [
+   "确认 FPU 内部仅包含 Arithmetic Unit 与 Special Function Unit 两个执行单元，且二者为并列可选而非串联。",
+   "确认 DMA 为单一独立模块，同时承担读入 A/B 与写回结果。",
+   "确认除 Off-Chip Memory 外所有模块都画在 Tensor Compute Engine 容器内。"
+  ],
+  "edges": [
+   {
+    "evidence": "从片外Memory读取A和B两路数据",
+    "kind": "data",
+    "label": "A / B read",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_mem",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "分别送到Unpacker A和Unpacker B",
+    "kind": "data",
+    "label": "A",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_dma",
+    "target": "n_unpackA"
+   },
+   {
+    "evidence": "分别送到Unpacker A和Unpacker B",
+    "kind": "data",
+    "label": "B",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_dma",
+    "target": "n_unpackB"
+   },
+   {
+    "evidence": "各自写入Source Registers A和Source Registers B",
+    "kind": "data",
+    "label": "",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_unpackA",
+    "target": "n_srcA"
+   },
+   {
+    "evidence": "各自写入Source Registers A和Source Registers B",
+    "kind": "data",
+    "label": "",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_unpackB",
+    "target": "n_srcB"
+   },
+   {
+    "evidence": "FPU接收两组源值",
+    "kind": "data",
+    "label": "operand A",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_srcA",
+    "target": "n_alu"
+   },
+   {
+    "evidence": "FPU接收两组源值",
+    "kind": "data",
+    "label": "operand B",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_srcB",
+    "target": "n_alu"
+   },
+   {
+    "evidence": "FPU接收两组源值",
+    "kind": "data",
+    "label": "operand A",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_srcA",
+    "target": "n_sfu"
+   },
+   {
+    "evidence": "FPU接收两组源值",
+    "kind": "data",
+    "label": "operand B",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_srcB",
+    "target": "n_sfu"
+   },
+   {
+    "evidence": "计算结果写入Result Registers",
+    "kind": "data",
+    "label": "",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_alu",
+    "target": "n_result"
+   },
+   {
+    "evidence": "计算结果写入Result Registers",
+    "kind": "data",
+    "label": "",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_sfu",
+    "target": "n_result"
+   },
+   {
+    "evidence": "经Packer送回同一个DMA",
+    "kind": "data",
+    "label": "",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_result",
+    "target": "n_packer"
+   },
+   {
+    "evidence": "经Packer送回同一个DMA",
+    "kind": "data",
+    "label": "packed result",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_packer",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "再写回同一片外Memory",
+    "kind": "data",
+    "label": "result write-back",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_dma",
+    "target": "n_mem"
+   },
+   {
+    "evidence": "独立Control Unit负责解包、计算和打包的发起与协调",
+    "kind": "control",
+    "label": "load / store issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_ctrl",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "独立Control Unit负责解包、计算和打包的发起与协调",
+    "kind": "control",
+    "label": "unpack issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_ctrl",
+    "target": "n_unpackA"
+   },
+   {
+    "evidence": "独立Control Unit负责解包、计算和打包的发起与协调",
+    "kind": "control",
+    "label": "unpack issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_ctrl",
+    "target": "n_unpackB"
+   },
+   {
+    "evidence": "两条可选择的执行路径",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_ctrl",
+    "target": "n_alu"
+   },
+   {
+    "evidence": "两条可选择的执行路径",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_ctrl",
+    "target": "n_sfu"
+   },
+   {
+    "evidence": "独立Control Unit负责解包、计算和打包的发起与协调",
+    "kind": "control",
+    "label": "pack issue",
+    "origin": "given",
+    "rationale": "",
+    "source": "n_ctrl",
+    "target": "n_packer"
+   },
+   {
+    "evidence": "",
+    "kind": "feedback",
+    "label": "compute done",
+    "origin": "assumed",
+    "rationale": "普通协调细节：结果就绪后通知控制单元推进打包",
+    "source": "n_result",
+    "target": "n_ctrl"
+   },
+   {
+    "evidence": "",
+    "kind": "feedback",
+    "label": "transfer done",
+    "origin": "assumed",
+    "rationale": "普通协调细节：DMA 完成搬运后回报控制单元",
+    "source": "n_dma",
+    "target": "n_ctrl"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "g_engine",
+    "label": "Tensor Compute Engine",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "用户明确除片外 Memory 外资源都属于该计算引擎，用容器表达归属边界"
+   },
+   {
+    "evidence": "FPU接收两组源值，内部有常规Arithmetic Unit和Special Function Unit两条可选择的执行路径",
+    "id": "g_fpu",
+    "label": "FPU",
+    "origin": "given",
+    "parent": "g_engine",
+    "rationale": ""
+   },
+   {
+    "evidence": "各自写入Source Registers A和Source Registers B",
+    "id": "g_srcA",
+    "label": "Source Registers A",
+    "origin": "given",
+    "parent": "g_engine",
+    "rationale": ""
+   },
+   {
+    "evidence": "各自写入Source Registers A和Source Registers B",
+    "id": "g_srcB",
+    "label": "Source Registers B",
+    "origin": "given",
+    "parent": "g_engine",
+    "rationale": ""
+   },
+   {
+    "evidence": "计算结果写入Result Registers",
+    "id": "g_result",
+    "label": "Result Registers",
+    "origin": "given",
+    "parent": "g_engine",
+    "rationale": ""
+   }
+  ],
+  "layout": "Left-to-right main data path: n_mem at far left, then n_dma, then two parallel unpack lanes n_unpackA (upper) and n_unpackB (lower) feeding n_srcA and n_srcB; n_srcA/n_srcB fan into g_fpu in the center, where n_alu and n_sfu sit as two parallel selectable paths; both converge on n_result, then n_packer, then back to n_dma and n_mem. g_engine encloses everything except n_mem. n_ctrl sits in a control corridor along the bottom of g_engine, with dashed control edges fanning up to n_dma, n_unpackA, n_unpackB, n_alu, n_sfu, n_packer; feedback edges from n_result and n_dma return along the bottom corridor. Reading order: memory -> DMA -> unpack -> source registers -> FPU -> result -> packer -> DMA -> memory, with control corridor read last.",
+  "nodes": [
+   {
+    "detail": "External to engine",
+    "evidence": "从片外Memory读取A和B两路数据",
+    "group": "",
+    "id": "n_mem",
+    "kind": "memory",
+    "label": "Off-Chip Memory",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Read A/B, write back result",
+    "evidence": "一个独立DMA从片外Memory读取A和B两路数据",
+    "group": "g_engine",
+    "id": "n_dma",
+    "kind": "io",
+    "label": "DMA",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "",
+    "evidence": "分别送到Unpacker A和Unpacker B",
+    "group": "g_engine",
+    "id": "n_unpackA",
+    "kind": "compute",
+    "label": "Unpacker A",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "",
+    "evidence": "分别送到Unpacker A和Unpacker B",
+    "group": "g_engine",
+    "id": "n_unpackB",
+    "kind": "compute",
+    "label": "Unpacker B",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Operand A storage",
+    "evidence": "各自写入Source Registers A和Source Registers B",
+    "group": "g_srcA",
+    "id": "n_srcA",
+    "kind": "memory",
+    "label": "Source Registers A",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Operand B storage",
+    "evidence": "各自写入Source Registers A和Source Registers B",
+    "group": "g_srcB",
+    "id": "n_srcB",
+    "kind": "memory",
+    "label": "Source Registers B",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Regular arithmetic path",
+    "evidence": "内部有常规Arithmetic Unit和Special Function Unit两条可选择的执行路径",
+    "group": "g_fpu",
+    "id": "n_alu",
+    "kind": "compute",
+    "label": "Arithmetic Unit",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Special function path",
+    "evidence": "内部有常规Arithmetic Unit和Special Function Unit两条可选择的执行路径",
+    "group": "g_fpu",
+    "id": "n_sfu",
+    "kind": "compute",
+    "label": "Special Function Unit",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Computation result storage",
+    "evidence": "计算结果写入Result Registers",
+    "group": "g_result",
+    "id": "n_result",
+    "kind": "memory",
+    "label": "Result Registers",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "",
+    "evidence": "经Packer送回同一个DMA",
+    "group": "g_engine",
+    "id": "n_packer",
+    "kind": "compute",
+    "label": "Packer",
+    "origin": "given",
+    "rationale": ""
+   },
+   {
+    "detail": "Issue unpack / compute / pack",
+    "evidence": "独立Control Unit负责解包、计算和打包的发起与协调",
+    "group": "g_engine",
+    "id": "n_ctrl",
+    "kind": "control",
+    "label": "Control Unit",
+    "origin": "given",
+    "rationale": ""
+   }
+  ],
+  "questions": [
+   "是否需要把 Control Unit 的发起/协调关系细化为具体信号或握手时序？",
+   "是否需要为 FPU 两条执行路径补充选择条件或优先级？"
+  ],
+  "steps": [],
+  "summary": "通用示意：一个独立 DMA 从片外 Memory 读入 A/B 两路数据，经 Unpacker A/B 写入 Source Registers A/B；FPU 内含 Arithmetic Unit 与 Special Function Unit 两条可选执行路径，结果写入 Result Registers，经 Packer 由同一 DMA 写回同一片外 Memory；独立 Control Unit 协调解包、计算、打包。除片外 Memory 外所有资源均属该计算引擎。容量、精度、带宽、周期数均未指定。",
+  "title": "Dual-Input Tensor Compute Engine Microarchitecture",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "g_fpu": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.227778,
+    "y": 0.65812
+   },
+   "n_ctrl": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.444444,
+    "y": 0.65812
+   },
+   "n_dma": {
+    "height": 0.128205,
+    "width": 0.155556,
+    "x": 0.444444,
+    "y": 0.333333
+   },
+   "n_mem": {
+    "height": 0.123932,
+    "width": 0.133333,
+    "x": 0.85,
+    "y": 0.333333
+   },
+   "n_packer": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.661111,
+    "y": 0.65812
+   },
+   "n_result": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.227778,
+    "y": 0.803419
+   },
+   "n_srcA": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.444444,
+    "y": 0.803419
+   },
+   "n_srcB": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.661111,
+    "y": 0.803419
+   },
+   "n_unpackA": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.661111,
+    "y": 0.307692
+   },
+   "n_unpackB": {
+    "height": 0.123932,
+    "width": 0.15,
+    "x": 0.661111,
+    "y": 0.478632
+   }
+  },
+  "candidate_id": "product-anchor-0",
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 1.538462,
+   "reading_direction": "product-functional-anchor-and-context",
+   "target_width_mm": 240
+  },
+  "composition_diagnostics": {
+   "candidates": [
+    {
+     "accepted": false,
+     "geometry": {
+      "bends": 10,
+      "crossings": 2,
+      "longest_route_px": 860,
+      "routing_cost_px": 2868,
+      "total_route_px": 2708
+     },
+     "id": "product-hero-0",
+     "reasons": [
+      "Independent routes cross without a declared crossover symbol"
+     ]
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 1,
+     "document_height_mm": 156,
+     "geometry": {
+      "bends": 10,
+      "crossings": 0,
+      "longest_route_px": 554.5,
+      "routing_cost_px": 1580.5,
+      "total_route_px": 1420.5
+     },
+     "id": "product-anchor-0",
+     "natural_aspect": 1.538462,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "product-hub-0",
+     "reasons": [
+      "A residual subsystem needs a separate source-derived context view"
+     ]
+    },
+    {
+     "accepted": false,
+     "id": "product-linear-0",
+     "reasons": [
+      "Product boundary would contain an external resource"
+     ]
+    }
+   ],
+   "grammar": "product-concept",
+   "selected": "product-anchor-0",
+   "selection_policy": "Hard route/typography/crossover/boundary gates, then fewer deferred labels, total route length plus 16px per bend, fewer bends and shorter longest route; no beauty score"
+  },
+  "containers": [],
+  "insets": [],
+  "layout_scene": {
+   "height": 1170,
+   "line_legend": {},
+   "quality": {
+    "body_font_pt": 11,
+    "deferred_labels": [
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       0,
+       13
+      ],
+      "text": "A / B read / result write-back"
+     }
+    ],
+    "deferred_scope_titles": [],
+    "failed_routes": [],
+    "geometry_is_not_raster_acceptance": true,
+    "input_traces": {
+     "clear": true,
+     "failures": [],
+     "owners": []
+    },
+    "labels_placed": 2,
+    "no_common_bus_inferred": true,
+    "organization_traces": {
+     "clear": true,
+     "contacts": []
+    },
+    "owner_scope_entries": {
+     "clear": true,
+     "failures": []
+    },
+    "publication_typography": true,
+    "requested_routes": 4,
+    "route_count": 4,
+    "routes_complete": true,
+    "signal_font_pt": 9.5,
+    "target_width_mm": 240,
+    "typography_measured": true
+   },
+   "routes": [
+    {
+     "bidirectional": true,
+     "directional_labels": [
+      {
+       "label": "A / B read",
+       "source": "n_mem",
+       "target": "n_dma"
+      },
+      {
+       "label": "result write-back",
+       "source": "n_dma",
+       "target": "n_mem"
+      }
+     ],
+     "id": "p1",
+     "kind": "data",
+     "label": "A / B read / result write-back",
+     "meanings_in_caption": [],
+     "members": [
+      0,
+      13
+     ],
+     "points": [
+      [
+       0.85,
+       0.396367
+      ],
+      [
+       0.84,
+       0.396367
+      ],
+      [
+       0.84,
+       0.441026
+      ],
+      [
+       0.608889,
+       0.441026
+      ],
+      [
+       0.608889,
+       0.396367
+      ],
+      [
+       0.6,
+       0.396367
+      ]
+     ],
+     "routing": {
+      "source_side": "left",
+      "target_side": "right"
+     },
+     "source": "n_mem",
+     "source_side": "left",
+     "stroke_style": "solid",
+     "target": "n_dma",
+     "target_side": "right"
+    },
+    {
+     "id": "p8",
+     "kind": "data",
+     "label": "",
+     "meanings_in_caption": [],
+     "members": [
+      9,
+      10
+     ],
+     "points": [
+      [
+       0.227778,
+       0.720086
+      ],
+      [
+       0.217778,
+       0.720086
+      ],
+      [
+       0.217778,
+       0.793162
+      ],
+      [
+       0.388889,
+       0.793162
+      ],
+      [
+       0.388889,
+       0.865385
+      ],
+      [
+       0.377778,
+       0.865385
+      ]
+     ],
+     "routing": {
+      "source_side": "left",
+      "target_side": "right"
+     },
+     "source": "g_fpu",
+     "source_side": "left",
+     "stroke_style": "solid",
+     "target": "n_result",
+     "target_side": "right"
+    },
+    {
+     "id": "p2",
+     "kind": "data",
+     "label": "A",
+     "meanings_in_caption": [],
+     "members": [
+      1
+     ],
+     "points": [
+      [
+       0.6,
+       0.367521
+      ],
+      [
+       0.661111,
+       0.367521
+      ]
+     ],
+     "routing": {
+      "source_side": "right",
+      "target_side": "left"
+     },
+     "source": "n_dma",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "n_unpackA",
+     "target_side": "left"
+    },
+    {
+     "id": "p3",
+     "kind": "data",
+     "label": "B",
+     "meanings_in_caption": [],
+     "members": [
+      2
+     ],
+     "points": [
+      [
+       0.6,
+       0.429487
+      ],
+      [
+       0.601111,
+       0.429487
+      ],
+      [
+       0.601111,
+       0.540598
+      ],
+      [
+       0.661111,
+       0.540598
+      ]
+     ],
+     "routing": {
+      "source_side": "right",
+      "target_side": "left"
+     },
+     "source": "n_dma",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "n_unpackB",
+     "target_side": "left"
+    }
+   ],
+   "width": 1800
+  },
+  "macro_edges": [
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "A / B read",
+      "source": "n_mem",
+      "target": "n_dma"
+     },
+     {
+      "label": "result write-back",
+      "source": "n_dma",
+      "target": "n_mem"
+     }
+    ],
+    "id": "p1",
+    "kind": "data",
+    "label": "A / B read / result write-back",
+    "meanings_in_caption": [],
+    "members": [
+     0,
+     13
+    ],
+    "routing": {
+     "source_side": "left",
+     "target_side": "right"
+    },
+    "source": "n_mem",
+    "stroke_style": "solid",
+    "target": "n_dma"
+   },
+   {
+    "id": "p8",
+    "kind": "data",
+    "label": "",
+    "meanings_in_caption": [],
+    "members": [
+     9,
+     10
+    ],
+    "routing": {
+     "source_side": "left",
+     "target_side": "right"
+    },
+    "source": "g_fpu",
+    "stroke_style": "solid",
+    "target": "n_result"
+   },
+   {
+    "id": "p2",
+    "kind": "data",
+    "label": "A",
+    "meanings_in_caption": [],
+    "members": [
+     1
+    ],
+    "routing": {
+     "source_side": "right",
+     "target_side": "left"
+    },
+    "source": "n_dma",
+    "stroke_style": "solid",
+    "target": "n_unpackA"
+   },
+   {
+    "id": "p3",
+    "kind": "data",
+    "label": "B",
+    "meanings_in_caption": [],
+    "members": [
+     2
+    ],
+    "routing": {
+     "source_side": "right",
+     "target_side": "left"
+    },
+    "source": "n_dma",
+    "stroke_style": "solid",
+    "target": "n_unpackB"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "concept_role": "external-resource",
+    "detail": "",
+    "external": true,
+    "id": "n_mem",
+    "kind": "memory",
+    "label": "Off-Chip Memory",
+    "members": [
+     "n_mem"
+    ],
+    "original_group": ""
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_dma",
+    "kind": "io",
+    "label": "DMA",
+    "members": [
+     "n_dma"
+    ],
+    "original_group": "g_engine"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_unpackA",
+    "kind": "compute",
+    "label": "Unpacker A",
+    "members": [
+     "n_unpackA"
+    ],
+    "original_group": "g_engine"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_unpackB",
+    "kind": "compute",
+    "label": "Unpacker B",
+    "members": [
+     "n_unpackB"
+    ],
+    "original_group": "g_engine"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_srcA",
+    "kind": "memory",
+    "label": "Source Registers A",
+    "members": [
+     "n_srcA"
+    ],
+    "original_group": "g_srcA"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_srcB",
+    "kind": "memory",
+    "label": "Source Registers B",
+    "members": [
+     "n_srcB"
+    ],
+    "original_group": "g_srcB"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_result",
+    "kind": "memory",
+    "label": "Result Registers",
+    "members": [
+     "n_result"
+    ],
+    "original_group": "g_result"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_packer",
+    "kind": "compute",
+    "label": "Packer",
+    "members": [
+     "n_packer"
+    ],
+    "original_group": "g_engine"
+   },
+   {
+    "children": [],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "n_ctrl",
+    "kind": "control",
+    "label": "Control Unit",
+    "members": [
+     "n_ctrl"
+    ],
+    "original_group": "g_engine"
+   },
+   {
+    "children": [],
+    "collapsed_member_labels": [
+     "Arithmetic Unit",
+     "Special Function Unit"
+    ],
+    "concept_role": "functional-region",
+    "detail": "",
+    "external": false,
+    "id": "g_fpu",
+    "kind": "compute",
+    "label": "FPU",
+    "logical_group": true,
+    "members": [
+     "n_alu",
+     "n_sfu"
+    ],
+    "original_group": "g_engine",
+    "source_group": "g_fpu"
+   }
+  ],
+  "node_to_macro": {
+   "n_alu": "g_fpu",
+   "n_ctrl": "n_ctrl",
+   "n_dma": "n_dma",
+   "n_mem": "n_mem",
+   "n_packer": "n_packer",
+   "n_result": "n_result",
+   "n_sfu": "g_fpu",
+   "n_srcA": "n_srcA",
+   "n_srcB": "n_srcB",
+   "n_unpackA": "n_unpackA",
+   "n_unpackB": "n_unpackB"
+  },
+  "presentation_frame": {
+   "box": {
+    "height": 0.893162,
+    "width": 0.633333,
+    "x": 0.194444,
+    "y": 0.059829
+   },
+   "external_ids": [
+    "n_mem"
+   ],
+   "label": "Tensor Compute Engine",
+   "meaning": "Illustrative logical system enclosure; this does not claim a physical chip boundary or floorplan.",
+   "member_ids": [
+    "n_dma",
+    "n_unpackA",
+    "n_unpackB",
+    "n_srcA",
+    "n_srcB",
+    "n_result",
+    "n_packer",
+    "n_ctrl",
+    "g_fpu"
+   ],
+   "physical_boundary": false,
+   "source_group": "g_engine"
+  },
+  "projection": {
+   "deferred_edges": [
+    {
+     "index": 3,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 4,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 5,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 6,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 7,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 8,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 11,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 12,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 14,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 15,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 16,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 17,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 18,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 19,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 20,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    },
+    {
+     "index": 21,
+     "reason": "Implementation or secondary relationship retained in the source ledger, caption and exact companion."
+    }
+   ],
+   "folded_groups": [
+    "g_fpu"
+   ],
+   "internal_edges": [],
+   "meaning": "Complete functional concept of the same source system. Regions summarize only real source owners; omitted internal wiring is not absent hardware. The outline is illustrative, not a measured physical floorplan.",
+   "ownership_unchanged": true,
+   "source_node_to_macro": {
+    "n_alu": "g_fpu",
+    "n_ctrl": "n_ctrl",
+    "n_dma": "n_dma",
+    "n_mem": "n_mem",
+    "n_packer": "n_packer",
+    "n_result": "n_result",
+    "n_sfu": "g_fpu",
+    "n_srcA": "n_srcA",
+    "n_srcB": "n_srcB",
+    "n_unpackA": "n_unpackA",
+    "n_unpackB": "n_unpackB"
+   }
+  },
+  "scene_id": "concept",
+  "source_edge_indices": [
+   0,
+   1,
+   2,
+   9,
+   10,
+   13
+  ],
+  "source_group_labels": {
+   "g_engine": "Tensor Compute Engine",
+   "g_fpu": "FPU",
+   "g_result": "Result Registers",
+   "g_srcA": "Source Registers A",
+   "g_srcB": "Source Registers B"
+  },
+  "source_group_parents": {
+   "g_engine": "",
+   "g_fpu": "g_engine",
+   "g_result": "g_engine",
+   "g_srcA": "g_engine",
+   "g_srcB": "g_engine"
+  },
+  "source_ownership": {
+   "n_alu": "g_fpu",
+   "n_ctrl": "g_engine",
+   "n_dma": "g_engine",
+   "n_mem": "",
+   "n_packer": "g_engine",
+   "n_result": "g_result",
+   "n_sfu": "g_fpu",
+   "n_srcA": "g_srcA",
+   "n_srcB": "g_srcB",
+   "n_unpackA": "g_engine",
+   "n_unpackB": "g_engine"
+  },
+  "symbol_metrics": {
+   "g_fpu": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "FPU"
+    ],
+    "width": 120
+   },
+   "n_ctrl": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Control Unit"
+    ],
+    "width": 203
+   },
+   "n_dma": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "DMA"
+    ],
+    "width": 120
+   },
+   "n_mem": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 96,
+    "height": 96,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Off-Chip",
+     "Memory"
+    ],
+    "width": 156
+   },
+   "n_packer": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Packer"
+    ],
+    "width": 138
+   },
+   "n_result": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Result Registers"
+    ],
+    "width": 265
+   },
+   "n_srcA": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 96,
+    "height": 96,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Source",
+     "Registers A"
+    ],
+    "width": 200
+   },
+   "n_srcB": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 96,
+    "height": 96,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Source",
+     "Registers B"
+    ],
+    "width": 200
+   },
+   "n_unpackA": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Unpacker A"
+    ],
+    "width": 201
+   },
+   "n_unpackB": {
+    "children": [],
+    "detail_lines": [],
+    "entry_gutter_height": 0,
+    "entry_port_spacing_px": 0,
+    "font_px": 30,
+    "header_height": 59,
+    "height": 59,
+    "ink_header": false,
+    "line_height": 37,
+    "lines": [
+     "Unpacker B"
+    ],
+    "width": 201
+   }
+  },
+  "system_frame": {
+   "box": {
+    "height": 1,
+    "width": 1,
+    "x": 0,
+    "y": 0
+   },
+   "display_only": true,
+   "label": ""
+  },
+  "title": "Dual-Input Tensor Compute Engine Microarchitecture",
+  "type": "publication",
+  "typography": {
+   "body_pt": 11,
+   "body_px": 30,
+   "no_font_shrink": true,
+   "signal_pt": 9.5,
+   "signal_px": 26,
+   "symbol_profile": "plain",
+   "target_width_mm": 240
+  },
+  "version": "CPS6",
+  "view_role": "product-concept",
+  "view_type": "publication-product-concept"
+ },
+ "version": 1,
+ "warnings": []
+}

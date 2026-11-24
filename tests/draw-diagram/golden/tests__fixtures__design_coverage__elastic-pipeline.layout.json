@@ -1,0 +1,1833 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "overview",
+  "layout_strategy": "semantic-guide",
+  "title": "Elastic Packet Pipeline"
+ },
+ "kind": "behavior",
+ "label_layout": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "source"
+    ],
+    "text": "Byte Source"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "decode"
+    ],
+    "text": "Header Decode"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "crc"
+    ],
+    "text": "CRC Update"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "fifo"
+    ],
+    "text": "Elastic FIFO"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "frame"
+    ],
+    "text": "Frame Assembly"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "sink"
+    ],
+    "text": "Frame Sink"
+   },
+   {
+    "at": [
+     312,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "byte + valid"
+   },
+   {
+    "at": [
+     576,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "payload + valid"
+   },
+   {
+    "at": [
+     830,
+     89.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "updated CRC + valid"
+   },
+   {
+    "at": [
+     1114,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "byte + valid"
+   },
+   {
+    "at": [
+     1368,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "frame + valid"
+   },
+   {
+    "at": [
+     312,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     576,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     840,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     1104,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     1368,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "ready"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "decode"
+    ],
+    "text": "Functional stage 0"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "crc"
+    ],
+    "text": "Functional stage 1"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "fifo"
+    ],
+    "text": "2 entries"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "frame"
+    ],
+    "text": "Functional stage 2"
+   }
+  ]
+ },
+ "layout_scene": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "source"
+    ],
+    "text": "Byte Source"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "decode"
+    ],
+    "text": "Header Decode"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "crc"
+    ],
+    "text": "CRC Update"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "fifo"
+    ],
+    "text": "Elastic FIFO"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "frame"
+    ],
+    "text": "Frame Assembly"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "sink"
+    ],
+    "text": "Frame Sink"
+   },
+   {
+    "at": [
+     312,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "byte + valid"
+   },
+   {
+    "at": [
+     576,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "payload + valid"
+   },
+   {
+    "at": [
+     830,
+     89.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "updated CRC + valid"
+   },
+   {
+    "at": [
+     1114,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "byte + valid"
+   },
+   {
+    "at": [
+     1368,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "frame + valid"
+   },
+   {
+    "at": [
+     312,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     576,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     840,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     1104,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     1368,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "ready"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "decode"
+    ],
+    "text": "Functional stage 0"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "crc"
+    ],
+    "text": "Functional stage 1"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "fifo"
+    ],
+    "text": "2 entries"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "frame"
+    ],
+    "text": "Functional stage 2"
+   }
+  ],
+  "objects": [
+   {
+    "children": [],
+    "detail": "Produces ready/valid bytes",
+    "evidence": "",
+    "group": "",
+    "id": "source",
+    "kind": "io",
+    "label": "Byte Source",
+    "members": [
+     "source"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Functional stage 0",
+    "evidence": "",
+    "group": "",
+    "id": "decode",
+    "kind": "stage",
+    "label": "Header Decode",
+    "members": [
+     "decode"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Functional stage 1",
+    "evidence": "",
+    "group": "",
+    "id": "crc",
+    "kind": "stage",
+    "label": "CRC Update",
+    "members": [
+     "crc"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "2 entries; absorption capacity, not 2-cycle latency",
+    "evidence": "",
+    "group": "",
+    "id": "fifo",
+    "kind": "memory",
+    "label": "Elastic FIFO",
+    "members": [
+     "fifo"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Functional stage 2",
+    "evidence": "",
+    "group": "",
+    "id": "frame",
+    "kind": "stage",
+    "label": "Frame Assembly",
+    "members": [
+     "frame"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "May apply backpressure",
+    "evidence": "",
+    "group": "",
+    "id": "sink",
+    "kind": "io",
+    "label": "Frame Sink",
+    "members": [
+     "sink"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "quality": {
+   "geometry_is_not_raster_acceptance": true,
+   "routes_complete": true,
+   "semantic_scope_complete": true,
+   "typography_measured": false
+  },
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "byte + valid",
+    "label_at": [
+     312,
+     70
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      298,
+      195
+     ],
+     [
+      312,
+      195
+     ],
+     [
+      312,
+      186.5
+     ],
+     [
+      326,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "source",
+    "stroke_style": "solid",
+    "target": "decode"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "payload + valid",
+    "label_at": [
+     576,
+     70
+    ],
+    "members": [
+     1
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      562,
+      186.5
+     ],
+     [
+      590,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "stroke_style": "solid",
+    "target": "crc"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "updated CRC + valid",
+    "label_at": [
+     830,
+     89.5
+    ],
+    "members": [
+     2
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      826,
+      186.5
+     ],
+     [
+      834,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "stroke_style": "solid",
+    "target": "fifo"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "byte + valid",
+    "label_at": [
+     1114,
+     70
+    ],
+    "members": [
+     3
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1110,
+      186.5
+     ],
+     [
+      1118,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "stroke_style": "solid",
+    "target": "frame"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "frame + valid",
+    "label_at": [
+     1368,
+     70
+    ],
+    "members": [
+     4
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1354,
+      186.5
+     ],
+     [
+      1368,
+      186.5
+     ],
+     [
+      1368,
+      195
+     ],
+     [
+      1382,
+      195
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "stroke_style": "solid",
+    "target": "sink"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     312,
+     328
+    ],
+    "members": [
+     5
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      395,
+      283
+     ],
+     [
+      395,
+      360
+     ],
+     [
+      237.5,
+      360
+     ],
+     [
+      237.5,
+      240
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "stroke_style": "dashed",
+    "target": "source"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     576,
+     328
+    ],
+    "members": [
+     6
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      659,
+      263.5
+     ],
+     [
+      659,
+      360
+     ],
+     [
+      510,
+      360
+     ],
+     [
+      510,
+      283
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "stroke_style": "dashed",
+    "target": "decode"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     840,
+     328
+    ],
+    "members": [
+     7
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      913,
+      246.5
+     ],
+     [
+      913,
+      360
+     ],
+     [
+      774,
+      360
+     ],
+     [
+      774,
+      263.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "stroke_style": "dashed",
+    "target": "crc"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     1104,
+     328
+    ],
+    "members": [
+     8
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1187,
+      283
+     ],
+     [
+      1187,
+      360
+     ],
+     [
+      1048,
+      360
+     ],
+     [
+      1048,
+      246.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "stroke_style": "dashed",
+    "target": "fifo"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     1368,
+     328
+    ],
+    "members": [
+     9
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1442.5,
+      240
+     ],
+     [
+      1442.5,
+      360
+     ],
+     [
+      1302,
+      360
+     ],
+     [
+      1302,
+      283
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sink",
+    "stroke_style": "dashed",
+    "target": "frame"
+   }
+  ]
+ },
+ "quality": {
+  "geometry_is_not_raster_acceptance": true,
+  "routes_complete": true,
+  "semantic_scope_complete": true,
+  "typography_measured": false
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "pipeline",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "flow",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "No stage latency, initiation interval or cycle schedule has been supplied. Do not invent a timing grid."
+  ],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 6 个模块和 10 条连接。模块包括 Byte Source、Header Decode、CRC Update、Elastic FIFO、Frame Assembly、Frame Sink；可在反馈中增删调整。"
+  ],
+  "category": "pipeline",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "byte + valid",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "source",
+    "target": "decode"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "payload + valid",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "target": "crc"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "updated CRC + valid",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "target": "fifo"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "byte + valid",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "target": "frame"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "frame + valid",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "target": "sink"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "target": "source"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "target": "decode"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "target": "crc"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "target": "fifo"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sink",
+    "target": "frame"
+   }
+  ],
+  "groups": [],
+  "layout": "",
+  "nodes": [
+   {
+    "detail": "Produces ready/valid bytes",
+    "evidence": "",
+    "group": "",
+    "id": "source",
+    "kind": "io",
+    "label": "Byte Source",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Functional stage 0",
+    "evidence": "",
+    "group": "",
+    "id": "decode",
+    "kind": "stage",
+    "label": "Header Decode",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Functional stage 1",
+    "evidence": "",
+    "group": "",
+    "id": "crc",
+    "kind": "stage",
+    "label": "CRC Update",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "2 entries; absorption capacity, not 2-cycle latency",
+    "evidence": "",
+    "group": "",
+    "id": "fifo",
+    "kind": "memory",
+    "label": "Elastic FIFO",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Functional stage 2",
+    "evidence": "",
+    "group": "",
+    "id": "frame",
+    "kind": "stage",
+    "label": "Frame Assembly",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "May apply backpressure",
+    "evidence": "",
+    "group": "",
+    "id": "sink",
+    "kind": "io",
+    "label": "Frame Sink",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [
+   "Stage 0: decode the header.",
+   "Stage 1: update CRC on accepted payload bytes.",
+   "Two-entry FIFO stores pending accepted items.",
+   "Stage 2: assemble a frame.",
+   "The sink can lower ready; do not change unaccepted payload."
+  ],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "Elastic Packet Pipeline",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "grammar": "directed-process",
+  "height": 430,
+  "initial_node_ids": [],
+  "labels": [
+   {
+    "at": [
+     312,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "byte + valid"
+   },
+   {
+    "at": [
+     576,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "payload + valid"
+   },
+   {
+    "at": [
+     830,
+     89.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "updated CRC + valid"
+   },
+   {
+    "at": [
+     1114,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "byte + valid"
+   },
+   {
+    "at": [
+     1368,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "frame + valid"
+   },
+   {
+    "at": [
+     312,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     576,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     840,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     1104,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     8
+    ],
+    "text": "ready"
+   },
+   {
+    "at": [
+     1368,
+     328
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "ready"
+   }
+  ],
+  "macro_edges": [
+   {
+    "evidence": "",
+    "id": "s0",
+    "kind": "data",
+    "label": "byte + valid",
+    "members": [
+     0
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "source",
+    "target": "decode"
+   },
+   {
+    "evidence": "",
+    "id": "s1",
+    "kind": "data",
+    "label": "payload + valid",
+    "members": [
+     1
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "target": "crc"
+   },
+   {
+    "evidence": "",
+    "id": "s2",
+    "kind": "data",
+    "label": "updated CRC + valid",
+    "members": [
+     2
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "target": "fifo"
+   },
+   {
+    "evidence": "",
+    "id": "s3",
+    "kind": "data",
+    "label": "byte + valid",
+    "members": [
+     3
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "target": "frame"
+   },
+   {
+    "evidence": "",
+    "id": "s4",
+    "kind": "data",
+    "label": "frame + valid",
+    "members": [
+     4
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "target": "sink"
+   },
+   {
+    "evidence": "",
+    "id": "s5",
+    "kind": "control",
+    "label": "ready",
+    "members": [
+     5
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "target": "source"
+   },
+   {
+    "evidence": "",
+    "id": "s6",
+    "kind": "control",
+    "label": "ready",
+    "members": [
+     6
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "target": "decode"
+   },
+   {
+    "evidence": "",
+    "id": "s7",
+    "kind": "control",
+    "label": "ready",
+    "members": [
+     7
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "target": "crc"
+   },
+   {
+    "evidence": "",
+    "id": "s8",
+    "kind": "control",
+    "label": "ready",
+    "members": [
+     8
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "target": "fifo"
+   },
+   {
+    "evidence": "",
+    "id": "s9",
+    "kind": "control",
+    "label": "ready",
+    "members": [
+     9
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sink",
+    "target": "frame"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "Produces ready/valid bytes",
+    "evidence": "",
+    "group": "",
+    "id": "source",
+    "kind": "io",
+    "label": "Byte Source",
+    "members": [
+     "source"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Functional stage 0",
+    "evidence": "",
+    "group": "",
+    "id": "decode",
+    "kind": "stage",
+    "label": "Header Decode",
+    "members": [
+     "decode"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Functional stage 1",
+    "evidence": "",
+    "group": "",
+    "id": "crc",
+    "kind": "stage",
+    "label": "CRC Update",
+    "members": [
+     "crc"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "2 entries; absorption capacity, not 2-cycle latency",
+    "evidence": "",
+    "group": "",
+    "id": "fifo",
+    "kind": "memory",
+    "label": "Elastic FIFO",
+    "members": [
+     "fifo"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Functional stage 2",
+    "evidence": "",
+    "group": "",
+    "id": "frame",
+    "kind": "stage",
+    "label": "Frame Assembly",
+    "members": [
+     "frame"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "May apply backpressure",
+    "evidence": "",
+    "group": "",
+    "id": "sink",
+    "kind": "io",
+    "label": "Frame Sink",
+    "members": [
+     "sink"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "monochrome": false,
+  "object_text": {
+   "crc": {
+    "name_lines": [
+     "CRC Update"
+    ],
+    "required_detail_lines": [
+     "Functional",
+     "stage 1"
+    ],
+    "source_detail": [
+     "Functional stage 1"
+    ]
+   },
+   "decode": {
+    "name_lines": [
+     "Header",
+     "Decode"
+    ],
+    "required_detail_lines": [
+     "Functional",
+     "stage 0"
+    ],
+    "source_detail": [
+     "Functional stage 0"
+    ]
+   },
+   "fifo": {
+    "name_lines": [
+     "Elastic FIFO"
+    ],
+    "required_detail_lines": [
+     "2 entries"
+    ],
+    "source_detail": [
+     "2 entries"
+    ]
+   },
+   "frame": {
+    "name_lines": [
+     "Frame",
+     "Assembly"
+    ],
+    "required_detail_lines": [
+     "Functional",
+     "stage 2"
+    ],
+    "source_detail": [
+     "Functional stage 2"
+    ]
+   },
+   "sink": {
+    "name_lines": [
+     "Frame Sink"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   },
+   "source": {
+    "name_lines": [
+     "Byte Source"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   }
+  },
+  "positions": {
+   "crc": [
+    708,
+    195
+   ],
+   "decode": [
+    444,
+    195
+   ],
+   "fifo": [
+    972,
+    195
+   ],
+   "frame": [
+    1236,
+    195
+   ],
+   "sink": [
+    1500,
+    195
+   ],
+   "source": [
+    180,
+    195
+   ]
+  },
+  "reading_direction": "functional dependency progression with separate return/control corridors",
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "byte + valid",
+    "label_at": [
+     312,
+     70
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      298,
+      195
+     ],
+     [
+      312,
+      195
+     ],
+     [
+      312,
+      186.5
+     ],
+     [
+      326,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "source",
+    "stroke_style": "solid",
+    "target": "decode"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "payload + valid",
+    "label_at": [
+     576,
+     70
+    ],
+    "members": [
+     1
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      562,
+      186.5
+     ],
+     [
+      590,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "stroke_style": "solid",
+    "target": "crc"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "updated CRC + valid",
+    "label_at": [
+     830,
+     89.5
+    ],
+    "members": [
+     2
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      826,
+      186.5
+     ],
+     [
+      834,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "stroke_style": "solid",
+    "target": "fifo"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "byte + valid",
+    "label_at": [
+     1114,
+     70
+    ],
+    "members": [
+     3
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1110,
+      186.5
+     ],
+     [
+      1118,
+      186.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "stroke_style": "solid",
+    "target": "frame"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "frame + valid",
+    "label_at": [
+     1368,
+     70
+    ],
+    "members": [
+     4
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1354,
+      186.5
+     ],
+     [
+      1368,
+      186.5
+     ],
+     [
+      1368,
+      195
+     ],
+     [
+      1382,
+      195
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "stroke_style": "solid",
+    "target": "sink"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     312,
+     328
+    ],
+    "members": [
+     5
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      395,
+      283
+     ],
+     [
+      395,
+      360
+     ],
+     [
+      237.5,
+      360
+     ],
+     [
+      237.5,
+      240
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "decode",
+    "stroke_style": "dashed",
+    "target": "source"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     576,
+     328
+    ],
+    "members": [
+     6
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      659,
+      263.5
+     ],
+     [
+      659,
+      360
+     ],
+     [
+      510,
+      360
+     ],
+     [
+      510,
+      283
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "crc",
+    "stroke_style": "dashed",
+    "target": "decode"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     840,
+     328
+    ],
+    "members": [
+     7
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      913,
+      246.5
+     ],
+     [
+      913,
+      360
+     ],
+     [
+      774,
+      360
+     ],
+     [
+      774,
+      263.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fifo",
+    "stroke_style": "dashed",
+    "target": "crc"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     1104,
+     328
+    ],
+    "members": [
+     8
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1187,
+      283
+     ],
+     [
+      1187,
+      360
+     ],
+     [
+      1048,
+      360
+     ],
+     [
+      1048,
+      246.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "frame",
+    "stroke_style": "dashed",
+    "target": "fifo"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ready",
+    "label_at": [
+     1368,
+     328
+    ],
+    "members": [
+     9
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1442.5,
+      240
+     ],
+     [
+      1442.5,
+      360
+     ],
+     [
+      1302,
+      360
+     ],
+     [
+      1302,
+      283
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sink",
+    "stroke_style": "dashed",
+    "target": "frame"
+   }
+  ],
+  "sizes": {
+   "crc": [
+    230,
+    131
+   ],
+   "decode": [
+    230,
+    170
+   ],
+   "fifo": [
+    270,
+    97
+   ],
+   "frame": [
+    230,
+    170
+   ],
+   "sink": [
+    230,
+    84
+   ],
+   "source": [
+    230,
+    84
+   ]
+  },
+  "type": "behavioral",
+  "width": 1800
+ },
+ "version": 1,
+ "warnings": []
+}

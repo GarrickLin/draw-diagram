@@ -1,0 +1,1646 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "lifecycle",
+  "layout_strategy": "semantic-guide",
+  "title": "Tile Filter with Shared Statistics"
+ },
+ "kind": "behavior",
+ "label_layout": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "bank"
+    ],
+    "text": "Frame Tile Bank"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "gather"
+    ],
+    "text": "Tile Gather Buffer"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "filter"
+    ],
+    "text": "Spatial Filter"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "hist"
+    ],
+    "text": "Shared Histogram Service"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "join"
+    ],
+    "text": "Filtered Tile / Statistics Join"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ret"
+    ],
+    "text": "Writeback Buffer"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "sink"
+    ],
+    "text": "Frame Output"
+   },
+   {
+    "at": [
+     345,
+     171.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "2x4 tile selection"
+   },
+   {
+    "at": [
+     685,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "pixels"
+   },
+   {
+    "at": [
+     685,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "pixels + tile ID"
+   },
+   {
+    "at": [
+     1005,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "filtered tile"
+   },
+   {
+    "at": [
+     1005,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "statistics"
+   },
+   {
+    "at": [
+     1325,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "tile update"
+   },
+   {
+    "at": [
+     840,
+     520.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "writeback"
+   },
+   {
+    "at": [
+     1335,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "filtered tile"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "bank"
+    ],
+    "text": "6 banks"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "bank"
+    ],
+    "text": "64-B tile"
+   }
+  ]
+ },
+ "layout_scene": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "bank"
+    ],
+    "text": "Frame Tile Bank"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "gather"
+    ],
+    "text": "Tile Gather Buffer"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "filter"
+    ],
+    "text": "Spatial Filter"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "hist"
+    ],
+    "text": "Shared Histogram Service"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "join"
+    ],
+    "text": "Filtered Tile / Statistics Join"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "ret"
+    ],
+    "text": "Writeback Buffer"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "sink"
+    ],
+    "text": "Frame Output"
+   },
+   {
+    "at": [
+     345,
+     171.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "2x4 tile selection"
+   },
+   {
+    "at": [
+     685,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "pixels"
+   },
+   {
+    "at": [
+     685,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "pixels + tile ID"
+   },
+   {
+    "at": [
+     1005,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "filtered tile"
+   },
+   {
+    "at": [
+     1005,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "statistics"
+   },
+   {
+    "at": [
+     1325,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "tile update"
+   },
+   {
+    "at": [
+     840,
+     520.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "writeback"
+   },
+   {
+    "at": [
+     1335,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "filtered tile"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "bank"
+    ],
+    "text": "6 banks"
+   },
+   {
+    "role": "parameter",
+    "source_node_ids": [
+     "bank"
+    ],
+    "text": "64-B tile"
+   }
+  ],
+  "objects": [
+   {
+    "children": [],
+    "detail": "6 banks; 64-B tile",
+    "evidence": "",
+    "group": "private",
+    "id": "bank",
+    "kind": "memory",
+    "label": "Frame Tile Bank",
+    "members": [
+     "bank"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Coalesce pixel operands",
+    "evidence": "",
+    "group": "private",
+    "id": "gather",
+    "kind": "memory",
+    "label": "Tile Gather Buffer",
+    "members": [
+     "gather"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private filter path",
+    "evidence": "",
+    "group": "private",
+    "id": "filter",
+    "kind": "compute",
+    "label": "Spatial Filter",
+    "members": [
+     "filter"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Shared statistics path",
+    "evidence": "",
+    "group": "shared",
+    "id": "hist",
+    "kind": "compute",
+    "label": "Shared Histogram Service",
+    "members": [
+     "hist"
+    ],
+    "origin": "assumed",
+    "original_group": "shared",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Join both results by tile ID",
+    "evidence": "",
+    "group": "private",
+    "id": "join",
+    "kind": "compute",
+    "label": "Filtered Tile / Statistics Join",
+    "members": [
+     "join"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Return updates to the same tile bank",
+    "evidence": "",
+    "group": "private",
+    "id": "ret",
+    "kind": "memory",
+    "label": "Writeback Buffer",
+    "members": [
+     "ret"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Export filtered tiles",
+    "evidence": "",
+    "group": "",
+    "id": "sink",
+    "kind": "io",
+    "label": "Frame Output",
+    "members": [
+     "sink"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "quality": {
+   "geometry_is_not_raster_acceptance": true,
+   "routes_complete": true,
+   "semantic_scope_complete": true,
+   "typography_measured": false
+  },
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "2x4 tile selection",
+    "label_at": [
+     345,
+     171.5
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      318,
+      277
+     ],
+     [
+      372,
+      277
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank",
+    "stroke_style": "solid",
+    "target": "gather"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "pixels",
+    "label_at": [
+     685,
+     70
+    ],
+    "members": [
+     1
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      648,
+      268.5
+     ],
+     [
+      685,
+      268.5
+     ],
+     [
+      685,
+      152
+     ],
+     [
+      722,
+      152
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "stroke_style": "solid",
+    "target": "filter"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "pixels + tile ID",
+    "label_at": [
+     685,
+     186
+    ],
+    "members": [
+     2
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      648,
+      285.5
+     ],
+     [
+      685,
+      285.5
+     ],
+     [
+      685,
+      402
+     ],
+     [
+      722,
+      402
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "stroke_style": "solid",
+    "target": "hist"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered tile",
+    "label_at": [
+     1005,
+     70
+    ],
+    "members": [
+     3
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      958,
+      152
+     ],
+     [
+      1005,
+      152
+     ],
+     [
+      1005,
+      268.5
+     ],
+     [
+      1052,
+      268.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "filter",
+    "stroke_style": "solid",
+    "target": "join"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "statistics",
+    "label_at": [
+     1005,
+     186
+    ],
+    "members": [
+     4
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      958,
+      402
+     ],
+     [
+      1005,
+      402
+     ],
+     [
+      1005,
+      285.5
+     ],
+     [
+      1052,
+      285.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "hist",
+    "stroke_style": "solid",
+    "target": "join"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "tile update",
+    "label_at": [
+     1325,
+     70
+    ],
+    "members": [
+     5
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1288,
+      268.5
+     ],
+     [
+      1325,
+      268.5
+     ],
+     [
+      1325,
+      152
+     ],
+     [
+      1362,
+      152
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "stroke_style": "solid",
+    "target": "ret"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "writeback",
+    "label_at": [
+     840,
+     520.5
+    ],
+    "members": [
+     6
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1432.5,
+      197
+     ],
+     [
+      1432.5,
+      552.5
+     ],
+     [
+      247.5,
+      552.5
+     ],
+     [
+      247.5,
+      345.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ret",
+    "stroke_style": "solid",
+    "target": "bank"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered tile",
+    "label_at": [
+     1335,
+     186
+    ],
+    "members": [
+     7
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1288,
+      285.5
+     ],
+     [
+      1335,
+      285.5
+     ],
+     [
+      1335,
+      402
+     ],
+     [
+      1382,
+      402
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "stroke_style": "solid",
+    "target": "sink"
+   }
+  ]
+ },
+ "quality": {
+  "geometry_is_not_raster_acceptance": true,
+  "routes_complete": true,
+  "semantic_scope_complete": true,
+  "typography_measured": false
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "dataflow",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "flow",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 7 个模块和 8 条连接。模块包括 Frame Tile Bank、Tile Gather Buffer、Spatial Filter、Shared Histogram Service、Filtered Tile / Statistics Join、Writeback Buffer、Frame Output；可在反馈中增删调整。"
+  ],
+  "category": "dataflow",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "2x4 tile selection",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank",
+    "target": "gather"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "pixels",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "target": "filter"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "pixels + tile ID",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "target": "hist"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered tile",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "filter",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "statistics",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "hist",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "tile update",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "target": "ret"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "writeback",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ret",
+    "target": "bank"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered tile",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "target": "sink"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "private",
+    "label": "Private Tile Channel",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "shared",
+    "label": "Shared Service",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "Gather branches to filter and histogram in parallel; both feed join. Writeback returns to the original bank through an outer corridor; sink is a distinct output.",
+  "nodes": [
+   {
+    "detail": "6 banks; 64-B tile",
+    "evidence": "",
+    "group": "private",
+    "id": "bank",
+    "kind": "memory",
+    "label": "Frame Tile Bank",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Coalesce pixel operands",
+    "evidence": "",
+    "group": "private",
+    "id": "gather",
+    "kind": "memory",
+    "label": "Tile Gather Buffer",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private filter path",
+    "evidence": "",
+    "group": "private",
+    "id": "filter",
+    "kind": "compute",
+    "label": "Spatial Filter",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Shared statistics path",
+    "evidence": "",
+    "group": "shared",
+    "id": "hist",
+    "kind": "compute",
+    "label": "Shared Histogram Service",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Join both results by tile ID",
+    "evidence": "",
+    "group": "private",
+    "id": "join",
+    "kind": "compute",
+    "label": "Filtered Tile / Statistics Join",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Return updates to the same tile bank",
+    "evidence": "",
+    "group": "private",
+    "id": "ret",
+    "kind": "memory",
+    "label": "Writeback Buffer",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Export filtered tiles",
+    "evidence": "",
+    "group": "",
+    "id": "sink",
+    "kind": "io",
+    "label": "Frame Output",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "Tile Filter with Shared Statistics",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "grammar": "directed-process",
+  "height": 622,
+  "initial_node_ids": [],
+  "labels": [
+   {
+    "at": [
+     345,
+     171.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "2x4 tile selection"
+   },
+   {
+    "at": [
+     685,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "pixels"
+   },
+   {
+    "at": [
+     685,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "pixels + tile ID"
+   },
+   {
+    "at": [
+     1005,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "filtered tile"
+   },
+   {
+    "at": [
+     1005,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "statistics"
+   },
+   {
+    "at": [
+     1325,
+     70
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "tile update"
+   },
+   {
+    "at": [
+     840,
+     520.5
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     6
+    ],
+    "text": "writeback"
+   },
+   {
+    "at": [
+     1335,
+     186
+    ],
+    "role": "signal",
+    "source_edge_indices": [
+     7
+    ],
+    "text": "filtered tile"
+   }
+  ],
+  "macro_edges": [
+   {
+    "evidence": "",
+    "id": "s0",
+    "kind": "data",
+    "label": "2x4 tile selection",
+    "members": [
+     0
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank",
+    "target": "gather"
+   },
+   {
+    "evidence": "",
+    "id": "s1",
+    "kind": "data",
+    "label": "pixels",
+    "members": [
+     1
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "target": "filter"
+   },
+   {
+    "evidence": "",
+    "id": "s2",
+    "kind": "data",
+    "label": "pixels + tile ID",
+    "members": [
+     2
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "target": "hist"
+   },
+   {
+    "evidence": "",
+    "id": "s3",
+    "kind": "data",
+    "label": "filtered tile",
+    "members": [
+     3
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "filter",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "id": "s4",
+    "kind": "data",
+    "label": "statistics",
+    "members": [
+     4
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "hist",
+    "target": "join"
+   },
+   {
+    "evidence": "",
+    "id": "s5",
+    "kind": "data",
+    "label": "tile update",
+    "members": [
+     5
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "target": "ret"
+   },
+   {
+    "evidence": "",
+    "id": "s6",
+    "kind": "data",
+    "label": "writeback",
+    "members": [
+     6
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ret",
+    "target": "bank"
+   },
+   {
+    "evidence": "",
+    "id": "s7",
+    "kind": "data",
+    "label": "filtered tile",
+    "members": [
+     7
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "target": "sink"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "6 banks; 64-B tile",
+    "evidence": "",
+    "group": "private",
+    "id": "bank",
+    "kind": "memory",
+    "label": "Frame Tile Bank",
+    "members": [
+     "bank"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Coalesce pixel operands",
+    "evidence": "",
+    "group": "private",
+    "id": "gather",
+    "kind": "memory",
+    "label": "Tile Gather Buffer",
+    "members": [
+     "gather"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Private filter path",
+    "evidence": "",
+    "group": "private",
+    "id": "filter",
+    "kind": "compute",
+    "label": "Spatial Filter",
+    "members": [
+     "filter"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Shared statistics path",
+    "evidence": "",
+    "group": "shared",
+    "id": "hist",
+    "kind": "compute",
+    "label": "Shared Histogram Service",
+    "members": [
+     "hist"
+    ],
+    "origin": "assumed",
+    "original_group": "shared",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Join both results by tile ID",
+    "evidence": "",
+    "group": "private",
+    "id": "join",
+    "kind": "compute",
+    "label": "Filtered Tile / Statistics Join",
+    "members": [
+     "join"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Return updates to the same tile bank",
+    "evidence": "",
+    "group": "private",
+    "id": "ret",
+    "kind": "memory",
+    "label": "Writeback Buffer",
+    "members": [
+     "ret"
+    ],
+    "origin": "assumed",
+    "original_group": "private",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "children": [],
+    "detail": "Export filtered tiles",
+    "evidence": "",
+    "group": "",
+    "id": "sink",
+    "kind": "io",
+    "label": "Frame Output",
+    "members": [
+     "sink"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "monochrome": false,
+  "object_text": {
+   "bank": {
+    "name_lines": [
+     "Frame Tile Bank"
+    ],
+    "required_detail_lines": [
+     "6 banks",
+     "64-B tile"
+    ],
+    "source_detail": [
+     "6 banks",
+     "64-B tile"
+    ]
+   },
+   "filter": {
+    "name_lines": [
+     "Spatial Filter"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   },
+   "gather": {
+    "name_lines": [
+     "Tile Gather",
+     "Buffer"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   },
+   "hist": {
+    "name_lines": [
+     "Shared",
+     "Histogram",
+     "Service"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   },
+   "join": {
+    "name_lines": [
+     "Filtered Tile /",
+     "Statistics Join"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   },
+   "ret": {
+    "name_lines": [
+     "Writeback Buffer"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   },
+   "sink": {
+    "name_lines": [
+     "Frame Output"
+    ],
+    "required_detail_lines": [],
+    "source_detail": []
+   }
+  },
+  "positions": {
+   "bank": [
+    180,
+    277
+   ],
+   "filter": [
+    840,
+    152
+   ],
+   "gather": [
+    510,
+    277
+   ],
+   "hist": [
+    840,
+    402
+   ],
+   "join": [
+    1170,
+    277
+   ],
+   "ret": [
+    1500,
+    152
+   ],
+   "sink": [
+    1500,
+    402
+   ]
+  },
+  "reading_direction": "functional dependency progression with separate return/control corridors",
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "2x4 tile selection",
+    "label_at": [
+     345,
+     171.5
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      318,
+      277
+     ],
+     [
+      372,
+      277
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bank",
+    "stroke_style": "solid",
+    "target": "gather"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "pixels",
+    "label_at": [
+     685,
+     70
+    ],
+    "members": [
+     1
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      648,
+      268.5
+     ],
+     [
+      685,
+      268.5
+     ],
+     [
+      685,
+      152
+     ],
+     [
+      722,
+      152
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "stroke_style": "solid",
+    "target": "filter"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "pixels + tile ID",
+    "label_at": [
+     685,
+     186
+    ],
+    "members": [
+     2
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      648,
+      285.5
+     ],
+     [
+      685,
+      285.5
+     ],
+     [
+      685,
+      402
+     ],
+     [
+      722,
+      402
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "gather",
+    "stroke_style": "solid",
+    "target": "hist"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered tile",
+    "label_at": [
+     1005,
+     70
+    ],
+    "members": [
+     3
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      958,
+      152
+     ],
+     [
+      1005,
+      152
+     ],
+     [
+      1005,
+      268.5
+     ],
+     [
+      1052,
+      268.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "filter",
+    "stroke_style": "solid",
+    "target": "join"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "statistics",
+    "label_at": [
+     1005,
+     186
+    ],
+    "members": [
+     4
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      958,
+      402
+     ],
+     [
+      1005,
+      402
+     ],
+     [
+      1005,
+      285.5
+     ],
+     [
+      1052,
+      285.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "hist",
+    "stroke_style": "solid",
+    "target": "join"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "tile update",
+    "label_at": [
+     1325,
+     70
+    ],
+    "members": [
+     5
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1288,
+      268.5
+     ],
+     [
+      1325,
+      268.5
+     ],
+     [
+      1325,
+      152
+     ],
+     [
+      1362,
+      152
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "stroke_style": "solid",
+    "target": "ret"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "writeback",
+    "label_at": [
+     840,
+     520.5
+    ],
+    "members": [
+     6
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1432.5,
+      197
+     ],
+     [
+      1432.5,
+      552.5
+     ],
+     [
+      247.5,
+      552.5
+     ],
+     [
+      247.5,
+      345.5
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "ret",
+    "stroke_style": "solid",
+    "target": "bank"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "data",
+    "label": "filtered tile",
+    "label_at": [
+     1335,
+     186
+    ],
+    "members": [
+     7
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1288,
+      285.5
+     ],
+     [
+      1335,
+      285.5
+     ],
+     [
+      1335,
+      402
+     ],
+     [
+      1382,
+      402
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "join",
+    "stroke_style": "solid",
+    "target": "sink"
+   }
+  ],
+  "sizes": {
+   "bank": [
+    270,
+    131
+   ],
+   "filter": [
+    230,
+    84
+   ],
+   "gather": [
+    270,
+    102
+   ],
+   "hist": [
+    230,
+    141
+   ],
+   "join": [
+    230,
+    102
+   ],
+   "ret": [
+    270,
+    84
+   ],
+   "sink": [
+    230,
+    84
+   ]
+  },
+  "type": "behavioral",
+  "width": 1800
+ },
+ "version": 1,
+ "warnings": []
+}

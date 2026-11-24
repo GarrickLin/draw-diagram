@@ -1,0 +1,1390 @@
+{
+ "algorithm_flow_plan": {
+  "composition": {
+   "connector_cardinality": [
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      0
+     ],
+     "source_node_id": "q_tile",
+     "target_node_id": "scores"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      1
+     ],
+     "source_node_id": "k_tile",
+     "target_node_id": "scores"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      2
+     ],
+     "source_node_id": "scores",
+     "target_node_id": "online"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      3
+     ],
+     "source_node_id": "state",
+     "target_node_id": "online"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      4
+     ],
+     "source_node_id": "online",
+     "target_node_id": "accumulate"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      5
+     ],
+     "source_node_id": "v_tile",
+     "target_node_id": "accumulate"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      6
+     ],
+     "source_node_id": "state",
+     "target_node_id": "accumulate"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      7
+     ],
+     "source_node_id": "accumulate",
+     "target_node_id": "state"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      8
+     ],
+     "source_node_id": "state",
+     "target_node_id": "normalize"
+    },
+    {
+     "connector_count": 1,
+     "source_edge_indices": [
+      9
+     ],
+     "source_node_id": "normalize",
+     "target_node_id": "output"
+    }
+   ],
+   "dependency_layers": [
+    {
+     "node_ids": [
+      "q_tile",
+      "k_tile",
+      "v_tile"
+     ],
+     "rank": 0
+    },
+    {
+     "node_ids": [
+      "scores"
+     ],
+     "rank": 1
+    },
+    {
+     "node_ids": [
+      "online"
+     ],
+     "rank": 2
+    },
+    {
+     "node_ids": [
+      "accumulate"
+     ],
+     "rank": 3
+    },
+    {
+     "node_ids": [
+      "state"
+     ],
+     "rank": 4
+    },
+    {
+     "node_ids": [
+      "normalize"
+     ],
+     "rank": 5
+    },
+    {
+     "node_ids": [
+      "output"
+     ],
+     "rank": 6
+    }
+   ],
+   "display_columns": [
+    {
+     "column": 0,
+     "node_ids": [
+      "q_tile",
+      "k_tile"
+     ]
+    },
+    {
+     "column": 1,
+     "node_ids": [
+      "scores"
+     ]
+    },
+    {
+     "column": 2,
+     "node_ids": [
+      "v_tile",
+      "online"
+     ]
+    },
+    {
+     "column": 3,
+     "node_ids": [
+      "accumulate"
+     ]
+    },
+    {
+     "column": 4,
+     "node_ids": [
+      "state"
+     ]
+    },
+    {
+     "column": 5,
+     "node_ids": [
+      "normalize"
+     ]
+    },
+    {
+     "column": 6,
+     "node_ids": [
+      "output"
+     ]
+    }
+   ],
+   "grammar": "recurrent-tensor-flow",
+   "group_policy": "compact group headings or short open brackets over actual members; no large empty container frames",
+   "joins": [
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      0,
+      1
+     ],
+     "source_node_ids": [
+      "q_tile",
+      "k_tile"
+     ],
+     "target_node_id": "scores"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      2,
+      3
+     ],
+     "source_node_ids": [
+      "scores",
+      "state"
+     ],
+     "target_node_id": "online"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      4,
+      5,
+      6
+     ],
+     "source_node_ids": [
+      "online",
+      "v_tile",
+      "state"
+     ],
+     "target_node_id": "accumulate"
+    }
+   ],
+   "layer_meaning": "graphical dependency layers only; not cycles, latencies, pipeline stages or serialized execution",
+   "matched_operand_placement": [
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 0,
+     "consumer_node_id": "scores",
+     "source_node_id": "q_tile"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 0,
+     "consumer_node_id": "scores",
+     "source_node_id": "k_tile"
+    },
+    {
+     "basis": "independent supplied operand placed beside its single consumer; dependency rank is unchanged",
+     "column": 2,
+     "consumer_node_id": "accumulate",
+     "source_node_id": "v_tile"
+    }
+   ],
+   "object_budget": "prefer 8–14 main objects per panel; if the complete source is larger, use aligned source-backed panels without dropping leaves or dependencies",
+   "outgoing_contracts": [
+    {
+     "allowed_target_node_ids": [
+      "scores"
+     ],
+     "source_edge_indices": [
+      0
+     ],
+     "source_node_id": "q_tile"
+    },
+    {
+     "allowed_target_node_ids": [
+      "scores"
+     ],
+     "source_edge_indices": [
+      1
+     ],
+     "source_node_id": "k_tile"
+    },
+    {
+     "allowed_target_node_ids": [
+      "accumulate"
+     ],
+     "source_edge_indices": [
+      5
+     ],
+     "source_node_id": "v_tile"
+    },
+    {
+     "allowed_target_node_ids": [
+      "online"
+     ],
+     "source_edge_indices": [
+      2
+     ],
+     "source_node_id": "scores"
+    },
+    {
+     "allowed_target_node_ids": [
+      "accumulate"
+     ],
+     "source_edge_indices": [
+      4
+     ],
+     "source_node_id": "online"
+    },
+    {
+     "allowed_target_node_ids": [
+      "state"
+     ],
+     "source_edge_indices": [
+      7
+     ],
+     "source_node_id": "accumulate"
+    },
+    {
+     "allowed_target_node_ids": [
+      "online",
+      "accumulate",
+      "normalize"
+     ],
+     "source_edge_indices": [
+      3,
+      6,
+      8
+     ],
+     "source_node_id": "state"
+    },
+    {
+     "allowed_target_node_ids": [
+      "output"
+     ],
+     "source_edge_indices": [
+      9
+     ],
+     "source_node_id": "normalize"
+    },
+    {
+     "allowed_target_node_ids": [],
+     "source_edge_indices": [],
+     "source_node_id": "output"
+    }
+   ],
+   "parallel_branches": [
+    {
+     "source_edge_indices": [
+      3,
+      6,
+      8
+     ],
+     "source_node_id": "state",
+     "target_node_ids": [
+      "online",
+      "accumulate",
+      "normalize"
+     ]
+    }
+   ],
+   "primary_reading_axis": "left-to-right dependency order",
+   "recurrence_components": [
+    {
+     "node_ids": [
+      "online",
+      "accumulate",
+      "state"
+     ],
+     "return_edge_indices": [
+      3,
+      6
+     ],
+     "source_edge_indices": [
+      3,
+      4,
+      6,
+      7
+     ]
+    }
+   ],
+   "recurrence_exit_branches": [
+    {
+     "component_node_ids": [
+      "online",
+      "accumulate",
+      "state"
+     ],
+     "kind": "data",
+     "label": "final l, A; after all KV tiles",
+     "placement": "separate terminal branch originating at its exact source; outside the recurrent kernel",
+     "source_edge_index": 8,
+     "source_node_id": "state",
+     "target_node_id": "normalize"
+    }
+   ],
+   "residency_labels": [
+    {
+     "source_group": "g_resident",
+     "source_node_ids": [
+      "q_tile"
+     ],
+     "text": "On chip; reused across j"
+    },
+    {
+     "source_group": "g_stream",
+     "source_node_ids": [
+      "k_tile",
+      "v_tile"
+     ],
+     "text": "Loaded from HBM each j"
+    },
+    {
+     "source_group": "g_iteration",
+     "source_node_ids": [
+      "scores",
+      "online"
+     ],
+     "text": "Transient on chip"
+    },
+    {
+     "source_group": "g_iteration",
+     "source_node_ids": [
+      "accumulate"
+     ],
+     "text": "On chip"
+    },
+    {
+     "source_group": "g_resident",
+     "source_node_ids": [
+      "state"
+     ],
+     "text": "On chip; persists across j"
+    },
+    {
+     "source_group": "",
+     "source_node_ids": [
+      "output"
+     ],
+     "text": "Output to HBM"
+    }
+   ],
+   "return_edge_indices": [
+    3,
+    6
+   ],
+   "state_lane_node_ids": [
+    "state"
+   ]
+  },
+  "groups": [
+   {
+    "evidence": "Q tile 和状态驻留片上，K/V 逐块装入",
+    "id": "g_resident",
+    "label": "Resident on chip",
+    "member_node_ids": [
+     "q_tile",
+     "state"
+    ],
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "Q tile 和状态驻留片上，K/V 逐块装入",
+    "id": "g_stream",
+    "label": "KV tile j",
+    "member_node_ids": [
+     "k_tile",
+     "v_tile"
+    ],
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "Q tile 和状态驻留片上，K/V 逐块装入",
+    "id": "g_iteration",
+    "label": "Repeat over KV tiles",
+    "member_node_ids": [
+     "scores",
+     "online",
+     "accumulate"
+    ],
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   }
+  ],
+  "motifs": {
+   "data_residency": [
+    {
+     "residency": "On chip; reused across j",
+     "source_node_id": "q_tile"
+    },
+    {
+     "residency": "Loaded from HBM each j",
+     "source_node_id": "k_tile"
+    },
+    {
+     "residency": "Loaded from HBM each j",
+     "source_node_id": "v_tile"
+    },
+    {
+     "residency": "Transient on chip",
+     "source_node_id": "scores"
+    },
+    {
+     "residency": "Transient on chip",
+     "source_node_id": "online"
+    },
+    {
+     "residency": "On chip",
+     "source_node_id": "accumulate"
+    },
+    {
+     "residency": "On chip; persists across j",
+     "source_node_id": "state"
+    },
+    {
+     "residency": "Output to HBM",
+     "source_node_id": "output"
+    }
+   ],
+   "joins": [
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      0,
+      1
+     ],
+     "source_node_ids": [
+      "q_tile",
+      "k_tile"
+     ],
+     "target_node_id": "scores"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      2,
+      3
+     ],
+     "source_node_ids": [
+      "scores",
+      "state"
+     ],
+     "target_node_id": "online"
+    },
+    {
+     "meaning": "separate supplied operands/dependencies; fan-in alone does not imply a reduction",
+     "source_edge_indices": [
+      4,
+      5,
+      6
+     ],
+     "source_node_ids": [
+      "online",
+      "v_tile",
+      "state"
+     ],
+     "target_node_id": "accumulate"
+    }
+   ],
+   "parallel_branches": [
+    {
+     "source_edge_indices": [
+      3,
+      6,
+      8
+     ],
+     "source_node_id": "state",
+     "target_node_ids": [
+      "online",
+      "accumulate",
+      "normalize"
+     ]
+    }
+   ],
+   "recurrence_components": [
+    {
+     "node_ids": [
+      "online",
+      "accumulate",
+      "state"
+     ],
+     "return_edge_indices": [
+      3,
+      6
+     ],
+     "source_edge_indices": [
+      3,
+      4,
+      6,
+      7
+     ]
+    }
+   ],
+   "recurrence_exits": [
+    {
+     "component_node_ids": [
+      "online",
+      "accumulate",
+      "state"
+     ],
+     "kind": "data",
+     "label": "final l, A; after all KV tiles",
+     "placement": "separate terminal branch originating at its exact source; outside the recurrent kernel",
+     "source_edge_index": 8,
+     "source_node_id": "state",
+     "target_node_id": "normalize"
+    }
+   ],
+   "reductions": [
+    "online"
+   ],
+   "tensor_shapes": [
+    {
+     "shape": "B_r × d_k",
+     "source_node_id": "q_tile"
+    },
+    {
+     "shape": "B_c × d_k",
+     "source_node_id": "k_tile"
+    },
+    {
+     "shape": "B_c × d_v",
+     "source_node_id": "v_tile"
+    },
+    {
+     "shape": "B_r × B_c",
+     "source_node_id": "scores"
+    },
+    {
+     "shape": "P_j: B_r × B_c; m_new, alpha: B_r",
+     "source_node_id": "online"
+    },
+    {
+     "shape": "l_new: B_r; A_new: B_r × d_v",
+     "source_node_id": "accumulate"
+    },
+    {
+     "shape": "m, l: B_r; A: B_r × d_v",
+     "source_node_id": "state"
+    },
+    {
+     "shape": "B_r × d_v",
+     "source_node_id": "normalize"
+    },
+    {
+     "shape": "B_r × d_v",
+     "source_node_id": "output"
+    }
+   ]
+  },
+  "objects": [
+   {
+    "detail": "Fixed query tile",
+    "evidence": "Q_i 为 B_r × d_k",
+    "label": "Q_i",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "On chip; reused across j",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Fixed query tile",
+     "diagram_role": "tensor",
+     "kind": "memory",
+     "label": "Q_i",
+     "residency": "On chip; reused across j",
+     "tensor_shape": "B_r × d_k"
+    },
+    "source_group": "g_resident",
+    "source_node_id": "q_tile",
+    "tensor_shape": "B_r × d_k",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Fixed query tile"
+     ],
+     "mathematical_lines": [],
+     "name": "Q_i",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "B_r × d_k"
+    }
+   },
+   {
+    "detail": "Current key tile",
+    "evidence": "K_j 为 B_c × d_k",
+    "label": "K_j",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "Loaded from HBM each j",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Current key tile",
+     "diagram_role": "tensor",
+     "kind": "memory",
+     "label": "K_j",
+     "residency": "Loaded from HBM each j",
+     "tensor_shape": "B_c × d_k"
+    },
+    "source_group": "g_stream",
+    "source_node_id": "k_tile",
+    "tensor_shape": "B_c × d_k",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Current key tile"
+     ],
+     "mathematical_lines": [],
+     "name": "K_j",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "B_c × d_k"
+    }
+   },
+   {
+    "detail": "Current value tile",
+    "evidence": "V_j 为 B_c × d_v",
+    "label": "V_j",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "Loaded from HBM each j",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Current value tile",
+     "diagram_role": "tensor",
+     "kind": "memory",
+     "label": "V_j",
+     "residency": "Loaded from HBM each j",
+     "tensor_shape": "B_c × d_v"
+    },
+    "source_group": "g_stream",
+    "source_node_id": "v_tile",
+    "tensor_shape": "B_c × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Current value tile"
+     ],
+     "mathematical_lines": [],
+     "name": "V_j",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "B_c × d_v"
+    }
+   },
+   {
+    "detail": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "evidence": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "label": "Tile scores",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "Transient on chip",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "S_j = Q_i K_j^T / sqrt(d_k)",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Tile scores",
+     "residency": "Transient on chip",
+     "tensor_shape": "B_r × B_c"
+    },
+    "source_group": "g_iteration",
+    "source_node_id": "scores",
+    "tensor_shape": "B_r × B_c",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "S_j = Q_i K_j^T / sqrt(d_k)"
+     ],
+     "name": "Tile scores",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B_r × B_c"
+    }
+   },
+   {
+    "detail": "m_new = max(m, rowmax(S_j)); alpha = exp(m - m_new); P_j = exp(S_j - m_new)",
+    "evidence": "m_new = max(m, rowmax(S_j))，alpha = exp(m - m_new)，P_j = exp(S_j - m_new)",
+    "label": "Online row normalization",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "Transient on chip",
+    "role": "reduction",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "reduction",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "m_new = max(m, rowmax(S_j)); alpha = exp(m - m_new); P_j = exp(S_j - m_new)",
+     "diagram_role": "reduction",
+     "kind": "compute",
+     "label": "Online row normalization",
+     "residency": "Transient on chip",
+     "tensor_shape": "P_j: B_r × B_c; m_new, alpha: B_r"
+    },
+    "source_group": "g_iteration",
+    "source_node_id": "online",
+    "tensor_shape": "P_j: B_r × B_c; m_new, alpha: B_r",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "m_new = max(m, rowmax(S_j))",
+      "alpha = exp(m - m_new)",
+      "P_j = exp(S_j - m_new)"
+     ],
+     "name": "Online row normalization",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "P_j: B_r × B_c; m_new, alpha: B_r"
+    }
+   },
+   {
+    "detail": "l_new = alpha*l + rowsum(P_j); A_new = diag(alpha)A + P_j V_j",
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "label": "Update accumulators",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "On chip",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "l_new = alpha*l + rowsum(P_j); A_new = diag(alpha)A + P_j V_j",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Update accumulators",
+     "residency": "On chip",
+     "tensor_shape": "l_new: B_r; A_new: B_r × d_v"
+    },
+    "source_group": "g_iteration",
+    "source_node_id": "accumulate",
+    "tensor_shape": "l_new: B_r; A_new: B_r × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "l_new = alpha*l + rowsum(P_j)",
+      "A_new = diag(alpha)A + P_j V_j"
+     ],
+     "name": "Update accumulators",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "l_new: B_r; A_new: B_r × d_v"
+    }
+   },
+   {
+    "detail": "Initialize m = -inf, l = 0, A = 0; update to m_new, l_new, A_new after each j",
+    "evidence": "状态初值 m=-inf、l=0、A=0；每个 tile 更新后反馈供下个 j 使用",
+    "label": "Running state (m, l, A)",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "On chip; persists across j",
+    "role": "state",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "state",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Initialize m = -inf, l = 0, A = 0; update to m_new, l_new, A_new after each j",
+     "diagram_role": "state",
+     "kind": "state",
+     "label": "Running state (m, l, A)",
+     "residency": "On chip; persists across j",
+     "tensor_shape": "m, l: B_r; A: B_r × d_v"
+    },
+    "source_group": "g_resident",
+    "source_node_id": "state",
+    "tensor_shape": "m, l: B_r; A: B_r × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "update to m_new, l_new, A_new after each j"
+     ],
+     "mathematical_lines": [
+      "m = -inf, l = 0, A = 0"
+     ],
+     "name": "Running state (m, l, A)",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "m, l: B_r; A: B_r × d_v"
+    }
+   },
+   {
+    "detail": "After all KV tiles: O_i = diag(l)^(-1)A",
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "label": "Final row normalization",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "",
+    "role": "operator",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "operator",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "After all KV tiles: O_i = diag(l)^(-1)A",
+     "diagram_role": "operator",
+     "kind": "compute",
+     "label": "Final row normalization",
+     "tensor_shape": "B_r × d_v"
+    },
+    "source_group": "",
+    "source_node_id": "normalize",
+    "tensor_shape": "B_r × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [],
+     "mathematical_lines": [
+      "O_i = diag(l)^(-1)A"
+     ],
+     "name": "Final row normalization",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "at output path",
+     "shape_once": "B_r × d_v"
+    }
+   },
+   {
+    "detail": "Write the completed query-tile output",
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "label": "O_i",
+    "origin": "given",
+    "reduction_axis": "",
+    "residency": "Output to HBM",
+    "role": "tensor",
+    "role_basis": {
+     "fields": [
+      "diagram_role"
+     ],
+     "text": "tensor",
+     "type": "supplied"
+    },
+    "source_fields": {
+     "detail": "Write the completed query-tile output",
+     "diagram_role": "tensor",
+     "kind": "io",
+     "label": "O_i",
+     "residency": "Output to HBM",
+     "tensor_shape": "B_r × d_v"
+    },
+    "source_group": "",
+    "source_node_id": "output",
+    "tensor_shape": "B_r × d_v",
+    "text_plan": {
+     "axis_lines": [],
+     "caption_only_detail": [
+      "Write the completed query-tile output"
+     ],
+     "mathematical_lines": [],
+     "name": "O_i",
+     "policy": "Name once, expression once and shape once for each supplied object/output; repeated symbols inside actual equations are valid. Do not duplicate dimensions below silhouettes and inside labels.",
+     "shape_location": "beside the mathematical object",
+     "shape_once": "B_r × d_v"
+    }
+   }
+  ],
+  "relations": [
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "kind": "data",
+    "label": "Q_i",
+    "origin": "given",
+    "rationale": "",
+    "source": "q_tile",
+    "source_edge_index": 0,
+    "target": "scores"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "kind": "data",
+    "label": "K_j",
+    "origin": "given",
+    "rationale": "",
+    "source": "k_tile",
+    "source_edge_index": 1,
+    "target": "scores"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "m_new = max(m, rowmax(S_j))，alpha = exp(m - m_new)，P_j = exp(S_j - m_new)",
+    "kind": "data",
+    "label": "S_j",
+    "origin": "given",
+    "rationale": "",
+    "source": "scores",
+    "source_edge_index": 2,
+    "target": "online"
+   },
+   {
+    "display_role": "state operand/update",
+    "display_stroke": "solid",
+    "evidence": "m_new = max(m, rowmax(S_j))，alpha = exp(m - m_new)，P_j = exp(S_j - m_new)",
+    "kind": "feedback",
+    "label": "previous m",
+    "origin": "given",
+    "rationale": "",
+    "source": "state",
+    "source_edge_index": 3,
+    "target": "online"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "kind": "data",
+    "label": "P_j, alpha, m_new",
+    "origin": "given",
+    "rationale": "",
+    "source": "online",
+    "source_edge_index": 4,
+    "target": "accumulate"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "kind": "data",
+    "label": "V_j",
+    "origin": "given",
+    "rationale": "",
+    "source": "v_tile",
+    "source_edge_index": 5,
+    "target": "accumulate"
+   },
+   {
+    "display_role": "state operand/update",
+    "display_stroke": "solid",
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "kind": "feedback",
+    "label": "previous l, A",
+    "origin": "given",
+    "rationale": "",
+    "source": "state",
+    "source_edge_index": 6,
+    "target": "accumulate"
+   },
+   {
+    "display_role": "state operand/update",
+    "display_stroke": "solid",
+    "evidence": "状态初值 m=-inf、l=0、A=0；每个 tile 更新后反馈供下个 j 使用",
+    "kind": "feedback",
+    "label": "m_new, l_new, A_new",
+    "origin": "given",
+    "rationale": "",
+    "source": "accumulate",
+    "source_edge_index": 7,
+    "target": "state"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "kind": "data",
+    "label": "final l, A; after all KV tiles",
+    "origin": "given",
+    "rationale": "",
+    "source": "state",
+    "source_edge_index": 8,
+    "target": "normalize"
+   },
+   {
+    "display_role": "data/dependency",
+    "display_stroke": "solid",
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "kind": "data",
+    "label": "O_i",
+    "origin": "given",
+    "rationale": "",
+    "source": "normalize",
+    "source_edge_index": 9,
+    "target": "output"
+   }
+  ],
+  "semantic_policy": "Shapes, axes, tiles and residency are shown only when supplied. Separate operands remain separate. Visible source cycles retain exact direction. A graphical join is not a reduction, matrix multiply is not elementwise multiplication, and no tensor is silently a hardware memory.",
+  "source_hash": "52f412ea1919fa432a6f4614de69209078a30a854eaed729fc77d941f69ada8b",
+  "version": "ALGO1"
+ },
+ "figure": {
+  "design_limit": null,
+  "id": "algorithm-flow",
+  "layout_strategy": "algorithm-dependency-plan",
+  "title": "Tiled Online Attention"
+ },
+ "kind": "algorithm",
+ "label_layout": null,
+ "layout_scene": {},
+ "quality": {},
+ "settings": {
+  "aspect": "auto",
+  "category": "dataflow",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "flow",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Row vectors broadcast across score columns and accumulator columns as appropriate.",
+   "P_j contains unnormalized exponentials; normalization occurs once after the tile loop.",
+   "Only tile-local scores and probabilities exist on chip; no dense N × N intermediate is written to HBM."
+  ],
+  "assumptions": [
+   "Unmasked single-head forward attention; no dropout, backward pass or logsumexp output.",
+   "Boundary tiles may be shorter; padding and scheduling details are omitted."
+  ],
+  "category": "dataflow",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "kind": "data",
+    "label": "Q_i",
+    "origin": "given",
+    "rationale": "",
+    "source": "q_tile",
+    "target": "scores"
+   },
+   {
+    "evidence": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "kind": "data",
+    "label": "K_j",
+    "origin": "given",
+    "rationale": "",
+    "source": "k_tile",
+    "target": "scores"
+   },
+   {
+    "evidence": "m_new = max(m, rowmax(S_j))，alpha = exp(m - m_new)，P_j = exp(S_j - m_new)",
+    "kind": "data",
+    "label": "S_j",
+    "origin": "given",
+    "rationale": "",
+    "source": "scores",
+    "target": "online"
+   },
+   {
+    "evidence": "m_new = max(m, rowmax(S_j))，alpha = exp(m - m_new)，P_j = exp(S_j - m_new)",
+    "kind": "feedback",
+    "label": "previous m",
+    "origin": "given",
+    "rationale": "",
+    "source": "state",
+    "target": "online"
+   },
+   {
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "kind": "data",
+    "label": "P_j, alpha, m_new",
+    "origin": "given",
+    "rationale": "",
+    "source": "online",
+    "target": "accumulate"
+   },
+   {
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "kind": "data",
+    "label": "V_j",
+    "origin": "given",
+    "rationale": "",
+    "source": "v_tile",
+    "target": "accumulate"
+   },
+   {
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "kind": "feedback",
+    "label": "previous l, A",
+    "origin": "given",
+    "rationale": "",
+    "source": "state",
+    "target": "accumulate"
+   },
+   {
+    "evidence": "状态初值 m=-inf、l=0、A=0；每个 tile 更新后反馈供下个 j 使用",
+    "kind": "feedback",
+    "label": "m_new, l_new, A_new",
+    "origin": "given",
+    "rationale": "",
+    "source": "accumulate",
+    "target": "state"
+   },
+   {
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "kind": "data",
+    "label": "final l, A; after all KV tiles",
+    "origin": "given",
+    "rationale": "",
+    "source": "state",
+    "target": "normalize"
+   },
+   {
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "kind": "data",
+    "label": "O_i",
+    "origin": "given",
+    "rationale": "",
+    "source": "normalize",
+    "target": "output"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "Q tile 和状态驻留片上，K/V 逐块装入",
+    "id": "g_resident",
+    "label": "Resident on chip",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "Q tile 和状态驻留片上，K/V 逐块装入",
+    "id": "g_stream",
+    "label": "KV tile j",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   },
+   {
+    "evidence": "Q tile 和状态驻留片上，K/V 逐块装入",
+    "id": "g_iteration",
+    "label": "Repeat over KV tiles",
+    "origin": "given",
+    "parent": "",
+    "rationale": ""
+   }
+  ],
+  "layout": "Show the one-tile computation with parallel K_j and V_j inputs and a fixed Q_i input. Put persistent (m,l,A) state in a distinct nearby lane, with original feedback directions returning previous m to row normalization and previous l,A to accumulation. Accumulator updates return to state. Route final l,A to the final normalization only after j completes; this exit is distinct from the recurrence. Loop frame means repeat over tiles, not physical copies. Do not draw dense N × N storage or invent extra tile-index control edges.",
+  "nodes": [
+   {
+    "detail": "Fixed query tile",
+    "diagram_role": "tensor",
+    "evidence": "Q_i 为 B_r × d_k",
+    "group": "g_resident",
+    "id": "q_tile",
+    "kind": "memory",
+    "label": "Q_i",
+    "origin": "given",
+    "rationale": "",
+    "residency": "On chip; reused across j",
+    "tensor_shape": "B_r × d_k"
+   },
+   {
+    "detail": "Current key tile",
+    "diagram_role": "tensor",
+    "evidence": "K_j 为 B_c × d_k",
+    "group": "g_stream",
+    "id": "k_tile",
+    "kind": "memory",
+    "label": "K_j",
+    "origin": "given",
+    "rationale": "",
+    "residency": "Loaded from HBM each j",
+    "tensor_shape": "B_c × d_k"
+   },
+   {
+    "detail": "Current value tile",
+    "diagram_role": "tensor",
+    "evidence": "V_j 为 B_c × d_v",
+    "group": "g_stream",
+    "id": "v_tile",
+    "kind": "memory",
+    "label": "V_j",
+    "origin": "given",
+    "rationale": "",
+    "residency": "Loaded from HBM each j",
+    "tensor_shape": "B_c × d_v"
+   },
+   {
+    "detail": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "diagram_role": "operator",
+    "evidence": "S_j = Q_i K_j^T / sqrt(d_k)",
+    "group": "g_iteration",
+    "id": "scores",
+    "kind": "compute",
+    "label": "Tile scores",
+    "origin": "given",
+    "rationale": "",
+    "residency": "Transient on chip",
+    "tensor_shape": "B_r × B_c"
+   },
+   {
+    "detail": "m_new = max(m, rowmax(S_j)); alpha = exp(m - m_new); P_j = exp(S_j - m_new)",
+    "diagram_role": "reduction",
+    "evidence": "m_new = max(m, rowmax(S_j))，alpha = exp(m - m_new)，P_j = exp(S_j - m_new)",
+    "group": "g_iteration",
+    "id": "online",
+    "kind": "compute",
+    "label": "Online row normalization",
+    "origin": "given",
+    "rationale": "",
+    "residency": "Transient on chip",
+    "tensor_shape": "P_j: B_r × B_c; m_new, alpha: B_r"
+   },
+   {
+    "detail": "l_new = alpha*l + rowsum(P_j); A_new = diag(alpha)A + P_j V_j",
+    "diagram_role": "operator",
+    "evidence": "l_new = alpha*l + rowsum(P_j)，A_new = diag(alpha)A + P_j V_j",
+    "group": "g_iteration",
+    "id": "accumulate",
+    "kind": "compute",
+    "label": "Update accumulators",
+    "origin": "given",
+    "rationale": "",
+    "residency": "On chip",
+    "tensor_shape": "l_new: B_r; A_new: B_r × d_v"
+   },
+   {
+    "detail": "Initialize m = -inf, l = 0, A = 0; update to m_new, l_new, A_new after each j",
+    "diagram_role": "state",
+    "evidence": "状态初值 m=-inf、l=0、A=0；每个 tile 更新后反馈供下个 j 使用",
+    "group": "g_resident",
+    "id": "state",
+    "kind": "state",
+    "label": "Running state (m, l, A)",
+    "origin": "given",
+    "rationale": "",
+    "residency": "On chip; persists across j",
+    "tensor_shape": "m, l: B_r; A: B_r × d_v"
+   },
+   {
+    "detail": "After all KV tiles: O_i = diag(l)^(-1)A",
+    "diagram_role": "operator",
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "group": "",
+    "id": "normalize",
+    "kind": "compute",
+    "label": "Final row normalization",
+    "origin": "given",
+    "rationale": "",
+    "tensor_shape": "B_r × d_v"
+   },
+   {
+    "detail": "Write the completed query-tile output",
+    "diagram_role": "tensor",
+    "evidence": "所有 K/V tiles 完成后才输出 O_i=diag(l)^(-1)A",
+    "group": "",
+    "id": "output",
+    "kind": "io",
+    "label": "O_i",
+    "origin": "given",
+    "rationale": "",
+    "residency": "Output to HBM",
+    "tensor_shape": "B_r × d_v"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "A fixed query tile consumes successive key/value tiles; online row statistics and an unnormalized output accumulator persist across iterations.",
+  "title": "Tiled Online Attention",
+  "verbatim_labels": []
+ },
+ "structure_layout": null,
+ "version": 1,
+ "warnings": []
+}

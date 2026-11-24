@@ -1,0 +1,82 @@
+draw-diagram skill
+
+This skill bundles software, documentation, data and fonts from the projects below.
+Each keeps its own licence; the full texts are in the files named.
+
+
+1. draw.io MCP Server
+   Copyright draw.io Ltd (JGraph Ltd)
+   https://github.com/jgraph/drawio-mcp, commit a7d1ead5397200659239269a6fe9ae431cbfe27d (2026-11-20)
+   Apache License 2.0: scripts/vendor/drawio/LICENSE
+
+   Copied without modification:
+     scripts/vendor/drawio/convert/*.js        from shared/convert/
+     scripts/vendor/drawio/semantic/*.js       from shared/semantic/
+     scripts/vendor/drawio/diagram-shorthand.js, grid-layout.js, grid-lines.js,
+       icon-resolver.js, icon-table.js, mx-model.js, mx-xml.js, normalize-model.js,
+       repair-xml.js, shape-search.js           from shared/
+     scripts/data/shape-index.json             from shape-search/search-index.json
+     references/xml-essentials.md, xml-reference.md, style-reference.md   from shared/
+
+   Modified:
+     references/mermaid-reference.md
+       Shortened from shared/mermaid-reference.md to the three Mermaid types that
+       convert offline (flowchart, sequenceDiagram, erDiagram); the other types and the
+       ELK section were removed, the introduction and closing section rewritten, and
+       the title example completed.
+
+   SKILL.md is written for this skill; its direct path follows the structure and XML
+   rules of plugins/claude-code/skills/drawio/SKILL.md.
+
+
+2. Silicon Canvas
+   Copyright (c) 2026 Jiale Wang
+   https://github.com/du-du-wang/silicon-canvas, commit 7b590daf2217acc5a95d5c40d289d56d91a9fbfc
+   MIT License: scripts/vendor/silicon/LICENSE
+
+   scripts/vendor/silicon/silicon_canvas/ is src/silicon_canvas/ of that commit, with:
+     Modified (diff in scripts/vendor/silicon/silicon.patch):
+       publication_render.py  font() measures text with scripts/data/widths.json
+                              (Helvetica metrics) instead of the bundled Noto font
+       structure_scene.py     label placement measures text the same way and needs
+                              no font file or image
+     Not copied:
+       mcp_server.py, provider.py, service.py   (MCP server and DeepSeek client)
+       fonts/                                    (Noto Sans CJK SC, OFL-1.1; not needed)
+     Every other file is unmodified. scripts/vendor/silicon/UPSTREAM records the source.
+
+   scripts/py/bridge.py calls this engine; it is not part of Silicon Canvas.
+
+
+3. diagram-render
+   Copyright 2026 nowmyagentcan
+   https://github.com/nowmyagentcan/diagram-render, commit 55eb15b2c7ca04abbcb2843967874eca265fc4fa
+   Apache License 2.0: scripts/vendor/diagram-render/LICENSE
+   Upstream notice: scripts/vendor/diagram-render/NOTICE
+
+   scripts/vendor/diagram-render/diagram_render.wasm is built from that commit with
+   tools/diagram-render-wasm/wasm.patch applied (tools/diagram-render-wasm/build.sh).
+   The patch modifies Cargo.toml, src/raster.rs, src/leash.rs and
+   src/excalidraw/text.rs, and adds src/lib.rs and src/wasm.rs. The Mermaid, Graphviz
+   and D2 engines of the upstream release are not included.
+
+
+4. Liberation fonts 2.1.5
+   Digitized data copyright (c) 2010 Google Corporation with Reserved Font Arimo,
+   Tinos and Cousine. Copyright (c) 2012 Red Hat, Inc. with Reserved Font Name
+   Liberation.
+   SIL Open Font License 1.1: scripts/vendor/diagram-render/fonts/LICENSE
+   scripts/vendor/diagram-render/fonts/*.ttf are unmodified, taken from the
+   diagram-render v0.1.0 linux-x64 release.
+   scripts/data/widths.json holds advance widths measured from LiberationSans-Regular
+   and -Bold by tools/widths/build_widths.py; the ASCII range equals the Helvetica table
+   of draw.io's shared/semantic/text-width.js.
+
+
+Written for this skill (not from the projects above):
+  SKILL.md, NOTICE
+  scripts/draw-diagram.js, scripts/package.json
+  scripts/lib/**  (CLI, converters from layout to draw.io XML, check, render loader,
+                   text widths, state)
+  scripts/py/bridge.py
+  scripts/data/widths.json  (measured data, see 4)

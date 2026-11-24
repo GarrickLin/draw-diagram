@@ -1,0 +1,124 @@
+--- a/src/silicon_canvas/publication_render.py	2026-11-24 14:28:41.420272047 +0800
++++ b/src/silicon_canvas/publication_render.py	2026-11-24 18:48:32.941427361 +0800
+@@ -18,13 +18,63 @@
+     return str(path) if path.is_file() else None
+ 
+ 
++# draw-diagram: layout measures text with the skill's width table (Liberation Sans, which has
++# Helvetica's widths), the same table lib/text-width.js reads, instead of the bundled Noto font.
++# draw.io shows the labels in Helvetica, so boxes are sized for the font they are drawn in.
++_WIDTHS = None
++
++
++def _width_table():
++    global _WIDTHS
++    if _WIDTHS is None:
++        import json
++        import os
++        path = os.environ.get("DRAW_DIAGRAM_WIDTHS") or Path(__file__).resolve().parents[3] / "data" / "widths.json"
++        with open(path, encoding="utf-8") as stream:
++            _WIDTHS = json.load(stream)
++    return _WIDTHS
++
++
++def _is_wide(code):
++    return (0x1100 <= code <= 0x115F or 0x2E80 <= code <= 0xA4CF or 0xAC00 <= code <= 0xD7A3
++            or 0xF900 <= code <= 0xFAFF or 0xFE30 <= code <= 0xFE4F or 0xFF00 <= code <= 0xFF60
++            or 0xFFE0 <= code <= 0xFFE6 or code >= 0x1F000)
++
++
++def text_em(text, bold=False):
++    """Width of one line in 1/1000 em; the rules of lib/text-width.js textEm."""
++    table = _width_table()
++    style = table["bold" if bold else "regular"]
++    fallback = style["ascii"][ord(table["fallback"]) - 32]
++    em = 0
++    for ch in str(text):
++        code = ord(ch)
++        if 32 <= code <= 126:
++            em += style["ascii"][code - 32]
++        elif _is_wide(code):
++            em += table["unitsPerEm"] * table["wideEm"]
++        elif ch in style["extra"]:
++            em += style["extra"][ch]
++        elif code < 32:
++            pass
++        else:
++            em += fallback
++    return em
++
++
++class WidthFace:
++    """What layout needs of a PIL font: `size` and `getlength`."""
++
++    def __init__(self, size):
++        self.size = size
++
++    def getlength(self, text):
++        return text_em(text) * self.size / _width_table()["unitsPerEm"]
++
++
+ @lru_cache(maxsize=32)
+ def font(size):
+-    from PIL import ImageFont
+-    path = font_path()
+-    if not path:
+-        raise RuntimeError("A sans-serif font is required for measured layout")
+-    return ImageFont.truetype(path, max(1, round(size)), layout_engine=ImageFont.Layout.BASIC)
++    return WidthFace(max(1, round(size)))
+ 
+ 
+ def pixels_for_points(points, width=1800, target_width_mm=160):
+--- a/src/silicon_canvas/structure_scene.py	2026-11-24 14:28:41.421568150 +0800
++++ b/src/silicon_canvas/structure_scene.py	2026-11-24 18:48:32.941632941 +0800
+@@ -362,6 +362,16 @@
+     return {'width':width,'height':height,'routes':routes,'line_legend':family_of,'quality':{'routes_complete':not failures,'failed_routes':failures,'route_count':len(routes),'requested_routes':len(links),'no_common_bus_inferred':True}}
+ 
+ 
++class _MeasureOnly:
++    """An ImageDraw stand-in that measures with WidthFace and draws nothing."""
++
++    def textlength(self, text, font=None):
++        return font.getlength(text)
++
++    def __getattr__(self, name):
++        return lambda *args, **kwargs: None
++
++
+ def render(result,figure,labels_only=False):
+     plan=figure.get('structure_layout')
+     if not plan:return None
+@@ -381,18 +391,25 @@
+                 x0,y0=box['x'],box['y'];x1,y1=x0+box['width'],y0+box['height']
+                 if abs(a[0]-b[0])<=1e-5 and x0+1e-5<a[0]<x1-1e-5 and max(min(a[1],b[1]),y0)<min(max(a[1],b[1]),y1)-1e-5:return None
+                 if abs(a[1]-b[1])<=1e-5 and y0+1e-5<a[1]<y1-1e-5 and max(min(a[0],b[0]),x0)<min(max(a[0],b[0]),x1)-1e-5:return None
+-    try:
+-        from PIL import Image,ImageDraw,ImageFont
+-    except ImportError:return None
+-    from .publication_render import font_path as shared_font_path
+-    font_path=shared_font_path()
+-    if font_path is None:return None
+     width,height=scene['width'],scene['height']
+     if plan.get('flow_basis')=='control' and plan['canvas'].get('label_unit_pixels',0)>40:
+         width=1100;height=round(scene['height']*width/scene['width'])
+     palette=result_palette(result)
+-    img=Image.new('RGB',(width,height),palette['background']);draw=ImageDraw.Draw(img)
+-    fonts={size:ImageFont.truetype(str(font_path),size,layout_engine=ImageFont.Layout.BASIC) for size in [14,16,18,20,22,24]}
++    if labels_only:
++        # draw-diagram: placing labels only measures text, with the skill's width table; nothing
++        # is drawn, so no font file or image is needed.
++        from .publication_render import font as width_font
++        fonts={size:width_font(size) for size in [14,16,18,20,22,24]}
++        draw=_MeasureOnly()
++    else:
++        try:
++            from PIL import Image,ImageDraw,ImageFont
++        except ImportError:return None
++        from .publication_render import font_path as shared_font_path
++        font_path=shared_font_path()
++        if font_path is None:return None
++        img=Image.new('RGB',(width,height),palette['background']);draw=ImageDraw.Draw(img)
++        fonts={size:ImageFont.truetype(str(font_path),size,layout_engine=ImageFont.Layout.BASIC) for size in [14,16,18,20,22,24]}
+     source={n['id']:n for n in result['spec']['nodes']}
+     ink=palette['ink'];scale=lambda b:(b['x']*width,b['y']*height,(b['x']+b['width'])*width,(b['y']+b['height'])*height)
+     def text_lines(text,box,size=20):

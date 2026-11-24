@@ -1,0 +1,1591 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "organization",
+  "layout_strategy": "publication-candidates",
+  "title": "Heterogeneous Acquisition Instrument"
+ },
+ "kind": "publication",
+ "label_layout": {
+  "body_font_px": 36,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "spectral events"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "trend events"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "captured events"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "configuration"
+   }
+  ],
+  "height": 1286,
+  "labels": [],
+  "signal_font_px": 34,
+  "target_width_mm": 160,
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 1286,
+  "line_legend": {},
+  "quality": {
+   "body_font_pt": 9,
+   "deferred_labels": [
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      4
+     ],
+     "text": "spectral events"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      5
+     ],
+     "text": "trend events"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      9
+     ],
+     "text": "captured events"
+    },
+    {
+     "reason": "No unobstructed region at signal font size",
+     "source_edge_indices": [
+      10
+     ],
+     "text": "configuration"
+    }
+   ],
+   "deferred_scope_titles": [],
+   "document_fit": {
+    "default_limit_mm": 140,
+    "height_mm": 114.3,
+    "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+    "no_font_shrink": true,
+    "status": "pass"
+   },
+   "failed_routes": [],
+   "geometry_is_not_raster_acceptance": true,
+   "input_traces": {
+    "clear": true,
+    "failures": [],
+    "owners": [
+     {
+      "geometry_is_not_new_hardware_ports": true,
+      "minimum_path_clearance_px": 94.499,
+      "minimum_port_gap_px": 94.499,
+      "owner": "common",
+      "paths_touch_or_share": false,
+      "producer_count": 2,
+      "required_port_gap_px": 54,
+      "target_width_mm": 160
+     }
+    ]
+   },
+   "labels_placed": 0,
+   "no_common_bus_inferred": true,
+   "organization_traces": {
+    "clear": true,
+    "contacts": [],
+    "geometry_is_not_new_junctions": true
+   },
+   "owner_scope_entries": {
+    "clear": true,
+    "failures": [],
+    "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+   },
+   "publication_typography": true,
+   "requested_routes": 4,
+   "route_count": 4,
+   "routes_complete": true,
+   "signal_font_pt": 8.5,
+   "target_width_mm": 160,
+   "typography_measured": true
+  },
+  "routes": [
+   {
+    "id": "p1",
+    "kind": "data",
+    "label": "spectral events",
+    "meanings_in_caption": [],
+    "members": [
+     4
+    ],
+    "points": [
+     [
+      0.316945,
+      0.157076
+     ],
+     [
+      0.400278,
+      0.157076
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.21338912133891214,
+     "source_side": "right",
+     "target_fraction": 0.12702366127023662,
+     "target_side": "left"
+    },
+    "source": "fast",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "common",
+    "target_side": "left"
+   },
+   {
+    "id": "p2",
+    "kind": "data",
+    "label": "trend events",
+    "meanings_in_caption": [],
+    "members": [
+     5
+    ],
+    "points": [
+     [
+      0.316945,
+      0.599533
+     ],
+     [
+      0.360278,
+      0.599533
+     ],
+     [
+      0.360278,
+      0.230559
+     ],
+     [
+      0.400278,
+      0.230559
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.19456066945606695,
+     "source_side": "right",
+     "target_fraction": 0.24470734744707348,
+     "target_side": "left"
+    },
+    "source": "slow",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "common",
+    "target_side": "left"
+   },
+   {
+    "id": "p3",
+    "kind": "data",
+    "label": "captured events",
+    "meanings_in_caption": [],
+    "members": [
+     9
+    ],
+    "points": [
+     [
+      0.586945,
+      0.143079
+     ],
+     [
+      0.670278,
+      0.143079
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.10460772104607721,
+     "source_side": "right",
+     "target_fraction": 0.17721518987341772,
+     "target_side": "left"
+    },
+    "source": "common",
+    "source_side": "right",
+    "stroke_style": "solid",
+    "target": "external",
+    "target_side": "left"
+   },
+   {
+    "id": "p4",
+    "kind": "control",
+    "label": "configuration",
+    "meanings_in_caption": [],
+    "members": [
+     10
+    ],
+    "points": [
+     [
+      0.670278,
+      0.18507
+     ],
+     [
+      0.586945,
+      0.18507
+     ]
+    ],
+    "routing": {
+     "source_fraction": 0.2911392405063291,
+     "source_side": "left",
+     "target_fraction": 0.1718555417185554,
+     "target_side": "right"
+    },
+    "source": "external",
+    "source_side": "left",
+    "stroke_style": "dashed",
+    "target": "common",
+    "target_side": "right"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "body_font_pt": 9,
+  "deferred_labels": [
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "spectral events"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     5
+    ],
+    "text": "trend events"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     9
+    ],
+    "text": "captured events"
+   },
+   {
+    "reason": "No unobstructed region at signal font size",
+    "source_edge_indices": [
+     10
+    ],
+    "text": "configuration"
+   }
+  ],
+  "deferred_scope_titles": [],
+  "document_fit": {
+   "default_limit_mm": 140,
+   "height_mm": 114.3,
+   "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+   "no_font_shrink": true,
+   "status": "pass"
+  },
+  "failed_routes": [],
+  "geometry_is_not_raster_acceptance": true,
+  "input_traces": {
+   "clear": true,
+   "failures": [],
+   "owners": [
+    {
+     "geometry_is_not_new_hardware_ports": true,
+     "minimum_path_clearance_px": 94.499,
+     "minimum_port_gap_px": 94.499,
+     "owner": "common",
+     "paths_touch_or_share": false,
+     "producer_count": 2,
+     "required_port_gap_px": 54,
+     "target_width_mm": 160
+    }
+   ]
+  },
+  "labels_placed": 0,
+  "no_common_bus_inferred": true,
+  "organization_traces": {
+   "clear": true,
+   "contacts": [],
+   "geometry_is_not_new_junctions": true
+  },
+  "owner_scope_entries": {
+   "clear": true,
+   "failures": [],
+   "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+  },
+  "publication_typography": true,
+  "requested_routes": 4,
+  "route_count": 4,
+  "routes_complete": true,
+  "signal_font_pt": 8.5,
+  "target_width_mm": 160,
+  "typography_measured": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 12 个模块和 11 条连接。模块包括 Fast ADC、Fast Sample FIFO、Spectral Transform、Slow Sensor、Slow Measurement FIFO、Trend Filter、Shared Time Base、Timestamp-Aligned Event Merger、Shared Capture Memory、Transfer Engine；可在反馈中增删调整。"
+  ],
+  "category": "architecture",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "samples",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "adc",
+    "target": "fastfifo"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "block",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fastfifo",
+    "target": "fft"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "measurements",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sensor",
+    "target": "slowfifo"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "window",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "slowfifo",
+    "target": "filter"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "spectral events",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fft",
+    "target": "merge"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "trend events",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "filter",
+    "target": "merge"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "timestamp",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "timestamp",
+    "target": "merge"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "aligned events",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "merge",
+    "target": "store"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "read data",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "store",
+    "target": "dma"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "captured events",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "dma",
+    "target": "host"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "configuration",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "cfg",
+    "target": "timestamp"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "instrument",
+    "label": "Acquisition Instrument",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "fast",
+    "label": "Fast Channel",
+    "origin": "assumed",
+    "parent": "instrument",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "slow",
+    "label": "Slow Channel",
+    "origin": "assumed",
+    "parent": "instrument",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "common",
+    "label": "Shared Analysis",
+    "origin": "assumed",
+    "parent": "instrument",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "external",
+    "label": "External Equipment",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "Two unequal channel lanes merge into one shared analysis/storage/transfer path.",
+  "nodes": [
+   {
+    "detail": "Input samples",
+    "evidence": "",
+    "group": "fast",
+    "id": "adc",
+    "kind": "io",
+    "label": "Fast ADC",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private",
+    "evidence": "",
+    "group": "fast",
+    "id": "fastfifo",
+    "kind": "memory",
+    "label": "Fast Sample FIFO",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private fast-channel transform",
+    "evidence": "",
+    "group": "fast",
+    "id": "fft",
+    "kind": "compute",
+    "label": "Spectral Transform",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Input measurements",
+    "evidence": "",
+    "group": "slow",
+    "id": "sensor",
+    "kind": "io",
+    "label": "Slow Sensor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private",
+    "evidence": "",
+    "group": "slow",
+    "id": "slowfifo",
+    "kind": "memory",
+    "label": "Slow Measurement FIFO",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private slow-channel transform",
+    "evidence": "",
+    "group": "slow",
+    "id": "filter",
+    "kind": "compute",
+    "label": "Trend Filter",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Timestamp both streams",
+    "evidence": "",
+    "group": "common",
+    "id": "timestamp",
+    "kind": "control",
+    "label": "Shared Time Base",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Join by supplied event timestamps",
+    "evidence": "",
+    "group": "common",
+    "id": "merge",
+    "kind": "compute",
+    "label": "Timestamp-Aligned Event Merger",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Buffers both streams",
+    "evidence": "",
+    "group": "common",
+    "id": "store",
+    "kind": "memory",
+    "label": "Shared Capture Memory",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Shared bulk transfer",
+    "evidence": "",
+    "group": "common",
+    "id": "dma",
+    "kind": "compute",
+    "label": "Transfer Engine",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Receives captured events",
+    "evidence": "",
+    "group": "external",
+    "id": "host",
+    "kind": "io",
+    "label": "External Analysis Host",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Programs the instrument",
+    "evidence": "",
+    "group": "external",
+    "id": "cfg",
+    "kind": "io",
+    "label": "External Configuration Interface",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Original generic synthetic benchmark. Given facts belong to this example only; this is not a measured commercial design.",
+  "title": "Heterogeneous Acquisition Instrument",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "common": {
+    "height": 0.624417,
+    "width": 0.186667,
+    "x": 0.400278,
+    "y": 0.07776
+   },
+   "external": {
+    "height": 0.368585,
+    "width": 0.199444,
+    "x": 0.670278,
+    "y": 0.07776
+   },
+   "fast": {
+    "height": 0.371695,
+    "width": 0.186667,
+    "x": 0.130278,
+    "y": 0.07776
+   },
+   "slow": {
+    "height": 0.371695,
+    "width": 0.186667,
+    "x": 0.130278,
+    "y": 0.527216
+   }
+  },
+  "candidate_id": "ownership-join-1",
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 1.399689,
+   "reading_direction": "existing-owned-join",
+   "target_width_mm": 160
+  },
+  "composition_diagnostics": {
+   "candidates": [
+    {
+     "accepted": false,
+     "id": "ownership-hub-2",
+     "reasons": [
+      "No single existing data hub establishes this organization"
+     ]
+    },
+    {
+     "accepted": false,
+     "id": "ownership-hub-1",
+     "reasons": [
+      "No single existing data hub establishes this organization"
+     ]
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 4,
+     "document_height_mm": 114.3,
+     "geometry": {
+      "bends": 2,
+      "crossings": 0,
+      "longest_route_px": 624.5,
+      "routing_cost_px": 1106.5,
+      "total_route_px": 1074.5
+     },
+     "id": "ownership-join-1",
+     "natural_aspect": 1.399689,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "ownership-join-2",
+     "reasons": [
+      "Source join inventories require another arrangement at fixed font"
+     ]
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 0,
+     "document_height_mm": 214.7,
+     "geometry": {
+      "bends": 12,
+      "crossings": 0,
+      "longest_route_px": 860,
+      "routing_cost_px": 3613,
+      "total_route_px": 3421
+     },
+     "id": "top-to-bottom-1",
+     "natural_aspect": 0.745342,
+     "reasons": []
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 3,
+     "document_height_mm": 124.1,
+     "geometry": {
+      "bends": 6,
+      "crossings": 0,
+      "longest_route_px": 2321.5,
+      "routing_cost_px": 3282,
+      "total_route_px": 3186
+     },
+     "id": "left-to-right-1",
+     "natural_aspect": 1.289398,
+     "reasons": []
+    },
+    {
+     "accepted": true,
+     "deferred_label_count": 0,
+     "document_height_mm": 176.2,
+     "geometry": {
+      "bends": 12,
+      "crossings": 0,
+      "longest_route_px": 919,
+      "routing_cost_px": 3340,
+      "total_route_px": 3148
+     },
+     "id": "top-to-bottom-2",
+     "natural_aspect": 0.908174,
+     "reasons": []
+    },
+    {
+     "accepted": false,
+     "id": "left-to-right-2",
+     "reasons": [
+      "Horizontal subsystem inventories exceed the fixed-font document width"
+     ]
+    }
+   ],
+   "grammar": "ownership-flow",
+   "selected": "ownership-join-1",
+   "selection_policy": "Hard route/typography/crossover/boundary gates, then document height before optional prose and length plus 16px per bend for subsystem organization; no beauty score"
+  },
+  "containers": [],
+  "insets": [],
+  "layout_scene": {
+   "height": 1286,
+   "line_legend": {},
+   "quality": {
+    "body_font_pt": 9,
+    "deferred_labels": [
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       4
+      ],
+      "text": "spectral events"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       5
+      ],
+      "text": "trend events"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       9
+      ],
+      "text": "captured events"
+     },
+     {
+      "reason": "No unobstructed region at signal font size",
+      "source_edge_indices": [
+       10
+      ],
+      "text": "configuration"
+     }
+    ],
+    "deferred_scope_titles": [],
+    "document_fit": {
+     "default_limit_mm": 140,
+     "height_mm": 114.3,
+     "meaning": "Native source routing and typography do not certify a tall figure as publication-ready.",
+     "no_font_shrink": true,
+     "status": "pass"
+    },
+    "failed_routes": [],
+    "geometry_is_not_raster_acceptance": true,
+    "input_traces": {
+     "clear": true,
+     "failures": [],
+     "owners": [
+      {
+       "geometry_is_not_new_hardware_ports": true,
+       "minimum_path_clearance_px": 94.499,
+       "minimum_port_gap_px": 94.499,
+       "owner": "common",
+       "paths_touch_or_share": false,
+       "producer_count": 2,
+       "required_port_gap_px": 54,
+       "target_width_mm": 160
+      }
+     ]
+    },
+    "labels_placed": 0,
+    "no_common_bus_inferred": true,
+    "organization_traces": {
+     "clear": true,
+     "contacts": [],
+     "geometry_is_not_new_junctions": true
+    },
+    "owner_scope_entries": {
+     "clear": true,
+     "failures": [],
+     "meaning": "Boundary entry is scope-level, not a fabricated child-to-child mapping."
+    },
+    "publication_typography": true,
+    "requested_routes": 4,
+    "route_count": 4,
+    "routes_complete": true,
+    "signal_font_pt": 8.5,
+    "target_width_mm": 160,
+    "typography_measured": true
+   },
+   "routes": [
+    {
+     "id": "p1",
+     "kind": "data",
+     "label": "spectral events",
+     "meanings_in_caption": [],
+     "members": [
+      4
+     ],
+     "points": [
+      [
+       0.316945,
+       0.157076
+      ],
+      [
+       0.400278,
+       0.157076
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.21338912133891214,
+      "source_side": "right",
+      "target_fraction": 0.12702366127023662,
+      "target_side": "left"
+     },
+     "source": "fast",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "common",
+     "target_side": "left"
+    },
+    {
+     "id": "p2",
+     "kind": "data",
+     "label": "trend events",
+     "meanings_in_caption": [],
+     "members": [
+      5
+     ],
+     "points": [
+      [
+       0.316945,
+       0.599533
+      ],
+      [
+       0.360278,
+       0.599533
+      ],
+      [
+       0.360278,
+       0.230559
+      ],
+      [
+       0.400278,
+       0.230559
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.19456066945606695,
+      "source_side": "right",
+      "target_fraction": 0.24470734744707348,
+      "target_side": "left"
+     },
+     "source": "slow",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "common",
+     "target_side": "left"
+    },
+    {
+     "id": "p3",
+     "kind": "data",
+     "label": "captured events",
+     "meanings_in_caption": [],
+     "members": [
+      9
+     ],
+     "points": [
+      [
+       0.586945,
+       0.143079
+      ],
+      [
+       0.670278,
+       0.143079
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.10460772104607721,
+      "source_side": "right",
+      "target_fraction": 0.17721518987341772,
+      "target_side": "left"
+     },
+     "source": "common",
+     "source_side": "right",
+     "stroke_style": "solid",
+     "target": "external",
+     "target_side": "left"
+    },
+    {
+     "id": "p4",
+     "kind": "control",
+     "label": "configuration",
+     "meanings_in_caption": [],
+     "members": [
+      10
+     ],
+     "points": [
+      [
+       0.670278,
+       0.18507
+      ],
+      [
+       0.586945,
+       0.18507
+      ]
+     ],
+     "routing": {
+      "source_fraction": 0.2911392405063291,
+      "source_side": "left",
+      "target_fraction": 0.1718555417185554,
+      "target_side": "right"
+     },
+     "source": "external",
+     "source_side": "left",
+     "stroke_style": "dashed",
+     "target": "common",
+     "target_side": "right"
+    }
+   ],
+   "width": 1800
+  },
+  "macro_edges": [
+   {
+    "id": "p1",
+    "kind": "data",
+    "label": "spectral events",
+    "meanings_in_caption": [],
+    "members": [
+     4
+    ],
+    "routing": {
+     "source_fraction": 0.21338912133891214,
+     "source_side": "right",
+     "target_fraction": 0.12702366127023662,
+     "target_side": "left"
+    },
+    "source": "fast",
+    "stroke_style": "solid",
+    "target": "common"
+   },
+   {
+    "id": "p2",
+    "kind": "data",
+    "label": "trend events",
+    "meanings_in_caption": [],
+    "members": [
+     5
+    ],
+    "routing": {
+     "source_fraction": 0.19456066945606695,
+     "source_side": "right",
+     "target_fraction": 0.24470734744707348,
+     "target_side": "left"
+    },
+    "source": "slow",
+    "stroke_style": "solid",
+    "target": "common"
+   },
+   {
+    "id": "p3",
+    "kind": "data",
+    "label": "captured events",
+    "meanings_in_caption": [],
+    "members": [
+     9
+    ],
+    "routing": {
+     "source_fraction": 0.10460772104607721,
+     "source_side": "right",
+     "target_fraction": 0.17721518987341772,
+     "target_side": "left"
+    },
+    "source": "common",
+    "stroke_style": "solid",
+    "target": "external"
+   },
+   {
+    "id": "p4",
+    "kind": "control",
+    "label": "configuration",
+    "meanings_in_caption": [],
+    "members": [
+     10
+    ],
+    "routing": {
+     "source_fraction": 0.2911392405063291,
+     "source_side": "left",
+     "target_fraction": 0.1718555417185554,
+     "target_side": "right"
+    },
+    "source": "external",
+    "stroke_style": "dashed",
+    "target": "common"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "boundary_port_count": 1,
+    "children": [
+     {
+      "id": "adc",
+      "kind": "io",
+      "label": "Fast ADC"
+     },
+     {
+      "id": "fastfifo",
+      "kind": "memory",
+      "label": "Fast Sample FIFO"
+     },
+     {
+      "id": "fft",
+      "kind": "compute",
+      "label": "Spectral Transform"
+     }
+    ],
+    "entry_sources": [],
+    "expanded": true,
+    "id": "fast",
+    "kind": "compute",
+    "label": "Fast Channel",
+    "logical_group": true,
+    "members": [
+     "adc",
+     "fastfifo",
+     "fft"
+    ],
+    "original_group": "instrument",
+    "scope_ports_by_side": true,
+    "source_group": "fast",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 1,
+    "children": [
+     {
+      "id": "sensor",
+      "kind": "io",
+      "label": "Slow Sensor"
+     },
+     {
+      "id": "slowfifo",
+      "kind": "memory",
+      "label": "Slow Measurement FIFO"
+     },
+     {
+      "id": "filter",
+      "kind": "compute",
+      "label": "Trend Filter"
+     }
+    ],
+    "entry_sources": [],
+    "expanded": true,
+    "id": "slow",
+    "kind": "compute",
+    "label": "Slow Channel",
+    "logical_group": true,
+    "members": [
+     "sensor",
+     "slowfifo",
+     "filter"
+    ],
+    "original_group": "instrument",
+    "scope_ports_by_side": true,
+    "source_group": "slow",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 2,
+    "children": [
+     {
+      "id": "timestamp",
+      "kind": "control",
+      "label": "Shared Time Base"
+     },
+     {
+      "id": "merge",
+      "kind": "compute",
+      "label": "Timestamp-Aligned Event Merger"
+     },
+     {
+      "id": "store",
+      "kind": "memory",
+      "label": "Shared Capture Memory"
+     },
+     {
+      "id": "dma",
+      "kind": "compute",
+      "label": "Transfer Engine"
+     }
+    ],
+    "entry_sources": [
+     "fast",
+     "slow"
+    ],
+    "expanded": true,
+    "id": "common",
+    "kind": "compute",
+    "label": "Shared Analysis",
+    "logical_group": true,
+    "members": [
+     "timestamp",
+     "merge",
+     "store",
+     "dma"
+    ],
+    "original_group": "instrument",
+    "scope_ports_by_side": true,
+    "source_group": "common",
+    "zone": "owned-subsystem"
+   },
+   {
+    "boundary_port_count": 2,
+    "children": [
+     {
+      "id": "host",
+      "kind": "io",
+      "label": "External Analysis Host"
+     },
+     {
+      "id": "cfg",
+      "kind": "io",
+      "label": "External Configuration Interface"
+     }
+    ],
+    "entry_sources": [
+     "common"
+    ],
+    "expanded": true,
+    "id": "external",
+    "kind": "io",
+    "label": "External Equipment",
+    "logical_group": true,
+    "members": [
+     "host",
+     "cfg"
+    ],
+    "original_group": "",
+    "scope_ports_by_side": true,
+    "source_group": "external",
+    "zone": "external"
+   }
+  ],
+  "node_to_macro": {
+   "adc": "fast",
+   "cfg": "external",
+   "dma": "common",
+   "fastfifo": "fast",
+   "fft": "fast",
+   "filter": "slow",
+   "host": "external",
+   "merge": "common",
+   "sensor": "slow",
+   "slowfifo": "slow",
+   "store": "common",
+   "timestamp": "common"
+  },
+  "projection": {
+   "deferred_edges": [
+    {
+     "index": 0,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 1,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 2,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 3,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 6,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 7,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    },
+    {
+     "index": 8,
+     "reason": "Secondary control, global clock or folded inventory detail remains in the caption and exact annex."
+    }
+   ],
+   "folded_groups": [
+    "fast",
+    "slow",
+    "common",
+    "external"
+   ],
+   "internal_edges": [
+    0,
+    1,
+    2,
+    3,
+    6,
+    7,
+    8
+   ],
+   "meaning": "True group boundaries summarize only their source inventory and external relationships. A supplied xN group denotes that inventory's original multiplicity; no new instances or internal wiring are invented.",
+   "ownership_unchanged": true,
+   "retained_payload_edge_indices": [],
+   "retained_payload_groups": [],
+   "source_node_to_macro": {
+    "adc": "fast",
+    "cfg": "external",
+    "dma": "common",
+    "fastfifo": "fast",
+    "fft": "fast",
+    "filter": "slow",
+    "host": "external",
+    "merge": "common",
+    "sensor": "slow",
+    "slowfifo": "slow",
+    "store": "common",
+    "timestamp": "common"
+   }
+  },
+  "scene_id": "system",
+  "source_edge_indices": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "source_group_labels": {
+   "common": "Shared Analysis",
+   "external": "External Equipment",
+   "fast": "Fast Channel",
+   "instrument": "Acquisition Instrument",
+   "slow": "Slow Channel"
+  },
+  "source_group_parents": {
+   "common": "instrument",
+   "external": "",
+   "fast": "instrument",
+   "instrument": "",
+   "slow": "instrument"
+  },
+  "source_ownership": {
+   "adc": "fast",
+   "cfg": "external",
+   "dma": "common",
+   "fastfifo": "fast",
+   "fft": "fast",
+   "filter": "slow",
+   "host": "external",
+   "merge": "common",
+   "sensor": "slow",
+   "slowfifo": "slow",
+   "store": "common",
+   "timestamp": "common"
+  },
+  "symbol_metrics": {
+   "common": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 283
+      },
+      "id": "timestamp",
+      "kind": "control",
+      "label": "Shared Time Base",
+      "lines": [
+       "Shared",
+       "Time Base"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 156,
+       "width": 300,
+       "x": 18,
+       "y": 411
+      },
+      "id": "merge",
+      "kind": "compute",
+      "label": "Timestamp-Aligned Event Merger",
+      "lines": [
+       "Timestamp-",
+       "Aligned Event",
+       "Merger"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 583
+      },
+      "id": "store",
+      "kind": "memory",
+      "label": "Shared Capture Memory",
+      "lines": [
+       "Shared Capture",
+       "Memory"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 711
+      },
+      "id": "dma",
+      "kind": "compute",
+      "label": "Transfer Engine",
+      "lines": [
+       "Transfer Engine"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 207,
+    "entry_port_spacing_px": 54,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 803,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Shared Analysis"
+    ],
+    "width": 336
+   },
+   "external": {
+    "children": [
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 166
+      },
+      "id": "host",
+      "kind": "io",
+      "label": "External Analysis Host",
+      "lines": [
+       "External",
+       "Analysis Host"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 156,
+       "width": 300,
+       "x": 18,
+       "y": 294
+      },
+      "id": "cfg",
+      "kind": "io",
+      "label": "External Configuration Interface",
+      "lines": [
+       "External",
+       "Configuration",
+       "Interface"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 90,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 474,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "External Equipment"
+    ],
+    "width": 359
+   },
+   "fast": {
+    "children": [
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 130
+      },
+      "id": "adc",
+      "kind": "io",
+      "label": "Fast ADC",
+      "lines": [
+       "Fast ADC"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 214
+      },
+      "id": "fastfifo",
+      "kind": "memory",
+      "label": "Fast Sample FIFO",
+      "lines": [
+       "Fast Sample",
+       "FIFO"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 112,
+       "width": 300,
+       "x": 18,
+       "y": 342
+      },
+      "id": "fft",
+      "kind": "compute",
+      "label": "Spectral Transform",
+      "lines": [
+       "Spectral",
+       "Transform"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 54,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 478,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Fast Channel"
+    ],
+    "width": 336
+   },
+   "slow": {
+    "children": [
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 130
+      },
+      "id": "sensor",
+      "kind": "io",
+      "label": "Slow Sensor",
+      "lines": [
+       "Slow Sensor"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 156,
+       "width": 300,
+       "x": 18,
+       "y": 214
+      },
+      "id": "slowfifo",
+      "kind": "memory",
+      "label": "Slow Measurement FIFO",
+      "lines": [
+       "Slow",
+       "Measurement",
+       "FIFO"
+      ]
+     },
+     {
+      "box_px": {
+       "height": 68,
+       "width": 300,
+       "x": 18,
+       "y": 386
+      },
+      "id": "filter",
+      "kind": "compute",
+      "label": "Trend Filter",
+      "lines": [
+       "Trend Filter"
+      ]
+     }
+    ],
+    "detail_lines": [],
+    "entry_gutter_height": 54,
+    "entry_port_spacing_px": 0,
+    "font_px": 36,
+    "header_height": 66,
+    "height": 478,
+    "ink_header": false,
+    "line_height": 44,
+    "lines": [
+     "Slow Channel"
+    ],
+    "width": 336
+   }
+  },
+  "system_frame": {
+   "box": {
+    "height": 1,
+    "width": 1,
+    "x": 0,
+    "y": 0
+   },
+   "display_only": true,
+   "label": ""
+  },
+  "title": "Heterogeneous Acquisition Instrument",
+  "type": "publication",
+  "typography": {
+   "body_pt": 9,
+   "body_px": 36,
+   "no_font_shrink": true,
+   "signal_pt": 8.5,
+   "signal_px": 34,
+   "symbol_profile": "plain",
+   "target_width_mm": 160
+  },
+  "version": "CPS6",
+  "view_role": "organization",
+  "view_type": "publication-ownership-flow"
+ },
+ "version": 1,
+ "warnings": []
+}

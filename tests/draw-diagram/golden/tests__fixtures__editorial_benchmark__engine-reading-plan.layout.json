@@ -1,0 +1,2190 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "detail-ac79c33f-1",
+  "layout_strategy": "legacy-technical-annex",
+  "title": "Tensor Compute Engine (1)"
+ },
+ "kind": "legacy",
+ "label_layout": {
+  "height": 1066,
+  "labels": [
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.107707,
+     "x": 0.548889,
+     "y": 0.440901
+    },
+    "color": "#6E8BAB",
+    "text": "path select / compute issue"
+   },
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.067191,
+     "x": 0.219737,
+     "y": 0.021576
+    },
+    "color": "#6E8BAB",
+    "text": "load / store issue"
+   },
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.041991,
+     "x": 0.464445,
+     "y": 0.183865
+    },
+    "color": "#6E8BAB",
+    "text": "pack issue"
+   },
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.107707,
+     "x": 0.085626,
+     "y": 0.142589
+    },
+    "color": "#6E8BAB",
+    "text": "path select / compute issue"
+   },
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.051876,
+     "x": 0.551111,
+     "y": 0.358349
+    },
+    "color": "#6E8BAB",
+    "text": "unpack issue"
+   },
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.051876,
+     "x": 0.553333,
+     "y": 0.309569
+    },
+    "color": "#6E8BAB",
+    "text": "unpack issue"
+   },
+   {
+    "box": {
+     "height": 0.0197,
+     "width": 0.052373,
+     "x": 0.331146,
+     "y": 0.081614
+    },
+    "color": "#6E8BAB",
+    "text": "transfer done"
+   }
+  ],
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 1066,
+  "line_legend": {},
+  "quality": {
+   "failed_routes": [],
+   "no_common_bus_inferred": true,
+   "requested_routes": 8,
+   "route_count": 8,
+   "routes_complete": true
+  },
+  "routes": [
+   {
+    "family": "forward",
+    "id": "E10",
+    "kind": "data",
+    "label": "",
+    "members": [
+     9
+    ],
+    "points": [
+     [
+      0.476954,
+      0.905679
+     ],
+     [
+      0.560454,
+      0.905679
+     ]
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_alu",
+    "source_edge_index": 9,
+    "source_nodes": [
+     "n_alu"
+    ],
+    "source_side": "right",
+    "target": "n_result",
+    "target_nodes": [
+     "n_result"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "control",
+    "id": "E18",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "members": [
+     17
+    ],
+    "points": [
+     [
+      0.237976,
+      0.242947
+     ],
+     [
+      0.237976,
+      0.225141
+     ],
+     [
+      0.226667,
+      0.225141
+     ],
+     [
+      0.226667,
+      0.045028
+     ],
+     [
+      0.54,
+      0.045028
+     ],
+     [
+      0.54,
+      0.855535
+     ],
+     [
+      0.308283,
+      0.855535
+     ],
+     [
+      0.308283,
+      0.873411
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.07142857142857142,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.043327
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 17,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "source_side": "top",
+    "target": "n_alu",
+    "target_nodes": [
+     "n_alu"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "control",
+    "id": "E15",
+    "kind": "control",
+    "label": "load / store issue",
+    "members": [
+     14
+    ],
+    "points": [
+     [
+      0.27313,
+      0.242947
+     ],
+     [
+      0.27313,
+      0.225141
+     ],
+     [
+      0.273333,
+      0.225141
+     ],
+     [
+      0.273333,
+      0.213884
+     ],
+     [
+      0.224444,
+      0.213884
+     ],
+     [
+      0.224444,
+      0.056285
+     ],
+     [
+      0.282222,
+      0.056285
+     ],
+     [
+      0.282222,
+      0.131332
+     ],
+     [
+      0.283233,
+      0.131332
+     ],
+     [
+      0.283233,
+      0.147384
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.21428571428571427,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.055517
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 14,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "source_side": "top",
+    "target": "n_dma",
+    "target_nodes": [
+     "n_dma"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "control",
+    "id": "E20",
+    "kind": "control",
+    "label": "pack issue",
+    "members": [
+     19
+    ],
+    "points": [
+     [
+      0.308283,
+      0.242947
+     ],
+     [
+      0.308283,
+      0.225141
+     ],
+     [
+      0.388889,
+      0.225141
+     ],
+     [
+      0.388889,
+      0.067542
+     ],
+     [
+      0.455556,
+      0.067542
+     ],
+     [
+      0.455556,
+      0.318949
+     ],
+     [
+      0.308283,
+      0.318949
+     ],
+     [
+      0.308283,
+      0.337268
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.35714285714285715,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.067707
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 19,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "source_side": "top",
+    "target": "n_packer",
+    "target_nodes": [
+     "n_packer"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "control",
+    "id": "E19",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "members": [
+     18
+    ],
+    "points": [
+     [
+      0.202823,
+      0.242947
+     ],
+     [
+      0.202823,
+      0.225141
+     ],
+     [
+      0.202222,
+      0.225141
+     ],
+     [
+      0.202222,
+      0.078799
+     ],
+     [
+      0.457778,
+      0.078799
+     ],
+     [
+      0.457778,
+      0.427767
+     ],
+     [
+      0.308283,
+      0.427767
+     ],
+     [
+      0.308283,
+      0.444
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 3,
+     "track_fraction": 0.5,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.079897
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 18,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "source_side": "top",
+    "target": "n_sfu",
+    "target_nodes": [
+     "n_sfu"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "control",
+    "id": "E16",
+    "kind": "control",
+    "label": "unpack issue",
+    "members": [
+     15
+    ],
+    "points": [
+     [
+      0.343437,
+      0.242947
+     ],
+     [
+      0.343437,
+      0.225141
+     ],
+     [
+      0.344444,
+      0.225141
+     ],
+     [
+      0.344444,
+      0.213884
+     ],
+     [
+      0.391111,
+      0.213884
+     ],
+     [
+      0.391111,
+      0.093809
+     ],
+     [
+      0.542222,
+      0.093809
+     ],
+     [
+      0.542222,
+      0.641651
+     ],
+     [
+      0.308283,
+      0.641651
+     ],
+     [
+      0.308283,
+      0.657464
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.6428571428571429,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.092087
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 15,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "source_side": "top",
+    "target": "n_unpackA",
+    "target_nodes": [
+     "n_unpackA"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "control",
+    "id": "E17",
+    "kind": "control",
+    "label": "unpack issue",
+    "members": [
+     16
+    ],
+    "points": [
+     [
+      0.378591,
+      0.242947
+     ],
+     [
+      0.378591,
+      0.225141
+     ],
+     [
+      0.377778,
+      0.225141
+     ],
+     [
+      0.377778,
+      0.217636
+     ],
+     [
+      0.393333,
+      0.217636
+     ],
+     [
+      0.393333,
+      0.105066
+     ],
+     [
+      0.544444,
+      0.105066
+     ],
+     [
+      0.544444,
+      0.532833
+     ],
+     [
+      0.308283,
+      0.532833
+     ],
+     [
+      0.308283,
+      0.550732
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 5,
+     "track_fraction": 0.7857142857142857,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.104278
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 16,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "source_side": "top",
+    "target": "n_unpackB",
+    "target_nodes": [
+     "n_unpackB"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "control",
+    "id": "E22",
+    "kind": "feedback",
+    "label": "transfer done",
+    "members": [
+     21
+    ],
+    "points": [
+     [
+      0.333334,
+      0.147384
+     ],
+     [
+      0.333333,
+      0.116323
+     ],
+     [
+      0.413333,
+      0.116323
+     ],
+     [
+      0.413333,
+      0.225141
+     ],
+     [
+      0.413744,
+      0.225141
+     ],
+     [
+      0.413744,
+      0.242947
+     ]
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 6,
+     "track_fraction": 0.9285714285714286,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.116468
+    },
+    "source": "n_dma",
+    "source_edge_index": 21,
+    "source_nodes": [
+     "n_dma"
+    ],
+    "source_side": "top",
+    "target": "n_ctrl",
+    "target_nodes": [
+     "n_ctrl"
+    ],
+    "target_side": "top"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "failed_routes": [],
+  "no_common_bus_inferred": true,
+  "requested_routes": 8,
+  "route_count": 8,
+  "routes_complete": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "microarchitecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "detail",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [
+   "Arithmetic Unit and Special Function Unit are alternative selectable paths; they are not chained in series.",
+   "All resources except Off-Chip Memory belong to the Tensor Compute Engine."
+  ],
+  "assumptions": [
+   "容量、精度、带宽、周期数均未指定，图中不标注任何具体数值。",
+   "Control Unit 到各模块的发起/协调连线为通用示意，用户仅说明其负责解包、计算、打包的发起与协调。",
+   "Result Registers 与 DMA 的完成回报为补齐的普通协调细节，可按实际设计修改。"
+  ],
+  "category": "microarchitecture",
+  "checks": [
+   "确认 FPU 内部仅包含 Arithmetic Unit 与 Special Function Unit 两个执行单元，且二者为并列可选而非串联。",
+   "确认 DMA 为单一独立模块，同时承担读入 A/B 与写回结果。",
+   "确认除 Off-Chip Memory 外所有模块都画在 Tensor Compute Engine 容器内。"
+  ],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "A / B read",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_mem",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "A",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_dma",
+    "target": "n_unpackA"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "B",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_dma",
+    "target": "n_unpackB"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_unpackA",
+    "target": "n_srcA"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_unpackB",
+    "target": "n_srcB"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operand A",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_srcA",
+    "target": "n_alu"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operand B",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_srcB",
+    "target": "n_alu"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operand A",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_srcA",
+    "target": "n_sfu"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operand B",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_srcB",
+    "target": "n_sfu"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_alu",
+    "target": "n_result"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_sfu",
+    "target": "n_result"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_result",
+    "target": "n_packer"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packed result",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_packer",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "result write-back",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_dma",
+    "target": "n_mem"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "load / store issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ctrl",
+    "target": "n_dma"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "unpack issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ctrl",
+    "target": "n_unpackA"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "unpack issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ctrl",
+    "target": "n_unpackB"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ctrl",
+    "target": "n_alu"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ctrl",
+    "target": "n_sfu"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "pack issue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "n_ctrl",
+    "target": "n_packer"
+   },
+   {
+    "evidence": "",
+    "kind": "feedback",
+    "label": "compute done",
+    "origin": "assumed",
+    "rationale": "普通协调细节：结果就绪后通知控制单元推进打包",
+    "source": "n_result",
+    "target": "n_ctrl"
+   },
+   {
+    "evidence": "",
+    "kind": "feedback",
+    "label": "transfer done",
+    "origin": "assumed",
+    "rationale": "普通协调细节：DMA 完成搬运后回报控制单元",
+    "source": "n_dma",
+    "target": "n_ctrl"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "g_engine",
+    "label": "Tensor Compute Engine",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "用户明确除片外 Memory 外资源都属于该计算引擎，用容器表达归属边界"
+   },
+   {
+    "evidence": "",
+    "id": "g_fpu",
+    "label": "FPU",
+    "origin": "assumed",
+    "parent": "g_engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_srcA",
+    "label": "Source Registers A",
+    "origin": "assumed",
+    "parent": "g_engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_srcB",
+    "label": "Source Registers B",
+    "origin": "assumed",
+    "parent": "g_engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "g_result",
+    "label": "Result Registers",
+    "origin": "assumed",
+    "parent": "g_engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "Left-to-right main data path: n_mem at far left, then n_dma, then two parallel unpack lanes n_unpackA (upper) and n_unpackB (lower) feeding n_srcA and n_srcB; n_srcA/n_srcB fan into g_fpu in the center, where n_alu and n_sfu sit as two parallel selectable paths; both converge on n_result, then n_packer, then back to n_dma and n_mem. g_engine encloses everything except n_mem. n_ctrl sits in a control corridor along the bottom of g_engine, with dashed control edges fanning up to n_dma, n_unpackA, n_unpackB, n_alu, n_sfu, n_packer; feedback edges from n_result and n_dma return along the bottom corridor. Reading order: memory -> DMA -> unpack -> source registers -> FPU -> result -> packer -> DMA -> memory, with control corridor read last.",
+  "nodes": [
+   {
+    "detail": "External to engine",
+    "evidence": "",
+    "group": "",
+    "id": "n_mem",
+    "kind": "memory",
+    "label": "Off-Chip Memory",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Read A/B, write back result",
+    "evidence": "",
+    "group": "g_engine",
+    "id": "n_dma",
+    "kind": "io",
+    "label": "DMA",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "g_engine",
+    "id": "n_unpackA",
+    "kind": "compute",
+    "label": "Unpacker A",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "g_engine",
+    "id": "n_unpackB",
+    "kind": "compute",
+    "label": "Unpacker B",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Operand A storage",
+    "evidence": "",
+    "group": "g_srcA",
+    "id": "n_srcA",
+    "kind": "memory",
+    "label": "Source Registers A",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Operand B storage",
+    "evidence": "",
+    "group": "g_srcB",
+    "id": "n_srcB",
+    "kind": "memory",
+    "label": "Source Registers B",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Regular arithmetic path",
+    "evidence": "",
+    "group": "g_fpu",
+    "id": "n_alu",
+    "kind": "compute",
+    "label": "Arithmetic Unit",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Special function path",
+    "evidence": "",
+    "group": "g_fpu",
+    "id": "n_sfu",
+    "kind": "compute",
+    "label": "Special Function Unit",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Computation result storage",
+    "evidence": "",
+    "group": "g_result",
+    "id": "n_result",
+    "kind": "memory",
+    "label": "Result Registers",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "g_engine",
+    "id": "n_packer",
+    "kind": "compute",
+    "label": "Packer",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Issue unpack / compute / pack",
+    "evidence": "",
+    "group": "g_engine",
+    "id": "n_ctrl",
+    "kind": "control",
+    "label": "Control Unit",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [
+   "是否需要把 Control Unit 的发起/协调关系细化为具体信号或握手时序？",
+   "是否需要为 FPU 两条执行路径补充选择条件或优先级？"
+  ],
+  "steps": [],
+  "summary": "通用示意：一个独立 DMA 从片外 Memory 读入 A/B 两路数据，经 Unpacker A/B 写入 Source Registers A/B；FPU 内含 Arithmetic Unit 与 Special Function Unit 两条可选执行路径，结果写入 Result Registers，经 Packer 由同一 DMA 写回同一片外 Memory；独立 Control Unit 协调解包、计算、打包。除片外 Memory 外所有资源均属该计算引擎。容量、精度、带宽、周期数均未指定。",
+  "title": "Dual-Input Tensor Compute Engine Microarchitecture",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": false,
+  "boxes": {
+   "n_alu": {
+    "height": 0.064536,
+    "width": 0.337341,
+    "x": 0.139613,
+    "y": 0.873411
+   },
+   "n_ctrl": {
+    "height": 0.052125,
+    "width": 0.281229,
+    "x": 0.167669,
+    "y": 0.242947
+   },
+   "n_dma": {
+    "height": 0.057089,
+    "width": 0.150301,
+    "x": 0.233133,
+    "y": 0.147384
+   },
+   "n_packer": {
+    "height": 0.064536,
+    "width": 0.169005,
+    "x": 0.223781,
+    "y": 0.337268
+   },
+   "n_result": {
+    "height": 0.047161,
+    "width": 0.356045,
+    "x": 0.560454,
+    "y": 0.882098
+   },
+   "n_sfu": {
+    "height": 0.064536,
+    "width": 0.449566,
+    "x": 0.0835,
+    "y": 0.444
+   },
+   "n_unpackA": {
+    "height": 0.064536,
+    "width": 0.243821,
+    "x": 0.186373,
+    "y": 0.657464
+   },
+   "n_unpackB": {
+    "height": 0.064536,
+    "width": 0.243821,
+    "x": 0.186373,
+    "y": 0.550732
+   }
+  },
+  "canvas": {
+   "coordinate_system": "normalized",
+   "label_unit_pixels": 60.12024,
+   "natural_aspect": 1.688,
+   "reading_direction": "left-to-right"
+  },
+  "component_lanes": [],
+  "containers": [
+   {
+    "box": {
+     "height": 0.877437,
+     "width": 0.8998,
+     "x": 0.0501,
+     "y": 0.085331
+    },
+    "continuation_of": null,
+    "id": "g_engine",
+    "is_system_boundary": true,
+    "label": "Tensor Compute Engine",
+    "members": [
+     "n_alu",
+     "n_ctrl",
+     "n_dma",
+     "n_packer",
+     "n_result",
+     "n_sfu",
+     "n_unpackA",
+     "n_unpackB"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": null,
+    "scope_source_members": [
+     "n_alu",
+     "n_ctrl",
+     "n_dma",
+     "n_packer",
+     "n_result",
+     "n_sfu",
+     "n_unpackA",
+     "n_unpackB"
+    ],
+    "source_group": "g_engine",
+    "source_members": [
+     "n_alu",
+     "n_ctrl",
+     "n_dma",
+     "n_packer",
+     "n_result",
+     "n_sfu",
+     "n_unpackA",
+     "n_unpackB"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.119143,
+     "width": 0.486306,
+     "x": 0.06513,
+     "y": 0.403045
+    },
+    "continuation_of": "g_fpu",
+    "id": "@scope:g_fpu:1",
+    "label": "FPU",
+    "members": [
+     "n_sfu"
+    ],
+    "ownership_unchanged": true,
+    "parent": "g_engine",
+    "replaces_region": null,
+    "scope_source_members": [
+     "n_alu",
+     "n_sfu"
+    ],
+    "source_group": "g_fpu",
+    "source_members": [
+     "n_sfu"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.119143,
+     "width": 0.374081,
+     "x": 0.121242,
+     "y": 0.832455
+    },
+    "continuation_of": "g_fpu",
+    "id": "@scope:g_fpu:2",
+    "label": "FPU",
+    "members": [
+     "n_alu"
+    ],
+    "ownership_unchanged": true,
+    "parent": "g_engine",
+    "replaces_region": null,
+    "scope_source_members": [
+     "n_alu",
+     "n_sfu"
+    ],
+    "source_group": "g_fpu",
+    "source_members": [
+     "n_alu"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.107973,
+     "width": 0.402806,
+     "x": 0.537074,
+     "y": 0.838661
+    },
+    "continuation_of": null,
+    "id": "g_result",
+    "label": "Result Registers",
+    "members": [
+     "n_result"
+    ],
+    "ownership_unchanged": true,
+    "parent": "g_engine",
+    "replaces_region": "g_result",
+    "scope_source_members": [
+     "n_result"
+    ],
+    "source_group": "g_result",
+    "source_members": [
+     "n_result"
+    ]
+   }
+  ],
+  "context_nodes": [],
+  "coverage": {
+   "duplicate_edge_indices": [],
+   "missing_edges": [],
+   "missing_nodes": [],
+   "nodes_projected": 8,
+   "source_edges": 8,
+   "source_nodes": 8
+  },
+  "deferred_links": [],
+  "edge_indices": [
+   9,
+   17,
+   14,
+   19,
+   18,
+   15,
+   16,
+   21
+  ],
+  "feedback_source_nodes": [],
+  "flow_basis": "data",
+  "flow_ranks": {
+   "n_alu": 0,
+   "n_result": 1
+  },
+  "forward_edge_indices": [
+   9
+  ],
+  "internal_edges": [],
+  "macro_edges": [
+   {
+    "family": "forward",
+    "id": "E10",
+    "kind": "data",
+    "label": "",
+    "members": [
+     9
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_alu",
+    "source_edge_index": 9,
+    "source_nodes": [
+     "n_alu"
+    ],
+    "stroke_style": "solid",
+    "target": "n_result",
+    "target_nodes": [
+     "n_result"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E18",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "members": [
+     17
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.07142857142857142,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.043327
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 17,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_alu",
+    "target_nodes": [
+     "n_alu"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E15",
+    "kind": "control",
+    "label": "load / store issue",
+    "members": [
+     14
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.21428571428571427,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.055517
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 14,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_dma",
+    "target_nodes": [
+     "n_dma"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E20",
+    "kind": "control",
+    "label": "pack issue",
+    "members": [
+     19
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.35714285714285715,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.067707
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 19,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_packer",
+    "target_nodes": [
+     "n_packer"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E19",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "members": [
+     18
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 3,
+     "track_fraction": 0.5,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.079897
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 18,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_sfu",
+    "target_nodes": [
+     "n_sfu"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E16",
+    "kind": "control",
+    "label": "unpack issue",
+    "members": [
+     15
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.6428571428571429,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.092087
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 15,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_unpackA",
+    "target_nodes": [
+     "n_unpackA"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E17",
+    "kind": "control",
+    "label": "unpack issue",
+    "members": [
+     16
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 5,
+     "track_fraction": 0.7857142857142857,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.104278
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 16,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_unpackB",
+    "target_nodes": [
+     "n_unpackB"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E22",
+    "kind": "feedback",
+    "label": "transfer done",
+    "members": [
+     21
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 6,
+     "track_fraction": 0.9285714285714286,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.116468
+    },
+    "source": "n_dma",
+    "source_edge_index": 21,
+    "source_nodes": [
+     "n_dma"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_ctrl",
+    "target_nodes": [
+     "n_ctrl"
+    ]
+   }
+  ],
+  "macro_nodes": [
+   {
+    "box": {
+     "height": 0.064536,
+     "width": 0.337341,
+     "x": 0.139613,
+     "y": 0.873411
+    },
+    "context": false,
+    "detail": "Regular arithmetic path",
+    "id": "n_alu",
+    "kind": "compute",
+    "label": "Arithmetic Unit",
+    "members": [
+     "n_alu"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.064536,
+     "width": 0.337341,
+     "x": 0.139613,
+     "y": 0.873411
+    },
+    "source_ancestry": [
+     "g_fpu",
+     "g_engine"
+    ],
+    "source_group": "g_fpu",
+    "source_node_index": 6,
+    "source_owner": "g_fpu",
+    "stage_rank": 0,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.052125,
+     "width": 0.281229,
+     "x": 0.167669,
+     "y": 0.242947
+    },
+    "context": false,
+    "detail": "Issue unpack / compute / pack",
+    "id": "n_ctrl",
+    "kind": "control",
+    "label": "Control Unit",
+    "members": [
+     "n_ctrl"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.052125,
+     "width": 0.281229,
+     "x": 0.167669,
+     "y": 0.242947
+    },
+    "source_ancestry": [
+     "g_engine"
+    ],
+    "source_group": "g_engine",
+    "source_node_index": 10,
+    "source_owner": "g_engine",
+    "stage_rank": null,
+    "type": "resource",
+    "visual_role": "control-block",
+    "zone": "control"
+   },
+   {
+    "box": {
+     "height": 0.057089,
+     "width": 0.150301,
+     "x": 0.233133,
+     "y": 0.147384
+    },
+    "context": false,
+    "detail": "Read A/B, write back result",
+    "id": "n_dma",
+    "kind": "io",
+    "label": "DMA",
+    "members": [
+     "n_dma"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.057089,
+     "width": 0.150301,
+     "x": 0.233133,
+     "y": 0.147384
+    },
+    "source_ancestry": [
+     "g_engine"
+    ],
+    "source_group": "g_engine",
+    "source_node_index": 1,
+    "source_owner": "g_engine",
+    "stage_rank": null,
+    "type": "resource",
+    "visual_role": "interface-block",
+    "zone": "control"
+   },
+   {
+    "box": {
+     "height": 0.064536,
+     "width": 0.169005,
+     "x": 0.223781,
+     "y": 0.337268
+    },
+    "context": false,
+    "detail": "",
+    "id": "n_packer",
+    "kind": "compute",
+    "label": "Packer",
+    "members": [
+     "n_packer"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.064536,
+     "width": 0.169005,
+     "x": 0.223781,
+     "y": 0.337268
+    },
+    "source_ancestry": [
+     "g_engine"
+    ],
+    "source_group": "g_engine",
+    "source_node_index": 9,
+    "source_owner": "g_engine",
+    "stage_rank": null,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "control"
+   },
+   {
+    "box": {
+     "height": 0.047161,
+     "width": 0.356045,
+     "x": 0.560454,
+     "y": 0.882098
+    },
+    "context": false,
+    "detail": "Computation result storage",
+    "id": "n_result",
+    "kind": "memory",
+    "label": "Result Registers",
+    "members": [
+     "n_result"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.047161,
+     "width": 0.356045,
+     "x": 0.560454,
+     "y": 0.882098
+    },
+    "source_ancestry": [
+     "g_result",
+     "g_engine"
+    ],
+    "source_group": "g_result",
+    "source_node_index": 8,
+    "source_owner": "g_result",
+    "stage_rank": 1,
+    "type": "resource",
+    "visual_role": "storage-bar",
+    "zone": "flow"
+   },
+   {
+    "box": {
+     "height": 0.064536,
+     "width": 0.449566,
+     "x": 0.0835,
+     "y": 0.444
+    },
+    "context": false,
+    "detail": "Special function path",
+    "id": "n_sfu",
+    "kind": "compute",
+    "label": "Special Function Unit",
+    "members": [
+     "n_sfu"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.064536,
+     "width": 0.449566,
+     "x": 0.0835,
+     "y": 0.444
+    },
+    "source_ancestry": [
+     "g_fpu",
+     "g_engine"
+    ],
+    "source_group": "g_fpu",
+    "source_node_index": 7,
+    "source_owner": "g_fpu",
+    "stage_rank": null,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "control"
+   },
+   {
+    "box": {
+     "height": 0.064536,
+     "width": 0.243821,
+     "x": 0.186373,
+     "y": 0.657464
+    },
+    "context": false,
+    "detail": "",
+    "id": "n_unpackA",
+    "kind": "compute",
+    "label": "Unpacker A",
+    "members": [
+     "n_unpackA"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.064536,
+     "width": 0.243821,
+     "x": 0.186373,
+     "y": 0.657464
+    },
+    "source_ancestry": [
+     "g_engine"
+    ],
+    "source_group": "g_engine",
+    "source_node_index": 2,
+    "source_owner": "g_engine",
+    "stage_rank": null,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "control"
+   },
+   {
+    "box": {
+     "height": 0.064536,
+     "width": 0.243821,
+     "x": 0.186373,
+     "y": 0.550732
+    },
+    "context": false,
+    "detail": "",
+    "id": "n_unpackB",
+    "kind": "compute",
+    "label": "Unpacker B",
+    "members": [
+     "n_unpackB"
+    ],
+    "not_a_new_hardware_instance": true,
+    "slot_box": {
+     "height": 0.064536,
+     "width": 0.243821,
+     "x": 0.186373,
+     "y": 0.550732
+    },
+    "source_ancestry": [
+     "g_engine"
+    ],
+    "source_group": "g_engine",
+    "source_node_index": 3,
+    "source_owner": "g_engine",
+    "stage_rank": null,
+    "type": "resource",
+    "visual_role": "functional-block",
+    "zone": "control"
+   }
+  ],
+  "main_group": "g_engine",
+  "node_ids": [
+   "n_alu",
+   "n_ctrl",
+   "n_dma",
+   "n_packer",
+   "n_result",
+   "n_sfu",
+   "n_unpackA",
+   "n_unpackB"
+  ],
+  "node_to_macro": {
+   "n_alu": "n_alu",
+   "n_ctrl": "n_ctrl",
+   "n_dma": "n_dma",
+   "n_packer": "n_packer",
+   "n_result": "n_result",
+   "n_sfu": "n_sfu",
+   "n_unpackA": "n_unpackA",
+   "n_unpackB": "n_unpackB"
+  },
+  "pair_data_relations": false,
+  "projected_links": [
+   {
+    "family": "forward",
+    "id": "E10",
+    "kind": "data",
+    "label": "",
+    "members": [
+     9
+    ],
+    "routing": {
+     "corridor": "forward-stage-0",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": false,
+     "source_side": "right",
+     "target_side": "left",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "n_alu",
+    "source_edge_index": 9,
+    "source_nodes": [
+     "n_alu"
+    ],
+    "stroke_style": "solid",
+    "target": "n_result",
+    "target_nodes": [
+     "n_result"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E18",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "members": [
+     17
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.07142857142857142,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.043327
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 17,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_alu",
+    "target_nodes": [
+     "n_alu"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E15",
+    "kind": "control",
+    "label": "load / store issue",
+    "members": [
+     14
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.21428571428571427,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.055517
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 14,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_dma",
+    "target_nodes": [
+     "n_dma"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E20",
+    "kind": "control",
+    "label": "pack issue",
+    "members": [
+     19
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.35714285714285715,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.067707
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 19,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_packer",
+    "target_nodes": [
+     "n_packer"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E19",
+    "kind": "control",
+    "label": "path select / compute issue",
+    "members": [
+     18
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 3,
+     "track_fraction": 0.5,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.079897
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 18,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_sfu",
+    "target_nodes": [
+     "n_sfu"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E16",
+    "kind": "control",
+    "label": "unpack issue",
+    "members": [
+     15
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.6428571428571429,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.092087
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 15,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_unpackA",
+    "target_nodes": [
+     "n_unpackA"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E17",
+    "kind": "control",
+    "label": "unpack issue",
+    "members": [
+     16
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 5,
+     "track_fraction": 0.7857142857142857,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.104278
+    },
+    "source": "n_ctrl",
+    "source_edge_index": 16,
+    "source_nodes": [
+     "n_ctrl"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_unpackB",
+    "target_nodes": [
+     "n_unpackB"
+    ]
+   },
+   {
+    "family": "control",
+    "id": "E22",
+    "kind": "feedback",
+    "label": "transfer done",
+    "members": [
+     21
+    ],
+    "routing": {
+     "corridor": "control-outer",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "outer_route": true,
+     "source_side": "top",
+     "target_side": "top",
+     "track": 6,
+     "track_fraction": 0.9285714285714286,
+     "waypoint_axis": "y",
+     "waypoint_value": 0.116468
+    },
+    "source": "n_dma",
+    "source_edge_index": 21,
+    "source_nodes": [
+     "n_dma"
+    ],
+    "stroke_style": "dashed",
+    "target": "n_ctrl",
+    "target_nodes": [
+     "n_ctrl"
+    ]
+   }
+  ],
+  "region_slots": [],
+  "repeat_families": [],
+  "return_edge_indices": [],
+  "role_lanes": [
+   {
+    "box": {
+     "height": 0.589509,
+     "width": 0.469606,
+     "x": 0.07348,
+     "y": 0.139938
+    },
+    "display_only": true,
+    "id": "peripheral-control",
+    "members": [
+     "n_dma",
+     "n_unpackA",
+     "n_unpackB",
+     "n_sfu",
+     "n_packer",
+     "n_ctrl"
+    ],
+    "role": "peripheral-control"
+   },
+   {
+    "box": {
+     "height": 0.079429,
+     "width": 0.357381,
+     "x": 0.129593,
+     "y": 0.865964
+    },
+    "display_only": true,
+    "id": "stage-0",
+    "members": [
+     "n_alu"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 0,
+    "role": "data-stage"
+   },
+   {
+    "box": {
+     "height": 0.062054,
+     "width": 0.376086,
+     "x": 0.550434,
+     "y": 0.874652
+    },
+    "display_only": true,
+    "id": "stage-1",
+    "members": [
+     "n_result"
+    ],
+    "not_a_cycle_or_pipeline_stage_claim": true,
+    "rank": 1,
+    "role": "data-stage"
+   }
+  ],
+  "routing_corridors": [
+   {
+    "axis": "horizontal",
+    "box": {
+     "height": 0.085331,
+     "width": 0.8998,
+     "x": 0.0501,
+     "y": 0.037232
+    },
+    "id": "control-outer",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 7
+   }
+  ],
+  "scope_owner_nodes": [
+   "n_dma",
+   "n_unpackA",
+   "n_unpackB",
+   "n_srcA",
+   "n_srcB",
+   "n_alu",
+   "n_sfu",
+   "n_result",
+   "n_packer",
+   "n_ctrl"
+  ],
+  "slot_boxes": {
+   "n_alu": {
+    "height": 0.064536,
+    "width": 0.337341,
+    "x": 0.139613,
+    "y": 0.873411
+   },
+   "n_ctrl": {
+    "height": 0.052125,
+    "width": 0.281229,
+    "x": 0.167669,
+    "y": 0.242947
+   },
+   "n_dma": {
+    "height": 0.057089,
+    "width": 0.150301,
+    "x": 0.233133,
+    "y": 0.147384
+   },
+   "n_packer": {
+    "height": 0.064536,
+    "width": 0.169005,
+    "x": 0.223781,
+    "y": 0.337268
+   },
+   "n_result": {
+    "height": 0.047161,
+    "width": 0.356045,
+    "x": 0.560454,
+    "y": 0.882098
+   },
+   "n_sfu": {
+    "height": 0.064536,
+    "width": 0.449566,
+    "x": 0.0835,
+    "y": 0.444
+   },
+   "n_unpackA": {
+    "height": 0.064536,
+    "width": 0.243821,
+    "x": 0.186373,
+    "y": 0.657464
+   },
+   "n_unpackB": {
+    "height": 0.064536,
+    "width": 0.243821,
+    "x": 0.186373,
+    "y": 0.550732
+   }
+  },
+  "source_nested_groups": [
+   "g_fpu",
+   "g_srcA",
+   "g_srcB",
+   "g_result"
+  ],
+  "source_ownership": {
+   "n_alu": "g_fpu",
+   "n_ctrl": "g_engine",
+   "n_dma": "g_engine",
+   "n_packer": "g_engine",
+   "n_result": "g_result",
+   "n_sfu": "g_fpu",
+   "n_unpackA": "g_engine",
+   "n_unpackB": "g_engine"
+  },
+  "system_frame": {
+   "box": {
+    "height": 0.877437,
+    "width": 0.8998,
+    "x": 0.0501,
+    "y": 0.085331
+   },
+   "display_only": false,
+   "id": "g_engine",
+   "label": "Tensor Compute Engine",
+   "not_an_added_hardware_node": true,
+   "replaces_container": "g_engine",
+   "source_group": "g_engine"
+  },
+  "title": "Tensor Compute Engine (1)",
+  "type": "directed_flow",
+  "view_type": "graph-led-datapath",
+  "warnings": [
+   "Source scope g_fpu uses continuation segments; source ownership is unchanged.",
+   "Dependency ranks are geometric positions, not clock cycles. Outer return routes retain their original kind and direction.",
+   "Source containment and context ownership are unchanged; no node, bus, port, parameter or hardware copy is introduced."
+  ]
+ },
+ "version": 1,
+ "warnings": []
+}

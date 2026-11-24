@@ -1,0 +1,13 @@
+repository: https://github.com/du-du-wang/silicon-canvas
+commit: 7b590daf2217acc5a95d5c40d289d56d91a9fbfc
+path: src/silicon_canvas
+
+Not copied: mcp_server.py, provider.py, service.py (MCP server and the DeepSeek client; never called).
+Kept but never called by draw-diagram: artifact_store.py, browser_bridge.py, bundle.py, feedback_loop.py
+(upstream tests import them).
+
+Upstream test baseline on this copy (Python 3.14, Pillow 12.2.0, no `mcp` package):
+418 tests run, 6 failures, 10 modules fail to import.
+- 5 failures check Image Gen prompt text, 1 checks a guide-PNG pixel colour; the same 6 fail on the
+  untouched upstream checkout.
+- 9 modules need the `mcp` package; test_provider needs provider.py.

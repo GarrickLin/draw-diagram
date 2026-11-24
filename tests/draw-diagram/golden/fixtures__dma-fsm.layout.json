@@ -1,0 +1,963 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "state-machine",
+  "layout_strategy": "semantic-guide",
+  "title": "DMA Controller FSM"
+ },
+ "kind": "behavior",
+ "label_layout": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "idle"
+    ],
+    "text": "Idle"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "fetch"
+    ],
+    "text": "Fetch Descriptor"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "xfer"
+    ],
+    "text": "Transfer"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "done"
+    ],
+    "text": "Done"
+   },
+   {
+    "at": [
+     400,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "start"
+   },
+   {
+    "at": [
+     840,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "desc valid"
+   },
+   {
+    "at": [
+     1032,
+     279
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "beats left"
+   },
+   {
+    "at": [
+     1280,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "last beat"
+   },
+   {
+    "at": [
+     1702,
+     468
+    ],
+    "max_width": 160,
+    "role": "transition",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "ack"
+   }
+  ]
+ },
+ "layout_scene": {
+  "labels": [
+   {
+    "role": "object",
+    "source_node_ids": [
+     "idle"
+    ],
+    "text": "Idle"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "fetch"
+    ],
+    "text": "Fetch Descriptor"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "xfer"
+    ],
+    "text": "Transfer"
+   },
+   {
+    "role": "object",
+    "source_node_ids": [
+     "done"
+    ],
+    "text": "Done"
+   },
+   {
+    "at": [
+     400,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "start"
+   },
+   {
+    "at": [
+     840,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "desc valid"
+   },
+   {
+    "at": [
+     1032,
+     279
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "beats left"
+   },
+   {
+    "at": [
+     1280,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "last beat"
+   },
+   {
+    "at": [
+     1702,
+     468
+    ],
+    "max_width": 160,
+    "role": "transition",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "ack"
+   }
+  ],
+  "objects": [
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "idle",
+    "kind": "state",
+    "label": "Idle",
+    "members": [
+     "idle"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "空闲状态"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "fetch",
+    "kind": "state",
+    "label": "Fetch Descriptor",
+    "members": [
+     "fetch"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "取描述符"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "xfer",
+    "kind": "state",
+    "label": "Transfer",
+    "members": [
+     "xfer"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "传输"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "done",
+    "kind": "state",
+    "label": "Done",
+    "members": [
+     "done"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "完成"
+   }
+  ],
+  "quality": {
+   "geometry_is_not_raster_acceptance": true,
+   "routes_complete": true,
+   "semantic_scope_complete": true,
+   "typography_measured": false
+  },
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "start",
+    "label_at": [
+     400,
+     413
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      258,
+      430
+     ],
+     [
+      542,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "stroke_style": "solid",
+    "target": "fetch"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "desc valid",
+    "label_at": [
+     840,
+     413
+    ],
+    "members": [
+     1
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      698,
+      430
+     ],
+     [
+      982,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fetch",
+    "stroke_style": "solid",
+    "target": "xfer"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "beats left",
+    "label_at": [
+     1032,
+     279
+    ],
+    "members": [
+     2
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      1005,
+      375
+     ],
+     [
+      936,
+      340
+     ],
+     [
+      936,
+      306
+     ],
+     [
+      1060,
+      306
+     ],
+     [
+      1060,
+      352
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "stroke_style": "solid",
+    "target": "xfer"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "last beat",
+    "label_at": [
+     1280,
+     413
+    ],
+    "members": [
+     3
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1138,
+      430
+     ],
+     [
+      1422,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "stroke_style": "solid",
+    "target": "done"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ack",
+    "label_at": [
+     1702,
+     468
+    ],
+    "members": [
+     4
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1580,
+      430
+     ],
+     [
+      1610,
+      430
+     ],
+     [
+      1610,
+      770
+     ],
+     [
+      75,
+      770
+     ],
+     [
+      75,
+      430
+     ],
+     [
+      100,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "stroke_style": "solid",
+    "target": "idle"
+   }
+  ]
+ },
+ "quality": {
+  "geometry_is_not_raster_acceptance": true,
+  "routes_complete": true,
+  "semantic_scope_complete": true,
+  "typography_measured": false
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "fsm",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "detail",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [],
+  "assumptions": [
+   "为先给出可用示意，AI 补全了 4 个模块和 5 条连接。模块包括 Idle、Fetch Descriptor、Transfer、Done；可在反馈中增删调整。"
+  ],
+  "category": "fsm",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "start",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "target": "fetch"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "desc valid",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fetch",
+    "target": "xfer"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "beats left",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "target": "xfer"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "last beat",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "target": "done"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "ack",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "target": "idle"
+   }
+  ],
+  "groups": [],
+  "layout": "",
+  "nodes": [
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "idle",
+    "kind": "state",
+    "label": "Idle",
+    "origin": "assumed",
+    "rationale": "空闲状态"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "fetch",
+    "kind": "state",
+    "label": "Fetch Descriptor",
+    "origin": "assumed",
+    "rationale": "取描述符"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "xfer",
+    "kind": "state",
+    "label": "Transfer",
+    "origin": "assumed",
+    "rationale": "传输"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "done",
+    "kind": "state",
+    "label": "Done",
+    "origin": "assumed",
+    "rationale": "完成"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "DMA 控制器状态机",
+  "title": "DMA Controller FSM",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "grammar": "state-machine",
+  "height": 906,
+  "initial_node_ids": [],
+  "labels": [
+   {
+    "at": [
+     400,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     0
+    ],
+    "text": "start"
+   },
+   {
+    "at": [
+     840,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     1
+    ],
+    "text": "desc valid"
+   },
+   {
+    "at": [
+     1032,
+     279
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     2
+    ],
+    "text": "beats left"
+   },
+   {
+    "at": [
+     1280,
+     413
+    ],
+    "max_width": 310,
+    "role": "transition",
+    "source_edge_indices": [
+     3
+    ],
+    "text": "last beat"
+   },
+   {
+    "at": [
+     1702,
+     468
+    ],
+    "max_width": 160,
+    "role": "transition",
+    "source_edge_indices": [
+     4
+    ],
+    "text": "ack"
+   }
+  ],
+  "macro_edges": [
+   {
+    "evidence": "",
+    "id": "s0",
+    "kind": "control",
+    "label": "start",
+    "members": [
+     0
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "target": "fetch"
+   },
+   {
+    "evidence": "",
+    "id": "s1",
+    "kind": "control",
+    "label": "desc valid",
+    "members": [
+     1
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fetch",
+    "target": "xfer"
+   },
+   {
+    "evidence": "",
+    "id": "s2",
+    "kind": "control",
+    "label": "beats left",
+    "members": [
+     2
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "target": "xfer"
+   },
+   {
+    "evidence": "",
+    "id": "s3",
+    "kind": "control",
+    "label": "last beat",
+    "members": [
+     3
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "target": "done"
+   },
+   {
+    "evidence": "",
+    "id": "s4",
+    "kind": "control",
+    "label": "ack",
+    "members": [
+     4
+    ],
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "target": "idle"
+   }
+  ],
+  "macro_nodes": [
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "idle",
+    "kind": "state",
+    "label": "Idle",
+    "members": [
+     "idle"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "空闲状态"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "fetch",
+    "kind": "state",
+    "label": "Fetch Descriptor",
+    "members": [
+     "fetch"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "取描述符"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "xfer",
+    "kind": "state",
+    "label": "Transfer",
+    "members": [
+     "xfer"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "传输"
+   },
+   {
+    "children": [],
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "done",
+    "kind": "state",
+    "label": "Done",
+    "members": [
+     "done"
+    ],
+    "origin": "assumed",
+    "original_group": "",
+    "rationale": "完成"
+   }
+  ],
+  "monochrome": false,
+  "positions": {
+   "done": [
+    1500,
+    430
+   ],
+   "fetch": [
+    620,
+    430
+   ],
+   "idle": [
+    180,
+    430
+   ],
+   "xfer": [
+    1060,
+    430
+   ]
+  },
+  "reading_direction": "state progression and separate conditional returns",
+  "reset_notes": [],
+  "routes": [
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "start",
+    "label_at": [
+     400,
+     413
+    ],
+    "members": [
+     0
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      258,
+      430
+     ],
+     [
+      542,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "idle",
+    "stroke_style": "solid",
+    "target": "fetch"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "desc valid",
+    "label_at": [
+     840,
+     413
+    ],
+    "members": [
+     1
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      698,
+      430
+     ],
+     [
+      982,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "fetch",
+    "stroke_style": "solid",
+    "target": "xfer"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "beats left",
+    "label_at": [
+     1032,
+     279
+    ],
+    "members": [
+     2
+    ],
+    "mode": "self-loop",
+    "origin": "assumed",
+    "points": [
+     [
+      1005,
+      375
+     ],
+     [
+      936,
+      340
+     ],
+     [
+      936,
+      306
+     ],
+     [
+      1060,
+      306
+     ],
+     [
+      1060,
+      352
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "stroke_style": "solid",
+    "target": "xfer"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "last beat",
+    "label_at": [
+     1280,
+     413
+    ],
+    "members": [
+     3
+    ],
+    "mode": "forward",
+    "origin": "assumed",
+    "points": [
+     [
+      1138,
+      430
+     ],
+     [
+      1422,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "xfer",
+    "stroke_style": "solid",
+    "target": "done"
+   },
+   {
+    "bidirectional": false,
+    "evidence": "",
+    "kind": "control",
+    "label": "ack",
+    "label_at": [
+     1702,
+     468
+    ],
+    "members": [
+     4
+    ],
+    "mode": "return",
+    "origin": "assumed",
+    "points": [
+     [
+      1580,
+      430
+     ],
+     [
+      1610,
+      430
+     ],
+     [
+      1610,
+      770
+     ],
+     [
+      75,
+      770
+     ],
+     [
+      75,
+      430
+     ],
+     [
+      100,
+      430
+     ]
+    ],
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "done",
+    "stroke_style": "solid",
+    "target": "idle"
+   }
+  ],
+  "state_outputs": {
+   "done": [],
+   "fetch": [],
+   "idle": [],
+   "xfer": []
+  },
+  "type": "behavioral",
+  "width": 1800
+ },
+ "version": 1,
+ "warnings": []
+}

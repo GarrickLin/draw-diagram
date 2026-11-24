@@ -1,0 +1,137 @@
+{
+ "tests__fixtures__design_coverage__branched-tile-return": {
+  "kind": "behavior",
+  "layout": "7c78bfce27c615ff",
+  "drawio": "b7354af58cd38f8d"
+ },
+ "tests__fixtures__design_coverage__elastic-pipeline": {
+  "kind": "behavior",
+  "layout": "1d46ae56d9fcab1e",
+  "drawio": "e869c9f01d1a45b8"
+ },
+ "tests__fixtures__design_coverage__heterogeneous-instrument": {
+  "kind": "publication",
+  "layout": "80ca320eac38ca59",
+  "drawio": "6fd02ec6d4b286b4"
+ },
+ "tests__fixtures__design_coverage__mesh-memory": {
+  "kind": "behavior",
+  "layout": "a20a4c059b043e0f",
+  "drawio": "19cf7e58106e6178"
+ },
+ "tests__fixtures__design_coverage__ready-valid-trace": {
+  "kind": "behavior",
+  "layout": "56d88730d1094817",
+  "drawio": "55a49f6bf068985c"
+ },
+ "tests__fixtures__design_coverage__repeated-ingress": {
+  "kind": "publication",
+  "layout": "fcc6e16db9aeaf46",
+  "drawio": "8f569ccfc8c1bde9"
+ },
+ "tests__fixtures__design_coverage__residual-projection": {
+  "kind": "algorithm",
+  "layout": "0c24f253087081ad",
+  "drawio": "41fb9ec582ac4adf"
+ },
+ "tests__fixtures__design_coverage__retry-controller": {
+  "kind": "behavior",
+  "layout": "7f46619ce95eceb5",
+  "drawio": "3f076cccccb5cd93"
+ },
+ "tests__fixtures__editorial_benchmark__engine-reading-plan": {
+  "kind": "legacy",
+  "layout": "8e230d2760cf3e8a",
+  "drawio": "9250f388eb606ee2"
+ },
+ "tests__fixtures__editorial_benchmark__fresh-gpu-final-source": {
+  "kind": "publication",
+  "layout": "6ef72a0058d7a77d",
+  "drawio": "c3f169a9b897e3bd"
+ },
+ "tests__fixtures__editorial_benchmark__fresh-gpu-result": {
+  "kind": "publication",
+  "layout": "6ef72a0058d7a77d",
+  "drawio": "c3f169a9b897e3bd"
+ },
+ "tests__fixtures__editorial_benchmark__fresh-soc-final-source": {
+  "kind": "publication",
+  "layout": "3e2f36f3e1b6490b",
+  "drawio": "1d2d90012da19705"
+ },
+ "tests__fixtures__editorial_benchmark__fresh-soc-physical-result": {
+  "kind": "publication",
+  "layout": "3e2f36f3e1b6490b",
+  "drawio": "1d2d90012da19705"
+ },
+ "tests__fixtures__editorial_benchmark__gpu-reading-plan": {
+  "kind": "legacy",
+  "layout": "06a5916384436e60",
+  "drawio": "57a34538038806a9"
+ },
+ "tests__fixtures__publication_benchmark__engine-release-cps5": {
+  "kind": "publication",
+  "layout": "7ba1e430ed5f8a08",
+  "drawio": "fcda2789cc8ad186"
+ },
+ "tests__fixtures__publication_benchmark__gpu-baseline-result": {
+  "kind": "legacy",
+  "layout": "3b2c8b4558c8d793",
+  "drawio": "38ef99fb23147973"
+ },
+ "tests__fixtures__publication_benchmark__gpu-release-cps5": {
+  "kind": "legacy",
+  "layout": "3b2c8b4558c8d793",
+  "drawio": "38ef99fb23147973"
+ },
+ "tests__fixtures__publication_benchmark__two-input-semantic-v2-result": {
+  "kind": "publication",
+  "layout": "7ba1e430ed5f8a08",
+  "drawio": "fcda2789cc8ad186"
+ },
+ "tests__fixtures__strategy_benchmark__containment_core_fixture": {
+  "kind": "legacy",
+  "layout": "4c89d57b7afefb7e",
+  "drawio": "16aa87c49fd0158c"
+ },
+ "tests__fixtures__strategy_benchmark__publication_result": {
+  "kind": "legacy",
+  "layout": "415c84b7a9037c41",
+  "drawio": "40fe7a82f4ae9849"
+ },
+ "tests__fixtures__structure_benchmark__core_source": {
+  "kind": "legacy",
+  "layout": "4c89d57b7afefb7e",
+  "drawio": "16aa87c49fd0158c"
+ },
+ "examples__attention-dataflow": {
+  "kind": "algorithm",
+  "layout": "bc8ac20cb45df21c",
+  "drawio": "58a2fb7ea9214032"
+ },
+ "examples__gpu": {
+  "kind": "publication",
+  "layout": "6ef72a0058d7a77d",
+  "drawio": "c3f169a9b897e3bd"
+ },
+ "examples__online-attention-dataflow": {
+  "kind": "algorithm",
+  "layout": "70a85518d80408b9",
+  "drawio": "9c00b891a9e8f3df"
+ },
+ "examples__soc": {
+  "kind": "publication",
+  "layout": "3e2f36f3e1b6490b",
+  "drawio": "1d2d90012da19705"
+ },
+ "fixtures__dma-fsm-zh": {
+  "kind": "behavior",
+  "layout": "b7f70fc5b9227086",
+  "drawio": "c88c632454a5b966"
+ },
+ "fixtures__dma-fsm": {
+  "kind": "behavior",
+  "layout": "910bdf17d74968d7",
+  "drawio": "2c5962bf5e5d9f51"
+ }
+}

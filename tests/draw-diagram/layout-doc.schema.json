@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "draw-diagram/layout-doc/1",
+  "title": "draw-diagram layout document",
+  "description": "What the planning and layout engine hands the Node converters for one main figure. Phase 1 makes it in Python (py/bridge.py), phase 2 in JavaScript; both must produce the same document. Fields are only ever added, never changed.",
+  "type": "object",
+  "required": ["version", "kind", "figure", "spec", "settings", "structure_layout", "layout_scene", "label_layout", "algorithm_flow_plan", "quality", "warnings"],
+  "properties": {
+    "version": { "const": 1 },
+    "kind": {
+      "enum": ["publication", "legacy", "behavior", "algorithm", "text-only"],
+      "description": "Which converter draws it: publication-candidates, legacy-technical-annex, semantic-guide, algorithm-dependency-plan, or no layout."
+    },
+    "figure": {
+      "type": "object",
+      "required": ["id", "title", "layout_strategy", "design_limit"],
+      "properties": {
+        "id": { "type": ["string", "null"] },
+        "title": { "type": ["string", "null"] },
+        "layout_strategy": { "type": ["string", "null"] },
+        "design_limit": { "type": ["string", "null"] }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "description": "The normalized specification: title, summary, category, groups, nodes, edges, each item with origin given|assumed.",
+      "required": ["title", "category", "groups", "nodes", "edges"]
+    },
+    "settings": { "type": "object", "description": "Resolved settings, language among them." },
+    "structure_layout": {
+      "type": ["object", "null"],
+      "description": "publication: boxes (normalized), macro_nodes, symbol_metrics (children box_px), typography. legacy: boxes and containers (normalized). behavior: positions and routes in pixels."
+    },
+    "layout_scene": {
+      "type": "object",
+      "description": "width, height and routes (points normalized for publication/legacy, pixels for behavior), and quality."
+    },
+    "label_layout": { "type": ["object", "null"], "description": "Edge labels placed on the page (labels) and those left out (deferred_labels)." },
+    "algorithm_flow_plan": { "type": ["object", "null"], "description": "algorithm: objects, relations, groups, composition; no coordinates." },
+    "quality": { "type": "object", "description": "layout_scene.quality: routes_complete, failed_routes, labels_placed, ..." },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  }
+}

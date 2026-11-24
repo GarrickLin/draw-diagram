@@ -1,0 +1,3602 @@
+{
+ "algorithm_flow_plan": null,
+ "figure": {
+  "design_limit": null,
+  "id": "overview",
+  "layout_strategy": "legacy-technical-annex",
+  "title": "Synthetic Compute Engine"
+ },
+ "kind": "legacy",
+ "label_layout": {
+  "height": 1462,
+  "labels": [
+   {
+    "box": {
+     "height": 0.014364,
+     "width": 0.03408,
+     "x": 0.206667,
+     "y": 0.708345
+    },
+    "color": "#17324D",
+    "text": "fill / evict"
+   },
+   {
+    "box": {
+     "height": 0.014364,
+     "width": 0.031129,
+     "x": 0.331093,
+     "y": 0.708345
+    },
+    "color": "#17324D",
+    "text": "payload"
+   },
+   {
+    "box": {
+     "height": 0.014364,
+     "width": 0.031129,
+     "x": 0.56,
+     "y": 0.708345
+    },
+    "color": "#17324D",
+    "text": "payload"
+   },
+   {
+    "box": {
+     "height": 0.014364,
+     "width": 0.036071,
+     "x": 0.731965,
+     "y": 0.827257
+    },
+    "color": "#17324D",
+    "text": "bulk data"
+   },
+   {
+    "box": {
+     "height": 0.014364,
+     "width": 0.063733,
+     "x": 0.302934,
+     "y": 0.744679
+    },
+    "color": "#17324D",
+    "text": "encoded stream"
+   },
+   {
+    "box": {
+     "height": 0.014364,
+     "width": 0.068178,
+     "x": 0.469827,
+     "y": 0.672648
+    },
+    "color": "#17324D",
+    "text": "unpacked stream"
+   }
+  ],
+  "width": 1800
+ },
+ "layout_scene": {
+  "height": 1462,
+  "line_legend": {},
+  "quality": {
+   "failed_routes": [],
+   "no_common_bus_inferred": true,
+   "requested_routes": 9,
+   "route_count": 9,
+   "routes_complete": true
+  },
+  "routes": [
+   {
+    "family": "instruction",
+    "id": "P1",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     0
+    ],
+    "points": [
+     [
+      0.145833,
+      0.128206
+     ],
+     [
+      0.145833,
+      0.179487
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.16666666666666666
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "source_side": "bottom",
+    "target": "worker0",
+    "target_nodes": [
+     "entry"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "instruction",
+    "id": "P2",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     1
+    ],
+    "points": [
+     [
+      0.374999,
+      0.128206
+     ],
+     [
+      0.374999,
+      0.179487
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.5
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "source_side": "bottom",
+    "target": "worker1",
+    "target_nodes": [
+     "worker1"
+    ],
+    "target_side": "top"
+   },
+   {
+    "family": "instruction",
+    "id": "P3",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     2
+    ],
+    "points": [
+     [
+      0.604166,
+      0.128206
+     ],
+     [
+      0.604166,
+      0.179487
+     ]
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.8333333333333334
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "source_side": "bottom",
+    "target": "worker2",
+    "target_nodes": [
+     "worker2"
+    ],
+    "target_side": "top"
+   },
+   {
+    "bidirectional": true,
+    "directional_labels": [
+     {
+      "label": "fill",
+      "source": "sharedram",
+      "target": "worker0"
+     },
+     {
+      "label": "evict",
+      "source": "worker0",
+      "target": "sharedram"
+     }
+    ],
+    "family": "memory",
+    "id": "P11",
+    "kind": "data",
+    "label": "fill / evict",
+    "labels": [
+     "fill"
+    ],
+    "members": [
+     19,
+     20
+    ],
+    "paired_ids": [
+     "P11",
+     "P12"
+    ],
+    "points": [
+     [
+      0.160417,
+      0.820513
+     ],
+     [
+      0.160417,
+      0.807114
+     ],
+     [
+      0.197778,
+      0.807114
+     ],
+     [
+      0.197778,
+      0.500684
+     ],
+     [
+      0.160417,
+      0.500684
+     ],
+     [
+      0.160417,
+      0.487179
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 0,
+     "track_fraction": 0.1
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "source_side": "top",
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ],
+    "target_side": "bottom"
+   },
+   {
+    "family": "memory",
+    "id": "P13",
+    "kind": "data",
+    "label": "payload",
+    "labels": [
+     "payload"
+    ],
+    "members": [
+     21
+    ],
+    "points": [
+     [
+      0.341667,
+      0.820513
+     ],
+     [
+      0.341667,
+      0.807114
+     ],
+     [
+      0.371111,
+      0.807114
+     ],
+     [
+      0.371111,
+      0.500684
+     ],
+     [
+      0.341667,
+      0.500684
+     ],
+     [
+      0.341667,
+      0.487179
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 2,
+     "track_fraction": 0.5
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "source_side": "top",
+    "target": "worker1",
+    "target_nodes": [
+     "worker1"
+    ],
+    "target_side": "bottom"
+   },
+   {
+    "family": "memory",
+    "id": "P14",
+    "kind": "data",
+    "label": "payload",
+    "labels": [
+     "payload"
+    ],
+    "members": [
+     22
+    ],
+    "points": [
+     [
+      0.589584,
+      0.820513
+     ],
+     [
+      0.589584,
+      0.807114
+     ],
+     [
+      0.551111,
+      0.807114
+     ],
+     [
+      0.551111,
+      0.500684
+     ],
+     [
+      0.589584,
+      0.500684
+     ],
+     [
+      0.589584,
+      0.487179
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.7
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "source_side": "top",
+    "target": "worker2",
+    "target_nodes": [
+     "worker2"
+    ],
+    "target_side": "bottom"
+   },
+   {
+    "family": "external",
+    "id": "P15",
+    "kind": "data",
+    "label": "bulk data",
+    "labels": [
+     "bulk data"
+    ],
+    "members": [
+     23
+    ],
+    "points": [
+     [
+      0.791667,
+      0.852565
+     ],
+     [
+      0.708334,
+      0.852565
+     ]
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "left",
+     "target_side": "right",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "external",
+    "source_nodes": [
+     "external"
+    ],
+    "source_side": "left",
+    "target": "sharedram",
+    "target_nodes": [
+     "sharedram"
+    ],
+    "target_side": "right"
+   },
+   {
+    "family": "memory",
+    "id": "P16",
+    "kind": "data",
+    "label": "encoded stream",
+    "labels": [
+     "encoded stream"
+    ],
+    "members": [
+     24
+    ],
+    "points": [
+     [
+      0.441667,
+      0.820513
+     ],
+     [
+      0.441667,
+      0.807114
+     ],
+     [
+      0.375556,
+      0.807114
+     ],
+     [
+      0.375556,
+      0.621796
+     ],
+     [
+      0.385417,
+      0.621796
+     ]
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 4,
+     "track_fraction": 0.9
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "source_side": "top",
+    "target": "loader",
+    "target_nodes": [
+     "loader"
+    ],
+    "target_side": "left"
+   },
+   {
+    "family": "service",
+    "id": "P17",
+    "kind": "data",
+    "label": "unpacked stream",
+    "labels": [
+     "unpacked stream"
+    ],
+    "members": [
+     25
+    ],
+    "points": [
+     [
+      0.460938,
+      0.653847
+     ],
+     [
+      0.460938,
+      0.705128
+     ]
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.75
+    },
+    "source": "loader",
+    "source_nodes": [
+     "loader"
+    ],
+    "source_side": "bottom",
+    "target": "staging",
+    "target_nodes": [
+     "staging"
+    ],
+    "target_side": "top"
+   }
+  ],
+  "width": 1800
+ },
+ "quality": {
+  "failed_routes": [],
+  "no_common_bus_inferred": true,
+  "requested_routes": 9,
+  "route_count": 9,
+  "routes_complete": true
+ },
+ "settings": {
+  "aspect": "auto",
+  "category": "architecture",
+  "completion_mode": "auto",
+  "density": "medium",
+  "labels": "",
+  "language": "en",
+  "notes": "",
+  "representation": "diagram",
+  "resolved_representation": "diagram",
+  "resolved_scene": "system",
+  "scene": "auto",
+  "style": "paper"
+ },
+ "spec": {
+  "annotations": [],
+  "assumptions": [
+   "Entire architecture is a synthetic test fixture. No real chip, ISA, bank count, capacity, or timing is specified."
+  ],
+  "category": "architecture",
+  "checks": [],
+  "edges": [
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "task descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "command",
+    "target": "entry"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "task descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "command",
+    "target": "worker1"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "task descriptor",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "command",
+    "target": "worker2"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "decoded task",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "entry",
+    "target": "schedule"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "start dot",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "schedule",
+    "target": "dot"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "start pack",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "schedule",
+    "target": "reshape"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "request slot",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "schedule",
+    "target": "coordinator"
+   },
+   {
+    "evidence": "",
+    "kind": "control",
+    "label": "slot grant",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "coordinator",
+    "target": "schedule"
+   },
+   {
+    "evidence": "",
+    "kind": "feedback",
+    "label": "fill ready",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sharedram",
+    "target": "schedule"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "operands",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "scratch",
+    "target": "dot"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "partials",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "dot",
+    "target": "scratch"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "tiles",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "scratch",
+    "target": "reshape"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packed samples",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "reshape",
+    "target": "linebuf"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "packed words",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "linebuf",
+    "target": "scratch"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "outgoing messages",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "scratch",
+    "target": "inbox"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "send",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "inbox",
+    "target": "bridge"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "receive",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "bridge",
+    "target": "inbox"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "lookup keys",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "scratch",
+    "target": "assist"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "lookup values",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "assist",
+    "target": "scratch"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "fill",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sharedram",
+    "target": "scratch"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "evict",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "scratch",
+    "target": "sharedram"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "payload",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sharedram",
+    "target": "worker1"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "payload",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sharedram",
+    "target": "worker2"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "bulk data",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "external",
+    "target": "sharedram"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "encoded stream",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "sharedram",
+    "target": "loader"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "unpacked stream",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "loader",
+    "target": "staging"
+   },
+   {
+    "evidence": "",
+    "kind": "data",
+    "label": "loaded block",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。",
+    "source": "staging",
+    "target": "scratch"
+   }
+  ],
+  "groups": [
+   {
+    "evidence": "",
+    "id": "engine",
+    "label": "Compute Engine",
+    "origin": "assumed",
+    "parent": "",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "worker0",
+    "label": "Worker0 private resources",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "evidence": "",
+    "id": "services",
+    "label": "Shared services",
+    "origin": "assumed",
+    "parent": "engine",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "layout": "Three equal worker instances; keep each local resource inside Worker0. Shared services retain their stated owner. External storage stays outside the engine.",
+  "nodes": [
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "engine",
+    "id": "command",
+    "kind": "io",
+    "label": "Command source",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "worker0",
+    "id": "entry",
+    "kind": "control",
+    "label": "Task entry",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "worker0",
+    "id": "schedule",
+    "kind": "control",
+    "label": "Work scheduler",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "worker0",
+    "id": "dot",
+    "kind": "compute",
+    "label": "Dot engine",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "worker0",
+    "id": "reshape",
+    "kind": "compute",
+    "label": "Pack engine",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Private workspace; capacity intentionally unspecified.",
+    "evidence": "",
+    "group": "worker0",
+    "id": "scratch",
+    "kind": "memory",
+    "label": "Local scratchpad",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "worker0",
+    "id": "linebuf",
+    "kind": "memory",
+    "label": "Line buffer",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "worker0",
+    "id": "inbox",
+    "kind": "memory",
+    "label": "Message queue",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Same resources as worker0",
+    "evidence": "",
+    "group": "engine",
+    "id": "worker1",
+    "kind": "compute",
+    "label": "Worker1",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "Same resources as worker0",
+    "evidence": "",
+    "group": "engine",
+    "id": "worker2",
+    "kind": "compute",
+    "label": "Worker2",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "services",
+    "id": "coordinator",
+    "kind": "control",
+    "label": "Shared arbiter",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "services",
+    "id": "assist",
+    "kind": "compute",
+    "label": "Shared lookup",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "services",
+    "id": "bridge",
+    "kind": "io",
+    "label": "Shared link",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "services",
+    "id": "loader",
+    "kind": "compute",
+    "label": "Shared unpack",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "services",
+    "id": "staging",
+    "kind": "memory",
+    "label": "Shared staging",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "engine",
+    "id": "sharedram",
+    "kind": "memory",
+    "label": "Memory interface",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   },
+   {
+    "detail": "",
+    "evidence": "",
+    "group": "",
+    "id": "external",
+    "kind": "memory",
+    "label": "External storage",
+    "origin": "assumed",
+    "rationale": "作为可调整的示意方案建议；未直接定位到用户原文依据。"
+   }
+  ],
+  "questions": [],
+  "steps": [],
+  "summary": "Independent test-only design: three task workers, a representative local arithmetic pipeline, and shared transport and storage services.",
+  "title": "Synthetic Compute Engine",
+  "verbatim_labels": []
+ },
+ "structure_layout": {
+  "abstract": true,
+  "boxes": {
+   "assist": {
+    "height": 0.064103,
+    "width": 0.151042,
+    "x": 0.213542,
+    "y": 0.589744
+   },
+   "bridge": {
+    "height": 0.064103,
+    "width": 0.151042,
+    "x": 0.557292,
+    "y": 0.589744
+   },
+   "command": {
+    "height": 0.064103,
+    "width": 0.666667,
+    "x": 0.041667,
+    "y": 0.064103
+   },
+   "coordinator": {
+    "height": 0.064103,
+    "width": 0.151042,
+    "x": 0.041667,
+    "y": 0.589744
+   },
+   "external": {
+    "height": 0.064103,
+    "width": 0.1875,
+    "x": 0.791667,
+    "y": 0.820513
+   },
+   "loader": {
+    "height": 0.064103,
+    "width": 0.151042,
+    "x": 0.385417,
+    "y": 0.589744
+   },
+   "sharedram": {
+    "height": 0.064103,
+    "width": 0.666667,
+    "x": 0.041667,
+    "y": 0.820513
+   },
+   "staging": {
+    "height": 0.064103,
+    "width": 0.151042,
+    "x": 0.385417,
+    "y": 0.705128
+   },
+   "worker0": {
+    "height": 0.307692,
+    "width": 0.208333,
+    "x": 0.041667,
+    "y": 0.179487
+   },
+   "worker1": {
+    "height": 0.307692,
+    "width": 0.208333,
+    "x": 0.270833,
+    "y": 0.179487
+   },
+   "worker2": {
+    "height": 0.307692,
+    "width": 0.208333,
+    "x": 0.5,
+    "y": 0.179487
+   }
+  },
+  "canvas": {
+   "coordinate_system": "normalized",
+   "natural_aspect": 1.231
+  },
+  "component_lanes": [
+   {
+    "basis": "supplied weak connectivity",
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.041667,
+     "y": 0.589744
+    },
+    "display_only": true,
+    "id": "shared-component-1",
+    "members": [
+     "coordinator"
+    ]
+   },
+   {
+    "basis": "supplied weak connectivity",
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.213542,
+     "y": 0.589744
+    },
+    "display_only": true,
+    "id": "shared-component-2",
+    "members": [
+     "assist"
+    ]
+   },
+   {
+    "basis": "supplied weak connectivity",
+    "box": {
+     "height": 0.179487,
+     "width": 0.151042,
+     "x": 0.385417,
+     "y": 0.589744
+    },
+    "display_only": true,
+    "id": "shared-component-3",
+    "members": [
+     "loader",
+     "staging"
+    ]
+   },
+   {
+    "basis": "supplied weak connectivity",
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.557292,
+     "y": 0.589744
+    },
+    "display_only": true,
+    "id": "shared-component-4",
+    "members": [
+     "bridge"
+    ]
+   }
+  ],
+  "containers": [
+   {
+    "box": {
+     "height": 0.948718,
+     "width": 0.708333,
+     "x": 0.020833,
+     "y": 0.025641
+    },
+    "id": "engine",
+    "is_system_boundary": true,
+    "label": "Compute Engine",
+    "members": [
+     "command",
+     "worker0",
+     "worker1",
+     "worker2",
+     "coordinator",
+     "assist",
+     "bridge",
+     "loader",
+     "staging",
+     "sharedram"
+    ],
+    "ownership_unchanged": true,
+    "parent": "",
+    "replaces_region": null,
+    "segment_boxes": [
+     {
+      "height": 0.835897,
+      "width": 0.679167,
+      "x": 0.035417,
+      "y": 0.05641
+     }
+    ],
+    "source_group": "engine",
+    "source_members": [
+     "command",
+     "entry",
+     "schedule",
+     "dot",
+     "reshape",
+     "scratch",
+     "linebuf",
+     "inbox",
+     "worker1",
+     "worker2",
+     "coordinator",
+     "assist",
+     "bridge",
+     "loader",
+     "staging",
+     "sharedram"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.323077,
+     "width": 0.220833,
+     "x": 0.035417,
+     "y": 0.171795
+    },
+    "id": "worker0",
+    "label": "Worker0 private resources",
+    "members": [
+     "worker0"
+    ],
+    "ownership_unchanged": true,
+    "parent": "engine",
+    "replaces_region": "worker0",
+    "segment_boxes": [
+     {
+      "height": 0.323077,
+      "width": 0.220833,
+      "x": 0.035417,
+      "y": 0.171795
+     }
+    ],
+    "source_group": "worker0",
+    "source_members": [
+     "entry",
+     "schedule",
+     "dot",
+     "reshape",
+     "scratch",
+     "linebuf",
+     "inbox"
+    ]
+   },
+   {
+    "box": {
+     "height": 0.194872,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.582051
+    },
+    "id": "services",
+    "label": "Shared services",
+    "members": [
+     "coordinator",
+     "assist",
+     "bridge",
+     "loader",
+     "staging"
+    ],
+    "ownership_unchanged": true,
+    "parent": "engine",
+    "replaces_region": null,
+    "segment_boxes": [
+     {
+      "height": 0.194872,
+      "width": 0.679167,
+      "x": 0.035417,
+      "y": 0.582051
+     }
+    ],
+    "source_group": "services",
+    "source_members": [
+     "coordinator",
+     "assist",
+     "bridge",
+     "loader",
+     "staging"
+    ]
+   }
+  ],
+  "coverage": {
+   "duplicate_edge_indices": [],
+   "missing_edges": [],
+   "missing_nodes": [],
+   "nodes_projected": 17,
+   "source_edges": 27,
+   "source_nodes": 17
+  },
+  "deferred_links": [
+   {
+    "family": "coordination",
+    "id": "P4",
+    "kind": "control",
+    "label": "request slot",
+    "labels": [
+     "request slot"
+    ],
+    "members": [
+     6
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "schedule"
+    ],
+    "target": "coordinator",
+    "target_nodes": [
+     "coordinator"
+    ]
+   },
+   {
+    "family": "coordination",
+    "id": "P5",
+    "kind": "control",
+    "label": "slot grant",
+    "labels": [
+     "slot grant"
+    ],
+    "members": [
+     7
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "coordinator",
+    "source_nodes": [
+     "coordinator"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "schedule"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P6",
+    "kind": "feedback",
+    "label": "fill ready",
+    "labels": [
+     "fill ready"
+    ],
+    "members": [
+     8
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "memory:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "schedule"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P7",
+    "kind": "data",
+    "label": "send",
+    "labels": [
+     "send"
+    ],
+    "members": [
+     15
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.08333333333333333
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "inbox"
+    ],
+    "target": "bridge",
+    "target_nodes": [
+     "bridge"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P8",
+    "kind": "data",
+    "label": "receive",
+    "labels": [
+     "receive"
+    ],
+    "members": [
+     16
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 1,
+     "track_fraction": 0.25
+    },
+    "source": "bridge",
+    "source_nodes": [
+     "bridge"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "inbox"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P9",
+    "kind": "data",
+    "label": "lookup keys",
+    "labels": [
+     "lookup keys"
+    ],
+    "members": [
+     17
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.4166666666666667
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "scratch"
+    ],
+    "target": "assist",
+    "target_nodes": [
+     "assist"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P10",
+    "kind": "data",
+    "label": "lookup values",
+    "labels": [
+     "lookup values"
+    ],
+    "members": [
+     18
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.5833333333333334
+    },
+    "source": "assist",
+    "source_nodes": [
+     "assist"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P18",
+    "kind": "data",
+    "label": "loaded block",
+    "labels": [
+     "loaded block"
+    ],
+    "members": [
+     26
+    ],
+    "reason": "Unit service interaction belongs to the control/datapath view; this overview answers resource organization.",
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 5,
+     "track_fraction": 0.9166666666666666
+    },
+    "source": "staging",
+    "source_nodes": [
+     "staging"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ]
+   }
+  ],
+  "diagram_role": "resource-organization",
+  "internal_edges": [
+   {
+    "members": [
+     3,
+     4,
+     5,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14
+    ],
+    "region": "worker0"
+   }
+  ],
+  "link_families": [
+   {
+    "id": "instruction",
+    "link_ids": [
+     "P1",
+     "P2",
+     "P3"
+    ],
+    "shown": true
+   },
+   {
+    "id": "external",
+    "link_ids": [
+     "P15"
+    ],
+    "shown": true
+   },
+   {
+    "id": "memory",
+    "link_ids": [
+     "P6",
+     "P11",
+     "P12",
+     "P13",
+     "P14",
+     "P16"
+    ],
+    "shown": true
+   },
+   {
+    "id": "service",
+    "link_ids": [
+     "P7",
+     "P8",
+     "P9",
+     "P10",
+     "P17",
+     "P18"
+    ],
+    "shown": true
+   },
+   {
+    "id": "coordination",
+    "link_ids": [
+     "P4",
+     "P5"
+    ],
+    "shown": true
+   }
+  ],
+  "macro_edges": [
+   {
+    "family": "instruction",
+    "id": "P1",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     0
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.16666666666666666
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "entry"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P2",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     1
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.5
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "target": "worker1",
+    "target_nodes": [
+     "worker1"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P3",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     2
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.8333333333333334
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "target": "worker2",
+    "target_nodes": [
+     "worker2"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P11",
+    "kind": "data",
+    "label": "fill",
+    "labels": [
+     "fill"
+    ],
+    "members": [
+     19
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 0,
+     "track_fraction": 0.1
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P12",
+    "kind": "data",
+    "label": "evict",
+    "labels": [
+     "evict"
+    ],
+    "members": [
+     20
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.3
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "scratch"
+    ],
+    "target": "sharedram",
+    "target_nodes": [
+     "sharedram"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P13",
+    "kind": "data",
+    "label": "payload",
+    "labels": [
+     "payload"
+    ],
+    "members": [
+     21
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 2,
+     "track_fraction": 0.5
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker1",
+    "target_nodes": [
+     "worker1"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P14",
+    "kind": "data",
+    "label": "payload",
+    "labels": [
+     "payload"
+    ],
+    "members": [
+     22
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.7
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker2",
+    "target_nodes": [
+     "worker2"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P15",
+    "kind": "data",
+    "label": "bulk data",
+    "labels": [
+     "bulk data"
+    ],
+    "members": [
+     23
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "left",
+     "target_side": "right",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "external",
+    "source_nodes": [
+     "external"
+    ],
+    "target": "sharedram",
+    "target_nodes": [
+     "sharedram"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P16",
+    "kind": "data",
+    "label": "encoded stream",
+    "labels": [
+     "encoded stream"
+    ],
+    "members": [
+     24
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 4,
+     "track_fraction": 0.9
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "loader",
+    "target_nodes": [
+     "loader"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P17",
+    "kind": "data",
+    "label": "unpacked stream",
+    "labels": [
+     "unpacked stream"
+    ],
+    "members": [
+     25
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.75
+    },
+    "source": "loader",
+    "source_nodes": [
+     "loader"
+    ],
+    "target": "staging",
+    "target_nodes": [
+     "staging"
+    ]
+   }
+  ],
+  "macro_nodes": [
+   {
+    "box": {
+     "height": 0.307692,
+     "width": 0.208333,
+     "x": 0.041667,
+     "y": 0.179487
+    },
+    "children_labels": [
+     "Task entry",
+     "Work scheduler",
+     "Dot engine",
+     "Pack engine",
+     "Local scratchpad",
+     "Line buffer",
+     "Message queue"
+    ],
+    "display_only": true,
+    "id": "worker0",
+    "kind": "compute",
+    "label": "Worker0 private resources",
+    "members": [
+     "entry",
+     "schedule",
+     "dot",
+     "reshape",
+     "scratch",
+     "linebuf",
+     "inbox"
+    ],
+    "source_group": "worker0",
+    "source_owner": "engine",
+    "template_id": "worker0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.14
+      },
+      "display_label": "Task entry",
+      "kind": "control",
+      "label": "Task entry",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Task entry",
+      "source_node_id": "entry",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.306
+      },
+      "display_label": "Work scheduler",
+      "kind": "control",
+      "label": "Work scheduler",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Work scheduler",
+      "source_node_id": "schedule",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.472
+      },
+      "display_label": "Dot engine",
+      "kind": "compute",
+      "label": "Dot engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Dot engine",
+      "source_node_id": "dot",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.472
+      },
+      "display_label": "Pack engine",
+      "kind": "compute",
+      "label": "Pack engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Pack engine",
+      "source_node_id": "reshape",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Line buffer",
+      "kind": "memory",
+      "label": "Line buffer",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Line buffer",
+      "source_node_id": "linebuf",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Message queue",
+      "kind": "memory",
+      "label": "Message queue",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Message queue",
+      "source_node_id": "inbox",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.8039999999999999
+      },
+      "display_label": "Local scratchpad",
+      "kind": "memory",
+      "label": "Local scratchpad",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Local scratchpad",
+      "source_node_id": "scratch",
+      "visual_reference_only": false
+     }
+    ],
+    "type": "unit-region",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.666667,
+     "x": 0.041667,
+     "y": 0.064103
+    },
+    "detail": "",
+    "id": "command",
+    "kind": "io",
+    "label": "Command source",
+    "members": [
+     "command"
+    ],
+    "source_group": "engine",
+    "source_owner": "engine",
+    "type": "resource",
+    "zone": "instruction"
+   },
+   {
+    "box": {
+     "height": 0.307692,
+     "width": 0.208333,
+     "x": 0.270833,
+     "y": 0.179487
+    },
+    "children_labels": [
+     "Task entry",
+     "Work scheduler",
+     "Dot engine",
+     "Pack engine",
+     "Line buffer",
+     "Message queue",
+     "Local scratchpad"
+    ],
+    "detail": "Same resources as worker0",
+    "id": "worker1",
+    "inheritance_evidence": "Same resources as worker0",
+    "inherited_visual_only": true,
+    "kind": "compute",
+    "label": "Worker1",
+    "members": [
+     "worker1"
+    ],
+    "source_group": "engine",
+    "source_owner": "engine",
+    "template_id": "worker0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.14
+      },
+      "display_label": "Task entry",
+      "kind": "control",
+      "label": "Task entry",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Task entry",
+      "source_node_id": "entry",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.306
+      },
+      "display_label": "Work scheduler",
+      "kind": "control",
+      "label": "Work scheduler",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Work scheduler",
+      "source_node_id": "schedule",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.472
+      },
+      "display_label": "Dot engine",
+      "kind": "compute",
+      "label": "Dot engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Dot engine",
+      "source_node_id": "dot",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.472
+      },
+      "display_label": "Pack engine",
+      "kind": "compute",
+      "label": "Pack engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Pack engine",
+      "source_node_id": "reshape",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Line buffer",
+      "kind": "memory",
+      "label": "Line buffer",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Line buffer",
+      "source_node_id": "linebuf",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Message queue",
+      "kind": "memory",
+      "label": "Message queue",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Message queue",
+      "source_node_id": "inbox",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.8039999999999999
+      },
+      "display_label": "Local scratchpad",
+      "kind": "memory",
+      "label": "Local scratchpad",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Local scratchpad",
+      "source_node_id": "scratch",
+      "visual_reference_only": true
+     }
+    ],
+    "type": "collapsed-template",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.307692,
+     "width": 0.208333,
+     "x": 0.5,
+     "y": 0.179487
+    },
+    "children_labels": [
+     "Task entry",
+     "Work scheduler",
+     "Dot engine",
+     "Pack engine",
+     "Line buffer",
+     "Message queue",
+     "Local scratchpad"
+    ],
+    "detail": "Same resources as worker0",
+    "id": "worker2",
+    "inheritance_evidence": "Same resources as worker0",
+    "inherited_visual_only": true,
+    "kind": "compute",
+    "label": "Worker2",
+    "members": [
+     "worker2"
+    ],
+    "source_group": "engine",
+    "source_owner": "engine",
+    "template_id": "worker0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.14
+      },
+      "display_label": "Task entry",
+      "kind": "control",
+      "label": "Task entry",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Task entry",
+      "source_node_id": "entry",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.306
+      },
+      "display_label": "Work scheduler",
+      "kind": "control",
+      "label": "Work scheduler",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Work scheduler",
+      "source_node_id": "schedule",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.472
+      },
+      "display_label": "Dot engine",
+      "kind": "compute",
+      "label": "Dot engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Dot engine",
+      "source_node_id": "dot",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.472
+      },
+      "display_label": "Pack engine",
+      "kind": "compute",
+      "label": "Pack engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Pack engine",
+      "source_node_id": "reshape",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Line buffer",
+      "kind": "memory",
+      "label": "Line buffer",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Line buffer",
+      "source_node_id": "linebuf",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Message queue",
+      "kind": "memory",
+      "label": "Message queue",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Message queue",
+      "source_node_id": "inbox",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.8039999999999999
+      },
+      "display_label": "Local scratchpad",
+      "kind": "memory",
+      "label": "Local scratchpad",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Local scratchpad",
+      "source_node_id": "scratch",
+      "visual_reference_only": true
+     }
+    ],
+    "type": "collapsed-template",
+    "zone": "units"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.041667,
+     "y": 0.589744
+    },
+    "detail": "",
+    "id": "coordinator",
+    "kind": "control",
+    "label": "Shared arbiter",
+    "members": [
+     "coordinator"
+    ],
+    "source_group": "services",
+    "source_owner": "services",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.213542,
+     "y": 0.589744
+    },
+    "detail": "",
+    "id": "assist",
+    "kind": "compute",
+    "label": "Shared lookup",
+    "members": [
+     "assist"
+    ],
+    "source_group": "services",
+    "source_owner": "services",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.557292,
+     "y": 0.589744
+    },
+    "detail": "",
+    "id": "bridge",
+    "kind": "io",
+    "label": "Shared link",
+    "members": [
+     "bridge"
+    ],
+    "source_group": "services",
+    "source_owner": "services",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.385417,
+     "y": 0.589744
+    },
+    "detail": "",
+    "id": "loader",
+    "kind": "compute",
+    "label": "Shared unpack",
+    "members": [
+     "loader"
+    ],
+    "source_group": "services",
+    "source_owner": "services",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.151042,
+     "x": 0.385417,
+     "y": 0.705128
+    },
+    "detail": "",
+    "id": "staging",
+    "kind": "memory",
+    "label": "Shared staging",
+    "members": [
+     "staging"
+    ],
+    "source_group": "services",
+    "source_owner": "services",
+    "type": "resource",
+    "zone": "shared"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.666667,
+     "x": 0.041667,
+     "y": 0.820513
+    },
+    "detail": "",
+    "id": "sharedram",
+    "kind": "memory",
+    "label": "Memory interface",
+    "members": [
+     "sharedram"
+    ],
+    "source_group": "engine",
+    "source_owner": "engine",
+    "type": "resource",
+    "zone": "memory"
+   },
+   {
+    "box": {
+     "height": 0.064103,
+     "width": 0.1875,
+     "x": 0.791667,
+     "y": 0.820513
+    },
+    "detail": "",
+    "id": "external",
+    "kind": "memory",
+    "label": "External storage",
+    "members": [
+     "external"
+    ],
+    "source_group": "",
+    "source_owner": "",
+    "type": "resource",
+    "zone": "external"
+   }
+  ],
+  "node_to_macro": {
+   "assist": "assist",
+   "bridge": "bridge",
+   "command": "command",
+   "coordinator": "coordinator",
+   "dot": "worker0",
+   "entry": "worker0",
+   "external": "external",
+   "inbox": "worker0",
+   "linebuf": "worker0",
+   "loader": "loader",
+   "reshape": "worker0",
+   "schedule": "worker0",
+   "scratch": "worker0",
+   "sharedram": "sharedram",
+   "staging": "staging",
+   "worker1": "worker1",
+   "worker2": "worker2"
+  },
+  "projected_links": [
+   {
+    "family": "instruction",
+    "id": "P1",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     0
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.16666666666666666
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "entry"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P2",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     1
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.5
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "target": "worker1",
+    "target_nodes": [
+     "worker1"
+    ]
+   },
+   {
+    "family": "instruction",
+    "id": "P3",
+    "kind": "control",
+    "label": "task descriptor",
+    "labels": [
+     "task descriptor"
+    ],
+    "members": [
+     2
+    ],
+    "routing": {
+     "corridor": "instruction:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.8333333333333334
+    },
+    "source": "command",
+    "source_nodes": [
+     "command"
+    ],
+    "target": "worker2",
+    "target_nodes": [
+     "worker2"
+    ]
+   },
+   {
+    "family": "coordination",
+    "id": "P4",
+    "kind": "control",
+    "label": "request slot",
+    "labels": [
+     "request slot"
+    ],
+    "members": [
+     6
+    ],
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.25
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "schedule"
+    ],
+    "target": "coordinator",
+    "target_nodes": [
+     "coordinator"
+    ]
+   },
+   {
+    "family": "coordination",
+    "id": "P5",
+    "kind": "control",
+    "label": "slot grant",
+    "labels": [
+     "slot grant"
+    ],
+    "members": [
+     7
+    ],
+    "routing": {
+     "corridor": "coordination:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 1,
+     "track_fraction": 0.75
+    },
+    "source": "coordinator",
+    "source_nodes": [
+     "coordinator"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "schedule"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P6",
+    "kind": "feedback",
+    "label": "fill ready",
+    "labels": [
+     "fill ready"
+    ],
+    "members": [
+     8
+    ],
+    "routing": {
+     "corridor": "memory:control",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "schedule"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P7",
+    "kind": "data",
+    "label": "send",
+    "labels": [
+     "send"
+    ],
+    "members": [
+     15
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 0,
+     "track_fraction": 0.08333333333333333
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "inbox"
+    ],
+    "target": "bridge",
+    "target_nodes": [
+     "bridge"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P8",
+    "kind": "data",
+    "label": "receive",
+    "labels": [
+     "receive"
+    ],
+    "members": [
+     16
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 1,
+     "track_fraction": 0.25
+    },
+    "source": "bridge",
+    "source_nodes": [
+     "bridge"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "inbox"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P9",
+    "kind": "data",
+    "label": "lookup keys",
+    "labels": [
+     "lookup keys"
+    ],
+    "members": [
+     17
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 2,
+     "track_fraction": 0.4166666666666667
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "scratch"
+    ],
+    "target": "assist",
+    "target_nodes": [
+     "assist"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P10",
+    "kind": "data",
+    "label": "lookup values",
+    "labels": [
+     "lookup values"
+    ],
+    "members": [
+     18
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.5833333333333334
+    },
+    "source": "assist",
+    "source_nodes": [
+     "assist"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P11",
+    "kind": "data",
+    "label": "fill",
+    "labels": [
+     "fill"
+    ],
+    "members": [
+     19
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 0,
+     "track_fraction": 0.1
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P12",
+    "kind": "data",
+    "label": "evict",
+    "labels": [
+     "evict"
+    ],
+    "members": [
+     20
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 1,
+     "track_fraction": 0.3
+    },
+    "source": "worker0",
+    "source_nodes": [
+     "scratch"
+    ],
+    "target": "sharedram",
+    "target_nodes": [
+     "sharedram"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P13",
+    "kind": "data",
+    "label": "payload",
+    "labels": [
+     "payload"
+    ],
+    "members": [
+     21
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 2,
+     "track_fraction": 0.5
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker1",
+    "target_nodes": [
+     "worker1"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P14",
+    "kind": "data",
+    "label": "payload",
+    "labels": [
+     "payload"
+    ],
+    "members": [
+     22
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 3,
+     "track_fraction": 0.7
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "worker2",
+    "target_nodes": [
+     "worker2"
+    ]
+   },
+   {
+    "family": "external",
+    "id": "P15",
+    "kind": "data",
+    "label": "bulk data",
+    "labels": [
+     "bulk data"
+    ],
+    "members": [
+     23
+    ],
+    "routing": {
+     "corridor": "external:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "left",
+     "target_side": "right",
+     "track": 0,
+     "track_fraction": 0.5
+    },
+    "source": "external",
+    "source_nodes": [
+     "external"
+    ],
+    "target": "sharedram",
+    "target_nodes": [
+     "sharedram"
+    ]
+   },
+   {
+    "family": "memory",
+    "id": "P16",
+    "kind": "data",
+    "label": "encoded stream",
+    "labels": [
+     "encoded stream"
+    ],
+    "members": [
+     24
+    ],
+    "routing": {
+     "corridor": "memory:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 4,
+     "track_fraction": 0.9
+    },
+    "source": "sharedram",
+    "source_nodes": [
+     "sharedram"
+    ],
+    "target": "loader",
+    "target_nodes": [
+     "loader"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P17",
+    "kind": "data",
+    "label": "unpacked stream",
+    "labels": [
+     "unpacked stream"
+    ],
+    "members": [
+     25
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "bottom",
+     "target_side": "top",
+     "track": 4,
+     "track_fraction": 0.75
+    },
+    "source": "loader",
+    "source_nodes": [
+     "loader"
+    ],
+    "target": "staging",
+    "target_nodes": [
+     "staging"
+    ]
+   },
+   {
+    "family": "service",
+    "id": "P18",
+    "kind": "data",
+    "label": "loaded block",
+    "labels": [
+     "loaded block"
+    ],
+    "members": [
+     26
+    ],
+    "routing": {
+     "corridor": "service:data",
+     "no_broadcast_bus_is_inferred": true,
+     "obstacle_aware_routing_required": true,
+     "source_side": "top",
+     "target_side": "bottom",
+     "track": 5,
+     "track_fraction": 0.9166666666666666
+    },
+    "source": "staging",
+    "source_nodes": [
+     "staging"
+    ],
+    "target": "worker0",
+    "target_nodes": [
+     "scratch"
+    ]
+   }
+  ],
+  "region_slots": [
+   {
+    "box": {
+     "height": 0.307692,
+     "width": 0.208333,
+     "x": 0.041667,
+     "y": 0.179487
+    },
+    "id": "worker0",
+    "source_members": [
+     "entry",
+     "schedule",
+     "dot",
+     "reshape",
+     "scratch",
+     "linebuf",
+     "inbox"
+    ],
+    "template_id": "worker0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.14
+      },
+      "display_label": "Task entry",
+      "kind": "control",
+      "label": "Task entry",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Task entry",
+      "source_node_id": "entry",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.306
+      },
+      "display_label": "Work scheduler",
+      "kind": "control",
+      "label": "Work scheduler",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Work scheduler",
+      "source_node_id": "schedule",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.472
+      },
+      "display_label": "Dot engine",
+      "kind": "compute",
+      "label": "Dot engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Dot engine",
+      "source_node_id": "dot",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.472
+      },
+      "display_label": "Pack engine",
+      "kind": "compute",
+      "label": "Pack engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Pack engine",
+      "source_node_id": "reshape",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Line buffer",
+      "kind": "memory",
+      "label": "Line buffer",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Line buffer",
+      "source_node_id": "linebuf",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Message queue",
+      "kind": "memory",
+      "label": "Message queue",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Message queue",
+      "source_node_id": "inbox",
+      "visual_reference_only": false
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.8039999999999999
+      },
+      "display_label": "Local scratchpad",
+      "kind": "memory",
+      "label": "Local scratchpad",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Local scratchpad",
+      "source_node_id": "scratch",
+      "visual_reference_only": false
+     }
+    ]
+   },
+   {
+    "box": {
+     "height": 0.307692,
+     "width": 0.208333,
+     "x": 0.270833,
+     "y": 0.179487
+    },
+    "id": "worker1",
+    "source_members": [
+     "worker1"
+    ],
+    "template_id": "worker0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.14
+      },
+      "display_label": "Task entry",
+      "kind": "control",
+      "label": "Task entry",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Task entry",
+      "source_node_id": "entry",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.306
+      },
+      "display_label": "Work scheduler",
+      "kind": "control",
+      "label": "Work scheduler",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Work scheduler",
+      "source_node_id": "schedule",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.472
+      },
+      "display_label": "Dot engine",
+      "kind": "compute",
+      "label": "Dot engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Dot engine",
+      "source_node_id": "dot",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.472
+      },
+      "display_label": "Pack engine",
+      "kind": "compute",
+      "label": "Pack engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Pack engine",
+      "source_node_id": "reshape",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Line buffer",
+      "kind": "memory",
+      "label": "Line buffer",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Line buffer",
+      "source_node_id": "linebuf",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Message queue",
+      "kind": "memory",
+      "label": "Message queue",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Message queue",
+      "source_node_id": "inbox",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.8039999999999999
+      },
+      "display_label": "Local scratchpad",
+      "kind": "memory",
+      "label": "Local scratchpad",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Local scratchpad",
+      "source_node_id": "scratch",
+      "visual_reference_only": true
+     }
+    ]
+   },
+   {
+    "box": {
+     "height": 0.307692,
+     "width": 0.208333,
+     "x": 0.5,
+     "y": 0.179487
+    },
+    "id": "worker2",
+    "source_members": [
+     "worker2"
+    ],
+    "template_id": "worker0",
+    "template_slots": [
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.14
+      },
+      "display_label": "Task entry",
+      "kind": "control",
+      "label": "Task entry",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Task entry",
+      "source_node_id": "entry",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.306
+      },
+      "display_label": "Work scheduler",
+      "kind": "control",
+      "label": "Work scheduler",
+      "role_lane": "control",
+      "source_group": "worker0",
+      "source_label": "Work scheduler",
+      "source_node_id": "schedule",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.472
+      },
+      "display_label": "Dot engine",
+      "kind": "compute",
+      "label": "Dot engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Dot engine",
+      "source_node_id": "dot",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.472
+      },
+      "display_label": "Pack engine",
+      "kind": "compute",
+      "label": "Pack engine",
+      "role_lane": "execution",
+      "source_group": "worker0",
+      "source_label": "Pack engine",
+      "source_node_id": "reshape",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.04,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Line buffer",
+      "kind": "memory",
+      "label": "Line buffer",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Line buffer",
+      "source_node_id": "linebuf",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.44,
+       "x": 0.52,
+       "y": 0.6379999999999999
+      },
+      "display_label": "Message queue",
+      "kind": "memory",
+      "label": "Message queue",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Message queue",
+      "source_node_id": "inbox",
+      "visual_reference_only": true
+     },
+     {
+      "box": {
+       "height": 0.13999999999999999,
+       "width": 0.92,
+       "x": 0.04,
+       "y": 0.8039999999999999
+      },
+      "display_label": "Local scratchpad",
+      "kind": "memory",
+      "label": "Local scratchpad",
+      "role_lane": "local_storage",
+      "source_group": "worker0",
+      "source_label": "Local scratchpad",
+      "source_node_id": "scratch",
+      "visual_reference_only": true
+     }
+    ]
+   }
+  ],
+  "repeat_families": [
+   {
+    "evidence": [
+     "Same resources as worker0",
+     "Same resources as worker0"
+    ],
+    "instances": [
+     "worker1",
+     "worker2"
+    ],
+    "template_group": "worker0"
+   }
+  ],
+  "role_lanes": [
+   {
+    "box": {
+     "height": 0.079487,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.05641
+    },
+    "display_only": true,
+    "id": "instruction",
+    "label": "Instruction / control",
+    "members": [
+     "command"
+    ],
+    "role": "instruction"
+   },
+   {
+    "box": {
+     "height": 0.323077,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.171795
+    },
+    "display_only": true,
+    "id": "units",
+    "label": "Repeated private units",
+    "members": [
+     "worker0",
+     "worker1",
+     "worker2"
+    ],
+    "role": "repeated-array"
+   },
+   {
+    "box": {
+     "height": 0.194872,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.582051
+    },
+    "display_only": true,
+    "id": "shared",
+    "label": "Common services",
+    "members": [
+     "coordinator",
+     "assist",
+     "loader",
+     "bridge",
+     "staging"
+    ],
+    "role": "shared"
+   },
+   {
+    "box": {
+     "height": 0.079487,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.812821
+    },
+    "display_only": true,
+    "id": "memory",
+    "label": "Shared memory / interface band",
+    "members": [
+     "sharedram"
+    ],
+    "role": "memory"
+   }
+  ],
+  "routing_corridors": [
+   {
+    "axis": "horizontal",
+    "box": {
+     "height": 0.035898,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.135897
+    },
+    "id": "instruction:control",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 3
+   },
+   {
+    "axis": "horizontal",
+    "box": {
+     "height": 0.08717899999999995,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.494872
+    },
+    "id": "coordination:control",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 2
+   },
+   {
+    "axis": "vertical",
+    "box": {
+     "height": 0.935897,
+     "width": 0.010417,
+     "x": 0.025,
+     "y": 0.038462
+    },
+    "id": "memory:control",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 1
+   },
+   {
+    "axis": "horizontal",
+    "box": {
+     "height": 0.08717899999999995,
+     "width": 0.679167,
+     "x": 0.035417,
+     "y": 0.494872
+    },
+    "id": "service:data",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 6
+   },
+   {
+    "axis": "vertical",
+    "box": {
+     "height": 0.935897,
+     "width": 0.010417,
+     "x": 0.025,
+     "y": 0.038462
+    },
+    "id": "memory:data",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 5
+   },
+   {
+    "axis": "vertical",
+    "box": {
+     "height": 0.935897,
+     "width": 0.041667,
+     "x": 0.739583,
+     "y": 0.038462
+    },
+    "id": "external:data",
+    "routing_is_not_a_hardware_bus": true,
+    "track_count": 1
+   }
+  ],
+  "source_ownership": {
+   "assist": "services",
+   "bridge": "services",
+   "command": "engine",
+   "coordinator": "services",
+   "dot": "worker0",
+   "entry": "worker0",
+   "external": "",
+   "inbox": "worker0",
+   "linebuf": "worker0",
+   "loader": "services",
+   "reshape": "worker0",
+   "schedule": "worker0",
+   "scratch": "worker0",
+   "sharedram": "engine",
+   "staging": "services",
+   "worker1": "engine",
+   "worker2": "engine"
+  },
+  "system_frame": {
+   "box": {
+    "height": 0.948718,
+    "width": 0.708333,
+    "x": 0.020833,
+    "y": 0.025641
+   },
+   "display_only": false,
+   "id": "@system",
+   "label": "Compute Engine",
+   "not_an_added_hardware_node": true,
+   "replaces_container": "engine",
+   "source_group": "engine"
+  },
+  "title": "Synthetic Compute Engine",
+  "type": "hierarchy_overview",
+  "view_type": "containment-led-system",
+  "warnings": []
+ },
+ "version": 1,
+ "warnings": []
+}
