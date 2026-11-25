@@ -3,7 +3,14 @@
   "private": true,
   "type": "module",
   "description": "An offline Agent Skill that makes editable draw.io diagrams, with a JS port of the silicon-canvas layout engine",
-  "engines": { "node": ">=20" },
+  "homepage": "https://github.com/GarrickLin/draw-diagram",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarrickLin/draw-diagram.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test tests/draw-diagram/*.test.js",
     "test:port": "node --test tests/port/*.test.js",

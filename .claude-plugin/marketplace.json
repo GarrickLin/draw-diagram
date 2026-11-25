@@ -1,6 +1,9 @@
 {
   "name": "draw-diagram",
-  "owner": { "name": "Garrick" },
+  "owner": {
+    "name": "GarrickLin",
+    "url": "https://github.com/GarrickLin"
+  },
   "description": "The draw-diagram skill as a Claude Code plugin.",
   "plugins": [
     {

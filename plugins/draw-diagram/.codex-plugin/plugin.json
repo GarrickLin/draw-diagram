@@ -2,17 +2,36 @@
   "name": "draw-diagram",
   "version": "0.2.0",
   "description": "Make editable draw.io diagrams offline: chip and system architecture, algorithm dataflow, state machines and timing laid out by the silicon-canvas engine; flowcharts, sequence, ER and other diagrams from Mermaid, PlantUML or XML. Checks the layout and renders PNG/SVG. Node 20+ only.",
-  "author": { "name": "Garrick" },
+  "author": {
+    "name": "GarrickLin",
+    "url": "https://github.com/GarrickLin"
+  },
+  "homepage": "https://github.com/GarrickLin/draw-diagram",
+  "repository": "https://github.com/GarrickLin/draw-diagram",
   "license": "SEE LICENSE IN skills/draw-diagram/NOTICE",
-  "keywords": ["draw.io", "drawio", "diagrams", "architecture", "chip", "soc", "gpu", "dataflow", "state-machine", "mermaid"],
+  "keywords": [
+    "draw.io",
+    "drawio",
+    "diagrams",
+    "architecture",
+    "chip",
+    "soc",
+    "gpu",
+    "dataflow",
+    "state-machine",
+    "mermaid"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "draw-diagram",
     "shortDescription": "Editable draw.io diagrams, laid out and checked offline.",
     "longDescription": "Chip and system architecture, algorithm dataflow, state machines and timing traces are planned and laid out by a port of the silicon-canvas engine; other diagrams are written as Mermaid, PlantUML, CSV or draw.io XML. Produces .drawio files, checks them for overlaps and overflow, and renders PNG or SVG. Runs on Node 20+ without network access.",
-    "developerName": "Garrick",
+    "developerName": "GarrickLin",
     "category": "Productivity",
-    "capabilities": ["Skills"],
+    "capabilities": [
+      "Skills"
+    ],
+    "websiteURL": "https://github.com/GarrickLin/draw-diagram",
     "defaultPrompt": [
       "Draw the architecture of a GPU with four compute clusters, a shared L2 and HBM.",
       "画一个 DMA 引擎的状态机：空闲、取描述符、传输、完成。",

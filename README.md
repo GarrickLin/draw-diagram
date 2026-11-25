@@ -28,28 +28,28 @@ Limitations: the renderer can't draw UML sequence lifelines, so a sequence diagr
 
 ## Install
 
-Replace `<owner>` with the GitHub user or organisation that hosts this repository (and `draw-diagram` after the slash with the repository name, if it differs). `draw-diagram@draw-diagram` is `plugin@marketplace`; both names come from this repository's manifests, not from GitHub.
+In the commands below, `draw-diagram@draw-diagram` is `plugin@marketplace`.
 
 **Claude Code**
 
 ```sh
-claude plugin marketplace add <owner>/draw-diagram
+claude plugin marketplace add GarrickLin/draw-diagram
 claude plugin install draw-diagram@draw-diagram
 ```
 
-Inside a session, `/plugin marketplace add <owner>/draw-diagram` and `/plugin install draw-diagram@draw-diagram` do the same; Claude Code 2.1.275 and later also take `/plugin install draw-diagram --marketplace <owner>/draw-diagram`. The skill loads by itself when you ask for a diagram, or explicitly as `/draw-diagram:draw-diagram`.
+Inside a session, `/plugin marketplace add GarrickLin/draw-diagram` and `/plugin install draw-diagram@draw-diagram` do the same; Claude Code 2.1.275 and later also take `/plugin install draw-diagram --marketplace GarrickLin/draw-diagram`. The skill loads by itself when you ask for a diagram, or explicitly as `/draw-diagram:draw-diagram`.
 
 **Codex**
 
 ```sh
-codex plugin marketplace add <owner>/draw-diagram
+codex plugin marketplace add GarrickLin/draw-diagram
 codex plugin add draw-diagram@draw-diagram
 ```
 
 **Other agents, with [`npx skills`](https://skills.sh)**
 
 ```sh
-npx skills add <owner>/draw-diagram
+npx skills add GarrickLin/draw-diagram
 ```
 
 It asks which agents to install for; `-a claude-code`, `-a codex` and so on choose directly.
